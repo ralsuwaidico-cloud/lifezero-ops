@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+"""Regenerate every product asset from source (text-only kit -> binaries).
+Run from anywhere: python3 build/build_all.py
+Produces products/<slug>/*.xlsx and cover *.jpg, recalculated and verified."""
+import glob, json, os, pathlib, re, subprocess, sys
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+PROD = ROOT / "products"
+WORK = ROOT / "build" / "out"
+WORK.mkdir(parents=True, exist_ok=True)
+
+# LibreOffice needs well over 120s on a cold container; override with RECALC_TIMEOUT.
+RECALC_TIMEOUT = os.environ.get("RECALC_TIMEOUT", "600")
+
+# locate the xlsx skill's recalc + soffice helper (synced skills dir)
+skill = None
+for c in glob.glob(os.path.expanduser("~/.claude/skills/**/xlsx/scripts/recalc.py"), recursive=True) + \
+         glob.glob("/root/.claude/skills/**/xlsx/scripts/recalc.py", recursive=True):
+    skill = pathlib.Path(c).parent; break
+if not skill:
+    sys.exit("xlsx skill scripts not found")
+
+def build(script, out_name):
+    src = (ROOT / "build" / script).read_text()
+    target = WORK / out_name
+    src = re.sub(r'^OUT\s*=\s*.*$', f'OUT = "{target}"', src, count=1, flags=re.M)
+    tmp = WORK / f"_{script}"
+    tmp.write_text(src)
+    subprocess.run([sys.executable, str(tmp)], check=True)
+    r = subprocess.run([sys.executable, str(skill / "recalc.py"), str(target), RECALC_TIMEOUT], capture_output=True, text=True)
+    info = json.loads(r.stdout)
+    assert info.get("status") == "success" and info.get("total_errors") == 0, info
+    print("built", target.name, info["total_formulas"], "formulas, 0 errors")
+    return target
+
+uae = build("build_uae.py", "UAE_Business_Bookkeeping_VAT_CT_Tracker_2026.xlsx")
+res = build("build_reseller.py", "Reseller_Inventory_Profit_Tracker_2026.xlsx")
+
+# preview render of dashboards -> PNG
+from openpyxl import load_workbook
+def preview(path, keep):
+    wb = load_workbook(path, data_only=True)
+    for ws in list(wb.worksheets):
+        if ws.title not in keep: wb.remove(ws)
+    for ws in wb.worksheets:
+        ws.page_setup.orientation = "landscape"; ws.page_setup.fitToWidth = 1; ws.page_setup.fitToHeight = 1
+        ws.sheet_properties.pageSetUpPr.fitToPage = True
+    p = WORK / (path.stem + "_preview.xlsx"); wb.save(p)
+    subprocess.run([sys.executable, str(skill / "office" / "soffice.py"), "--headless", "--convert-to", "pdf", "--outdir", str(WORK), str(p)],
+                   capture_output=True)
+    pdf = WORK / (p.stem + ".pdf")
+    subprocess.run(["pdftoppm", "-png", "-r", "110", "-f", "1", "-l", "1", str(pdf), str(WORK / p.stem)], check=True)
+    return next(WORK.glob(p.stem + "*-1.png"))
+
+from PIL import Image, ImageDraw, ImageFont
+F_B = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"; F_R = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+def cover(png, title, subtitle, out, bbox):
+    im = Image.open(png).convert("RGB").crop(bbox)
+    W, H = 1280, 720
+    scale = min((W - 80) / im.width, (H - 170) / im.height)
+    im = im.resize((int(im.width * scale), int(im.height * scale)), Image.LANCZOS)
+    bg = Image.new("RGB", (W, H), (31, 58, 95)); d = ImageDraw.Draw(bg)
+    d.text((40, 30), title, fill="white", font=ImageFont.truetype(F_B, 40))
+    d.text((40, 88), subtitle, fill=(200, 215, 235), font=ImageFont.truetype(F_R, 22))
+    x = (W - im.width) // 2; y = 140
+    d.rectangle([x - 6, y - 6, x + im.width + 6, y + im.height + 6], fill="white"); bg.paste(im, (x, y))
+    bg.save(out, quality=92); print("cover", out.name)
+
+cover(preview(uae, ["Dashboard"]), "UAE Freelancer & SME Bookkeeping Tracker 2026",
+      "VAT return helper  •  Corporate Tax estimate  •  Invoices, expenses & cash — Excel / Google Sheets",
+      PROD / "uae-vat-tracker" / "cover_uae_tracker.jpg", (70, 95, 910, 810))
+cover(preview(res, ["Dashboard"]), "Reseller Inventory & Profit Tracker 2026",
+      "eBay • Poshmark • Mercari • Depop • Whatnot • FB Marketplace — auto fees, ROI, death pile, tax summary",
+      PROD / "reseller-profit-tracker" / "cover_reseller_tracker.jpg", (70, 95, 800, 810))
+
+# service cover (pure text)
+bg = Image.new("RGB", (1280, 720), (31, 58, 95)); d = ImageDraw.Draw(bg)
+d.text((70, 120), "Custom Excel / Google Sheets Tool", fill="white", font=ImageFont.truetype(F_B, 54))
+d.text((70, 190), "built for you in 48 hours", fill="white", font=ImageFont.truetype(F_B, 54))
+for i, t in enumerate(["Trackers  •  Calculators  •  Dashboards  •  Data clean-up", "Formulas checked. Dropdowns. One-page how-to.", "One revision round included."]):
+    d.text((70, 300 + i * 50), t, fill=(200, 215, 235), font=ImageFont.truetype(F_R, 30))
+d.rounded_rectangle([70, 500, 470, 570], radius=12, fill=(46, 117, 182)); d.text((100, 515), "Brief in → sheet out", fill="white", font=ImageFont.truetype(F_B, 30))
+bg.save(PROD / "custom-sheet-48h" / "cover_custom_sheet.jpg", quality=92)
+
+import shutil
+shutil.copy(uae, PROD / "uae-vat-tracker" / uae.name)
+shutil.copy(res, PROD / "reseller-profit-tracker" / res.name)
+print("ALL ASSETS BUILT")

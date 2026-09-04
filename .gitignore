@@ -1,0 +1,6 @@
+# LibreOffice/PDF intermediates from build/build_all.py
+build/out/
+
+# Never commit credentials
+.env
+*.token
