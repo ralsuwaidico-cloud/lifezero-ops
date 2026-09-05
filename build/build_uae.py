@@ -447,7 +447,7 @@ for i, cat in enumerate(exp_cats):
 
 # Receivables ageing
 header_row(db, 42, ["Receivables ageing (unpaid)", "Count", "Amount incl. VAT"])
-ages = [("Not yet overdue", f'=COUNTIFS({incr("M")},">0",{incr("M")},"<="&OVERDUE_DAYS)', f'=SUMIFS({incr("I")},{incr("M")},">0",{incr("M")},"<="&OVERDUE_DAYS)'),
+ages = [("Not yet overdue", f'=COUNTIFS({incr("M")},">=0",{incr("M")},"<="&OVERDUE_DAYS)', f'=SUMIFS({incr("I")},{incr("M")},">=0",{incr("M")},"<="&OVERDUE_DAYS)'),
         ("Overdue 1–30 days", f'=COUNTIFS({incr("M")},">"&OVERDUE_DAYS,{incr("M")},"<="&(OVERDUE_DAYS+30))', f'=SUMIFS({incr("I")},{incr("M")},">"&OVERDUE_DAYS,{incr("M")},"<="&(OVERDUE_DAYS+30))'),
         ("Overdue 31–90 days", f'=COUNTIFS({incr("M")},">"&(OVERDUE_DAYS+30),{incr("M")},"<="&(OVERDUE_DAYS+90))', f'=SUMIFS({incr("I")},{incr("M")},">"&(OVERDUE_DAYS+30),{incr("M")},"<="&(OVERDUE_DAYS+90))'),
         ("Overdue 90+ days", f'=COUNTIFS({incr("M")},">"&(OVERDUE_DAYS+90))', f'=SUMIFS({incr("I")},{incr("M")},">"&(OVERDUE_DAYS+90))')]

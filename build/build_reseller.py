@@ -245,6 +245,13 @@ for r in range(FIRST, N + 1):
 dv = DataValidation(type="list", formula1=f"={PLAT_RNG}", allow_blank=True); sa.add_data_validation(dv); dv.add(f"D{FIRST}:D{N}")
 sa.conditional_formatting.add(f"L{FIRST}:L{N}", FormulaRule(formula=[f'AND(ISNUMBER($L{FIRST}),$L{FIRST}<0)'], font=Font(name=FONT, color="9C0006", bold=True), fill=PatternFill("solid", fgColor="FDE9D9")))
 sa.conditional_formatting.add(f"C{FIRST}:C{N}", FormulaRule(formula=[f'$C{FIRST}="SKU not found"'], font=Font(name=FONT, color="9C0006", bold=True)))
+# A platform that is not in the Settings table makes the fee lookup fail, and the IFERROR above
+# turns that into a $0 fee - which silently overstates profit and ROI. Flag the cell instead.
+sa.conditional_formatting.add(f"D{FIRST}:D{N}", FormulaRule(
+    # INDIRECT keeps this working in Google Sheets, which rejects direct cross-sheet
+    # references inside a conditional-formatting custom formula.
+    formula=[f'AND($D{FIRST}<>"",ISNA(MATCH($D{FIRST},INDIRECT("{PLAT_RNG}"),0)))'],
+    font=Font(name=FONT, color="9C0006", bold=True), fill=PatternFill("solid", fgColor="FDE9D9")))
 widths(sa, [12, 11, 40, 14, 11, 13, 12, 12, 14, 11, 12, 12, 9, 9, 12, 12])
 sa.freeze_panes = "C4"
 sa.auto_filter.ref = f"A3:P{N}"
