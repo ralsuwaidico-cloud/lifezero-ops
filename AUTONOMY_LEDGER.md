@@ -11,3 +11,12 @@
 Standing rule: every operational request must pass the Autonomy Engineer check (API? integration? script? other agent? other platform? one-time auth instead?) before it reaches Rashed. Second occurrence of any manual task → flag for automation; third → requires written justification here.
 
 Sandbox egress facts: only github.com/api.github.com and package registries are reachable. GitHub Actions is the bridge to every other service.
+
+2026-09-06 — The reseller Dashboard computed Net Profit as `Shipping Net − Overhead` instead of
+`Item Profit − Overhead`, reporting a loss on a profitable year. It recalculated with 0 formula
+errors throughout, so the existing build gate could never have caught it; the workbook's own
+"should equal line 15" cross-check row was printed for the buyer but never verified by anything.
+Automated: `build/build_all.py` now asserts Tax Summary line 15 equals the Dashboard total on
+every build. Lesson for the daily cycle — "0 formula errors" proves the sheet computes, not that
+it computes the right thing. Any figure the workbook claims reconciles needs a build-time
+assertion, not a promise in a label.

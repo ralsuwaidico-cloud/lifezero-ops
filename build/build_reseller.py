@@ -340,7 +340,9 @@ for i in range(12):
     db[f"G{r}"] = f'=SUMIFS({SR("Sales","F")},{SR("Sales","A")},{lo},{SR("Sales","A")},{hi})-SUMIFS({SR("Sales","G")},{SR("Sales","A")},{lo},{SR("Sales","A")},{hi})'
     db[f"H{r}"] = f'=SUMIFS({SR("Sales","L")},{SR("Sales","A")},{lo},{SR("Sales","A")},{hi})'
     db[f"I{r}"] = f'=SUMIFS({SR("Expenses","G")},{SR("Expenses","A")},{lo},{SR("Expenses","A")},{hi})'
-    db[f"J{r}"] = f'=G{r}-I{r}'
+    # Net Profit = Item Profit (H) - Overhead (I). G is Shipping Net, which is already
+    # inside H via Sales!L - subtracting overhead from it reported a loss on a profitable year.
+    db[f"J{r}"] = f'=H{r}-I{r}'
     for col in "ABCDEFGHIJ":
         c = db[f"{col}{r}"]; c.font = f(size=10); c.border = border
         if i % 2: c.fill = tint2_fill
@@ -444,32 +446,40 @@ dp.freeze_panes = "A10"; dp.sheet_view.showGridLines = False
 
 # ---------------------------------------------------------------- TAX SUMMARY
 tx = wb.create_sheet("Tax Summary")
-title(tx, "Tax Summary (Estimate)", "Annual totals mapped loosely to US Schedule C lines. ESTIMATE ONLY - not tax advice. Confirm with a tax professional.")
+title(tx, "Tax Summary (Estimate)", "Totals for the 12 months from the Settings year start, mapped loosely to US Schedule C lines. Rows dated outside that window are excluded. ESTIMATE ONLY - not tax advice. Confirm with a tax professional.")
 header(tx, 3, ["Line", "Item", "Amount", "Schedule C mapping (approx.)", "Source"])
-def E(cat): return f'SUMIFS({SR("Expenses","D")},{SR("Expenses","B")},"{cat}")'
+# The Dashboard totals only the 12 months from the Settings year start, so the Tax Summary
+# must use the same window or the "should equal line 15" cross-check below is a false promise -
+# and an annual tax figure that silently includes other years is simply wrong.
+YR_LO = f'">="&{S_START}'
+YR_HI = f'"<"&EDATE({S_START},12)'
+def SY(sheet, col, extra=""):
+    """Sum one column of `sheet` over the tracking year only."""
+    return f'SUMIFS({SR(sheet, col)}{extra},{SR(sheet, "A")},{YR_LO},{SR(sheet, "A")},{YR_HI})'
+def E(cat): return SY("Expenses", "D", f',{SR("Expenses","B")},"{cat}"')
 lines = [
     ("INCOME", None, None, None),
-    ("1", "Gross sales (item prices)", f'=SUM({SR("Sales","E")})', "Line 1 - Gross receipts", "Sales: Sale Price"),
-    ("2", "Shipping charged to buyers", f'=SUM({SR("Sales","F")})', "Line 1 - Gross receipts", "Sales: Shipping Charged"),
+    ("1", "Gross sales (item prices)", f'={SY("Sales","E")}', "Line 1 - Gross receipts", "Sales: Sale Price"),
+    ("2", "Shipping charged to buyers", f'={SY("Sales","F")}', "Line 1 - Gross receipts", "Sales: Shipping Charged"),
     ("3", "Total gross receipts", "=C5+C6", "Line 1", "Lines 1 + 2"),
-    ("4", "Cost of goods sold (sold items only)", f'=SUM({SR("Sales","K")})', "Part III / Line 4 - COGS", "Sales: Item Total Cost"),
+    ("4", "Cost of goods sold (sold items only)", f'={SY("Sales","K")}', "Part III / Line 4 - COGS", "Sales: Item Total Cost"),
     ("5", "Gross profit", "=C7-C8", "Line 7", "Line 3 - line 4"),
     ("EXPENSES", None, None, None),
-    ("6", "Marketplace & payment fees", f'=SUM({SR("Sales","H")})+{E("Fees")}', "Line 10 - Commissions and fees", "Sales: Platform Fees + Expenses: Fees"),
-    ("7", "Shipping / postage paid", f'=SUM({SR("Sales","G")})', "Line 27a - Other expenses (postage)", "Sales: Shipping Cost Paid"),
+    ("6", "Marketplace & payment fees", f'={SY("Sales","H")}+{E("Fees")}', "Line 10 - Commissions and fees", "Sales: Platform Fees + Expenses: Fees"),
+    ("7", "Shipping / postage paid", f'={SY("Sales","G")}', "Line 27a - Other expenses (postage)", "Sales: Shipping Cost Paid"),
     ("8", "Shipping supplies", f'={E("Shipping Supplies")}', "Line 22 - Supplies", "Expenses: Shipping Supplies"),
     ("9", "Supplies", f'={E("Supplies")}', "Line 22 - Supplies", "Expenses: Supplies"),
     ("10", "Subscriptions / software", f'={E("Subscriptions")}', "Line 18 - Office expense", "Expenses: Subscriptions"),
     ("11", "Storage", f'={E("Storage")}', "Line 20b - Rent (other business property)", "Expenses: Storage"),
-    ("12", "Vehicle mileage deduction", f'=SUM({SR("Expenses","F")})', "Line 9 - Car and truck expenses", "Expenses: Miles x Settings rate"),
-    ("13", "Other item costs & other expenses", f'=SUM({SR("Sales","J")})+{E("Other")}', "Line 27a - Other expenses", "Sales: Other Costs + Expenses: Other"),
+    ("12", "Vehicle mileage deduction + costs on Mileage rows", f'={SY("Expenses","F")}+{E("Mileage")}', "Line 9 - Car and truck expenses", "Expenses: Miles x rate + Amount on Mileage rows"),
+    ("13", "Other item costs & other expenses", f'={SY("Sales","J")}+{E("Other")}', "Line 27a - Other expenses", "Sales: Other Costs + Expenses: Other"),
     ("14", "Total expenses", "=SUM(C11:C18)", "Line 28", "Sum of lines 6-13"),
     ("RESULT", None, None, None),
     ("15", "Estimated net profit (loss)", "=C9-C19", "Line 31 - Net profit or (loss)", "Line 5 - line 14"),
     ("", "Cross-check: Dashboard net profit", "=Dashboard!J24", "Should equal line 15", "Dashboard total row"),
     ("INFO", None, None, None),
-    ("", "Sales tax collected & remitted by platforms", f'=SUM({SR("Sales","I")})', "Not your income or expense - info only", "Sales: Sales Tax Collected"),
-    ("", "Miles driven (total)", f'=SUM({SR("Expenses","E")})', "Keep a contemporaneous mileage log", "Expenses: Miles"),
+    ("", "Sales tax collected & remitted by platforms", f'={SY("Sales","I")}', "Not your income or expense - info only", "Sales: Sales Tax Collected"),
+    ("", "Miles driven (tracking year)", f'={SY("Expenses","E")}', "Keep a contemporaneous mileage log", "Expenses: Miles"),
     ("", "Unsold inventory at cost (year end)", "=Dashboard!A5", "Inventory carried forward (Part III)", "Dashboard KPI"),
 ]
 r = 4

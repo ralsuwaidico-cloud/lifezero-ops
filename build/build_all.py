@@ -36,6 +36,25 @@ def build(script, out_name):
 uae = build("build_uae.py", "UAE_Business_Bookkeeping_VAT_CT_Tracker_2026.xlsx")
 res = build("build_reseller.py", "Reseller_Inventory_Profit_Tracker_2026.xlsx")
 
+
+def cross_check(path, a, b, label):
+    """Assert two cells that the workbook itself promises are equal really are.
+
+    'Formulas recalculate with 0 errors' does not mean the numbers are right: the reseller
+    Dashboard once computed Net Profit from the shipping column and still recalculated
+    cleanly, reporting a loss on a profitable year. Only comparing the totals catches that.
+    """
+    from openpyxl import load_workbook as _lw
+    wb = _lw(path, data_only=True)
+    va = wb[a[0]][a[1]].value or 0
+    vb = wb[b[0]][b[1]].value or 0
+    assert abs(va - vb) < 0.005, f"{label}: {a[0]}!{a[1]}={va} != {b[0]}!{b[1]}={vb}"
+    print(f"cross-check ok  {label}: {va}")
+
+
+cross_check(res, ("Tax Summary", "C21"), ("Dashboard", "J24"),
+            "reseller net profit (Tax Summary line 15 vs Dashboard total)")
+
 # preview render of dashboards -> PNG
 from openpyxl import load_workbook
 def preview(path, keep):
