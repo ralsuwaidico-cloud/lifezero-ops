@@ -20,3 +20,13 @@ Automated: `build/build_all.py` now asserts Tax Summary line 15 equals the Dashb
 every build. Lesson for the daily cycle — "0 formula errors" proves the sheet computes, not that
 it computes the right thing. Any figure the workbook claims reconciles needs a build-time
 assertion, not a promise in a label.
+
+2026-09-07 — Same silent-drop class as the reseller fee bug, but on a tax filing. Every VAT Return
+box matches an exact treatment string, so an unrecognised value in Income!G (a pasted "Standard",
+a typo, a renamed Settings entry) charged no VAT AND matched no box: the invoice vanished from the
+return. Measured on the sample book, one bad string on a 12,000 AED invoice took net VAT payable
+from AED 630 to AED 30 — a 95% understatement — with 0 formula errors throughout. Added two CHECK
+rows to the VAT Return, red-flagged the offending cell on Income/Expenses, and asserted both checks
+at build time. Method that found it and is now standing practice: do not confirm a guard by reading
+0 on clean data — inject the bad value, recalculate, and watch the number move. Both guards were
+proven to fire before shipping.

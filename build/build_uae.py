@@ -223,6 +223,9 @@ dv = DataValidation(type="list", formula1="=Settings!$G$4:$G$7", allow_blank=Tru
 dv = DataValidation(type="list", formula1="=Settings!$E$19:$E$22", allow_blank=True); inc.add_data_validation(dv); dv.add(f"J{FIRST}:J{N}")
 inc.conditional_formatting.add(f"A{FIRST}:P{N}", FormulaRule(formula=[f'$N{FIRST}="OVERDUE"'], fill=fill("FDE9E7")))
 inc.conditional_formatting.add(f"A{FIRST}:P{N}", FormulaRule(formula=[f'$J{FIRST}="Paid"'], fill=fill("E8F5E9")))
+inc.conditional_formatting.add(f"G{FIRST}:G{N}", FormulaRule(
+    formula=[f'AND($G{FIRST}<>"",ISNA(MATCH($G{FIRST},INDIRECT("Settings!$G$4:$G$7"),0)))'],
+    font=Font(name=FONT, bold=True, color="C00000"), fill=fill("FDE9E7")))
 
 # ------------------------------------------------------------------ EXPENSES
 ex = wb.create_sheet("Expenses")
@@ -260,6 +263,9 @@ dv = DataValidation(type="list", formula1="=Settings!$F$4:$F$16", allow_blank=Tr
 dv = DataValidation(type="list", formula1="=Settings!$G$4:$G$7", allow_blank=True); ex.add_data_validation(dv); dv.add(f"F{FIRST}:F{N}")
 dv = DataValidation(type="list", formula1="=Settings!$G$10:$G$11", allow_blank=True); ex.add_data_validation(dv); dv.add(f"H{FIRST}:H{N}"); dv.add(f"L{FIRST}:L{N}")
 dv = DataValidation(type="list", formula1="=Settings!$G$14:$G$19", allow_blank=True); ex.add_data_validation(dv); dv.add(f"K{FIRST}:K{N}")
+ex.conditional_formatting.add(f"F{FIRST}:F{N}", FormulaRule(
+    formula=[f'AND($F{FIRST}<>"",ISNA(MATCH($F{FIRST},INDIRECT("Settings!$G$4:$G$7"),0)))'],
+    font=Font(name=FONT, bold=True, color="C00000"), fill=fill("FDE9E7")))
 
 INC = f"Income!$A${FIRST}:$A${N}"
 def incr(col): return f"Income!${col}${FIRST}:${col}${N}"
@@ -314,6 +320,24 @@ for box, desc, amt, vat, how in lines:
 vr["D16"].fill = fill(YELLOW); vr["D16"].font = f(bold=True, size=12)
 vr["B18"] = "Non-recoverable VAT paid in period (cost to you)"; vr["B18"].font = f(bold=True)
 vr["D18"] = f'=SUMIFS({exr("G")},{exP},1)-D14'; vr["D18"].number_format = AED; vr["D18"].border = BORDER; vr["B18"].border = BORDER
+# Every box above matches an exact VAT-treatment string. A row whose treatment is not one of the
+# four (a pasted value that bypassed the dropdown, a typo, or a renamed Settings entry) charges no
+# VAT and matches no box, so the sale silently disappears from the return and output VAT is
+# understated. These two lines must read zero; anything else names money missing from your filing.
+_TREATMENTS = ("Standard 5%", "Zero-rated 0%", "Exempt", "Out of scope")
+vr["B17"] = "CHECK — income in period not counted in any box above (must be 0)"; vr["B17"].font = f(bold=True)
+vr["D17"] = f'=SUMIFS({incr("F")},{inP},1)-C9-C10-C11-C12'
+vr["B19"] = "CHECK — expenses in period with an unrecognised VAT treatment (must be 0)"; vr["B19"].font = f(bold=True)
+vr["D19"] = ("=SUMIFS({e},{p},1)".format(e=exr("E"), p=exP)
+             + "".join(f'-SUMIFS({exr("E")},{exr("F")},"{t}",{exP},1)' for t in _TREATMENTS))
+for a in ("B17", "D17", "B19", "D19"):
+    vr[a].border = BORDER
+for a in ("D17", "D19"):
+    vr[a].number_format = AED; vr[a].font = f(bold=True)
+    vr.conditional_formatting.add(a, CellIsRule(operator="notEqual", formula=["0"],
+                                                font=Font(name=FONT, bold=True, color="C00000"),
+                                                fill=fill("FDE9E7")))
+
 vr["B20"] = "Registration check — taxable turnover, last 12 months to today"; vr["B20"].font = f(bold=True)
 vr["D20"] = (f'=SUMIFS({incr("F")},{incr("G")},"Standard 5%",{INC},">"&(TODAY()-365))'
              f'+SUMIFS({incr("F")},{incr("G")},"Zero-rated 0%",{INC},">"&(TODAY()-365))')

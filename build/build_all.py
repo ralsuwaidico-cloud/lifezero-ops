@@ -55,6 +55,19 @@ def cross_check(path, a, b, label):
 cross_check(res, ("Tax Summary", "C21"), ("Dashboard", "J24"),
             "reseller net profit (Tax Summary line 15 vs Dashboard total)")
 
+
+def assert_zero(path, sheet, cell, label):
+    from openpyxl import load_workbook as _lw
+    v = _lw(path, data_only=True)[sheet][cell].value or 0
+    assert abs(v) < 0.005, f"{label}: {sheet}!{cell}={v}, expected 0"
+    print(f"cross-check ok  {label}: 0")
+
+
+# Verified to fire: setting Income!G4 to "Standard" instead of "Standard 5%" drops that invoice
+# from every VAT box and takes net VAT payable from 630 to 30, with 0 formula errors throughout.
+assert_zero(uae, "VAT Return", "D17", "UAE income fully classified into VAT boxes")
+assert_zero(uae, "VAT Return", "D19", "UAE expenses all have a recognised VAT treatment")
+
 # preview render of dashboards -> PNG
 from openpyxl import load_workbook
 def preview(path, keep):
