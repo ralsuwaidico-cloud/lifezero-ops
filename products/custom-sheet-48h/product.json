@@ -13,6 +13,7 @@
   "description_html": "<p>Tell me what you're tracking and how you want to see it. Within 48 hours you receive a working spreadsheet with formulas, dropdowns, a dashboard and a one-page how-to — built to your spec, formula-checked, ready in Excel or Google Sheets.</p><p>Good fits: client/invoice trackers, pricing or quote calculators, inventory and COGS trackers, KPI dashboards from a CSV export, cleaning up a messy sheet into something that actually calculates.</p><p>Includes one revision round. Not a fit: macros/VBA, connections to live databases, tax filings.</p>",
   "files": [],
   "cover": "cover_custom_sheet.jpg",
+  "thumbnail": "thumb_custom_sheet.jpg",
   "publish": true,
   "custom_receipt": "Thanks! Reply to your receipt email with: (1) what the sheet needs to track, (2) a sample of your data if you have one, (3) how you'd like the output to look (a screenshot or a sentence is fine). You'll have a first version within 48 hours."
 }

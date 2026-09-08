@@ -77,20 +77,37 @@ def main():
             if not st.get("id"):
                 pr = existing.get(p["permalink"]) or existing.get(p["name"])
                 if pr:
-                    st = {"id": pr.get("id"), "short_url": pr.get("short_url"), "hash": h, "published": bool(pr.get("published"))}
-                    print(f"adopted existing {slug}: {st['id']} {st['short_url']}")
+                    # hash=None on purpose: an adopted product is of unknown completeness, so the
+                    # update branch below must run. A create that fails partway (Gumroad rejected
+                    # our 16:9 thumbnail but still made the product) leaves exactly this state, and
+                    # recording the current hash here would mark it "unchanged" and never repair it.
+                    st = {"id": pr.get("id"), "short_url": pr.get("short_url"), "hash": None,
+                          "published": bool(pr.get("published"))}
+                    print(f"adopted existing {slug}: {st['id']} {st['short_url']} (will re-sync)")
             if not st.get("id"):
                 args = ["products", "create"] + common_flags(p) + ["--custom-permalink", p["permalink"]]
                 for f in p.get("files", []):
                     args += ["--file", str(d / f)]
                 if p.get("cover") and (d / p["cover"]).exists():
-                    args += ["--cover-image", str(d / p["cover"]), "--thumbnail", str(d / p["cover"])]
+                    args += ["--cover-image", str(d / p["cover"])]
+                    # Gumroad requires a SQUARE thumbnail and rejects the 16:9 cover here.
+                    thumb = p.get("thumbnail")
+                    if thumb and (d / thumb).exists():
+                        args += ["--thumbnail", str(d / thumb)]
                 out = run(args)
                 prod = out.get("product", out)
                 st = {"id": prod.get("id"), "short_url": prod.get("short_url"), "hash": h, "published": False}
                 print(f"created {slug}: {st['id']} {st['short_url']}")
             elif st.get("hash") != h:
-                out = run(["products", "update", st["id"]] + common_flags(p))
+                args = ["products", "update", st["id"]] + common_flags(p)
+                # Push the images too: `update` accepts --cover-image/--thumbnail, and a product
+                # adopted after a partial create can be missing them.
+                if p.get("cover") and (d / p["cover"]).exists():
+                    args += ["--cover-image", str(d / p["cover"])]
+                thumb = p.get("thumbnail")
+                if thumb and (d / thumb).exists():
+                    args += ["--thumbnail", str(d / thumb)]
+                out = run(args)
                 st["hash"] = h
                 print(f"updated {slug}")
             else:

@@ -5,7 +5,7 @@
 | 1 | Create Gumroad account + payout KYC | Account ownership, identity/banking verification | ~10 min | One-time | No (legal gate) | — | DONE (Rashed, Day 1) |
 | 2 | Upload 3 listings to Gumroad by hand | My mistake: treated "sandbox can't reach Gumroad" as "human must do it" | — | Would have recurred per product | YES | GitHub Actions runner (open egress) runs `gumroad` CLI from `products/*/product.json`; idempotent sync on every push | REPLACED — request withdrawn, route closed |
 | 3 | Grant API credentials once: GitHub PAT + Gumroad access token | Account-owner permission grant (allowed category) | ~3 min | One-time | Converts every future upload/price change/sales read to zero-human | Secrets stored in GitHub Actions; all later operations automated | PENDING — see #4 |
-| 4 | Set a real `GUMROAD_ACCESS_TOKEN` on the cloud environment | Credential issuance is an account-owner act; the current value is placeholder text, so every call 401s | ~3 min | One-time | No (legal/ownership gate), but it is the *only* remaining human step | Once set, the 6-hourly routine publishes all three products unattended on its next run; `sync_products.py` is idempotent so it cannot duplicate | PENDING (2026-09-04) |
+| 4 | Set a real `GUMROAD_ACCESS_TOKEN` on the cloud environment | Credential issuance is an account-owner act; the current value is placeholder text, so every call 401s | ~3 min | One-time | No (legal/ownership gate), but it is the *only* remaining human step | Once set, the 6-hourly routine publishes all three products unattended on its next run; `sync_products.py` is idempotent so it cannot duplicate | DONE (2026-09-08) — store live |
 | 5 | Repair the build container (openpyxl, Pillow, libreoffice-calc, pdftoppm) | Runbook assumed these were present; `libreoffice-calc` was absent, so LibreOffice could not open any .xlsx and `recalc.py` reported a misleading timeout | ~25 min | Would recur on every fresh container | YES | Fixes documented in `lifezero_run_log.md` and referenced from both routines; fold into a session-start hook or image if it recurs a third time | DONE (2026-09-04) |
 
 Standing rule: every operational request must pass the Autonomy Engineer check (API? integration? script? other agent? other platform? one-time auth instead?) before it reaches Rashed. Second occurrence of any manual task → flag for automation; third → requires written justification here.
@@ -30,3 +30,18 @@ rows to the VAT Return, red-flagged the offending cell on Income/Expenses, and a
 at build time. Method that found it and is now standing practice: do not confirm a guard by reading
 0 on clean data — inject the bad value, recalculate, and watch the number move. Both guards were
 proven to fire before shipping.
+
+2026-09-08 — STORE IS LIVE. Token became valid; all three products published on the first
+authenticated cycle, unattended. Two things surfaced that the dry run could not:
+(1) Gumroad rejects a non-square thumbnail ("Please upload a square thumbnail"), so the 16:9 cover
+could not double as one — build_all.py now generates real 1000x1000 tiles and the manifests carry
+a `thumbnail` field. (2) That failed create still made the products server-side while returning
+success:false, so the account held three half-configured products with no state files. Adoption by
+permalink prevented duplicates exactly as designed, but it recorded the current hash and reported
+"unchanged", which would have left them permanently missing their thumbnails. Fixed: adoption now
+records hash=None so an adopted product is always re-synced, and the update branch pushes
+cover/thumbnail too. Verified by deleting state/ and re-running: all three re-synced clean.
+Lesson: a failed API call is not proof that nothing happened — check the remote state, not the
+exit code.
+
+Item 4 (set a real GUMROAD_ACCESS_TOKEN) is now DONE. No human step remains.

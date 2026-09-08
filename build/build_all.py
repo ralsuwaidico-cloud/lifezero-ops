@@ -98,6 +98,41 @@ def cover(png, title, subtitle, out, bbox):
     d.rectangle([x - 6, y - 6, x + im.width + 6, y + im.height + 6], fill="white"); bg.paste(im, (x, y))
     bg.save(out, quality=92); print("cover", out.name)
 
+
+def square_thumb(png, title, out, bbox=None):
+    """Gumroad rejects a non-square thumbnail ("Please upload a square thumbnail"),
+    so the 16:9 cover cannot double as one. Build a real 1000x1000 tile."""
+    S = 1000
+    bg = Image.new("RGB", (S, S), (31, 58, 95))
+    d = ImageDraw.Draw(bg)
+    font = ImageFont.truetype(F_B, 62)
+    # wrap the title to the tile width
+    words, lines, cur = title.split(), [], ""
+    for w in words:
+        trial = f"{cur} {w}".strip()
+        if d.textlength(trial, font=font) <= S - 100:
+            cur = trial
+        else:
+            lines.append(cur); cur = w
+    if cur:
+        lines.append(cur)
+    y = 60
+    for ln in lines:
+        d.text((50, y), ln, fill="white", font=font); y += 74
+    if png is not None:
+        im = Image.open(png).convert("RGB")
+        if bbox:
+            im = im.crop(bbox)
+        avail_h = S - y - 70
+        scale = min((S - 100) / im.width, avail_h / im.height)
+        im = im.resize((max(1, int(im.width * scale)), max(1, int(im.height * scale))), Image.LANCZOS)
+        x = (S - im.width) // 2; ty = y + 30
+        d.rectangle([x - 6, ty - 6, x + im.width + 6, ty + im.height + 6], fill="white")
+        bg.paste(im, (x, ty))
+    bg.save(out, quality=92)
+    assert bg.width == bg.height, "thumbnail must be square"
+    print("thumb", out.name, f"{bg.width}x{bg.height}")
+
 cover(preview(uae, ["Dashboard"]), "UAE Freelancer & SME Bookkeeping Tracker 2026",
       "VAT return helper  •  Corporate Tax estimate  •  Invoices, expenses & cash — Excel / Google Sheets",
       PROD / "uae-vat-tracker" / "cover_uae_tracker.jpg", (70, 95, 910, 810))
@@ -113,6 +148,16 @@ for i, t in enumerate(["Trackers  •  Calculators  •  Dashboards  •  Data c
     d.text((70, 300 + i * 50), t, fill=(200, 215, 235), font=ImageFont.truetype(F_R, 30))
 d.rounded_rectangle([70, 500, 470, 570], radius=12, fill=(46, 117, 182)); d.text((100, 515), "Brief in → sheet out", fill="white", font=ImageFont.truetype(F_B, 30))
 bg.save(PROD / "custom-sheet-48h" / "cover_custom_sheet.jpg", quality=92)
+
+# Square thumbnails - Gumroad rejects the 16:9 cover for this slot.
+_uae_png = preview(uae, ["Dashboard"])
+_res_png = preview(res, ["Dashboard"])
+square_thumb(_uae_png, "UAE VAT & Corporate Tax Tracker 2026",
+             PROD / "uae-vat-tracker" / "thumb_uae_tracker.jpg", (70, 95, 910, 810))
+square_thumb(_res_png, "Reseller Inventory & Profit Tracker 2026",
+             PROD / "reseller-profit-tracker" / "thumb_reseller_tracker.jpg", (70, 95, 800, 810))
+square_thumb(None, "Custom Excel / Google Sheets Tool in 48 Hours",
+             PROD / "custom-sheet-48h" / "thumb_custom_sheet.jpg")
 
 import shutil
 shutil.copy(uae, PROD / "uae-vat-tracker" / uae.name)

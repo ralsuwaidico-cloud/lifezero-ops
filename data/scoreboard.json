@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-04T10:54:05.467983+00:00",
+ "generated_at": "2026-09-08T01:12:10.008756+00:00",
  "lifetime_sales": 0,
  "lifetime_revenue_usd": 0.0,
  "last_7d_revenue_usd": 0.0,
@@ -9,6 +9,34 @@
  "sales_by_product": {},
  "revenue_by_product_usd": {},
  "open_fulfilment": [],
- "products": [],
+ "products": [
+  {
+   "id": "fgqEi7lWwosZ_grxtnsYyg==",
+   "name": "UAE Freelancer & Small Business Bookkeeping Tracker 2026 \u2014 VAT Return + Corporate Tax Estimate (Excel / Google Sheets)",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-vat-ct-tracker",
+   "published": true,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 2400
+  },
+  {
+   "id": "ESBJs2TcypiToQdJsEotyw==",
+   "name": "Reseller Inventory & Profit Tracker 2026 \u2014 eBay, Poshmark, Mercari, Depop, Whatnot (Excel / Google Sheets)",
+   "url": "https://ralsuwaidi3.gumroad.com/l/reseller-profit-tracker",
+   "published": true,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 1900
+  },
+  {
+   "id": "D6MX_bKuzAIZ_eq4NadPnA==",
+   "name": "Custom Excel / Google Sheets Tool Built for You in 48 Hours \u2014 Tracker, Calculator, Dashboard or Data Clean-up",
+   "url": "https://ralsuwaidi3.gumroad.com/l/custom-spreadsheet-48h",
+   "published": true,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 9500
+  }
+ ],
  "payouts": []
 }
