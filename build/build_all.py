@@ -149,6 +149,10 @@ for i, t in enumerate(["Trackers  •  Calculators  •  Dashboards  •  Data c
 d.rounded_rectangle([70, 500, 470, 570], radius=12, fill=(46, 117, 182)); d.text((100, 515), "Brief in → sheet out", fill="white", font=ImageFont.truetype(F_B, 30))
 bg.save(PROD / "custom-sheet-48h" / "cover_custom_sheet.jpg", quality=92)
 
+# Intake pack for the $95 service. Gumroad requires a product to deliver real content on
+# purchase - a listing that only says "email me" is rejected as having nothing attached.
+brief = build("build_brief.py", "Custom_Sheet_Project_Brief.xlsx")
+
 # Square thumbnails - Gumroad rejects the 16:9 cover for this slot.
 _uae_png = preview(uae, ["Dashboard"])
 _res_png = preview(res, ["Dashboard"])
@@ -162,4 +166,5 @@ square_thumb(None, "Custom Excel / Google Sheets Tool in 48 Hours",
 import shutil
 shutil.copy(uae, PROD / "uae-vat-tracker" / uae.name)
 shutil.copy(res, PROD / "reseller-profit-tracker" / res.name)
+shutil.copy(brief, PROD / "custom-sheet-48h" / brief.name)
 print("ALL ASSETS BUILT")

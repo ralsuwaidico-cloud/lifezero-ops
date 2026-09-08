@@ -2,18 +2,20 @@
   "name": "Custom Excel / Google Sheets Tool Built for You in 48 Hours — Tracker, Calculator, Dashboard or Data Clean-up",
   "price": "95",
   "permalink": "custom-spreadsheet-48h",
-  "summary": "A working spreadsheet built to your spec in 48 hours — formulas, dropdowns, dashboard, how-to. One revision included.",
+  "summary": "Download the intake pack, fill in the brief, get a working spreadsheet built to it within 48 hours — formulas, dropdowns, dashboard, how-to. One revision included.",
   "tags": [
     "custom spreadsheet",
     "excel",
     "google sheets",
     "dashboard",
-    "freelance service"
+    "spreadsheet design"
   ],
-  "description_html": "<p>Tell me what you're tracking and how you want to see it. Within 48 hours you receive a working spreadsheet with formulas, dropdowns, a dashboard and a one-page how-to — built to your spec, formula-checked, ready in Excel or Google Sheets.</p><p>Good fits: client/invoice trackers, pricing or quote calculators, inventory and COGS trackers, KPI dashboards from a CSV export, cleaning up a messy sheet into something that actually calculates.</p><p>Includes one revision round. Not a fit: macros/VBA, connections to live databases, tax filings.</p>",
-  "files": [],
+  "description_html": "<p><strong>You know what you need to track. You just don't want to lose a weekend fighting formulas.</strong></p><p><strong>You download the Project Brief &amp; Intake Pack the moment you buy.</strong> It is a short workbook: a nine-question brief, a tab to paste a sample of your data into, and a one-page explanation of how the build runs. Fill it in — about five minutes — and send it back. Your spreadsheet is built from it and delivered within 48 hours.</p><p><strong>What you get back</strong></p><ul><li>A working spreadsheet built to your brief — not a template with your name on it</li><li>Formulas checked, dropdowns where a list belongs, a dashboard that updates itself</li><li>A one-page how-to written for your sheet</li><li>Opens in Excel (2016+) and Google Sheets. No macros, nothing to install</li><li>One revision round to get it right</li></ul><p><strong>Good fits</strong></p><ul><li>Client, invoice and payment trackers</li><li>Pricing, quote and margin calculators</li><li>Inventory and cost-of-goods tracking</li><li>A KPI dashboard built from a CSV export</li><li>Turning a messy sheet into one that actually calculates</li></ul><p><strong>The 48 hours starts when your completed brief arrives, not at checkout</strong>, so there is no clock running while you think about it.</p><p><strong>Not a fit:</strong> macros/VBA, live database or API connections, anything that files tax for you, or ongoing data entry. If your brief turns out to need one of those you will be told straight away and refunded, rather than handed something half-built.</p>",
+  "files": [
+    "Custom_Sheet_Project_Brief.xlsx"
+  ],
   "cover": "cover_custom_sheet.jpg",
   "thumbnail": "thumb_custom_sheet.jpg",
   "publish": true,
-  "custom_receipt": "Thanks! Reply to your receipt email with: (1) what the sheet needs to track, (2) a sample of your data if you have one, (3) how you'd like the output to look (a screenshot or a sentence is fine). You'll have a first version within 48 hours."
+  "custom_receipt": "Thanks! Your download is the Project Brief & Intake Pack - start there.\n\nOpen it, read the START HERE tab, fill in the Brief tab (about five minutes), and paste a few rows of real data into the Data Sample tab if you have them. Then reply to this email with the file attached.\n\nThe 48 hours starts when that reply lands, not at checkout, so take your time getting the brief right - it is the difference between one revision and three. You will get a first version, then one revision round.\n\nIf what you need turns out to be macros/VBA, a live database connection, or a tax filing, you will be told straight away and refunded rather than handed something half-built."
 }

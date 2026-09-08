@@ -45,3 +45,21 @@ Lesson: a failed API call is not proof that nothing happened — check the remot
 exit code.
 
 Item 4 (set a real GUMROAD_ACCESS_TOKEN) is now DONE. No human step remains.
+
+2026-09-08 (2) — The $95 service was live with NO content attached: the buyer paid and received
+only an instruction to email. Gumroad rejected an update on exactly that policy ("This product has
+no content attached and directs buyers to message you on another platform"), which was a fair
+call. Fixed properly rather than by rewording: built a Project Brief & Intake Pack (.xlsx) that the
+buyer downloads at purchase — a nine-question brief, a data-sample tab, and a how-it-works page —
+and reframed the listing around it. The pack also earns its keep operationally: a structured brief
+is what stops a round-trip eating the 48 hours. Also made the 48-hour clock explicit as starting
+when the brief arrives, not at checkout, which protects both sides.
+
+Automated: `scripts/verify_live.py` checks what is actually live on Gumroad against each manifest
+(published, price, cover, thumbnail, and file embeds) and `sync_products.py` now runs it after
+every real sync. This exists because "success" has now twice hidden a partial sync — a create that
+returned success:false had already made the products, and an update that returned success:true
+left the service with no content while its description promised a download. The list endpoint's
+`file_info` is useless for this (empty for a product whose content is a file embed), so the check
+reads `products content get`. Proven to fire: injecting a wrong price and a phantom second file
+made it report both and exit non-zero.

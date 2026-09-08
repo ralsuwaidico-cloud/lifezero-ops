@@ -124,7 +124,18 @@ def main():
     print("\nSUMMARY")
     for r in results:
         print(" ", *r)
-    if any("FAILED" in r[1] for r in results):
+    failed = any("FAILED" in r[1] for r in results)
+
+    # A clean summary is not proof: an update can report success and still leave a product
+    # without the content its description promises. Check what is actually live.
+    if not DRY:
+        print()
+        rc = subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_live.py")]).returncode
+        if rc != 0:
+            print("verify_live reported drift — the store does not match the manifests", file=sys.stderr)
+            failed = True
+
+    if failed:
         sys.exit(1)
 
 
