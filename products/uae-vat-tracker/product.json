@@ -7,8 +7,13 @@
     "uae vat",
     "corporate tax uae",
     "freelancer uae",
-    "bookkeeping template",
-    "excel template"
+    "bookkeeping",
+    "excel template",
+    "vat return",
+    "emaratax",
+    "dubai business",
+    "invoice tracker",
+    "sme accounting"
   ],
   "description_html": "<p>Built for UAE freelancers, consultants and small businesses who don't want to pay for accounting software yet — but need to get VAT and Corporate Tax right.</p><p><strong>What it does</strong></p><ul><li><strong>Income sheet</strong> — one row per invoice. Pick the VAT treatment (Standard 5% / Zero-rated / Exempt / Out of scope) and the VAT and total are calculated. Track paid / unpaid / partially paid and see days outstanding and an OVERDUE flag.</li><li><strong>Expenses sheet</strong> — log receipts, mark whether input VAT is recoverable, and whether the cost is deductible for Corporate Tax.</li><li><strong>VAT Return helper</strong> — set your FTA tax-period dates and the sheet totals standard-rated, zero-rated and exempt supplies, recoverable input VAT and net VAT payable/refundable — laid out like the return boxes so you can copy them into EmaraTax.</li><li><strong>VAT registration check</strong> — rolling 12-month taxable turnover against the AED 375,000 mandatory and AED 187,500 voluntary thresholds.</li><li><strong>Corporate Tax estimate</strong> — accrual revenue, deductible expenses, irrecoverable VAT, manual adjustments, the 0% band (AED 375,000), 9% rate and a Small Business Relief eligibility check (revenue ≤ AED 3M, periods ending on/before 31 Dec 2026). Shows a suggested monthly set-aside.</li><li><strong>Dashboard</strong> — revenue, expenses, profit and cash by month; income and expense by category; receivables ageing; VAT due and CT estimate tiles.</li></ul><p><strong>Details</strong></p><ul><li>500 rows per sheet, dropdowns everywhere, blue = type / black = formula, sample rows included.</li><li>All thresholds and rates live in one Settings sheet so you can update them if the law changes.</li><li>Works in Microsoft Excel (2016+) and Google Sheets (File → Import). No macros.</li><li>Instant download. Free updates to this 2026 edition.</li></ul><p><strong>Not tax advice.</strong> This is a bookkeeping aid; confirm obligations with the FTA (tax.gov.ae) or a registered tax agent.</p>",
   "files": [
@@ -16,5 +21,9 @@
   ],
   "cover": "cover_uae_tracker.jpg",
   "thumbnail": "thumb_uae_tracker.jpg",
+  "previews": [
+    "preview_uae_vat_return.jpg",
+    "preview_uae_income.jpg"
+  ],
   "publish": true
 }

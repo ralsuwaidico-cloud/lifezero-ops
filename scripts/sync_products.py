@@ -100,10 +100,11 @@ def main():
                 print(f"created {slug}: {st['id']} {st['short_url']}")
             elif st.get("hash") != h:
                 args = ["products", "update", st["id"]] + common_flags(p)
-                # Push the images too: `update` accepts --cover-image/--thumbnail, and a product
-                # adopted after a partial create can be missing them.
-                if p.get("cover") and (d / p["cover"]).exists():
-                    args += ["--cover-image", str(d / p["cover"])]
+                # Deliberately NOT re-pushing --cover-image here. It APPENDS a gallery cover
+                # rather than replacing one, so three syncs left every product showing the same
+                # image three times on its storefront. The gallery is owned by
+                # scripts/sync_covers.py, which counts what is live before adding anything.
+                # --thumbnail is safe: it replaces the single thumbnail slot.
                 thumb = p.get("thumbnail")
                 if thumb and (d / thumb).exists():
                     args += ["--thumbnail", str(d / thumb)]

@@ -8,7 +8,12 @@
     "ebay profit tracker",
     "poshmark inventory",
     "mercari",
-    "depop"
+    "depop",
+    "whatnot",
+    "inventory tracker",
+    "flipping",
+    "resale business",
+    "profit tracker"
   ],
   "description_html": "<p>A complete inventory and profit system for thrift flippers and marketplace resellers — no subscription, no app, just a spreadsheet that does the maths.</p><p><strong>What's inside</strong></p><ul><li><strong>Inventory</strong> — auto-generated SKUs, source, brand, cost, extra costs, status (Sourced / Listed / Sold / Returned / Donated), list price, days in inventory, and an automatic STALE flag.</li><li><strong>Sales</strong> — type the SKU and the item's cost and description are pulled in. Platform fees are calculated from an editable fee table (eBay, Poshmark incl. the under-$15 flat fee, Mercari, Depop, Whatnot, Facebook Marketplace, Etsy, Other). Net profit, ROI % and days-to-sell per sale.</li><li><strong>Expenses</strong> — supplies, shipping supplies, storage, subscriptions and mileage (deduction calculated at your rate).</li><li><strong>Dashboard</strong> — 10 KPI tiles (inventory value at cost, sell-through rate, average profit, average ROI, average days to sell, best platform, death-pile count and cash tied up, items sold, year net profit), a Jan–Dec monthly table, and performance by platform, category and sourcing channel.</li><li><strong>Death Pile</strong> — every listed item older than your stale threshold (default 60 days) with a suggested markdown price.</li><li><strong>Tax Summary</strong> — gross sales, COGS, fees, shipping, expenses and mileage mapped to Schedule-C-style lines (estimate only).</li></ul><p><strong>Details</strong></p><ul><li>500 items / 500 sales / 500 expense lines per copy; dropdowns; conditional formatting for stale items and negative profit.</li><li>Fee rates are editable approximations — update them when platforms change.</li><li>Excel 2016+ and Google Sheets compatible. No macros.</li><li>Instant download.</li></ul><p><strong>Not tax advice.</strong> Verify fee rates and the mileage rate for your situation.</p>",
   "files": [
@@ -16,5 +21,9 @@
   ],
   "cover": "cover_reseller_tracker.jpg",
   "thumbnail": "thumb_reseller_tracker.jpg",
+  "previews": [
+    "preview_reseller_sales.jpg",
+    "preview_reseller_tax.jpg"
+  ],
   "publish": true
 }

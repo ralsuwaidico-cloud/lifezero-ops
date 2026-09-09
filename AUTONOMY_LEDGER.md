@@ -63,3 +63,17 @@ left the service with no content while its description promised a download. The 
 `file_info` is useless for this (empty for a product whose content is a file embed), so the check
 reads `products content get`. Proven to fire: injecting a wrong price and a phantom second file
 made it report both and exit non-zero.
+
+2026-09-09 — Found and fixed a mess I made. `products update --cover-image` APPENDS a gallery
+cover rather than replacing one, and sync_products.py pushed it on every update, so all three
+listings were showing the same image three times on their storefronts. Removed the six duplicates
+(`covers remove` needs `--yes`), took cover pushing out of the update path entirely, and gave the
+gallery its own owner: `scripts/sync_covers.py` counts what is live before adding anything, so a
+second run is a no-op. Same append-not-replace trap as `--file`; that is now two features with it,
+so treat "does this append or replace?" as the first question about any Gumroad write.
+
+Also: two product updates failed on an over-length tag (must be under 20 characters) and
+`verify_live.py` still reported everything matching, because it was not checking tags. It now
+checks tags and gallery cover counts as well. Proven by injection. The lesson repeats — a verifier
+only catches the fields it actually looks at, so every new field pushed to the store needs a
+matching check the same day.

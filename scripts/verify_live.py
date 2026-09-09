@@ -78,6 +78,22 @@ def main():
         if m.get("cover") and not pr.get("preview_url"):
             problems.append(f"{slug}: manifest declares a cover but none is live")
 
+        # Tags went unnoticed once: two updates failed on an over-length tag and this still
+        # reported everything matching, because it was not looking at tags at all.
+        want_tags, got_tags = m.get("tags", []), pr.get("tags") or []
+        if sorted(want_tags) != sorted(got_tags):
+            missing = [t for t in want_tags if t not in got_tags]
+            extra = [t for t in got_tags if t not in want_tags]
+            problems.append(f"{slug}: tags differ (missing {missing}, unexpected {extra})")
+
+        # `covers add` appends, so three cover pushes once left every product showing the same
+        # image three times. Count them.
+        want_covers = 1 + len(m.get("previews", [])) if m.get("cover") else len(m.get("previews", []))
+        got_covers = len(pr.get("covers") or [])
+        if want_covers and got_covers != want_covers:
+            problems.append(f"{slug}: {got_covers} gallery cover(s) live, manifest implies "
+                            f"{want_covers} (duplicates? `covers add` appends)")
+
         # The important one: a product whose description promises a download must deliver one.
         want_files = len(m.get("files", []))
         if want_files:

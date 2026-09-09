@@ -99,6 +99,36 @@ def cover(png, title, subtitle, out, bbox):
     bg.save(out, quality=92); print("cover", out.name)
 
 
+def _trim_whitespace(im, pad=14):
+    """LibreOffice renders a whole page, so a short sheet leaves most of the frame blank.
+    Crop to the actual content before framing it."""
+    from PIL import ImageChops
+    grey = im.convert("L").point(lambda v: 0 if v > 247 else 255)
+    box = grey.getbbox()
+    if not box:
+        return im
+    l, t, r, b = box
+    return im.crop((max(0, l - pad), max(0, t - pad),
+                    min(im.width, r + pad), min(im.height, b + pad)))
+
+
+def page_shot(png, title, out):
+    """A gallery image of one whole sheet. Buyers cannot open a spreadsheet before paying, so
+    the listing should show them the actual sheets, not just one dashboard."""
+    im = _trim_whitespace(Image.open(png).convert("RGB"))
+    W, H = 1280, 720
+    scale = min((W - 60) / im.width, (H - 110) / im.height)
+    im = im.resize((max(1, int(im.width * scale)), max(1, int(im.height * scale))), Image.LANCZOS)
+    bg = Image.new("RGB", (W, H), (31, 58, 95))
+    d = ImageDraw.Draw(bg)
+    d.text((40, 26), title, fill="white", font=ImageFont.truetype(F_B, 34))
+    x = (W - im.width) // 2; y = 92
+    d.rectangle([x - 5, y - 5, x + im.width + 5, y + im.height + 5], fill="white")
+    bg.paste(im, (x, y))
+    bg.save(out, quality=92)
+    print("preview", out.name)
+
+
 def square_thumb(png, title, out, bbox=None):
     """Gumroad rejects a non-square thumbnail ("Please upload a square thumbnail"),
     so the 16:9 cover cannot double as one. Build a real 1000x1000 tile."""
@@ -148,6 +178,16 @@ for i, t in enumerate(["Trackers  •  Calculators  •  Dashboards  •  Data c
     d.text((70, 300 + i * 50), t, fill=(200, 215, 235), font=ImageFont.truetype(F_R, 30))
 d.rounded_rectangle([70, 500, 470, 570], radius=12, fill=(46, 117, 182)); d.text((100, 515), "Brief in → sheet out", fill="white", font=ImageFont.truetype(F_B, 30))
 bg.save(PROD / "custom-sheet-48h" / "cover_custom_sheet.jpg", quality=92)
+
+# Gallery previews - what the buyer actually gets, sheet by sheet.
+page_shot(preview(uae, ["VAT Return"]), "VAT Return helper — copy these boxes into EmaraTax",
+          PROD / "uae-vat-tracker" / "preview_uae_vat_return.jpg")
+page_shot(preview(uae, ["Income"]), "Income — one row per invoice, VAT calculated for you",
+          PROD / "uae-vat-tracker" / "preview_uae_income.jpg")
+page_shot(preview(res, ["Sales"]), "Sales — fees, profit and ROI calculated per sale",
+          PROD / "reseller-profit-tracker" / "preview_reseller_sales.jpg")
+page_shot(preview(res, ["Tax Summary"]), "Tax Summary — Schedule-C-style totals for the year",
+          PROD / "reseller-profit-tracker" / "preview_reseller_tax.jpg")
 
 # Intake pack for the $95 service. Gumroad requires a product to deliver real content on
 # purchase - a listing that only says "email me" is rejected as having nothing attached.
