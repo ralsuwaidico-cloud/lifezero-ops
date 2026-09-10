@@ -74,6 +74,7 @@ rows = [
     ("Sell-through rate", "Items sold / items sourced this year. Full-time flippers typically aim for 30%+ per quarter."),
     ("Death Pile", "Any Listed item older than the stale threshold (default 60 days) is flagged. Reprice, bundle, or relist it."),
     ("Fee accuracy", "Fees are estimates using the Settings table. Promoted listings, store subscriptions and international fees are not modelled - add them to Other Costs on the Sales row."),
+    ("Check the fee rates", "Platforms change their fees without much notice, and a wrong rate quietly distorts every profit and ROI figure in this workbook. The 'Rates last checked' column in Settings tells you which rows have been verified and which have not - the honest answer is that most say 'not re-verified'. Spend five minutes against each platform's current fee page before you trust the numbers, and update Settings; everything else recalculates."),
     ("", ""),
     ("DISCLAIMER", None),
     ("Not tax advice", "This workbook is a bookkeeping aid only. The Tax Summary is an estimate mapped loosely to US Schedule C categories and is not a substitute for advice from a qualified tax professional. Fee rates and the mileage rate are user-editable approximations - verify them for your situation."),
@@ -96,11 +97,14 @@ ws.sheet_view.showGridLines = False
 # ---------------------------------------------------------------- SETTINGS
 st = wb.create_sheet("Settings")
 title(st, "Settings", "Blue cells are yours to edit. All other sheets read from here.")
-header(st, 3, ["Platform", "Fee %", "Fixed Fee / Sale", "Payment Processing %", "Fee on Buyer Shipping? (Y/N)", "Notes (approximations - verify)"])
+header(st, 3, ["Platform", "Fee %", "Fixed Fee / Sale", "Payment Processing %", "Fee on Buyer Shipping? (Y/N)", "Notes - verify against the platform's current fee page", "Rates last checked"])
+# Fee structures change without notice and a wrong rate silently corrupts every profit figure,
+# so each row records when its rates were last checked rather than implying all are current.
+CHECKED = {"Mercari": "2026-09-10"}
 platforms = [
     ("eBay", 0.136, 0.40, 0.0, "Y", "Final value fee ~13.6% of total incl. shipping + $0.40 per order (most categories)."),
     ("Poshmark", 0.20, 0.0, 0.0, "N", "20% of sale price at/over the threshold below; flat fee under it. Buyer pays shipping."),
-    ("Mercari", 0.10, 0.50, 0.029, "N", "~10% selling fee + 2.9% + $0.50 payment processing."),
+    ("Mercari", 0.10, 0.0, 0.0, "Y", "Flat 10% on item + buyer-paid shipping. The separate 2.9% + $0.50 seller payment-processing fee was removed on 6 Jan 2025; buyers now pay a 3.6% Buyer Protection fee instead."),
     ("Depop", 0.0, 0.45, 0.033, "Y", "US selling fee moved to buyer; ~3.3% + $0.45 payment processing remains."),
     ("Whatnot", 0.08, 0.30, 0.029, "N", "8% commission + 2.9% + $0.30 processing."),
     ("FB Marketplace", 0.10, 0.0, 0.0, "Y", "~10% selling fee on shipped checkout orders; local cash sales = 0%."),
@@ -116,6 +120,10 @@ for i, p in enumerate(platforms):
     st.cell(row=rr, column=3).number_format = CUR
     st.cell(row=rr, column=4).number_format = PCT
     st.cell(row=rr, column=5).alignment = Alignment(horizontal="center")
+    checked = CHECKED.get(p[0], "not re-verified")
+    c = st.cell(row=rr, column=7, value=checked)
+    c.font = f(size=9, italic=True, color="9C0006" if checked == "not re-verified" else "006100")
+    c.alignment = Alignment(horizontal="center"); c.border = border
 dv_yn = DataValidation(type="list", formula1='"Y,N"', allow_blank=True); st.add_data_validation(dv_yn); dv_yn.add("E4:E11")
 
 header(st, 13, ["General Setting", "Value", "Notes"])

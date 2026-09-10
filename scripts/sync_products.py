@@ -130,6 +130,12 @@ def main():
     # A clean summary is not proof: an update can report success and still leave a product
     # without the content its description promises. Check what is actually live.
     if not DRY:
+        # `update` never replaces the attached file, so a rebuilt workbook would stay unpublished
+        # while every text field reported "updated". sync_files.py swaps it when the bytes change.
+        print()
+        if subprocess.run([sys.executable, str(ROOT / "scripts" / "sync_files.py")]).returncode != 0:
+            print("sync_files reported a problem replacing attached files", file=sys.stderr)
+            failed = True
         print()
         rc = subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_live.py")]).returncode
         if rc != 0:

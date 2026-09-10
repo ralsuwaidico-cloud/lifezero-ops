@@ -77,3 +77,26 @@ Also: two product updates failed on an over-length tag (must be under 20 charact
 checks tags and gallery cover counts as well. Proven by injection. The lesson repeats — a verifier
 only catches the fields it actually looks at, so every new field pushed to the store needs a
 matching check the same day.
+
+2026-09-10 — Two findings, one of them the worst kind: a fix that never reached buyers.
+
+(1) Mercari's fee row was stale. Since 6 Jan 2025 Mercari charges a flat 10% on item + buyer-paid
+shipping and removed the seller's 2.9% + $0.50 payment processing (buyers pay 3.6% Buyer
+Protection instead). Our table still had the old structure AND excluded buyer shipping, so on a
+$50 sale we reported a $6.95 fee against an actual $5.00 — 39% too high, understating profit and
+capable of pushing a reseller off a channel that was making money. Caveat recorded honestly:
+ebay.com and mercari.com are both blocked by this session's egress proxy, so the correction rests
+on multiple independent secondary sources that agree, plus the existence of Mercari's own
+"Changes to our fee structure" help article. No other platform's rates were touched, because
+they were not verified — and pretending otherwise by date-stamping the whole table would have
+been worse than leaving it. Each row now carries its own "Rates last checked" value, most
+reading "not re-verified" in red, with a START HERE tip explaining why that matters.
+
+(2) `products update` NEVER replaces the attached file — `--file` appends an embed. So the
+rebuilt workbook sat in git, every text field reported "updated", and buyers would have kept
+downloading the old file with the wrong Mercari fee. `verify_live.py` could not catch it: it
+counts embeds, and the count was right. Automated: `scripts/sync_files.py` hashes each declared
+file into state/<slug>.files.json, and on a change uploads the new one and prunes the previous
+embed through `products content set`, leaving exactly one. Wired into sync_products.py and proven
+idempotent. That is now the THIRD Gumroad write that appends rather than replaces (file, cover,
+file-again) — assume append until proven otherwise, and always read the remote back.
