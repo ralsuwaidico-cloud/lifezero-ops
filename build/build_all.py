@@ -193,6 +193,32 @@ page_shot(preview(res, ["Tax Summary"]), "Tax Summary — Schedule-C-style total
 # purchase - a listing that only says "email me" is rejected as having nothing attached.
 brief = build("build_brief.py", "Custom_Sheet_Project_Brief.xlsx")
 
+# Free lead magnet for the $19 tracker.
+calc = build("build_free_calc.py", "Reseller_Profit_After_Fees_Calculator_2026.xlsx")
+
+
+def assert_fees(path):
+    """The free calculator's whole value is that its fee maths is right, so pin it.
+
+    Hand-worked against each marketplace's published terms on the sheet's default item
+    (cost $12, price $45, no buyer-paid shipping received, $6.50 label, $0.50 other).
+    A rate change is meant to break this: update the number here and in the Fees table
+    together, deliberately, rather than discovering the drift from a buyer.
+    """
+    from openpyxl import load_workbook as _lw
+    cs = _lw(path, data_only=True)["Calculator"]
+    want = {"eBay": 45 * 0.136 + 0.40, "Poshmark": 45 * 0.20, "Mercari": 45 * 0.10,
+            "Depop": 0.45 + 45 * 0.033, "Facebook Marketplace": 45 * 0.05}
+    for r in range(12, 18):
+        name, fee = cs[f"A{r}"].value, cs[f"B{r}"].value
+        if name in want:
+            assert abs(fee - want[name]) < 0.005, f"{name} fee {fee}, expected {want[name]}"
+    assert cs["B19"].value == "Depop", f"best-platform pick is {cs['B19'].value!r}, expected Depop"
+    print(f"cross-check ok  free calculator fees match hand-worked rates ({len(want)} marketplaces)")
+
+
+assert_fees(calc)
+
 # Square thumbnails - Gumroad rejects the 16:9 cover for this slot.
 _uae_png = preview(uae, ["Dashboard"])
 _res_png = preview(res, ["Dashboard"])
@@ -203,8 +229,16 @@ square_thumb(_res_png, "Reseller Inventory & Profit Tracker 2026",
 square_thumb(None, "Custom Excel / Google Sheets Tool in 48 Hours",
              PROD / "custom-sheet-48h" / "thumb_custom_sheet.jpg")
 
+_calc_png = preview(calc, ["Calculator"])
+cover(_calc_png, "Reseller profit-after-fees calculator 2026",
+      "FREE  •  eBay - Poshmark - Mercari - Depop - FB Marketplace  •  one item, every platform, side by side",
+      PROD / "reseller-free-calculator" / "cover_free_calc.jpg", (60, 90, 1287, 700))
+square_thumb(_calc_png, "FREE Reseller profit-after-fees calculator 2026",
+             PROD / "reseller-free-calculator" / "thumb_free_calc.jpg", (60, 250, 1287, 640))
+
 import shutil
 shutil.copy(uae, PROD / "uae-vat-tracker" / uae.name)
 shutil.copy(res, PROD / "reseller-profit-tracker" / res.name)
 shutil.copy(brief, PROD / "custom-sheet-48h" / brief.name)
+shutil.copy(calc, PROD / "reseller-free-calculator" / calc.name)
 print("ALL ASSETS BUILT")

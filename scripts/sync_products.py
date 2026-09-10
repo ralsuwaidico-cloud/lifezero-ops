@@ -46,8 +46,16 @@ def common_flags(p):
         flags += ["--custom-summary", p["summary"]]
     if p.get("custom_receipt"):
         flags += ["--custom-receipt", p["custom_receipt"]]
+    # A $0 lead magnet still wants a tip jar: pay-what-you-want with a $0 floor.
+    if p.get("pay_what_you_want"):
+        flags += ["--pay-what-you-want"]
+        if p.get("suggested_price") is not None:
+            flags += ["--suggested-price", str(p["suggested_price"])]
     for t in p.get("tags", []):
         flags += ["--tag", t]
+    # Category "Other" is where Gumroad Discover buries a product, so the manifest owns it.
+    if p.get("category"):
+        flags += ["--category", p["category"]]
     return flags
 
 

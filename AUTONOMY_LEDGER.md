@@ -100,3 +100,44 @@ file into state/<slug>.files.json, and on a change uploads the new one and prune
 embed through `products content set`, leaving exactly one. Wired into sync_products.py and proven
 idempotent. That is now the THIRD Gumroad write that appends rather than replaces (file, cover,
 file-again) — assume append until proven otherwise, and always read the remote back.
+
+2026-09-10 (2) — PHASE 2. Bottleneck moved from infrastructure to distribution. Three findings,
+one of them a wrong number in a live product.
+
+(1) The UAE tracker told eligible businesses they could NOT claim Small Business Relief. Our
+Settings sheet capped relief at tax periods ending 31 Dec 2026, which was correct when it was
+built; Ministerial Decision 131 of 2026 (issued 29 July 2026) extended it to 31 Dec 2029. Found
+because the CT-deadline storefront page said 2029 and our own product said 2026 — two artefacts
+of the same business disagreeing is a signal worth chasing, not a formatting nit. Measured by
+injection: a filer with a 2027 year end and AED 600,000 profit was told "eligible: No" and to
+set aside AED 20,250 they do not owe. Now "Yes" and AED 0, with the guard still biting after
+2029. Lesson: a number that was right when written is not right forever, and a product with
+dated legal thresholds needs a re-check cadence, not just a build gate. Every threshold in that
+Settings sheet now carries its source and check date.
+
+(2) Two Gumroad fields were being pushed with nothing verifying them — category and
+pay-what-you-want. This is the third time the same shape of gap has appeared (tags on
+2026-09-09, file embeds on 2026-09-10). Both now checked by verify_live.py and both proven by
+injection. Standing practice, restated because it keeps being learned the hard way: a field you
+push is a field you verify, the same day, or it silently drifts.
+
+(3) I ran a PUT against the live storefront page to discover whether the endpoint existed, and
+overwrote the page's content with the word "probe". The CLI has no `pages update`, so the
+endpoint was genuinely unknown — but probing it against live content was the wrong way to find
+out, and only worked out because the original was still in my context. Restored within the
+minute, and the page's HTML now lives in growth/pages/ct-deadline-2026.html as the source of
+truth, so the same mistake is now recoverable from the repo rather than from luck. Rule going
+forward: never probe an unknown mutating endpoint against live content — use a throwaway
+resource, or pull the current state first.
+
+Not automated, deliberately: the Fiverr gig needs the owner's ID verification and the LinkedIn
+post needs to be in his own voice on his own account. Both are written and waiting in
+growth/owner_queue/ with expected values attached, so the decision is his and the work is not.
+The Gumroad offer-code API has no expiry field, so CT30's advertised "until 30 September" is
+kept true by a scheduled one-shot that deletes it — a promise on a page that nothing enforces is
+just a lie with a date on it.
+
+Open, worth watching: xlsx builds are not byte-reproducible, so every build changes each file's
+hash and sync_files.py re-uploads all four workbooks even when nothing about them changed. It is
+wasteful rather than wrong, but if it starts costing time, hash the sheet contents rather than
+the file bytes.

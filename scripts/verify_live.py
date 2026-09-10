@@ -72,6 +72,14 @@ def main():
         if pr.get("price") != want_price:
             problems.append(f"{slug}: price is {pr.get('price')} cents, manifest says {want_price}")
 
+        # Gumroad reports pay-what-you-want as `customizable_price`. Without this check a
+        # free product that quietly reverted to a fixed $0 would still verify clean, and the
+        # tip jar the lead magnet depends on would be gone with no signal.
+        want_pwyw = bool(m.get("pay_what_you_want"))
+        if bool(pr.get("customizable_price")) != want_pwyw:
+            problems.append(f"{slug}: pay-what-you-want is {bool(pr.get('customizable_price'))}, "
+                            f"manifest says {want_pwyw}")
+
         if m.get("thumbnail") and not pr.get("thumbnail_url"):
             problems.append(f"{slug}: manifest declares a thumbnail but none is live")
 
@@ -85,6 +93,12 @@ def main():
             missing = [t for t in want_tags if t not in got_tags]
             extra = [t for t in got_tags if t not in want_tags]
             problems.append(f"{slug}: tags differ (missing {missing}, unexpected {extra})")
+
+        # Category was pushed for the first time today; a field the store carries but the
+        # verifier never looks at is a field that silently drifts (see tags, 2026-09-09).
+        want_cat = m.get("category")
+        if want_cat and pr.get("category") != want_cat:
+            problems.append(f"{slug}: category is {pr.get('category')!r}, manifest says {want_cat!r}")
 
         # `covers add` appends, so three cover pushes once left every product showing the same
         # image three times. Count them.
