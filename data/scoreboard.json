@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T01:00:16.443068+00:00",
+ "generated_at": "2026-09-11T18:59:19.495898+00:00",
  "lifetime_sales": 0,
  "lifetime_revenue_usd": 0.0,
  "last_7d_revenue_usd": 0.0,
@@ -10,6 +10,24 @@
  "revenue_by_product_usd": {},
  "open_fulfilment": [],
  "products": [
+  {
+   "id": "5oIJGZZsRfK4NM9CBEMivA==",
+   "name": "UAE Corporate Tax Return 2026 \u2014 self-filing guide: your deadline, Small Business Relief, the AED 500/month penalty clock, and the AED 10,000 waiver most people miss",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-ct-return-guide",
+   "published": true,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 900
+  },
+  {
+   "id": "cS8IHT1ymtBSwuD23HV1Fg==",
+   "name": "UAE Corporate Tax Deadline & Penalty Checker 2026 \u2014 free: your filing due date, AED 500/month late penalty, Small Business Relief check",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-ct-deadline-checker",
+   "published": true,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 0
+  },
   {
    "id": "sflPqwBl8ArGdZgP4OX0hw==",
    "name": "FREE Reseller Profit-After-Fees Calculator 2026 \u2014 eBay, Poshmark, Mercari, Depop, Facebook Marketplace (Excel / Google Sheets)",

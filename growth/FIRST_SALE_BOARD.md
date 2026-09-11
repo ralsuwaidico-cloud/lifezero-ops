@@ -8,9 +8,10 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-11 07:30 UTC** — every funnel number
-below is still zero across all 12 channels, 4 products and the CT30 code. Expected: nothing links
-to any of these pages yet, and the two channels that would are the owner-queue items.
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-11 19:00 UTC** — every funnel number
+below is still zero across all 12 channels, 6 live products and the CT30 code. Expected: nothing
+links to any of these pages yet, and the two channels that would are the owner-queue items. Two of
+those six products are not managed from this repo — see "Not mine" at the foot of this board.
 
 ---
 
@@ -170,6 +171,41 @@ post has to come from a real person's account and voice. Both are written and re
 | **Expected value** | **~$150–300 in 30 days.** Comparable gigs clear $95–157; Fiverr's own search demand is the point. A conservative 2–4 orders/month at $95 net of the 20% fee is $152–304. Highest-EV action available to anyone right now. | **~$25–75, plus real signal.** ~40 relevant UAE connections × a 3–8% click rate → 1–3 clicks per 100 impressions; at a 3–5% conversion on a $24 product this is 0–1 sales. Its real value is the first genuine impression data we would have. |
 | **Risk** | 20% platform fee; a first order with no reviews takes time to arrive. | Posting on a deadline topic is normal LinkedIn behaviour and is not spam — but it must be the owner's own words and account. |
 | **Status** | Awaiting owner | Awaiting owner |
+
+---
+
+## Not mine: two products appeared on the account on 2026-09-11
+
+Between the 12:58 and 18:58 pulls, two published products appeared on the Gumroad account that
+this session did not create and this repo has never seen:
+
+| Product | Price | Permalink | Category | Content |
+|---|---|---|---|---|
+| UAE Corporate Tax Return 2026 — self-filing guide | $9 | `uae-ct-return-guide` | **`other`** | 3 file embeds |
+| UAE Corporate Tax Deadline & Penalty Checker 2026 | $0 PWYW | `uae-ct-deadline-checker` | `business-and-money/accounting` | 2 file embeds |
+
+Both are published and both deliver content, so no buyer is paying for nothing. Together with our
+$24 tracker and the CT-deadline page they read as a deliberate ladder — free checker → $9 guide →
+$24 tracker — which is a sensible funnel and the same shape I would have built.
+
+**I have not touched either of them, and I am not going to without being asked.** Two things
+follow from that, and both matter more than the products themselves:
+
+1. **Something else writes to this account.** The CT-deadline page and the first four UTM links
+   also appeared from outside this session, on 2026-09-10 at 13:42. My routines were written
+   assuming sole ownership of the store. They are not: `sync_products.py` adopts by permalink and
+   pushes manifest state, and if two actors both "fix" the same product we get the duplicate-cover
+   mess of 2026-09-09 again, but concurrent. Worth the owner deciding who owns what before either
+   of us touches the other's listings.
+2. **Nothing verifies them.** They have no manifest, so `verify_live.py` never looked at them —
+   and its success line used to count every live product, so it cheerfully reported "6 product(s)
+   match their manifests" when it had checked 4. Fixed today: it now reports manifests checked and
+   prints an `UNMANAGED:` line for every live product this repo does not cover.
+
+One observation offered rather than acted on: the $9 guide sits in category **`other`**, which our
+own research file calls a Discover graveyard, while its free sibling is correctly in
+`business-and-money/accounting`. That is a one-field change worth roughly whatever Discover
+traffic is worth — but it is somebody else's product.
 
 ---
 

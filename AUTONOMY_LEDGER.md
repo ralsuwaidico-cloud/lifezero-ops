@@ -168,3 +168,28 @@ Deliberate limitation, recorded rather than hidden: the paid tracker's Settings 
 minimum-fee column, so Facebook sales under $8 are understated by a few cents there. Adding the
 column shifts the sourcing-channel range the Inventory dropdowns depend on, which is a bigger
 change than a sub-$8 edge case justifies today. The cell note says so in the product itself.
+
+2026-09-11 (2) — I am not the only thing writing to this Gumroad account. Between the 12:58 and
+18:58 pulls, two published products appeared that this session did not create: a $9 "UAE
+Corporate Tax Return 2026" self-filing guide and a free "UAE CT Deadline & Penalty Checker".
+Both deliver content, so no buyer is short-changed, and together with our $24 tracker they read
+as a deliberate ladder. The CT-deadline page and the first four UTM links arrived the same way
+on 2026-09-10. I have not touched any of them.
+
+The operational problem is not the products, it is the assumption underneath my routines: they
+were written as if this repo were the sole author of the store. sync_products.py adopts live
+products by permalink and pushes manifest state over them, so if another actor edits a listing
+that later gains a manifest here, we get the duplicate-cover mess of 2026-09-09 again but
+concurrent and harder to see. Ownership needs deciding before either side edits the other's
+listings; until then I treat anything without a manifest as read-only.
+
+Automated, and it caught me being sloppy: verify_live.py's success line printed the count of
+LIVE products, not the count it had actually checked - so with four manifests and six products
+live it announced "6 product(s) match their manifests". A verifier that overstates its own
+coverage is worse than no verifier, because it reads as reassurance. It now reports manifests
+checked, the live total separately, and an UNMANAGED: line naming every live product this repo
+does not cover. Both new products show up there immediately.
+
+Not acted on, deliberately: the $9 guide sits in category "other", which our own RESEARCH.md
+calls a Discover graveyard, while its free sibling is filed correctly. One field, real traffic
+cost - and somebody else's product. Reported, not changed.

@@ -121,10 +121,22 @@ def main():
                 problems.append(f"{slug}: {got} file embed(s) live, manifest declares {want_files} "
                                 f"(duplicate embeds? `--file` appends, it does not replace)")
 
+    # Live products with no manifest are not necessarily wrong - they may be managed elsewhere -
+    # but nothing in this repo verifies them, and on 2026-09-11 two appeared on the account that
+    # this repo had never heard of. The old success line counted every live product and so
+    # claimed to have checked them; silence about the gap is how a store drifts. Name them.
+    manifest_permalinks = {json.loads((d / "product.json").read_text())["permalink"]
+                           for d in PRODUCTS.iterdir() if (d / "product.json").exists()}
+    unmanaged = sorted(set(by_permalink) - manifest_permalinks)
+
     for p in problems:
         print("DRIFT:", p)
+    for u in unmanaged:
+        print(f"UNMANAGED: {u} is live on Gumroad with no manifest in products/ - "
+              f"nothing in this repo verifies it")
     if not problems:
-        print(f"verify_live: {len(by_permalink)} product(s) match their manifests")
+        print(f"verify_live: {len(manifest_permalinks)} manifest(s) checked, all matching "
+              f"({len(by_permalink)} product(s) live in total)")
     return 1 if problems else 0
 
 
