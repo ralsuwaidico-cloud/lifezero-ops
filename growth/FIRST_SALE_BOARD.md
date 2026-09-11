@@ -8,8 +8,9 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-10 18:0x UTC** — all zero, which
-is expected on day one.
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-11 01:00 UTC** — every funnel number
+below is still zero across all 10 channels, 4 products and the CT30 code. Expected: nothing links
+to any of these pages yet, and the two channels that would are the owner-queue items.
 
 ---
 

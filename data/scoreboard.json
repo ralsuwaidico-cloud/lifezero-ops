@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-08T01:12:10.008756+00:00",
+ "generated_at": "2026-09-11T01:00:16.443068+00:00",
  "lifetime_sales": 0,
  "lifetime_revenue_usd": 0.0,
  "last_7d_revenue_usd": 0.0,
@@ -10,6 +10,15 @@
  "revenue_by_product_usd": {},
  "open_fulfilment": [],
  "products": [
+  {
+   "id": "sflPqwBl8ArGdZgP4OX0hw==",
+   "name": "FREE Reseller Profit-After-Fees Calculator 2026 \u2014 eBay, Poshmark, Mercari, Depop, Facebook Marketplace (Excel / Google Sheets)",
+   "url": "https://ralsuwaidi3.gumroad.com/l/reseller-fee-calculator",
+   "published": true,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 0
+  },
   {
    "id": "fgqEi7lWwosZ_grxtnsYyg==",
    "name": "UAE Freelancer & Small Business Bookkeeping Tracker 2026 \u2014 VAT Return + Corporate Tax Estimate (Excel / Google Sheets)",
