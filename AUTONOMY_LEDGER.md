@@ -141,3 +141,30 @@ Open, worth watching: xlsx builds are not byte-reproducible, so every build chan
 hash and sync_files.py re-uploads all four workbooks even when nothing about them changed. It is
 wasteful rather than wrong, but if it starts costing time, hash the sheet contents rather than
 the file bytes.
+
+2026-09-11 — I shipped the bug this time. The free calculator published yesterday carried
+Facebook Marketplace at 5% + $0.40 while our own paid tracker said 10% — Meta raised the
+shipped-order fee to 10% (minimum $0.80) on 15 April 2024. On a $45 item we told a reseller the
+fee was $2.25 when it is $4.50, understating it by half. This is the Mercari bug mirrored and
+worse: overstating fees pushes someone off a channel that works, but understating them makes a
+channel look better than it is, which is the direction that loses money. It survived a full
+build with 0 formula errors and a passing fee assertion, because I wrote the assertion from the
+same wrong number I put in the table — a gate copied from the thing it is meant to check proves
+nothing. Rates for Depop and Facebook now carry today's date; eBay, Poshmark and Mercari keep
+2026-09-10.
+
+What actually caught it: the daily routine's instruction to re-check anything with a shelf life,
+and the fact that two artefacts of the same business disagreed. That is now twice in two days
+(Small Business Relief yesterday, Facebook today) that an internal contradiction was the signal.
+Worth making routine: when two of our own outputs state the same fact differently, stop and
+resolve it before shipping either.
+
+Automated: `scripts/verify_pages.py` compares every live storefront page to its source in
+growth/pages/ and is wired into sync_products.py. There is no `gumroad pages update`, so pages
+can only be changed by a raw PUT — and one stray PUT already replaced an entire page with the
+word "probe" yesterday. Proven by injection. Pages are now a checked asset like products.
+
+Deliberate limitation, recorded rather than hidden: the paid tracker's Settings table has no
+minimum-fee column, so Facebook sales under $8 are understated by a few cents there. Adding the
+column shifts the sourcing-channel range the Inventory dropdowns depend on, which is a bigger
+change than a sub-$8 edge case justifies today. The cell note says so in the product itself.

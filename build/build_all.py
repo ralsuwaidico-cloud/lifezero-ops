@@ -208,7 +208,7 @@ def assert_fees(path):
     from openpyxl import load_workbook as _lw
     cs = _lw(path, data_only=True)["Calculator"]
     want = {"eBay": 45 * 0.136 + 0.40, "Poshmark": 45 * 0.20, "Mercari": 45 * 0.10,
-            "Depop": 0.45 + 45 * 0.033, "Facebook Marketplace": 45 * 0.05}
+            "Depop": 0.45 + 45 * 0.033, "Facebook Marketplace": 45 * 0.10}
     for r in range(12, 18):
         name, fee = cs[f"A{r}"].value, cs[f"B{r}"].value
         if name in want:

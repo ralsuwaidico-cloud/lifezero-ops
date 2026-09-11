@@ -8,8 +8,8 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-11 01:00 UTC** — every funnel number
-below is still zero across all 10 channels, 4 products and the CT30 code. Expected: nothing links
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-11 07:30 UTC** — every funnel number
+below is still zero across all 12 channels, 4 products and the CT30 code. Expected: nothing links
 to any of these pages yet, and the two channels that would are the owner-queue items.
 
 ---
@@ -103,7 +103,7 @@ $0.40 minimum).
 | **Hypothesis** | Without per-channel clicks, every future result is unattributable and the funnel cannot be diagnosed. |
 | **Start** | 2026-09-10 |
 | **Cost / human time** | $0 / 0 min |
-| **Status** | Live — 10 links |
+| **Status** | Live — 12 links |
 | **Next decision** | Reviewed every 6 hours by the sales-pull routine. |
 
 | Link | Channel → target | Clicks |
@@ -118,6 +118,41 @@ $0.40 minimum).
 | `https://gum.co/u/ysjnz0ld` | Free calculator upsell → reseller tracker | 0 |
 | `https://gum.co/u/byva53km` | LinkedIn → custom sheet service | 0 |
 | `https://gum.co/u/opzpsbc2` | Fiverr gig → custom sheet service | 0 |
+| `https://gum.co/u/cq0pgrpj` | Reseller fees page → free calculator | 0 |
+| `https://gum.co/u/qsqbak1m` | Reseller fees page → paid tracker | 0 |
+
+---
+
+## F · Reseller marketplace-fee reference page
+
+| | |
+|---|---|
+| **Channel** | Gumroad storefront page → free calculator + $19 tracker |
+| **Product** | Both reseller products |
+| **Hypothesis** | Experiment B bet that a useful, correct article on an indexable storefront page earns clicks a product page cannot. This is the same bet aimed at a much larger keyword pool — "poshmark fee calculator spreadsheet", "profit after ebay fees calculator" — and at the free product, where a download and a rating are what unlock Discover for the $19 tracker behind it. |
+| **Start** | 2026-09-11 |
+| **Cost** | $0 |
+| **Human time** | 0 min |
+| **Impressions** | — |
+| **Clicks (UTM)** | 0 · free calculator `https://gum.co/u/cq0pgrpj` · tracker `https://gum.co/u/qsqbak1m` |
+| **Checkouts** | 0 |
+| **Sales** | 0 |
+| **Revenue** | $0 |
+| **Status** | Live — <https://ralsuwaidi3.gumroad.com/reseller-fees-2026> |
+| **Next decision** | Read alongside experiment B on **2026-09-17**. B and F are the same channel with different topics and audiences, so compare them: if both are at zero, the storefront-page channel is not being indexed and the conclusion is about distribution, not topic. If F moves and B does not, the reseller keywords are the live vein and the UAE effort should follow the CT deadline out on 30 September rather than being renewed. |
+
+*Why this one over the alternatives:* the funnel is zero at every stage on every channel, which is a
+distribution reading — there is nothing to diagnose about message or offer until something is
+being seen. Of the things I can do without the owner, an indexable page targeting queries people
+actually type is the only one that creates new reach rather than polishing existing reach. It also
+pairs with B to turn "does the storefront-page channel work at all?" into an answerable question
+instead of a single data point.
+
+*What it is:* the real fee structure of all five marketplaces with what each one charges against,
+four traps worked out in numbers (fee charged on buyer-paid shipping; Poshmark's 29.5% effective
+rate under $12; Facebook's April 2024 doubling; Depop's commission moving to the buyer), and the
+same $45 item priced across all five showing a $7.07 profit spread. Soft CTA to the free
+calculator, then the tracker.
 
 ---
 

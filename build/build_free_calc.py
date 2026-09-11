@@ -74,12 +74,14 @@ FEES = [
     ("Mercari", 0.10, 0.0, 0.0, 0.0, 0.0, "Y", 0.0, 0.0, 0.0, "2026-09-10",
      "Flat 10% on item + buyer-paid shipping. The old 2.9% + $0.50 seller processing fee was "
      "removed on 6 Jan 2025; buyers now pay a 3.6% Buyer Protection fee instead."),
-    ("Depop", 0.0, 0.45, 0.45, 0.0, 0.033, "Y", 0.0, 0.0, 0.0, "not re-verified",
-     "US selling fee moved to the buyer; roughly 3.3% + $0.45 payment processing remains on "
-     "the seller. Verify for your region before trusting this row."),
-    ("Facebook Marketplace", 0.05, 0.0, 0.0, 0.0, 0.0, "Y", 0.0, 0.0, 0.40, "not re-verified",
-     "About 5% of the total on shipped orders, with a minimum around $0.40. Local pickup is "
-     "normally free. Verify before trusting this row."),
+    ("Depop", 0.0, 0.45, 0.45, 0.0, 0.033, "Y", 0.0, 0.0, 0.0, "2026-09-11",
+     "No US selling commission since 2024 - it moved to the buyer. What remains on the seller "
+     "is 3.3% + $0.45 payment processing, charged on item + shipping + tax. An optional Boosted "
+     "Listing costs 12% on top if you use one; this row does not include it."),
+    ("Facebook Marketplace", 0.10, 0.0, 0.0, 0.0, 0.0, "Y", 0.0, 0.0, 0.80, "2026-09-11",
+     "10% of the buyer's total (item + the shipping you charge + the sales tax Meta collects), "
+     "minimum $0.80 per order. Raised from 5% / $0.40 on 15 April 2024. Local pickup sales "
+     "have no selling fee at all - price those with the 'Other' row set to 0%."),
     ("Other / edit me", 0.10, 0.0, 0.0, 0.0, 0.0, "Y", 0.0, 0.0, 0.0, "n/a",
      "Blank slot — put any other marketplace's rates here."),
 ]

@@ -57,8 +57,14 @@ the primary fee pages.
 | eBay | 13.6% of total incl. buyer-paid shipping + $0.40/order ($0.30 on orders ≤ $10) | 2026-09-10 |
 | Poshmark | flat $2.95 under $15, else 20% of sale price; no separate processing fee | 2026-09-10 |
 | Mercari | flat 10% on item + buyer-paid shipping (2.9% + $0.50 seller processing removed 6 Jan 2025) | 2026-09-10 |
-| Depop | US selling fee moved to buyer; ~3.3% + $0.45 processing remains | not re-verified |
-| Facebook Marketplace | ~5% on shipped orders, ~$0.40 minimum | not re-verified |
+| Depop | no US selling commission since 2024; 3.3% + $0.45 processing on item + shipping + tax | 2026-09-11 |
+| Facebook Marketplace | **10% of the buyer's total, $0.80 minimum**, shipped orders only; local pickup free | 2026-09-11 |
+
+**Correction found 2026-09-11:** Facebook Marketplace raised its shipped-order fee from 5%
+(minimum $0.40) to **10% (minimum $0.80) on 15 April 2024**. Our free calculator shipped on
+2026-09-10 with the old 5%, understating the fee by half on every Facebook sale — while our own
+paid tracker already said 10%. Two products of the same business disagreeing is the same signal
+that surfaced the Small Business Relief bug a day earlier. A lot of fee guides still print 5%.
 
 **Correction to the Phase 2 directive:** it gave eBay as "~13.25% + $0.40". That is the older
 rate. Current is **13.6% + $0.40**, and the per-order fee is $0.30 at or below $10. Both products

@@ -150,6 +150,13 @@ def main():
             print("verify_live reported drift — the store does not match the manifests", file=sys.stderr)
             failed = True
 
+        # Storefront pages are acquisition assets with no CLI update path, so they can be
+        # silently overwritten by a stray PUT. growth/pages/ is their source of truth.
+        print()
+        if subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_pages.py")]).returncode != 0:
+            print("verify_pages reported drift — a live page does not match its source", file=sys.stderr)
+            failed = True
+
     if failed:
         sys.exit(1)
 

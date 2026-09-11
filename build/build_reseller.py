@@ -100,14 +100,14 @@ title(st, "Settings", "Blue cells are yours to edit. All other sheets read from 
 header(st, 3, ["Platform", "Fee %", "Fixed Fee / Sale", "Payment Processing %", "Fee on Buyer Shipping? (Y/N)", "Notes - verify against the platform's current fee page", "Rates last checked"])
 # Fee structures change without notice and a wrong rate silently corrupts every profit figure,
 # so each row records when its rates were last checked rather than implying all are current.
-CHECKED = {"Mercari": "2026-09-10"}
+CHECKED = {"Mercari": "2026-09-10", "Depop": "2026-09-11", "FB Marketplace": "2026-09-11"}
 platforms = [
     ("eBay", 0.136, 0.40, 0.0, "Y", "Final value fee ~13.6% of total incl. shipping + $0.40 per order (most categories)."),
     ("Poshmark", 0.20, 0.0, 0.0, "N", "20% of sale price at/over the threshold below; flat fee under it. Buyer pays shipping."),
     ("Mercari", 0.10, 0.0, 0.0, "Y", "Flat 10% on item + buyer-paid shipping. The separate 2.9% + $0.50 seller payment-processing fee was removed on 6 Jan 2025; buyers now pay a 3.6% Buyer Protection fee instead."),
-    ("Depop", 0.0, 0.45, 0.033, "Y", "US selling fee moved to buyer; ~3.3% + $0.45 payment processing remains."),
+    ("Depop", 0.0, 0.45, 0.033, "Y", "No US selling commission since 2024 - it moved to the buyer. 3.3% + $0.45 payment processing remains on the seller, charged on item + shipping + tax. Optional Boosted Listings cost 12% on top and are not modelled."),
     ("Whatnot", 0.08, 0.30, 0.029, "N", "8% commission + 2.9% + $0.30 processing."),
-    ("FB Marketplace", 0.10, 0.0, 0.0, "Y", "~10% selling fee on shipped checkout orders; local cash sales = 0%."),
+    ("FB Marketplace", 0.10, 0.0, 0.0, "Y", "10% of the buyer's total on shipped orders (raised from 5% on 15 Apr 2024), minimum $0.80 per order - this table has no minimum-fee column, so sales under $8 are understated by a few cents. Local pickup sales have no selling fee; log those as Other with 0%."),
     ("Etsy", 0.065, 0.45, 0.03, "Y", "6.5% transaction + 3% + $0.25 processing + $0.20 listing fee."),
     ("Other", 0.10, 0.0, 0.0, "N", "Generic placeholder - edit for any other marketplace."),
 ]
