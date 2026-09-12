@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T18:59:19.495898+00:00",
+ "generated_at": "2026-09-12T00:59:29.838057+00:00",
  "lifetime_sales": 0,
  "lifetime_revenue_usd": 0.0,
  "last_7d_revenue_usd": 0.0,
@@ -10,6 +10,33 @@
  "revenue_by_product_usd": {},
  "open_fulfilment": [],
  "products": [
+  {
+   "id": "h8QfkOv1AvSsQViccOuXQQ==",
+   "name": "GH-900 Practice Questions \u2014 Free 50 (GitHub Foundations) with Explanations + Offline Quiz App",
+   "url": "https://ralsuwaidi3.gumroad.com/l/gh900-free-50",
+   "published": true,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 0
+  },
+  {
+   "id": "08k9mgY0RQgxQapcIkhagA==",
+   "name": "GH-Cert Drills \u2014 300 GitHub Foundations (GH-900) Practice Questions",
+   "url": "https://ralsuwaidi3.gumroad.com/l/gh-900-practice-questions",
+   "published": true,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 900
+  },
+  {
+   "id": "Gab_zhXC0ZcJvbRGqIaxyw==",
+   "name": "Internal build archive (not for sale)",
+   "url": "https://ralsuwaidi3.gumroad.com/l/xrvdno",
+   "published": false,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 0
+  },
   {
    "id": "5oIJGZZsRfK4NM9CBEMivA==",
    "name": "UAE Corporate Tax Return 2026 \u2014 self-filing guide: your deadline, Small Business Relief, the AED 500/month penalty clock, and the AED 10,000 waiver most people miss",

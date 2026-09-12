@@ -8,10 +8,10 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-11 19:00 UTC** — every funnel number
-below is still zero across all 12 channels, 6 live products and the CT30 code. Expected: nothing
-links to any of these pages yet, and the two channels that would are the owner-queue items. Two of
-those six products are not managed from this repo — see "Not mine" at the foot of this board.
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-12 01:00 UTC** — every funnel number
+below is still zero across all 12 channels, 8 published products and the CT30 code. Expected:
+nothing links to any of these pages yet, and the two channels that would are the owner-queue
+items. Only four of those products are managed from this repo — see "Not mine" at the foot.
 
 ---
 
@@ -174,21 +174,38 @@ post has to come from a real person's account and voice. Both are written and re
 
 ---
 
-## Not mine: two products appeared on the account on 2026-09-11
+## Not mine: the account now holds nine products, five of them not from this repo
 
-Between the 12:58 and 18:58 pulls, two published products appeared on the Gumroad account that
-this session did not create and this repo has never seen:
+Another actor is building on this Gumroad account. It appeared first on 2026-09-10 at 13:42 (the
+CT-deadline page and four UTM links), then twice more:
+
+**2026-09-11, between the 12:58 and 18:58 pulls** — a UAE Corporate Tax ladder:
 
 | Product | Price | Permalink | Category | Content |
 |---|---|---|---|---|
 | UAE Corporate Tax Return 2026 — self-filing guide | $9 | `uae-ct-return-guide` | **`other`** | 3 file embeds |
 | UAE Corporate Tax Deadline & Penalty Checker 2026 | $0 PWYW | `uae-ct-deadline-checker` | `business-and-money/accounting` | 2 file embeds |
 
-Both are published and both deliver content, so no buyer is paying for nothing. Together with our
-$24 tracker and the CT-deadline page they read as a deliberate ladder — free checker → $9 guide →
-$24 tracker — which is a sensible funnel and the same shape I would have built.
+**2026-09-12, before the 00:58 pull** — an entirely new vertical, GitHub certification prep:
 
-**I have not touched either of them, and I am not going to without being asked.** Two things
+| Product | Price | Permalink | Category |
+|---|---|---|---|
+| GH-900 Practice Questions — Free 50, with explanations + offline quiz app | $0 | `gh900-free-50` | `education/test-prep` |
+| GH-Cert Drills — 300 GitHub Foundations (GH-900) practice questions | $9 | `gh-900-practice-questions` | `education/test-prep` |
+| Internal build archive (not for sale) | $0 | — | `other` · **unpublished draft** |
+
+All the published ones deliver content, so no buyer is paying for nothing. Both ladders use the
+same free → $9 shape, which is a reasonable structure and the same one I would have built.
+
+Two things worth the owner's attention rather than mine. First, **the business is now two
+unrelated verticals** — spreadsheets and certification prep — and my Phase 2 directive ("no new
+products unless customer or search evidence demands it, 70% of attention on acquisition") was
+written for one. Whether that directive binds the other actor is not something I can decide.
+Second, **the draft "Internal build archive" sits one click from published** on a live storefront.
+It is invisible to buyers today. I have not opened it and will not, but a thing named that should
+probably not live in a product list at all.
+
+**I have not touched any of them, and I am not going to without being asked.** Two things
 follow from that, and both matter more than the products themselves:
 
 1. **Something else writes to this account.** The CT-deadline page and the first four UTM links
