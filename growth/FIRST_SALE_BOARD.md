@@ -8,8 +8,8 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-12 01:00 UTC** — every funnel number
-below is still zero across all 12 channels, 8 published products and the CT30 code. Expected:
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-12 07:40 UTC** — every funnel number
+below is still zero across all 14 channels, 8 published products and the CT30 code. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
 items. Only four of those products are managed from this repo — see "Not mine" at the foot.
 
@@ -104,7 +104,7 @@ $0.40 minimum).
 | **Hypothesis** | Without per-channel clicks, every future result is unattributable and the funnel cannot be diagnosed. |
 | **Start** | 2026-09-10 |
 | **Cost / human time** | $0 / 0 min |
-| **Status** | Live — 12 links |
+| **Status** | Live — 14 links |
 | **Next decision** | Reviewed every 6 hours by the sales-pull routine. |
 
 | Link | Channel → target | Clicks |
@@ -121,6 +121,8 @@ $0.40 minimum).
 | `https://gum.co/u/opzpsbc2` | Fiverr gig → custom sheet service | 0 |
 | `https://gum.co/u/cq0pgrpj` | Reseller fees page → free calculator | 0 |
 | `https://gum.co/u/qsqbak1m` | Reseller fees page → paid tracker | 0 |
+| `https://gum.co/u/8si9vikr` | Reseller tracker page → free calculator | 0 |
+| `https://gum.co/u/wwdxkqkm` | Custom sheet service → free calculator (work sample) | 0 |
 
 ---
 
@@ -154,6 +156,59 @@ four traps worked out in numbers (fee charged on buyer-paid shipping; Poshmark's
 rate under $12; Facebook's April 2024 doubling; Depop's commission moving to the buyer), and the
 same $45 item priced across all five showing a $7.07 profit spread. Soft CTA to the free
 calculator, then the tracker.
+
+---
+
+## G · Storefront coherence and the free calculator as a work sample
+
+| | |
+|---|---|
+| **Channel** | On-site conversion, not acquisition |
+| **Product** | All four managed here |
+| **Hypothesis** | Four products sat as four unconnected pages: a visitor landing on one could not see the others, and a $95 custom service with zero reviews was asking for trust it had not earned. Linking the free calculator from the paid pages turns it into a work sample — download it, judge the quality, then decide — and gives every arrival somewhere free to go. |
+| **Start** | 2026-09-12 |
+| **Cost** | $0 · **Human time** 0 min |
+| **Clicks (UTM)** | 0 · tracker → free calc `https://gum.co/u/8si9vikr` · service → free calc `https://gum.co/u/wwdxkqkm` |
+| **Sales** | 0 · **Revenue** $0 |
+| **Status** | Live on all four listings, verified |
+| **Next decision** | This cannot be read before there is traffic, so it has no date of its own. When the first arrivals land, the two cross-sell links say whether the free calculator is doing trust work or is just another link. |
+
+*Why this one:* not because it is the best idea available, but because **it is the best idea still
+available to me.** See the diagnosis below.
+
+*What changed:* the $19 tracker and the $95 service now both offer the free calculator as
+something you can download and judge before paying; the UAE tracker points at the free CT-deadline
+explainer and says "read that first, buy this only if the bookkeeping is what is standing in your
+way"; the free calculator points at the fees article. Four pages became a shop.
+
+---
+
+## Diagnosis, 2026-09-12: the page channel is not indexed, and my acquisition levers are spent
+
+Searching Google for our exact page title — *"UAE Corporate Tax deadline 30 Sept 2026: checklist
++ penalty math"* — returns ten established consultancies and law firms and **not our page**.
+Searching for the storefront domain returns nothing of ours either. Two days in, nothing we have
+published is findable.
+
+Two conclusions, and the second is the uncomfortable one:
+
+1. **Experiments B and F are assets, not channels.** A storefront page earns traffic only when
+   something links to it. Google may still index them — 1–3 weeks is normal, and experiment A's
+   re-read date of 2026-09-24 stands — but the keyword field is crowded with domain-authority
+   sites, and a three-day-old Gumroad subdomain will not outrank DLA Piper on UAE tax. I should
+   stop building more pages on the expectation that they will rank. **Parked, not killed:** no
+   further page effort until 2026-09-24 shows whether anything indexes at all.
+2. **I have no unblocked acquisition lever left.** Everything I can reach without the owner —
+   listing SEO, storefront pages, a free lead magnet, instrumentation, now cross-linking — is
+   shipped and sitting at zero. Gumroad Discover needs ≥1 sale and ≥1 rating, and the free
+   calculator would provide both, but it needs one visitor first. Every remaining route to that
+   first visitor runs through a person: Fiverr needs ID verification, LinkedIn needs a real
+   account and voice, the communities need standing. That is not a reason to stop working, but
+   it is the honest shape of the problem, and today's experiment is conversion work precisely
+   because the acquisition side is exhausted rather than because it is the higher-value half.
+
+**The critical path is now the owner queue, and half of it expires.** The LinkedIn CT-deadline
+post is worthless after 30 September — 18 days. Both items have been ready since 2026-09-10.
 
 ---
 

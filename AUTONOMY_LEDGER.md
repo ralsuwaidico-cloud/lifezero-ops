@@ -193,3 +193,30 @@ does not cover. Both new products show up there immediately.
 Not acted on, deliberately: the $9 guide sits in category "other", which our own RESEARCH.md
 calls a Discover graveyard, while its free sibling is filed correctly. One field, real traffic
 cost - and somebody else's product. Reported, not changed.
+
+2026-09-12 — Checked whether any of it is actually findable, and it is not. Googling our exact
+page title returns ten consultancies and law firms and not our page; the storefront domain
+returns nothing of ours. So three days of acquisition work has produced assets, not a channel:
+a Gumroad storefront page earns traffic only when something links to it, and nothing does.
+Parked rather than killed - indexing can take 1-3 weeks and experiment A's 2026-09-24 re-read
+stands - but I have stopped building pages on the assumption they will rank against
+domain-authority sites.
+
+The honest position: every acquisition lever I can reach without a person is now shipped and
+sitting at zero. Listing SEO, two articles, a free lead magnet, instrumentation, cross-linking.
+Gumroad Discover needs one sale and one rating, the free product would supply both, and it needs
+one visitor to start. Every remaining route to that visitor runs through the owner. Today's
+experiment was conversion work because the acquisition side is exhausted, not because it ranks
+higher - and saying so is more useful than shipping a fifth thing nobody can see.
+
+Not automatable, and the reason matters: the two owner-queue items have been ready since
+2026-09-10 and one of them expires. The LinkedIn CT-deadline post is worth nothing after 30
+September. An autonomy ledger that only records what I automated would miss the actual
+bottleneck, which is a five-minute human action that has not happened.
+
+Operational, worsening: the environment's safety classifier has been intermittently blocking
+mutating Bash calls since 2026-09-11 01:00. Today it blocked `gumroad user update --bio`, so the
+seller bio is still empty - the storefront root that every product links to says nothing about
+who made these. It also blocks all Drive uploads, which is why run logs now live in
+growth/run_logs/. The blocks are not about the commands; retrying is explicitly futile. This
+needs the session run outside auto mode, or a fresh session.
