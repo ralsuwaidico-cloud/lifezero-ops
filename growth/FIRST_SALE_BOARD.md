@@ -8,7 +8,7 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-13 07:40 UTC** — every funnel number
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-13 19:00 UTC** — every funnel number
 below is still zero across all 14 channels, 8 published products and the CT30 code. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
 items. Only four of those products are managed from this repo — see "Not mine" at the foot.
@@ -272,6 +272,12 @@ CT-deadline page and four UTM links), then twice more:
 | GH-900 Practice Questions — Free 50, with explanations + offline quiz app | $0 | `gh900-free-50` | `education/test-prep` |
 | GH-Cert Drills — 300 GitHub Foundations (GH-900) practice questions | $9 | `gh-900-practice-questions` | `education/test-prep` |
 | Internal build archive (not for sale) | $0 | — | `other` · **unpublished draft** |
+
+**2026-09-13, before the 18:58 pull** — the free CT checker was renamed from a feature list to a
+question: *"When is my UAE Corporate Tax return due? Free deadline and penalty checker (2026)"*.
+That is the same snippet-for-the-query logic as experiment A, applied to their listing. Worth
+noting only because it means the other actor is now optimising message as well as shipping
+products, on the same storefront, with no coordination between us.
 
 **2026-09-12, before the 18:58 pull** — a second draft of the same kind: *Internal build archive 2
 — checker (not for sale)*, unpublished. Parking build artefacts as draft products is now a
