@@ -38,13 +38,36 @@ but no sales = offer or trust.
 
 ## Competitor pricing
 
-- UAE VAT Excel tools sell at **$49–83** (Eloquens, excelaccountingtemplate). Free VAT 201 sheets
-  rank well (ExcelDataPro, MSOfficeGeek, Daftra). Nothing found combines VAT + Corporate Tax +
-  freelancer bookkeeping at a low price — that is our gap, and our $24 sits under everyone.
-- Reseller sheets clear on Etsy at **$10–20** (TheSpreadsheetGuys $9.99 with 4.8k sales;
-  AllThingsResale $20.19). The free email-gated sheets (Hustle & Slow, Sheetrix) have no
-  per-platform fee maths and no tax summary — which is precisely what our free calculator gives
-  away, so it competes on the one axis they are weak on.
+The figures below came with the directive and describe **other platforms** (Eloquens, Etsy). On
+2026-09-13 I queried Gumroad's own catalogue directly with `gumroad products comps`, which reads
+the live Discover index, and the picture on the platform we actually sell on is different:
+
+| Query | Products found | p25 | median | p75 |
+|---|---|---|---|---|
+| reseller inventory tracker spreadsheet | 5 | $7.99 | **$9.99** | $30.00 |
+| custom spreadsheet service | 35 | $4.49 | **$27.00** | $99.25 |
+| UAE VAT excel template | **0** | — | — | — |
+| corporate tax uae spreadsheet | **0** | — | — | — |
+
+Three things follow:
+
+1. **Our $19 reseller tracker is roughly 2× the category median.** The direct competitor found
+   (*Bulk Buy Profit Calculator Spreadsheet*, resaleresources) sells at $9.99; others at $4.99 and
+   $8.99. We are not mispriced — we do considerably more — but the listing has to earn that gap in
+   the first thing a buyer sees, because on a grid we look like twice the price. No price change
+   without traffic data; recorded so the decision is evidence-backed when there is any.
+2. **Our $95 service sits at the p75 of 35 comparables** (median $27). In band, at the top of it.
+3. **There is not one UAE VAT or Corporate Tax product on Gumroad.** Zero. That cuts both ways:
+   nothing competes with our $24 tracker, and nobody has found demand for this on this platform
+   either. With a hard filing deadline on 30 September it is still the asset most worth pointing
+   urgency at, which is what experiment H does.
+
+**Verified 2026-09-13:** querying `products comps` with our own exact product names —
+"Reseller Inventory Profit Tracker 2026", "UAE Freelancer Small Business Bookkeeping Tracker" —
+returns **0 results**, while generic queries return up to 20. Our products are genuinely absent
+from the Discover catalogue. The "Discover excludes 0-sale products" claim above arrived as an
+assertion in the directive; it is now a tested fact, and the strategy that rests on it (the first
+sale must come from outside Discover) is correctly founded.
 
 ## Marketplace fee rates (feeds both reseller products)
 

@@ -8,7 +8,7 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-12 19:00 UTC** — every funnel number
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-13 07:40 UTC** — every funnel number
 below is still zero across all 14 channels, 8 published products and the CT30 code. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
 items. Only four of those products are managed from this repo — see "Not mine" at the foot.
@@ -209,6 +209,30 @@ Two conclusions, and the second is the uncomfortable one:
 
 **The critical path is now the owner queue, and half of it expires.** The LinkedIn CT-deadline
 post is worthless after 30 September — 18 days. Both items have been ready since 2026-09-10.
+
+---
+
+## H · Deadline urgency on the UAE listing
+
+| | |
+|---|---|
+| **Channel** | The listing itself — message, not distribution |
+| **Product** | UAE Freelancer & Small Business Bookkeeping Tracker ($24) |
+| **Hypothesis** | Two facts make this the one listing worth changing today. `gumroad products comps` returns **zero** UAE VAT or Corporate Tax products in the whole Gumroad catalogue, so nothing competes with it; and its buyer has a hard statutory deadline on 30 September. A description that opens with a date the reader is already worried about converts better than one that opens with a description of a spreadsheet. |
+| **Start** | 2026-09-13 · **Cost** $0 · **Human time** 0 min |
+| **Clicks (UTM)** | 0 · **Sales** 0 · **Revenue** $0 · CT30 `times_used` 0 |
+| **Status** | Live and verified — first 155 chars now read *"UAE Corporate Tax is due 30 September 2026. Log your invoices and expenses once and this fills in your VAT 201 boxes and your Corporate Tax estimate."* Summary changed to match. |
+| **Next decision** | **2026-10-01, and it is a removal, not a read.** The claim expires with the deadline; a one-shot is scheduled to strip it and restore the evergreen lead. Any signal before then is a bonus — with zero traffic this is not expected to be readable, and it is not the reason for shipping it. |
+
+*Why now rather than at experiment A's 2026-09-24 read:* this does contaminate A's read for one of
+four products, and normally that would be a reason to wait. It is not, because the asset expires
+on 30 September. Optimising a deadline product eleven days after you could have is worse than a
+slightly muddied experiment, and A's other three listings still give a clean read.
+
+*Note on evidence:* the pricing paragraph in RESEARCH.md that this replaces described Eloquens and
+Etsy — other platforms. Queried against Gumroad's own catalogue the numbers are different, and
+recorded there in full: our $19 tracker is ~2× the $9.99 category median (not mispriced, but the
+listing must earn the gap), and our $95 service sits at the p75 of 35 comparables.
 
 ---
 

@@ -220,3 +220,27 @@ seller bio is still empty - the storefront root that every product links to says
 who made these. It also blocks all Drive uploads, which is why run logs now live in
 growth/run_logs/. The blocks are not about the commands; retrying is explicitly futile. This
 needs the session run outside auto mode, or a fresh session.
+
+2026-09-13 — Tested the assumption the whole phase rests on, instead of continuing to quote it.
+"Gumroad Discover excludes products with 0 sales and 0 ratings" arrived as an assertion in the
+Phase 2 directive and has been load-bearing ever since: it is why the first sale supposedly
+cannot come from Discover, and why every experiment has been aimed elsewhere. `gumroad products
+comps` reads the live Discover index, so it is directly testable. Querying our own exact product
+names returns 0 results; generic queries in the same categories return up to 20. The claim is
+true, and now it is a tested fact rather than an inherited one.
+
+The same tool falsified the pricing paragraph beside it. RESEARCH.md quoted "$49-83" and "$10-20"
+from Eloquens and Etsy - other platforms. On Gumroad itself the reseller category median is $9.99
+against our $19, the custom-service p75 is $99 against our $95, and there are ZERO UAE VAT or
+Corporate Tax products in the entire catalogue. Three days of "competitor pricing" reasoning had
+been running on numbers from marketplaces we do not sell on. Replaced with the measured table.
+
+Lesson, and it is the third time in four days: an inherited number is not evidence. The Mercari
+fee, the eBay 13.25%, the category-"Other" assumption, and now the pricing comps all arrived as
+confident statements and all needed checking. The cheap habit that keeps catching them is asking
+"can I measure this directly?" before repeating it. `products comps` was available the whole time.
+
+Not automated, deliberately: I put a dated claim on a live listing today ("Corporate Tax is due
+30 September 2026"). That is honest now and false on 1 October, so a one-shot is scheduled for
+2026-10-01T00:20Z to strip it and restore the evergreen lead. Shipping a claim with an expiry and
+no removal scheduled is how the stale numbers I keep fixing got there in the first place.
