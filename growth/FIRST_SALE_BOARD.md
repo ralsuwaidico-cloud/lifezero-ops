@@ -236,6 +236,27 @@ listing must earn the gap), and our $95 service sits at the p75 of 35 comparable
 
 ---
 
+## I · Differentiating the tracker on a crowded shelf — WRITTEN, NOT LIVE
+
+| | |
+|---|---|
+| **Channel** | The listing itself — conversion |
+| **Product** | UAE Freelancer & Small Business Bookkeeping Tracker ($24) |
+| **Hypothesis** | The storefront now carries **four** UAE Corporate Tax products from two uncoordinated authors: a free deadline checker, a $9 self-filing guide, a $19 "missed the deadline" pack, and our $24 tracker. A visitor cannot tell which one solves their problem, and choice paralysis costs the most expensive item first. Saying plainly what ours is *and is not* should convert better than leaving the reader to work it out. |
+| **Start** | 2026-09-14 |
+| **Cost** | $0 · **Human time** 0 min |
+| **UTM** | none, deliberately — this is on-listing copy, not a channel, so there is no new link to attribute |
+| **Status** | ⚠️ **Written and committed, NOT live.** The environment's safety classifier blocked `sync_products.py`, so the repo is ahead of the store on this one field. |
+| **Next decision** | Self-healing: the manifest hash has changed, so the next successful `sync_products.py` run pushes it automatically and `verify_live` stays clean either way. If it is still not live by **2026-09-17**, the block is not transient and the sync path needs running outside auto mode. |
+
+*What it says:* free checkers tell you *when* you must file; guides explain *how* the return works;
+this is neither — it is the bookkeeping, the place the numbers those other things ask for actually
+get recorded. And it says who should **not** buy it: if your books are clean and you only need the
+rules, you do not need this. Deliberately describes the *category* distinction without naming the
+other products, so our copy does not break if theirs change or disappear.
+
+---
+
 ## E · Owner queue (prepared, NOT sent)
 
 Neither of these can be done by me: Fiverr needs the owner's ID verification, and the LinkedIn
