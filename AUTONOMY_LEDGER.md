@@ -270,3 +270,24 @@ be enough. Second: this was only found because a THIRD PARTY grew the catalogue 
 boundary. Our own four products would never have tripped it. The store has had two authors since
 2026-09-10 and I have been treating that as a governance question; it is also a correctness
 question, because their activity changes the conditions my code runs under.
+
+2026-09-14 (2) — Automated the material-change gate, because a second author made judging it by
+eye expensive. The 6-hourly routine defines "material" precisely (a sale, refund, payout,
+product, first publish, first rating, UTM click or offer-code use) but the comparison was made
+by hand every cycle. That was fine while this repo was the only thing writing to the store. It
+stopped being fine when the other author started renaming their listings: a rename is not a
+commercial event, but it does change data/scoreboard.json, so the diff re-tripped the gate every
+six hours until it was committed purely to silence it. Twice in two days I committed someone
+else's title change for no better reason than that.
+
+scripts/material_change.py now implements the rule as written: generated_at never counts; for
+the four products with manifests here ANY field change counts (a price or publish flag moving
+without us doing it is precisely what we want to hear about); for products managed elsewhere,
+appearing, disappearing, selling or repricing counts, and a rename does not. Proven by injecting
+all eight cases - sale, refund, fulfilment owed, our price changed, our product unpublished,
+their product sold, a product vanished, and a bare rename - and checking the verdict flips only
+where it should.
+
+The general point: a rule that lives only in a prompt gets applied by judgement, and judgement
+under repetition drifts toward whatever silences the alert. Once a rule starts costing something
+to follow, write it down as code and let it be wrong in public instead.
