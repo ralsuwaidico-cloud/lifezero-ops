@@ -60,8 +60,19 @@ def common_flags(p):
 
 
 def existing_products():
-    """Map custom_permalink and name -> product dict for idempotency across fresh sessions."""
-    out = run(["products", "list"], check=False)
+    """Map custom_permalink and name -> product dict for idempotency across fresh sessions.
+
+    MUST be the complete list. `products list` pages at 10, and on 2026-09-14 the account
+    crossed that: three of our four products fell onto page two and the unpaginated call
+    reported them missing. Here that is not a cosmetic bug - a product that looks absent is a
+    product this script CREATES, so a truncated page would have silently duplicated the whole
+    catalogue. Hence --all, and hence the assertion below: if the response still carries a
+    next-page cursor then --all did not do its job, and creating anything would be reckless.
+    """
+    out = run(["products", "list", "--all"], check=False)
+    if out.get("next_page_key") or out.get("next_page_url"):
+        raise SystemExit("products list --all still returned a next_page cursor; refusing to "
+                         "sync on a partial catalogue (a missing product would be re-created)")
     m = {}
     for pr in out.get("products", []) or []:
         for k in (pr.get("custom_permalink"), pr.get("name")):

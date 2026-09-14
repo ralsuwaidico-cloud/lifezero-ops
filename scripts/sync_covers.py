@@ -30,7 +30,7 @@ def gumroad(args):
 
 
 def main():
-    live = gumroad(["products", "list"]) or {}
+    live = gumroad(["products", "list", "--all"]) or {}
     by_permalink = {p.get("custom_permalink"): p for p in live.get("products", [])}
 
     rc = 0

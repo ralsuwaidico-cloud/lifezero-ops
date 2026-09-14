@@ -50,7 +50,7 @@ def content_file_count(pid):
 
 
 def main():
-    live = run(["products", "list"]) or {}
+    live = run(["products", "list", "--all"]) or {}
     by_permalink = {p.get("custom_permalink"): p for p in live.get("products", []) if p.get("custom_permalink")}
 
     problems = []

@@ -23,7 +23,7 @@ def run(args):
 def main():
     sales = run(["sales", "list", "--all", "--page-delay", "300ms"]).get("sales", [])
     payouts = run(["payouts", "list"]).get("payouts", [])
-    products = run(["products", "list"]).get("products", [])
+    products = run(["products", "list", "--all"]).get("products", [])
 
     clean = []
     for s in sales:

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-13T18:59:14.255736+00:00",
+ "generated_at": "2026-09-14T07:00:50.664873+00:00",
  "lifetime_sales": 0,
  "lifetime_revenue_usd": 0.0,
  "last_7d_revenue_usd": 0.0,
@@ -10,6 +10,33 @@
  "revenue_by_product_usd": {},
  "open_fulfilment": [],
  "products": [
+  {
+   "id": "mo8L0NIxTciQhgJqPpQDBg==",
+   "name": "Internal state backup V003 (not for sale)",
+   "url": "https://ralsuwaidi3.gumroad.com/l/pfwqb",
+   "published": false,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 0
+  },
+  {
+   "id": "1Iz9yA44ZynrnpP_rxjmwQ==",
+   "name": "Internal build archive 3 - pack (not for sale)",
+   "url": "https://ralsuwaidi3.gumroad.com/l/qbyjzn",
+   "published": false,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 0
+  },
+  {
+   "id": "ne4lbVNHP9oZMZiESRZFXw==",
+   "name": "Missed your UAE Corporate Tax deadline? Penalty worksheet, waiver and reconsideration letters, and the full self-filing guide",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-ct-return-pack",
+   "published": true,
+   "sales_count": 0,
+   "sales_usd_cents": 0.0,
+   "price": 1900
+  },
   {
    "id": "2Mkk9cTw3zWO97gz0wEMFw==",
    "name": "Internal build archive 2 - checker (not for sale)",
@@ -48,7 +75,7 @@
   },
   {
    "id": "5oIJGZZsRfK4NM9CBEMivA==",
-   "name": "UAE Corporate Tax Return 2026 \u2014 self-filing guide: your deadline, Small Business Relief, the AED 500/month penalty clock, and the AED 10,000 waiver most people miss",
+   "name": "How do I file my UAE Corporate Tax return myself? A step-by-step guide for freelancers and small businesses (2026)",
    "url": "https://ralsuwaidi3.gumroad.com/l/uae-ct-return-guide",
    "published": true,
    "sales_count": 0,

@@ -244,3 +244,29 @@ Not automated, deliberately: I put a dated claim on a live listing today ("Corpo
 30 September 2026"). That is honest now and false on 1 October, so a one-shot is scheduled for
 2026-10-01T00:20Z to strip it and restore the evergreen lead. Shipping a claim with an expiry and
 no removal scheduled is how the stale numbers I keep fixing got there in the first place.
+
+2026-09-14 — The worst near-miss so far, and it was mine. `gumroad products list` pages at 10.
+The account crossed that overnight (the other actor added a published $19 UAE CT pack and two
+more drafts, taking it to 13), three of our four products fell onto page two, and every script
+that reads the catalogue was calling the endpoint unpaginated. The immediate symptom was
+cosmetic: verify_live reported "not found on Gumroad" for the UAE tracker, the reseller tracker
+and the $95 service, and pull_sales quietly dropped them from the scoreboard.
+
+The real exposure was not cosmetic. sync_products.py adopts live products by permalink precisely
+so it never creates a duplicate - and a product that is absent from the listing is a product it
+CREATES. The next sync would have duplicated three live listings, including the $95 service,
+against an account that already has two uncoordinated authors writing to it. Nothing had gone
+wrong yet only because no sync ran between the account crossing ten products and this check.
+
+Fixed: --all on all five call sites (pull_sales, sync_covers, sync_files, sync_products,
+verify_live), plus a hard guard in existing_products() that refuses to sync at all if the
+response still carries a next_page cursor - because on that path "missing" means "create", and
+a partial catalogue must never be treated as authoritative. Proven by injection: fed a
+truncated response with next_page_key, the guard raises and nothing is created.
+
+Two lessons, and the second is the uncomfortable one. First: a list endpoint is paginated until
+proven otherwise, and every one of these scripts was written assuming a single page would always
+be enough. Second: this was only found because a THIRD PARTY grew the catalogue past the page
+boundary. Our own four products would never have tripped it. The store has had two authors since
+2026-09-10 and I have been treating that as a governance question; it is also a correctness
+question, because their activity changes the conditions my code runs under.
