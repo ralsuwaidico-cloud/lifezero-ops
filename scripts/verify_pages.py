@@ -46,13 +46,23 @@ def main():
         if page is None:
             problems.append(f"{slug}: could not read the live page")
             continue
-        live = (page.get("content") or "").strip()
+        # A page can hold rich-text `content` OR `custom_html`, and the two are exclusive.
+        # On 2026-09-14 the other author converted ct-deadline-2026 from content to
+        # custom_html; this checker only read `content`, so it reported the page EMPTY and
+        # very nearly had me "restore" my copy over their rewrite. Read both, and say which.
+        live_content = (page.get("content") or "").strip()
+        live_html = (page.get("custom_html") or "").strip()
         local = f.read_text().strip()
-        if not live:
+
+        if not live_content and not live_html:
             problems.append(f"{slug}: the live page is EMPTY - buyers see a blank article")
-        elif live != local:
+        elif live_html and not live_content:
+            problems.append(f"{slug}: live page is now custom_html ({len(live_html)} chars), not "
+                            f"the rich-text content this repo holds ({len(local)} chars). Someone "
+                            f"rewrote it - look before overwriting")
+        elif live_content != local:
             problems.append(f"{slug}: live content differs from growth/pages/{f.name} "
-                            f"({len(live)} chars live vs {len(local)} local)")
+                            f"({len(live_content)} chars live vs {len(local)} local)")
         else:
             checked += 1
     for p in problems:

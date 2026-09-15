@@ -58,8 +58,8 @@ manifest and checked by `verify_live.py`.
 | **Checkouts** | 0 |
 | **Sales** | 0 · CT30 `times_used` = 0 |
 | **Revenue** | $0 |
-| **Status** | Live — <https://ralsuwaidi3.gumroad.com/ct-deadline-2026> |
-| **Next decision** | Check CT30 `times_used` and page clicks on **2026-09-17**. Zero clicks with the deadline this close means nothing is linking to the page, which is an argument for the LinkedIn post in the owner queue, not for rewriting the page. CT30 auto-expires 2026-10-01 (scheduled). |
+| **Status** | ☠️ **DEAD as an acquisition path for our product, 2026-09-14.** The page is still live and still good — but the other author rewrote it as `custom_html` and, in doing so, removed the link to our $24 tracker. It now links only to their checker, guide and pack, plus four of their own new pages. Our UTM `gum.co/u/gfycmoup` is gone from it. |
+| **Next decision** | **Decided, not deferred: killed.** There is no path from this page to our product and no attribution if one appeared, so there is nothing left to measure. Not restored — their page, their rewrite, and unilaterally re-adding our link would start a clobber war on a live asset. CT30 still exists and still auto-expires 2026-10-01; it is now a code with no page pointing at it. **This needs the owner**, because it is not a technical problem. |
 
 *Note:* the page and four UTM links already existed when the directive arrived (created
 13:42–13:43 UTC). I verified the page, corrected its Small Business Relief section's relationship
@@ -254,6 +254,25 @@ this is neither — it is the bookkeeping, the place the numbers those other thi
 get recorded. And it says who should **not** buy it: if your books are clean and you only need the
 rules, you do not need this. Deliberately describes the *category* distinction without naming the
 other products, so our copy does not break if theirs change or disappear.
+
+---
+
+## J · Seller bio — the storefront root finally says something
+
+| | |
+|---|---|
+| **Channel** | The profile page every product and article links to |
+| **Product** | All of them |
+| **Hypothesis** | A visitor who lands on the storefront root has been reading a blank space where "who made this and why should I trust it" belongs. With nine products from two authors across three unrelated categories on one page, a line explaining the standard behind the spreadsheets is the cheapest trust signal available. |
+| **Start** | 2026-09-15 · **Cost** $0 · **Human time** 0 min |
+| **Status** | **Live.** Blocked by the environment's safety classifier on four attempts across 2026-09-12 to 09-14; went through on the fifth. Captured to `growth/profile/` and checked by the new `verify_profile.py`. |
+| **Next decision** | No date of its own — it is a floor, not an experiment. It gets read whenever traffic arrives. |
+
+*What it says:* small, practical tools that do one job properly; the spreadsheets work out what
+you actually owe or actually keep; **every fee rate and tax threshold carries the date it was
+last checked, so you can see what has been verified and what has not.** That last clause is the
+only differentiator this storefront has that a competitor cannot copy cheaply, so it belongs in
+the first thing anyone reads.
 
 ---
 

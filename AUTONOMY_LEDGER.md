@@ -291,3 +291,29 @@ where it should.
 The general point: a rule that lives only in a prompt gets applied by judgement, and judgement
 under repetition drifts toward whatever silences the alert. Once a rule starts costing something
 to follow, write it down as code and let it be wrong in public instead.
+
+2026-09-15 — Two authors on one storefront stopped being a governance question and cost us an
+asset. The other author rewrote the ct-deadline-2026 page as custom_html yesterday. The article
+survived intact - Small Business Relief, the 2029 correction, the AED 500 clock, EmaraTax, MD
+131, even CT30 by name - but the link to OUR $24 tracker did not. The page now links only to
+their checker, guide and pack plus four of their own new pages. Experiment B is dead as an
+acquisition path: no route from that page to our product, and no attribution if one appeared.
+Not restored. Their page, their rewrite; re-adding our link unilaterally would start a clobber
+war on a live asset in the last fifteen days of a deadline campaign. Killed on the board and
+escalated instead.
+
+The near-miss inside it: verify_pages.py only read the rich-text `content` field, so a page that
+had moved to `custom_html` looked EMPTY. It reported "buyers see a blank article" and my next
+instinct was to restore from the repo - which would have destroyed their rewrite. I checked the
+remote first and found a styled 8,014-character page. The check now reads both fields and says
+"someone rewrote it - look before overwriting" instead of "empty". Proven by injection across
+all four branches. The lesson is the one from 2026-09-14 in a sharper form: another author does
+not just change the conditions my code runs under, they change what my code's output MEANS.
+
+Also: the seller bio is finally set, on the fifth attempt across four days. The storefront root -
+the page every product and article links to - had been blank since 2026-09-10 and nothing
+complained, because products had a verifier and pages had a verifier and the profile belonged to
+neither. scripts/verify_profile.py now checks name and bio against growth/profile/, is wired
+into sync_products.py, and fires on drift, on an empty live bio, and on an unreadable profile.
+Third asset class, third verifier; the pattern is now explicit - if it is live and it can change,
+something in this repo compares it to a source of truth.
