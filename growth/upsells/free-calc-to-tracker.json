@@ -1,0 +1,11 @@
+{
+  "name": "Free calculator to paid tracker cross-sell",
+  "cross_sell": true,
+  "universal": false,
+  "offered_product_slug": "reseller-profit-tracker",
+  "selected_product_slugs": ["reseller-free-calculator"],
+  "text": "Track the whole shop, not one item?",
+  "description": "The free calculator prices one item at a time. The tracker is the same fee maths applied to your whole inventory: cost, fees, shipping and profit per item, dead stock by how long it has sat, and a monthly profit summary. Excel 2016+ and Google Sheets, no macros, no subscription. Skip this if you only sell occasionally - the free sheet already does that job.",
+  "discount": null,
+  "paused": false
+}

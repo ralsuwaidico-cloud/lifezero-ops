@@ -168,6 +168,15 @@ def main():
             print("verify_pages reported drift — a live page does not match its source", file=sys.stderr)
             failed = True
 
+        # A checkout cross-sell has no surface anywhere else: it is not on a product page, not
+        # in a description, and a paused or duplicated one looks identical to a healthy one in
+        # every other view. growth/upsells/ is its source of truth.
+        print()
+        if subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_upsells.py")]).returncode != 0:
+            print("verify_upsells reported drift — a checkout cross-sell does not match its source",
+                  file=sys.stderr)
+            failed = True
+
         # The seller profile is the storefront root every product links to. Its bio sat empty
         # from 2026-09-10 to 2026-09-15 with nothing complaining, because products and pages
         # each had a verifier and the profile belonged to neither.

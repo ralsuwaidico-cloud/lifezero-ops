@@ -8,8 +8,9 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-13 19:00 UTC** — every funnel number
-below is still zero across all 14 channels, 8 published products and the CT30 code. Expected:
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-16 06:58 UTC** — every funnel number
+below is still zero across all 14 channels, 9 published products and the CT30 code, and no product
+has a rating. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
 items. Only four of those products are managed from this repo — see "Not mine" at the foot.
 
@@ -276,6 +277,47 @@ the first thing anyone reads.
 
 ---
 
+## K · The free calculator finally has a path to the paid tracker
+
+| | |
+|---|---|
+| **Channel** | Gumroad checkout cross-sell — conversion machinery, not distribution |
+| **Product** | FREE Reseller Profit-After-Fees Calculator ($0 PWYW) → Reseller Inventory & Profit Tracker ($19) |
+| **Hypothesis** | Experiment C's entire thesis is that a free download leads to a paid sale. It had no mechanism. The only route from the free calculator to the $19 tracker was a link inside the downloaded spreadsheet and a UTM link nobody has clicked — both require the reader to go looking. A Gumroad cross-sell is shown *at the free product's checkout*, before the download, to someone who has already decided they want this. That is the difference between a funnel and two unconnected products. |
+| **Start** | 2026-09-16 · **Cost** $0 · **Human time** 0 min |
+| **Discount** | None, deliberately. The standing rule is no price cuts without traffic data, and a cross-sell discount is a price cut wearing a different hat. If the offer is seen and refused, *then* a discount is a real experiment with a real denominator. |
+| **Clicks (UTM)** | n/a — a checkout cross-sell is not a link, so it has no UTM. Its denominator is the free product's checkout count and its numerator is tracker sales. |
+| **Checkouts** | 0 free-calculator checkouts, so 0 impressions of the offer |
+| **Sales** | 0 · **Revenue** $0 |
+| **Status** | **Live and read back from the API** — `muzrk25zYv0KaUKgnacFjQ==`, unpaused, targeted at the free calculator only. Read back after creation: the account went from 3 cross-sells to 4, so this one appended nothing. |
+| **Next decision** | **2026-09-30, and it is conditional on there being a denominator at all.** If the free calculator still has zero checkouts, this experiment has not been run — it has only been built, and the read moves to whenever the first download happens. If there are downloads and no cross-sell conversion, the next variable is the offer (a bundle discount), not the copy. |
+
+*Why this one over the alternatives:* the acquisition side is genuinely exhausted — I re-tested it
+this morning rather than assuming. `products comps --query "reseller profit tracker"` returns eight
+live competitors including a direct one (*Bulk Buy Profit Calculator Spreadsheet | Reseller Profit
+Tracker*, $9.99) and **our tracker is not among them**; `--query "UAE corporate tax"` returns one
+product, a $199 GCC investor map that matched on the word Gulf. Discover still excludes us. With no
+new reach available, the highest-value thing left is to make sure the one arrival we eventually get
+is not wasted — and this was a missing component, not a polish job. The other author has had exactly
+this mechanic wired on both of their ladders since 2026-09-12; ours had none.
+
+*What a buyer sees:* at the free calculator's checkout, "Track the whole shop, not one item?" and an
+honest description of what the $19 tracker adds — per-item profit across the inventory, dead stock by
+age, a monthly profit summary — ending with **"Skip this if you only sell occasionally — the free
+sheet already does that job."** An offer that tells you when not to take it is the only kind this
+storefront can afford to make.
+
+*New check, proven by injection:* `scripts/verify_upsells.py`, wired into `sync_products.py` beside
+the other four verifiers. A cross-sell has no surface anywhere — not on a product page, not in a
+description — so a paused, retargeted, deleted or duplicated one is invisible until you read the API.
+Seven guards, each proven by injecting the fault rather than by reading a correct value: changed
+copy, wrong offered product, wrong audience, `paused`, `universal`, missing/renamed, and duplicates.
+The duplicate guard was proven against a **real** duplicate created on the live account and deleted
+immediately after — it fired and named both IDs. Like `verify_live.py` it reports what it checked and
+prints `UNMANAGED:` for the other author's three.
+
+---
+
 ## E · Owner queue (prepared, NOT sent)
 
 Neither of these can be done by me: Fiverr needs the owner's ID verification, and the LinkedIn
@@ -355,6 +397,32 @@ own research file calls a Discover graveyard, while its free sibling is correctl
 traffic is worth — but it is somebody else's product.
 
 ---
+
+## Found 2026-09-16, not shipped today
+
+**No refund policy is shown to any buyer on this storefront.** `gumroad refund-policy view` returns
+`refund_period: "30"`, `title: "30-day money back guarantee"` — and **`in_effect: false`**. Every one
+of our four products reads `refund_policy: {refund_period: "inherit", inherited: true}`, so they
+inherit a policy that is switched off. A first-time visitor is being asked for $24, or $95 for work
+that does not exist yet, by a seller with no sales and no reviews, and the page says nothing about
+what happens if it is wrong. That is the cheapest trust signal on the internet and it is sitting in
+the off position.
+
+It is not shipped today for one reason: `refund-policy set` is **store-wide**, so it would change the
+commercial terms on the other author's five products too, and creating a refund obligation on someone
+else's sales is not mine to decide. The scoped version is, though — `products update --refund-period
+30` applies per product, so our four can carry it without touching theirs.
+
+**That is tomorrow's experiment (L), scoped to our four products only**, with a matching field check
+in `verify_live.py` the same day and a note to the owner that the store-wide switch is theirs to
+throw if they want it to cover everything.
+
+**Also on the shelf:** the other author has *two* cross-sells offering the same 300-question bank to
+buyers of the same free GH-900 product (`s2zmpEnK1N0Zf_4a_dff2A==` and `sDBVSscvZrfRpua9wAF0mw==`).
+Whether that shows a buyer the offer twice is not something I can test without a purchase, and they
+are not my products. Noted, not touched — it is the exact failure `verify_upsells.py` now guards
+against on ours.
+
 
 ## Rejected for now
 

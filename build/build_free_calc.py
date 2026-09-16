@@ -71,9 +71,13 @@ FEES = [
     ("Poshmark", 0.20, 0.0, 0.0, 0.0, 0.0, "N", 15.0, 2.95, 0.0, "2026-09-10",
      "Flat $2.95 on sales under $15, otherwise 20% of the sale price. No separate processing "
      "fee. The buyer pays shipping directly, so leave 'buyer-paid shipping you receive' at 0."),
-    ("Mercari", 0.10, 0.0, 0.0, 0.0, 0.0, "Y", 0.0, 0.0, 0.0, "2026-09-10",
+    ("Mercari", 0.10, 0.0, 0.0, 0.0, 0.0, "Y", 0.0, 0.0, 0.0, "2026-09-16",
      "Flat 10% on item + buyer-paid shipping. The old 2.9% + $0.50 seller processing fee was "
-     "removed on 6 Jan 2025; buyers now pay a 3.6% Buyer Protection fee instead."),
+     "removed on 6 Jan 2025; buyers now pay a 3.6% Buyer Protection fee instead. NOT in this "
+     "row: Mercari charges $2.00 to send a standard direct-deposit payout ($3.00 for Instant "
+     "Pay). That is per payout, not per sale, so it is not a per-item fee - if you cash out "
+     "once a month it is $2 across every sale that month, and if you cash out per sale it is "
+     "$2 on each. Nowhere else in this sheet charges you to be paid."),
     ("Depop", 0.0, 0.45, 0.45, 0.0, 0.033, "Y", 0.0, 0.0, 0.0, "2026-09-11",
      "No US selling commission since 2024 - it moved to the buyer. What remains on the seller "
      "is 3.3% + $0.45 payment processing, charged on item + shipping + tax. An optional Boosted "

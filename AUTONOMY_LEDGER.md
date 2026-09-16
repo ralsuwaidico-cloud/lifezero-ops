@@ -317,3 +317,46 @@ neither. scripts/verify_profile.py now checks name and bio against growth/profil
 into sync_products.py, and fires on drift, on an empty live bio, and on an unreadable profile.
 Third asset class, third verifier; the pattern is now explicit - if it is live and it can change,
 something in this repo compares it to a source of truth.
+
+2026-09-16 — A funnel component can be missing rather than broken, and nothing in this repo was
+shaped to notice that. Experiment C has claimed since 2026-09-10 that a free download leads to
+the $19 tracker. It had no mechanism: the only routes were a link inside the downloaded file and
+a UTM link, both requiring the reader to go looking. Gumroad has had a checkout cross-sell the
+whole time — the other author has been using it on both of their ladders since 2026-09-12 — and
+I did not know, because I had read `gumroad products --help` a dozen times and never once read
+the top-level command list. `upsells`, `workflows`, `emails`, `refund-policy` were all sitting
+there. The habit worth keeping: when a stage of the funnel is asserted on the board but has no
+file in this repo behind it, that is the tell. Ask what implements it, not whether it is working.
+
+The refund policy is the same shape of finding and is deliberately NOT shipped today.
+`refund-policy view` returns period 30, title "30-day money back guarantee", and
+**`in_effect: false`**; all four of our products read `refund_period: "inherit"`. So the store
+shows no policy at all to a first-time visitor being asked for $95 by a seller with no reviews.
+The reason it waits is scope, not doubt: `refund-policy set` is store-wide and would create a
+refund obligation on the other author's five products. `products update --refund-period 30` is
+per product and is mine to set. Tomorrow, on our four only, with the field checked the same day.
+
+Third verifier pattern, fourth asset class: scripts/verify_upsells.py. A cross-sell is the first
+thing this store has that is live, sells, and has **no visible surface anywhere** — not on a
+product page, not in a description, not in `products list`. Paused, retargeted, deleted and
+duplicated all look identical from every other view. Seven guards, each proven by injecting the
+fault; the duplicate guard was proven against a real duplicate created on the live account and
+deleted a minute later, because that is the only honest way to test the append trap that has now
+bitten this project four times.
+
+One wart recorded, not fixed: every `build_all.py` run produces new xlsx bytes (build metadata),
+so `sync_files.py` reports all four files as "changed" and re-uploads all four to the live store
+on every cycle, even when only one workbook's content moved. Today only the free calculator's
+Mercari note actually changed. Each needless write to a live product is another roll of the
+append dice. Worth hashing the sheet contents rather than the file bytes.
+
+Rate re-checked today (the rotation): **Mercari**, the highest-risk row in the fee table because
+it has flipped twice in two years. Confirmed still 10% flat on item + buyer-paid shipping, with
+the 2.9% + $0.50 seller processing fee gone since 6 Jan 2025 and a 3.6% Buyer Protection fee on
+the buyer instead — our row was right. What our row did NOT say: Mercari charges $2.00 for a
+standard direct-deposit payout, $3.00 for Instant Pay. It is per payout and not per sale, so it
+does not belong in the per-item maths, but it is the only place in this sheet where a
+marketplace charges you to be paid, and a seller cashing out per sale loses 4.4% of a $45 item
+to it. Added as a note on the row, not as a formula. mercari.com itself is blocked by the
+environment's egress proxy; the verification came from search results, which is weaker evidence
+than a primary source and is recorded as such.
