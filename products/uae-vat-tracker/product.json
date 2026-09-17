@@ -21,5 +21,7 @@
     "preview_uae_income.jpg"
   ],
   "publish": true,
-  "category": "business-and-money/accounting"
+  "category": "business-and-money/accounting",
+  "refund_period": "30",
+  "refund_fine_print": "If it is not what you needed, email within 30 days and you get your money back - no form, no questions, and you keep the file. If you find a fee rate or a tax figure in it that is out of date, say which one: it gets corrected for everyone and you are refunded either way. Every rate in the sheet carries the date it was last checked so you can see for yourself what has been verified."
 }

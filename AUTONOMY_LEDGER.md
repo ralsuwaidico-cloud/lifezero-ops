@@ -360,3 +360,41 @@ marketplace charges you to be paid, and a seller cashing out per sale loses 4.4%
 to it. Added as a note on the row, not as a formula. mercari.com itself is blocked by the
 environment's egress proxy; the verification came from search results, which is weaker evidence
 than a primary source and is recorded as such.
+
+2026-09-17 — Two experiments reached their stated decision dates and both were decided rather
+than rolled forward, which is the only thing that stops a board becoming a list of things that
+were once shipped. C's criterion was written on 2026-09-10 as three branches; the branch that
+fired was "no downloads at all → free is not the constraint, distribution is", so C is closed as
+an acquisition experiment after seven days and zero downloads. F was run as a deliberate pair
+with B so that "does the storefront-page channel work?" had an answer instead of a data point;
+both are at zero, so the answer is about the channel and not the topic. Re-tested rather than
+assumed: a search for the storefront domain plus "reseller fees" returns ten pages of Gumroad's
+own fee documentation and third-party Gumroad fee calculators and nothing of ours, six days
+after publishing. No further storefront pages. Both assets stay live; neither gets more effort.
+
+The refund-policy check taught the same lesson twice in one hour, from opposite directions.
+First: `products list` carries `refund_policy: null` for every product whether or not one is
+set, so the check I wrote against the payload already in hand would have reported permanent
+drift on correctly-configured products. A verifier that cries wolf forever is worse than no
+verifier, because it trains you to skim past the one line that matters. `products view` holds
+the real object. **Verify against the endpoint that actually has the field, not the one you
+already fetched.** Second: gated on `if want_refund:`, DELETING `refund_period` from a manifest
+made the entire check evaporate silently. Found by injecting the deletion — reading a correct
+value would never have shown it. Any check gated on a manifest field needs the missing field to
+be drift in its own right, or the check can be disabled by the same edit that breaks the thing.
+
+Third time the environment's safety classifier has blocked a Gumroad write and gone through on
+retry: reseller-profit-tracker's refund update failed while the other three succeeded. What
+matters is that nothing had to notice by eye — sync reported the product FAILED, verify_live
+independently reported the same product still on `inherit`, and the run refused to call itself
+clean. A partial failure that two different mechanisms agree on is the system working.
+
+Rate rotation, UAE side: the VAT standard rate (5%), the mandatory and voluntary registration
+thresholds (AED 375,000 / AED 187,500), the Corporate Tax rate (9%) and its 0% band (AED
+375,000), and the Small Business Relief revenue threshold (AED 3,000,000) — all confirmed
+unchanged for 2026. The real finding is not the rates. It is that **four of those six rows
+carried no checked date at all**, while the seller bio promises that "every fee rate and tax
+threshold carries the date it was last checked, so you can see what has been verified and what
+has not". The one differentiator this storefront has that a competitor cannot cheaply copy was
+only true of the rows someone had happened to touch. All six now carry a source and a date.
+A promise in the marketing copy is a spec; it needs checking like any other.

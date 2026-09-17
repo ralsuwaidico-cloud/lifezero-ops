@@ -19,5 +19,7 @@
   "previews": [],
   "publish": true,
   "custom_receipt": "Thanks! Your download is the Project Brief & Intake Pack - start there.\n\nOpen it, read the START HERE tab, fill in the Brief tab (about five minutes), and paste a few rows of real data into the Data Sample tab if you have them. Then reply to this email with the file attached.\n\nThe 48 hours starts when that reply lands, not at checkout, so take your time getting the brief right - it is the difference between one revision and three. You will get a first version, then one revision round.\n\nIf what you need turns out to be macros/VBA, a live database connection, or a tax filing, you will be told straight away and refunded rather than handed something half-built.",
-  "category": "business-and-money/accounting"
+  "category": "business-and-money/accounting",
+  "refund_period": "30",
+  "refund_fine_print": "You are buying custom work, so the honest version. Send the brief first: if it cannot be built as described, you are refunded in full before any work starts. After delivery, if the sheet does not do what the brief said it would, email within 30 days for a full refund. What cannot be refunded is your time, so the brief form exists to catch a mismatch before either of us spends any."
 }

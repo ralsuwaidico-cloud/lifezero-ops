@@ -8,7 +8,7 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-16 06:58 UTC** — every funnel number
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-17 06:58 UTC** — every funnel number
 below is still zero across all 14 channels, 9 published products and the CT30 code, and no product
 has a rating. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
@@ -85,7 +85,7 @@ to our product, and added the CT30 paragraph. The page's HTML now lives in
 | **Sales** | 0 (pay-what-you-want, $0 floor, $5 suggested) |
 | **Revenue** | $0 |
 | **Status** | Live — <https://ralsuwaidi3.gumroad.com/l/reseller-fee-calculator> |
-| **Next decision** | Downloads and ratings on **2026-09-17**. Downloads but no upsell clicks → the in-file CTA is too quiet. Downloads *and* a rating → the paid tracker should start appearing in Discover; check that directly. No downloads at all → free is not the constraint, distribution is. |
+| **Next decision** | **Decided 2026-09-17: the third branch, and it is the one that was written down.** Seven days live, **zero downloads**. The criterion was explicit — *no downloads at all → free is not the constraint, distribution is* — so C is **closed as an acquisition experiment**. Free was never the objection; nobody has seen it. The product stays live and now earns its keep two other ways: as the work sample linked from the paid listings (G) and as the anchor of the checkout cross-sell (K). It gets no further acquisition effort and no new date. |
 
 *What it is:* one item typed once, priced across eBay, Poshmark, Mercari, Depop and Facebook
 Marketplace side by side, with the best marketplace named and losses flagged red; a 20-row batch
@@ -143,7 +143,7 @@ $0.40 minimum).
 | **Sales** | 0 |
 | **Revenue** | $0 |
 | **Status** | Live — <https://ralsuwaidi3.gumroad.com/reseller-fees-2026> |
-| **Next decision** | Read alongside experiment B on **2026-09-17**. B and F are the same channel with different topics and audiences, so compare them: if both are at zero, the storefront-page channel is not being indexed and the conclusion is about distribution, not topic. If F moves and B does not, the reseller keywords are the live vein and the UAE effort should follow the CT deadline out on 30 September rather than being renewed. |
+| **Next decision** | **Decided 2026-09-17: killed as a channel, kept as an asset.** The comparison was the whole point of running B and F together and it returned the flat answer: both at zero, so the result is about the channel, not the topic — the reseller keywords are not a live vein, storefront pages simply are not being found. Re-tested today rather than assumed: searching for `"ralsuwaidi3.gumroad.com" reseller fees` returns ten pages of Gumroad's own fee documentation and third-party Gumroad fee calculators, **and nothing of ours**, six days after publishing. The article stays up — it is correct, it cost nothing to keep, and it is where the two reseller UTM links live — but **no further storefront pages will be written**, and the 2026-09-24 parking date from the 09-12 diagnosis is now moot for this channel. |
 
 *Why this one over the alternatives:* the funnel is zero at every stage on every channel, which is a
 distribution reading — there is nothing to diagnose about message or offer until something is
@@ -318,6 +318,51 @@ prints `UNMANAGED:` for the other author's three.
 
 ---
 
+## L · A refund policy the buyer can actually see
+
+| | |
+|---|---|
+| **Channel** | The listing itself — trust, not distribution |
+| **Product** | All four managed here |
+| **Hypothesis** | Every product on this storefront was set to `refund_period: "inherit"`, inheriting an account policy that reports **`in_effect: false`** — so a first-time visitor was being asked for $24, or $95 for work that does not exist yet, by a seller with no sales and no reviews, on a page that said nothing at all about what happens if it is wrong. A stated guarantee is the cheapest trust signal there is and it was switched off. |
+| **Start** | 2026-09-17 · **Cost** $0 (a refund liability is only a cost once there is revenue) · **Human time** 0 min |
+| **UTM** | none — on-listing terms, not a channel |
+| **Clicks / Sales / Revenue** | 0 / 0 / $0 |
+| **Status** | **Live on all four, read back per product**: `period=30, inherited=False, title "30-day money back guarantee"`, 383–384 characters of fine print each. |
+| **Next decision** | Read with H and I on **2026-10-01**. Like them it is not measurable at zero traffic; unlike them it is a floor rather than a bet — if it is ever the thing that loses a sale, the store has bigger problems than this row. |
+
+*Why it was not shipped store-wide:* `refund-policy set` is account-level and would have changed the
+commercial terms on the other author's five products, creating a refund obligation on sales that are
+not ours. `products update --refund-period` is per product, which is exactly the scope this repo owns.
+**The store-wide switch is still off and is the owner's to throw** if they want it to cover everything.
+
+*What a buyer reads*, on the three spreadsheets: email within 30 days and you get your money back, no
+form, no questions, **and you keep the file** — and if you find a fee rate or tax figure that is out of
+date, say which one, it gets corrected for everyone and you are refunded either way. On the $95 custom
+service the terms are different because the product is: send the brief first and you are refunded in
+full before any work starts if it cannot be built as described; after delivery, 30 days if it does not
+do what the brief said. It ends by saying what cannot be refunded — your time — which is the reason the
+brief form exists at all.
+
+*Two things the check caught on its first day, both before shipping:*
+
+1. **`products list` carries `refund_policy: null` for every product**, set or not. A check built on
+   the list payload already in hand would have reported permanent drift on correctly-configured
+   products — a false alarm that never clears and teaches you to ignore the verifier. `products view`
+   holds the real object. Verify against the endpoint that actually has the field.
+2. **The check had a hole the moment it existed.** Gated on the manifest declaring a period, *deleting*
+   the field from a manifest made the entire check vanish silently while the guarantee could disappear
+   from the store. Found by injecting the deletion, not by reading a correct value. An undeclared
+   `refund_period` is now itself drift.
+
+*Also caught, by the verifier doing its job:* the `reseller-profit-tracker` update failed mid-sync
+while the other three succeeded, and `verify_live` refused to call the run clean. It went through on a
+retry a minute later — the environment's safety classifier again, intermittent rather than a wall, for
+the third time on this project. A sync that reports a partial failure and a verifier that agrees with
+it is the system working.
+
+---
+
 ## E · Owner queue (prepared, NOT sent)
 
 Neither of these can be done by me: Fiverr needs the owner's ID verification, and the LinkedIn
@@ -398,24 +443,10 @@ traffic is worth — but it is somebody else's product.
 
 ---
 
-## Found 2026-09-16, not shipped today
+## Found 2026-09-16, shipped 2026-09-17
 
-**No refund policy is shown to any buyer on this storefront.** `gumroad refund-policy view` returns
-`refund_period: "30"`, `title: "30-day money back guarantee"` — and **`in_effect: false`**. Every one
-of our four products reads `refund_policy: {refund_period: "inherit", inherited: true}`, so they
-inherit a policy that is switched off. A first-time visitor is being asked for $24, or $95 for work
-that does not exist yet, by a seller with no sales and no reviews, and the page says nothing about
-what happens if it is wrong. That is the cheapest trust signal on the internet and it is sitting in
-the off position.
-
-It is not shipped today for one reason: `refund-policy set` is **store-wide**, so it would change the
-commercial terms on the other author's five products too, and creating a refund obligation on someone
-else's sales is not mine to decide. The scoped version is, though — `products update --refund-period
-30` applies per product, so our four can carry it without touching theirs.
-
-**That is tomorrow's experiment (L), scoped to our four products only**, with a matching field check
-in `verify_live.py` the same day and a note to the owner that the store-wide switch is theirs to
-throw if they want it to cover everything.
+**No refund policy was shown to any buyer on this storefront.** Shipped today as experiment L, scoped
+to our four products. The store-wide setter remains off and remains the owner's call.
 
 **Also on the shelf:** the other author has *two* cross-sells offering the same 300-question bank to
 buyers of the same free GH-900 product (`s2zmpEnK1N0Zf_4a_dff2A==` and `sDBVSscvZrfRpua9wAF0mw==`).

@@ -31,6 +31,19 @@ def run(args, parse=True):
         return None
 
 
+def refund_policy(pid):
+    """The product's refund policy, which `products list` does not carry.
+
+    Caught on the day this check was written: the list payload has `refund_policy: null` for
+    every product, set or not, so a check built on the list endpoint reports drift on a product
+    that is configured correctly - a false alarm that never goes away and trains you to ignore
+    the verifier. `products view` returns the real object. Verify against the endpoint that
+    actually holds the field, not the one already in hand.
+    """
+    out = run(["products", "view", pid])
+    return ((out or {}).get("product") or {}).get("refund_policy") or {}
+
+
 def content_file_count(pid):
     """Number of file embeds in the product's content pages."""
     p = subprocess.run(["gumroad", "products", "content", "get", pid,
@@ -99,6 +112,38 @@ def main():
         want_cat = m.get("category")
         if want_cat and pr.get("category") != want_cat:
             problems.append(f"{slug}: category is {pr.get('category')!r}, manifest says {want_cat!r}")
+
+        # Shipped 2026-09-17 and therefore checked 2026-09-17. The trap here is specific:
+        # `refund_period: "inherit"` is what every product read BEFORE this change, and the
+        # account policy it inherits reports `in_effect: false` - so "inherit" renders as no
+        # refund terms shown to the buyer at all, while looking like a configured value. A
+        # product that silently reverts to inherit would show a clean listing and a silent page.
+        # Injection found the blind spot the moment the check existed: gated on the manifest
+        # declaring a period, DELETING the field from a manifest made the whole check vanish
+        # silently while the guarantee could disappear from the store. This storefront has
+        # decided every product carries 30 days, so an undeclared one is itself the drift.
+        want_refund = m.get("refund_period")
+        if not want_refund:
+            problems.append(f"{slug}: manifest declares no refund_period - every product on "
+                            f"this storefront is supposed to carry one, and a missing field "
+                            f"silently disables the rest of this check")
+        if want_refund:
+            live_rp = refund_policy(pr["id"])
+            got_refund = str(live_rp.get("refund_period") or "")
+            if got_refund != str(want_refund):
+                problems.append(f"{slug}: refund period is {got_refund!r}, manifest says "
+                                f"{str(want_refund)!r}"
+                                + (" - 'inherit' means the buyer is shown nothing, because the "
+                                   "account policy is not in effect" if got_refund == "inherit"
+                                   else ""))
+            if live_rp.get("inherited"):
+                problems.append(f"{slug}: refund policy is still inherited from the account, "
+                                f"which reports in_effect:false - no terms reach the buyer")
+            want_fp = (m.get("refund_fine_print") or "").strip()
+            got_fp = (live_rp.get("fine_print") or "").strip()
+            if want_fp and got_fp != want_fp:
+                problems.append(f"{slug}: refund fine print differs from the manifest "
+                                f"({len(got_fp)} chars live vs {len(want_fp)} local)")
 
         # `covers add` appends, so three cover pushes once left every product showing the same
         # image three times. Count them.

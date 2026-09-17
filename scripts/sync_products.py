@@ -56,6 +56,13 @@ def common_flags(p):
     # Category "Other" is where Gumroad Discover buries a product, so the manifest owns it.
     if p.get("category"):
         flags += ["--category", p["category"]]
+    # The account-level policy exists but reads in_effect:false, and every product was set to
+    # "inherit" - so a buyer saw no refund terms at all. Per product is the scope this repo
+    # owns; the store-wide switch would also change the other author's listings.
+    if p.get("refund_period"):
+        flags += ["--refund-period", str(p["refund_period"])]
+    if p.get("refund_fine_print"):
+        flags += ["--refund-fine-print", p["refund_fine_print"]]
     return flags
 
 
