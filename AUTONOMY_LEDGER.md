@@ -398,3 +398,50 @@ threshold carries the date it was last checked, so you can see what has been ver
 has not". The one differentiator this storefront has that a competitor cannot cheaply copy was
 only true of the rows someone had happened to touch. All six now carry a source and a date.
 A promise in the marketing copy is a spec; it needs checking like any other.
+
+2026-09-18 — The one test I had never run was whether the storefront is on the right marketplace
+at all, and it took a single search. Eight days of listing SEO, storefront pages, cross-links,
+copy and trust work have all been conversion work performed on the assumption that Gumroad
+product pages compete in search for their own category. They do not. Searching
+`reseller profit tracker spreadsheet gumroad ebay poshmark mercari` — our exact category, with
+the word *gumroad* in the query — returns five Etsy listings, an Indie Hackers post, two
+independent blogs and a YouTube video, and **zero gumroad.com product pages**.
+
+The part that makes it conclusive rather than suggestive: **the competitor does not appear
+either.** Gumroad's own Discover index told me on 2026-09-16 that *Bulk Buy Profit Calculator
+Spreadsheet | Reseller Profit Tracker* is live at $9.99 on `resaleresources.gumroad.com`. A
+real, indexed, selling product in exactly this category, from a shop older than ours, is also
+absent from the results. So the absence is not about our page's age or our snippet. Experiment A
+was closed six days before its read date on better evidence than the read would have produced -
+I had planned to conclude "nothing links to these pages", which is a much weaker and slightly
+wrong conclusion.
+
+The method is the lesson. For eight days I diagnosed inside the funnel — impressions, clicks,
+conversion — and every stage read zero, which I kept attributing to being new. **I never
+checked whether a competitor at the same funnel stage was visible.** A control is what turns
+"we are at zero" into "zero is what this channel pays". When every number you have is zero,
+the next measurement should be somebody else's numbers, not another of your own.
+
+It also overturned a decision I had made on the wrong axis. On 2026-09-12 I filed Etsy under
+"Rejected for now — $15 to open a shop, revisit after the first revenue." That was a judgement
+about cost, made with no evidence about where the buyers were. $15 is not a barrier when the
+alternative is indefinite zero, and the economics turn out to be a wash: Etsy's 6.5% plus
+processing nets $16.74 on a $19 sale against Gumroad's $16.60. **Rejections made on cost rather
+than on evidence should carry a re-open condition, not a vague "revisit later".**
+
+The owner queue went from two items to four and, more usefully, acquired an order. It had been
+a folder of files with no priority, which is a usability flaw in my own work: four unsent items
+are worse than two if nothing tells the owner which one is ten minutes and which is an hour.
+`growth/owner_queue/README.md` now ranks them by expected value per minute. The new first item
+is the direct ask — five to ten people who already know the owner — which is the standard way a
+store with no audience gets its first sale, and which nobody had prepared in eight days of
+building broadcast channels. It explicitly refuses to ask anyone to buy as a favour or to leave
+a review, because a politeness sale that gets refunded is worse than no sale.
+
+Rate rotation, reseller side: **eBay** confirmed still 13.6% of the total plus $0.40 per order,
+$0.30 at or under $10 — our row was right. New detail our row did not carry: the 13.6% applies
+to the first $7,500 of an order and drops to 2.35% above that. Not modelled, because a tier
+that fires above $7,500 adds a formula branch that almost no user will reach and every user
+could get wrong; recorded as a note saying the sheet costs such an order pessimistically and to
+work it by hand. Same judgement as Mercari's payout fee yesterday: when a real fee does not fit
+the per-item model, say so in the row rather than bending the maths to include it.

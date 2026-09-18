@@ -64,10 +64,13 @@ def widths(ws, w):
 #          processing %, fee charged on buyer-paid shipping?, flat fee under $, flat fee $,
 #          minimum fee $, last checked, note
 FEES = [
-    ("eBay", 0.136, 0.40, 0.30, 10.0, 0.0, "Y", 0.0, 0.0, 0.0, "2026-09-10",
-     "Final value fee 13.6% of the total (item + buyer-paid shipping + handling) plus $0.40 "
-     "per order, or $0.30 on orders of $10 or less. Most categories; books/media and some "
-     "others differ."),
+    ("eBay", 0.136, 0.40, 0.30, 10.0, 0.0, "Y", 0.0, 0.0, 0.0, "2026-09-18",
+     "Final value fee 13.6% of the total (item + buyer-paid shipping + handling + the sales "
+     "tax eBay collects) plus $0.40 per order, or $0.30 on orders of $10 or less. Most "
+     "categories; books/media and some others differ. NOT in this row: the 13.6% applies to "
+     "the first $7,500 of an order and drops to 2.35% above that. This sheet charges 13.6% on "
+     "the whole amount, so an order over $7,500 is costed slightly pessimistically - if you "
+     "sell watches, handbags or collectibles at that level, work that one out by hand."),
     ("Poshmark", 0.20, 0.0, 0.0, 0.0, 0.0, "N", 15.0, 2.95, 0.0, "2026-09-10",
      "Flat $2.95 on sales under $15, otherwise 20% of the sale price. No separate processing "
      "fee. The buyer pays shipping directly, so leave 'buyer-paid shipping you receive' at 0."),

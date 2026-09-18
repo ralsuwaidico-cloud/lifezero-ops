@@ -8,7 +8,7 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-17 06:58 UTC** — every funnel number
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-18 06:58 UTC** — every funnel number
 below is still zero across all 14 channels, 9 published products and the CT30 code, and no product
 has a rating. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
@@ -32,7 +32,7 @@ items. Only four of those products are managed from this repo — see "Not mine"
 | **Sales** | 0 |
 | **Revenue** | $0 |
 | **Status** | Shipped |
-| **Next decision** | Google needs 1–3 weeks to re-crawl. Re-read on **2026-09-24**. If still zero, the problem is not the snippet — it is that nothing links to these pages, and effort moves to the owner-queue channels. |
+| **Next decision** | **Decided 2026-09-18, six days early and on better evidence than waiting would have produced: closed.** The plan was to re-read on 09-24 and conclude "nothing links to these pages". The actual finding is worse and more useful than that. Searching our exact category *with the word gumroad in the query* — `reseller profit tracker spreadsheet gumroad ebay poshmark mercari` — returns five Etsy listings, an Indie Hackers post, two independent blogs, a YouTube video, and **zero gumroad.com product pages**. Not ours, and **not the established competitor that Gumroad's own Discover index says exists** (*Bulk Buy Profit Calculator Spreadsheet \| Reseller Profit Tracker*, $9.99, `resaleresources.gumroad.com`). A seller with a real, indexed, selling product does not appear either. So this was never about our page being new or our snippet being weak: **Gumroad product pages are not competing in this index at all.** Rewriting the first 155 characters to carry the query cannot help in a marketplace that is not in the results. There is nothing left to re-read on 09-24. |
 
 *What changed:* all three paid listings rewritten so the first sentence carries the query
 ("A UAE VAT return (VAT 201) and Corporate Tax estimate…", "See your profit after eBay,
@@ -363,11 +363,50 @@ it is the system working.
 
 ---
 
+## M · Etsy — the marketplace the buyers are actually in
+
+| | |
+|---|---|
+| **Channel** | Etsy search (its own internal one, and Google) |
+| **Product** | Reseller Inventory & Profit Tracker ($19). One listing, one variable. |
+| **Hypothesis** | Eight days of work has assumed the storefront is on the right marketplace. It is not. A search for our exact category returns five Etsy listings and zero Gumroad product pages — including zero for a competitor Gumroad's own index says is live and selling. Etsy also has its own internal search, where the buyer is already trying to buy a spreadsheet rather than being shown one. |
+| **Start** | Prepared 2026-09-18 · **not live** |
+| **Cost** | $0.20 per listing, renewed every four months if unsold. 6.5% + processing ≈ **$16.74 net on $19**, against $16.60 on Gumroad — the economics are a wash. A one-time shop set-up fee applies in some countries. |
+| **Owner time** | ~30 min shop setup (identity, bank, card), then ~20 min for the listing itself |
+| **UTM** | **None, and deliberately.** Etsy prohibits directing buyers off-site, so there is no link to instrument; attribution comes from Etsy's own sales data, which is cleaner than a UTM anyway. |
+| **Status** | **Owner-gated.** Title, thirteen tags, full description, price reasoning and the file to upload are written and paste-ready in `growth/owner_queue/etsy_listing.md`. I cannot open a shop: it needs a real identity and a bank account. |
+| **Next decision** | On the day it goes live plus 14 days, read Etsy's own view count against sales. Views but no sales → the listing photos and price, which is where Etsy differs most from Gumroad. No views → Etsy's search does not favour a new shop either, and the conclusion is about shop age rather than marketplace. |
+
+*What changed my mind:* on 2026-09-12 I filed Etsy under "Rejected for now — $15 to open a shop,
+revisit after the first revenue". That was a judgement about cost made without any evidence about
+where the buyers were, and it was wrong. $15 is not a barrier when the alternative is indefinite
+zero; the question was always which marketplace these people search, and now there is an answer.
+
+*The honest gap:* I could not read live Etsy prices — `etsy.com` is blocked by this environment's
+egress proxy — so the $19 recommendation is "match Gumroad so the marketplace is the only variable",
+not a researched comps number. Price is the obvious second test, against real traffic.
+
+*What this costs if I am wrong:* $0.20 and an hour of the owner's time, once.
+
+---
+
 ## E · Owner queue (prepared, NOT sent)
 
-Neither of these can be done by me: Fiverr needs the owner's ID verification, and the LinkedIn
-post has to come from a real person's account and voice. Both are written and ready in
-`growth/owner_queue/`; the owner should only need to press Post.
+**Now four items, and `growth/owner_queue/README.md` ranks them by expected value per minute of
+the owner's time.** None can be done by me: Fiverr and Etsy need identity and a bank account, the
+LinkedIn post and the direct ask need a real person's voice. All four are written and ready; the
+owner should only need to paste and press send.
+
+| Order | Item | Owner time | Note |
+|---|---|---|---|
+| 1 | `direct_ask.md` | **5 min** | **New today.** Five to ten people who already know the owner. The cheapest route to the first sale and, more to the point, the first review — which is what unlocks Gumroad Discover for the whole storefront. Explicitly does not ask anyone to buy as a favour or to leave a review. |
+| 2 | `etsy_listing.md` | ~50 min total | **New today.** Experiment M above. |
+| 3 | `linkedin_post.md` | 5 min | **Expires 30 September — 12 days.** |
+| 4 | `fiverr_gig.md` | ~60 min | Highest raw EV, slowest to pay. |
+
+Items 1 and 3 together are ten minutes and both are time-sensitive.
+
+The two original items, unchanged since 2026-09-10:
 
 | | Fiverr gig | LinkedIn CT-deadline post |
 |---|---|---|
@@ -457,7 +496,12 @@ against on ours.
 
 ## Rejected for now
 
-- **Etsy** — $15 to open a shop. Revisit after the first revenue.
+- ~~**Etsy** — $15 to open a shop. Revisit after the first revenue.~~ **Reversed 2026-09-18.** That
+  was a decision made on cost rather than on where the buyers are, and the evidence above overturns
+  it: Etsy owns this query and Gumroad does not appear in it at all. Opening a shop is free (a
+  one-time set-up fee applies in some countries), listings are $0.20 each, and Etsy's 6.5% plus
+  processing nets $16.74 on a $19 sale against Gumroad's $16.60 — the economics are a wash and the
+  visibility is not. Now experiment M, prepared in `growth/owner_queue/etsy_listing.md`.
 - **Reddit / UAE Facebook and Telegram groups** — promotion is against the rules or needs
   community standing. Only the owner, only where a real answer is on-topic.
 - **Paid ads** — no budget, and no conversion data to spend it against.
