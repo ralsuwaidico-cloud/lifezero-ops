@@ -445,3 +445,51 @@ that fires above $7,500 adds a formula branch that almost no user will reach and
 could get wrong; recorded as a note saying the sheet costs such an order pessimistically and to
 work it by hand. Same judgement as Mercari's payout fee yesterday: when a real fee does not fit
 the per-item model, say so in the row rather than bending the maths to include it.
+
+2026-09-19 — A stale number survived in the place I was least likely to look: the marketing copy.
+The UAE listing's feature list told buyers Small Business Relief covers "periods ending on/before
+31 Dec 2026", while **the very next paragraph of the same description** said "the window now runs
+to 2029". I corrected the workbook on 2026-09-10 when MD 131 of 2026 extended it, and I corrected
+the explainer link text, and the bullet list kept the old figure for nine days on a live page.
+Fixed and read back from the store today. The pattern is now unmistakable: on 09-14 it was the
+workbook, on 09-17 it was four rate rows with no checked date, today it is the listing. **A fact
+that appears in more than one artefact needs one source, or every copy of it drifts
+independently.** The workbook has build assertions; the listing copy has nothing, and that gap is
+the next thing worth closing.
+
+The dated-claim problem is now machinery instead of a reminder. The plan for "UAE Corporate Tax is
+due 30 September 2026" was a one-shot scheduled for 1 October telling a future session to rewrite
+the copy. Three things were wrong with that. The replacement would be authored on the day, under
+time pressure, through an environment whose safety classifier has blocked a Gumroad write three
+times. The trigger's prompt carried its own idea of what the evergreen lead should say, so there
+were two sources of truth and they had already diverged. And nothing would have noticed if the
+firing silently failed. Now: the replacement copy is staged in the manifest
+(`summary_after`, `description_html_after`, `copy_expires`), `scripts/expire_deadline_copy.py`
+does the swap and runs at the head of every sync, and **`verify_live.py` fails if the live listing
+still carries the dated phrase after its expiry** — so the check is on what buyers see, not on
+whether a script ran. Proven by injection at `--as-of 2026-10-01`, and it warns for three days
+beforehand. The one-shot was rewritten from an authoring instruction into a verification one.
+**A reminder to do something by hand later is the weakest possible control; write the thing now
+and let a checker fail if it does not happen.**
+
+Two findings from testing rather than assuming, both cheap:
+
+**The Gumroad page is technically fine.** `curl` on our product page: HTTP 200, 50KB of
+server-rendered HTML, correct title, meta description and canonical, no `noindex`; robots.txt
+disallows only `/purchases/`. So yesterday's conclusion needs sharpening rather than revising —
+the page is perfectly indexable and simply cannot outrank an entrenched field from a new subdomain
+with no inbound links. That is a useful negative: there is no technical defect to go and fix, and
+a whole class of "maybe improve the page" work is now closed off rather than sitting on the list.
+
+**And a control test answers one query, not a category.** After yesterday's Etsy result the
+tempting generalisation was "marketplaces beat Gumroad, put everything on Etsy". Running the same
+search on the UAE side instead returns specialist accounting and tax-template sites, a
+Freelancer.co.uk project, and **Eloquens** with a directly comparable UAE VAT201 tracker — and
+**zero Etsy results** alongside zero Gumroad ones. Etsy is a craft-and-printables marketplace and
+UAE tax compliance buyers are not in it. Half the catalogue would have gone to the wrong place,
+and the cost of finding that out was one search.
+
+The owner queue is now five items and nothing in it has been actioned in nine days. That is not a
+complaint about the owner, it is the honest shape of the constraint: everything I can do alone is
+done and verified, and every remaining route to a first buyer needs a person. Worth stating plainly
+rather than letting the queue quietly grow.

@@ -8,7 +8,7 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-18 06:58 UTC** — every funnel number
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-19 06:58 UTC** — every funnel number
 below is still zero across all 14 channels, 9 published products and the CT30 code, and no product
 has a rating. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
@@ -223,7 +223,7 @@ post is worthless after 30 September — 18 days. Both items have been ready sin
 | **Start** | 2026-09-13 · **Cost** $0 · **Human time** 0 min |
 | **Clicks (UTM)** | 0 · **Sales** 0 · **Revenue** $0 · CT30 `times_used` 0 |
 | **Status** | Live and verified — first 155 chars now read *"UAE Corporate Tax is due 30 September 2026. Log your invoices and expenses once and this fills in your VAT 201 boxes and your Corporate Tax estimate."* Summary changed to match. |
-| **Next decision** | **2026-10-01, and it is a removal, not a read.** The claim expires with the deadline; a one-shot is scheduled to strip it and restore the evergreen lead. Any signal before then is a bonus — with zero traffic this is not expected to be readable, and it is not the reason for shipping it. |
+| **Next decision** | **2026-10-01, and it is a removal, not a read — now automated rather than remembered.** As of 2026-09-19 the replacement copy is written and staged in the manifest (`summary_after`, `description_html_after`, `copy_expires: 2026-09-30`), `scripts/expire_deadline_copy.py` performs the swap and runs at the head of every sync, and `verify_live.py` fails if the live listing still carries `30 September 2026` after that date. Relying on a scheduled prompt firing into a healthy session was the weak part of the original plan — the environment's classifier has blocked a Gumroad write three times, and writing replacement copy on the day, under time pressure, through an intermittent block, is how a listing ends up advertising a deadline that has passed. Proven by injection at `--as-of 2026-10-01`. |
 
 *Why now rather than at experiment A's 2026-09-24 read:* this does contaminate A's read for one of
 four products, and normally that would be a reason to wait. It is not, because the asset expires
@@ -390,9 +390,35 @@ not a researched comps number. Price is the obvious second test, against real tr
 
 ---
 
+## N · Eloquens — the UAE half needs a different marketplace from the reseller half
+
+| | |
+|---|---|
+| **Channel** | Eloquens (a finance and accounting template marketplace) |
+| **Product** | UAE Freelancer & Small Business Bookkeeping Tracker ($24) |
+| **Hypothesis** | Yesterday's control test said Etsy owns the reseller query. The obvious next move was to put the UAE tracker on Etsy too. Running the same test rather than assuming is what stopped that: `UAE corporate tax VAT return spreadsheet template excel freelancer small business download` returns specialist UAE accounting and tax-template sites, a Freelancer.co.uk project, and **Eloquens** carrying a directly comparable product — *UAE VAT201 Return Tracker — FTA-Compliant Excel Template, 13-Box, Auto-Calculated, 2025–2027*. **Zero Gumroad results and zero Etsy results.** Etsy is a craft-and-printables marketplace; UAE tax compliance buyers are not there. |
+| **Start** | Prepared 2026-09-19 · **not live** |
+| **Cost** | Publishing appears free. Authors keep **85–90% of net sales**, comparable to or better than Gumroad. **Payouts are monthly with an $80 minimum**, so roughly four $24 sales accumulate before money moves. |
+| **Owner time** | ~20 min author account + ~15 min listing |
+| **UTM** | None — the sale happens on Eloquens; attribution is its own sales and view data. |
+| **Status** | **Owner-gated.** Title, category, full description and price reasoning are paste-ready in `growth/owner_queue/eloquens_listing.md`. An author account needs a real identity and payout details. |
+| **Next decision** | Live date plus 14 days, read Eloquens' own view count against sales. Same three branches as M: views and no sales → price or presentation; no views → a new author does not surface there either, and the constraint is author standing rather than marketplace. |
+
+*The reason this experiment exists at all is that I nearly skipped the test.* After yesterday's
+Etsy finding the tempting move was to generalise — "marketplaces beat Gumroad, list everything on
+Etsy" — and it would have been wrong for half the catalogue. **A control test answers one query,
+not a category.** Verified at a cost of one search.
+
+*Honest limits:* `eloquens.com` is blocked by this environment's egress proxy, so the 85–90% and
+the $80 threshold come from their published author terms as reported in search results, not from a
+page I read. I also could not see the comparable product's price or download count, which would
+have been the single most useful number here.
+
+---
+
 ## E · Owner queue (prepared, NOT sent)
 
-**Now four items, and `growth/owner_queue/README.md` ranks them by expected value per minute of
+**Now five items, and `growth/owner_queue/README.md` ranks them by expected value per minute of
 the owner's time.** None can be done by me: Fiverr and Etsy need identity and a bank account, the
 LinkedIn post and the direct ask need a real person's voice. All four are written and ready; the
 owner should only need to paste and press send.
@@ -401,10 +427,11 @@ owner should only need to paste and press send.
 |---|---|---|---|
 | 1 | `direct_ask.md` | **5 min** | **New today.** Five to ten people who already know the owner. The cheapest route to the first sale and, more to the point, the first review — which is what unlocks Gumroad Discover for the whole storefront. Explicitly does not ask anyone to buy as a favour or to leave a review. |
 | 2 | `etsy_listing.md` | ~50 min total | **New today.** Experiment M above. |
-| 3 | `linkedin_post.md` | 5 min | **Expires 30 September — 12 days.** |
-| 4 | `fiverr_gig.md` | ~60 min | Highest raw EV, slowest to pay. |
+| 3 | `eloquens_listing.md` | ~35 min | **New today.** Experiment N above. |
+| 4 | `linkedin_post.md` | 5 min | **Expires 30 September — 11 days.** |
+| 5 | `fiverr_gig.md` | ~60 min | Highest raw EV, slowest to pay. |
 
-Items 1 and 3 together are ten minutes and both are time-sensitive.
+Items 1 and 4 together are ten minutes and both are time-sensitive.
 
 The two original items, unchanged since 2026-09-10:
 

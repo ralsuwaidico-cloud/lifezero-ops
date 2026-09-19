@@ -10,7 +10,9 @@ content is a file embed, so content is checked through `products content get`.
 
 Exit code 0 = every published product matches its manifest. Non-zero = drift, listed.
 """
+import datetime as dt
 import json
+import os
 import pathlib
 import subprocess
 import sys
@@ -118,6 +120,29 @@ def main():
         # account policy it inherits reports `in_effect: false` - so "inherit" renders as no
         # refund terms shown to the buyer at all, while looking like a configured value. A
         # product that silently reverts to inherit would show a clean listing and a silent page.
+        # A dated claim is the only kind of copy that goes wrong while nobody touches it.
+        # "UAE Corporate Tax is due 30 September 2026" is the strongest sentence on that
+        # listing until 1 October, when it becomes a page telling buyers about a deadline they
+        # have already missed. scripts/expire_deadline_copy.py swaps in the evergreen version;
+        # this is the check that the swap actually reached the store, and it reads the LIVE
+        # description rather than the manifest, because a manifest that was swapped and never
+        # synced looks identical to one that was.
+        exp = m.get("copy_expires")
+        if exp:
+            as_of = os.environ.get("VERIFY_AS_OF")
+            today = dt.date.fromisoformat(as_of) if as_of else dt.date.today()
+            if today > dt.date.fromisoformat(exp):
+                live_text = (pr.get("description") or "") + " " + (pr.get("custom_summary") or "")
+                stale = [p for p in m.get("expired_phrases", []) if p in live_text]
+                if stale:
+                    problems.append(f"{slug}: the live listing still claims {stale[0]!r} after "
+                                    f"{exp} - buyers are being sold on a deadline that has "
+                                    f"passed. Run scripts/expire_deadline_copy.py and sync")
+            days = (dt.date.fromisoformat(exp) - today).days
+            if 0 <= days <= 3:
+                print(f"NOTE: {slug} dated copy expires in {days} day(s) ({exp}); "
+                      f"expire_deadline_copy.py will swap it")
+
         # Injection found the blind spot the moment the check existed: gated on the manifest
         # declaring a period, DELETING the field from a manifest made the whole check vanish
         # silently while the guarantee could disappear from the store. This storefront has

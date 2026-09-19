@@ -88,6 +88,14 @@ def existing_products():
 
 
 def main():
+    # Dated copy first: a listing whose first sentence names a deadline stops being true on a
+    # known date, and the manifest is where that gets corrected before anything is pushed.
+    if not DRY:
+        if subprocess.run([sys.executable, str(ROOT / "scripts" / "expire_deadline_copy.py")]).returncode != 0:
+            raise SystemExit("expire_deadline_copy reported a problem; refusing to sync copy "
+                             "that may still carry an expired claim")
+        print()
+
     results = []
     existing = existing_products() if not DRY else {}
     for d in sorted(PRODUCTS.iterdir()):
