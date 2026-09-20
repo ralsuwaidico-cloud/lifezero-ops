@@ -8,7 +8,7 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-19 06:58 UTC** — every funnel number
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-20 06:58 UTC** — every funnel number
 below is still zero across all 14 channels, 9 published products and the CT30 code, and no product
 has a rating. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
@@ -413,6 +413,40 @@ not a category.** Verified at a cost of one search.
 the $80 threshold come from their published author terms as reported in search results, not from a
 page I read. I also could not see the comparable product's price or download count, which would
 have been the single most useful number here.
+
+---
+
+## O · One home for every number that appears in more than one place
+
+| | |
+|---|---|
+| **Channel** | None — this is the product-correctness 10%, and it is the direct consequence of yesterday's bug |
+| **Product** | All four, plus the storefront article and every unsent owner-queue draft |
+| **Hypothesis** | Yesterday the UAE listing told buyers Small Business Relief ended 31 Dec 2026 while the next paragraph of the same description said the window runs to 2029. The workbook had been right for nine days. The reason is structural, not careless: **the workbook has build assertions and the prose has nothing**, so every restatement of a fact drifts on its own schedule. The storefront now repeats seven rates and thresholds across four workbooks, four listings, a live article and five owner-queue drafts. That is not a set of facts, it is a set of copies. |
+| **Start** | 2026-09-20 · **Cost** $0 · **Human time** 0 min |
+| **Status** | **Live.** `data/facts.json` holds seven canonical facts — the SBR window, the two VAT thresholds, the CT rate and band, and the eBay, Poshmark, Mercari and Facebook fee structures — each with its legal or published source, the date it was last checked, the phrasings that mean an artefact is stating the *superseded* value, and the glob of files that must agree. `scripts/verify_facts.py` fails on a contradiction and runs at the head of `sync_products.py` and inside `build_all.py`, so a wrong rate cannot reach a workbook or a live store. |
+| **Next decision** | No date. It is a floor, like the refund policy and the bio. The read is whether any future cycle finds a stale number by eye again; if one does, this file was scoped too narrowly. |
+
+*Proven by injection, using the two bugs that actually happened.* Re-introducing the SBR bullet
+exactly as it was live for nine days: caught. Putting Facebook Marketplace back to the 5% that
+was wrong in my own calculator on 09-14: caught. A stale eBay rate in the Etsy draft that is
+**waiting to be posted publicly under the owner's name**: caught. A live storefront article going
+stale: caught. Build exits 1 and refuses to produce assets; sync refuses to push.
+
+*And a rule I added and removed within the hour, which is the more useful half of this.* The
+checker's very first run flagged the LinkedIn draft — whose sentence, *"It used to end with
+periods ending 31 December 2026 — Ministerial Decision 131 of 2026 extended it to 31 December
+2029"*, is correct. A checker that cries wolf trains you to skim past it, so I widened the rule:
+excuse a contradiction whenever the **current** value sits nearby. It silenced the false positive
+and quietly broke two of the four injections, because **a stale fee row almost always sits inches
+from the correct number** — in the same table, often in the same sentence. The widened rule
+excused precisely the case worth catching. Removed; the narration phrases are per-fact and
+explicit instead (`"used to end"`, `"extended from"`, `"raised from"`). *Proximity is not
+evidence of intent.*
+
+*What it does not do:* it does not refactor the workbooks to read their constants from
+`facts.json`. That is a large change to live-selling code for no additional safety — the
+arithmetic already has build assertions. This closes the gap that was actually open: **prose**.
 
 ---
 

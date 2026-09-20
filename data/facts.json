@@ -1,0 +1,164 @@
+{
+  "_why": "Facts that appear in more than one artefact need one home, or each copy drifts on its own. On 2026-09-19 the UAE listing's feature list still told buyers Small Business Relief ended on 31 Dec 2026 while the very next paragraph of the SAME description said the window now runs to 2029 - nine days after the workbook had been corrected. The workbook had a build assertion; the listing copy had nothing. This file is the canonical value, and scripts/verify_facts.py fails the build if any artefact in scope contradicts it.",
+  "_fields": {
+    "value": "the canonical value, written the way a buyer should read it",
+    "source": "the legal instrument or published fee schedule it comes from",
+    "checked": "the date a human-readable source was last confirmed; this is the date the products promise to carry",
+    "contradicts": "literal strings that mean the artefact is stating the OLD or WRONG value",
+    "allowed_context": "a contradiction inside +/-80 characters of one of these is historical narration, not a claim",
+    "scope": "glob patterns, relative to the repo root, that must be consistent with this fact"
+  },
+  "facts": [
+    {
+      "id": "sbr_window_end",
+      "what": "Small Business Relief: last eligible tax-period end",
+      "value": "31 December 2029",
+      "source": "Ministerial Decision 131 of 2026 (issued 29 July 2026), extending Ministerial Decision 73 of 2023",
+      "checked": "2026-09-17",
+      "contradicts": [
+        "31 Dec 2026",
+        "31 December 2026"
+      ],
+      "allowed_context": [
+        "extended from",
+        "extending",
+        "used to end",
+        "it used to"
+      ],
+      "scope": [
+        "products/*/product.json",
+        "build/build_uae.py",
+        "growth/pages/*.html",
+        "growth/owner_queue/*.md"
+      ]
+    },
+    {
+      "id": "vat_mandatory_threshold",
+      "what": "UAE VAT mandatory registration threshold",
+      "value": "AED 375,000",
+      "source": "Federal Decree-Law No. 8 of 2017",
+      "checked": "2026-09-17",
+      "contradicts": [
+        "AED 350,000 mandatory",
+        "mandatory registration when taxable supplies exceed AED 187,500"
+      ],
+      "allowed_context": [],
+      "scope": [
+        "products/*/product.json",
+        "build/build_uae.py",
+        "growth/owner_queue/*.md"
+      ]
+    },
+    {
+      "id": "ct_rate_and_band",
+      "what": "UAE Corporate Tax: 9% above a 0% band of AED 375,000",
+      "value": "9% above AED 375,000",
+      "source": "Federal Decree-Law No. 47 of 2022",
+      "checked": "2026-09-17",
+      "contradicts": [
+        "Corporate Tax rate of 5%",
+        "corporate tax is 15%"
+      ],
+      "allowed_context": [],
+      "scope": [
+        "products/*/product.json",
+        "build/build_uae.py",
+        "growth/pages/*.html",
+        "growth/owner_queue/*.md"
+      ]
+    },
+    {
+      "id": "facebook_marketplace_fee",
+      "what": "Facebook Marketplace selling fee",
+      "value": "10% of the buyer's total, minimum $0.80 per order",
+      "source": "Meta's published seller fee schedule; raised from 5% / $0.40 on 15 April 2024",
+      "checked": "2026-09-11",
+      "contradicts": [
+        "Facebook Marketplace 5%",
+        "Facebook 5% / $0.40",
+        "Facebook Marketplace charges 5%"
+      ],
+      "allowed_context": [
+        "raised from",
+        "was 5%",
+        "used to be 5%"
+      ],
+      "scope": [
+        "products/*/product.json",
+        "build/build_free_calc.py",
+        "build/build_reseller.py",
+        "growth/pages/*.html",
+        "growth/owner_queue/*.md"
+      ]
+    },
+    {
+      "id": "ebay_final_value_fee",
+      "what": "eBay final value fee",
+      "value": "13.6% of the order total plus $0.40 per order, or $0.30 on orders of $10 or less",
+      "source": "eBay's published selling fees; 13.6% applies to the first $7,500 of an order, 2.35% above",
+      "checked": "2026-09-18",
+      "contradicts": [
+        "eBay 12.9%",
+        "eBay 13.25%",
+        "eBay takes 15%"
+      ],
+      "allowed_context": [
+        "used to be",
+        "was 12.9%",
+        "was 13.25%"
+      ],
+      "scope": [
+        "products/*/product.json",
+        "build/build_free_calc.py",
+        "build/build_reseller.py",
+        "growth/pages/*.html",
+        "growth/owner_queue/*.md"
+      ]
+    },
+    {
+      "id": "mercari_fee",
+      "what": "Mercari selling fee",
+      "value": "10% flat on item plus buyer-paid shipping, no seller payment-processing fee",
+      "source": "Mercari's published seller fees; the 2.9% + $0.50 processing fee was removed on 6 January 2025",
+      "checked": "2026-09-16",
+      "contradicts": [
+        "Mercari 2.9% + $0.50",
+        "Mercari charges 0%",
+        "Mercari has no selling fee"
+      ],
+      "allowed_context": [
+        "removed",
+        "until",
+        "before 2025",
+        "used to",
+        "was 2.9%"
+      ],
+      "scope": [
+        "products/*/product.json",
+        "build/build_free_calc.py",
+        "build/build_reseller.py",
+        "growth/pages/*.html",
+        "growth/owner_queue/*.md"
+      ]
+    },
+    {
+      "id": "poshmark_fee",
+      "what": "Poshmark selling fee",
+      "value": "flat $2.95 on sales under $15, otherwise 20% of the sale price",
+      "source": "Poshmark's published seller fees; the 2024 trial of a different structure was reverted after seller pushback",
+      "checked": "2026-09-20",
+      "contradicts": [
+        "Poshmark 20% on everything",
+        "Poshmark $2.95 under $10"
+      ],
+      "allowed_context": [],
+      "scope": [
+        "products/*/product.json",
+        "build/build_free_calc.py",
+        "build/build_reseller.py",
+        "growth/pages/*.html",
+        "growth/owner_queue/*.md"
+      ]
+    }
+  ]
+}

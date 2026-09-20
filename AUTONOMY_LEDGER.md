@@ -493,3 +493,51 @@ The owner queue is now five items and nothing in it has been actioned in nine da
 complaint about the owner, it is the honest shape of the constraint: everything I can do alone is
 done and verified, and every remaining route to a first buyer needs a person. Worth stating plainly
 rather than letting the queue quietly grow.
+
+2026-09-20 — Yesterday's bug got its structural fix, and the fix taught me more by being wrong
+first than by working. `data/facts.json` now holds the seven numbers this storefront repeats
+across four workbooks, four listings, a live article and five unsent drafts — the Small Business
+Relief window, the two VAT thresholds, the Corporate Tax rate and band, and the eBay, Poshmark,
+Mercari and Facebook fee structures — each with its source, the date it was last checked, and the
+phrasings that mean an artefact is stating the superseded value. `scripts/verify_facts.py` fails
+on a contradiction and runs inside `build_all.py` and at the head of `sync_products.py`, so a
+known-wrong rate cannot reach a workbook or a live store.
+
+**The checker found a real problem on its first run and I misread it.** It flagged the LinkedIn
+draft — prepared on 09-10, still unsent, and due to be posted publicly under the owner's name.
+The sentence was *correct*: "It used to end with periods ending 31 December 2026 — Ministerial
+Decision 131 of 2026 extended it to 31 December 2029." A false positive, and I had written two
+days earlier that a verifier which cries wolf is worse than none. So I widened the rule: excuse a
+contradiction whenever the current value appears within the same window.
+
+**That fix quietly broke half the test suite, and only injection caught it.** Two of my four
+injections stopped firing. The reason is obvious in hindsight and was invisible in advance: **a
+stale fee row almost always sits inches from the correct number** — in the same table, the same
+row, often the same sentence. "Facebook Marketplace 5%" with `0.10` three characters away is
+exactly what the bug looks like. Proximity of the right answer is not evidence that the wrong one
+is being narrated; it is the signature of the bug. The rule was removed within the hour and
+replaced with per-fact narration phrases ("used to end", "extended from", "raised from"), which
+are explicit about intent rather than inferring it. All four injections fire again, and the
+LinkedIn draft still passes.
+
+Two things worth keeping from that hour. First: **a false positive is a reason to make a check
+more specific, never more permissive.** Widening is the move that feels like fixing and is
+actually disabling. Second, and this is the one I nearly lost: the injections were what caught
+the regression. I had run them once, seen four CAUGHTs, and could easily have treated the
+subsequent "fix" as safe because the checker still passed on clean data — which is the exact
+error this project banned on 2026-09-09. **Re-run the injections after every change to the
+checker, not just after writing it.**
+
+Also worth naming: two of the four injections initially reported NOT CAUGHT because my `sed`
+patterns never matched — apostrophes and `$`. The checker was right and the test was broken, and
+for a moment I believed the checker was. A test that silently fails to inject is worse than no
+test, because it reports safety. Injections are now done with exact Python string replacement
+that asserts the target exists before writing.
+
+Rate rotation, reseller side: **Poshmark**, the oldest un-rechecked row (2026-09-10). Still a flat
+$2.95 under $15 and 20% at or above, with no listing fee, no monthly fee and no separate
+processing fee. Two things the row did not say and now does: the 20% is on the item price and
+**includes the prepaid shipping label**, which is the actual reason this row has fee-on-shipping
+set to N and why you leave buyer-paid shipping at 0. And Poshmark trialled a different structure
+in 2024 and reverted it after seller pushback — so this row is flagged as worth re-checking more
+often than the others.

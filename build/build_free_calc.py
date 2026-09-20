@@ -71,9 +71,13 @@ FEES = [
      "the first $7,500 of an order and drops to 2.35% above that. This sheet charges 13.6% on "
      "the whole amount, so an order over $7,500 is costed slightly pessimistically - if you "
      "sell watches, handbags or collectibles at that level, work that one out by hand."),
-    ("Poshmark", 0.20, 0.0, 0.0, 0.0, 0.0, "N", 15.0, 2.95, 0.0, "2026-09-10",
-     "Flat $2.95 on sales under $15, otherwise 20% of the sale price. No separate processing "
-     "fee. The buyer pays shipping directly, so leave 'buyer-paid shipping you receive' at 0."),
+    ("Poshmark", 0.20, 0.0, 0.0, 0.0, 0.0, "N", 15.0, 2.95, 0.0, "2026-09-20",
+     "Flat $2.95 on sales under $15, otherwise 20% of the item price. No listing fee, no "
+     "monthly fee, no separate processing fee, and the 20% includes the prepaid shipping label "
+     "- which is why this row has fee-on-shipping set to N and why you leave 'buyer-paid "
+     "shipping you receive' at 0: the buyer pays Poshmark for shipping, not you. Poshmark "
+     "trialled a different structure in 2024 and reverted it after seller pushback, so this "
+     "row is worth re-checking more often than the others."),
     ("Mercari", 0.10, 0.0, 0.0, 0.0, 0.0, "Y", 0.0, 0.0, 0.0, "2026-09-16",
      "Flat 10% on item + buyer-paid shipping. The old 2.9% + $0.50 seller processing fee was "
      "removed on 6 Jan 2025; buyers now pay a 3.6% Buyer Protection fee instead. NOT in this "

@@ -91,6 +91,12 @@ def main():
     # Dated copy first: a listing whose first sentence names a deadline stops being true on a
     # known date, and the manifest is where that gets corrected before anything is pushed.
     if not DRY:
+        # Before anything reaches a live store: does any artefact state a rate or threshold that
+        # data/facts.json says is superseded? The SBR date was wrong on a live page for nine days.
+        if subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_facts.py")]).returncode != 0:
+            raise SystemExit("verify_facts found copy contradicting data/facts.json; refusing to "
+                             "push a rate or threshold that is known to be wrong")
+        print()
         if subprocess.run([sys.executable, str(ROOT / "scripts" / "expire_deadline_copy.py")]).returncode != 0:
             raise SystemExit("expire_deadline_copy reported a problem; refusing to sync copy "
                              "that may still carry an expired claim")

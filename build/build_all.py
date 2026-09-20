@@ -219,6 +219,13 @@ def assert_fees(path):
 
 assert_fees(calc)
 
+# The build has always pinned the calculator's arithmetic. It never checked the PROSE - the
+# notes, the listing copy, the articles - which is where the Small Business Relief date went
+# stale for nine days while the workbook next to it was correct.
+if subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_facts.py")]).returncode != 0:
+    raise SystemExit("verify_facts: an artefact states a rate or threshold that data/facts.json "
+                     "says is superseded")
+
 # Square thumbnails - Gumroad rejects the 16:9 cover for this slot.
 _uae_png = preview(uae, ["Dashboard"])
 _res_png = preview(res, ["Dashboard"])
