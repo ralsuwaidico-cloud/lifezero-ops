@@ -8,7 +8,7 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-20 06:58 UTC** — every funnel number
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-21 06:58 UTC** — every funnel number
 below is still zero across all 14 channels, 9 published products and the CT30 code, and no product
 has a rating. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
@@ -447,6 +447,41 @@ evidence of intent.*
 *What it does not do:* it does not refactor the workbooks to read their constants from
 `facts.json`. That is a large change to live-selling code for no additional safety — the
 arithmetic already has build assertions. This closes the gap that was actually open: **prose**.
+
+---
+
+## P · The article's arithmetic is now a test, not a promise
+
+| | |
+|---|---|
+| **Channel** | None — correctness on the one live asset whose claims nothing checked |
+| **Product** | The reseller fees article and the free calculator it points at |
+| **Hypothesis** | The article publishes a five-marketplace table for one $45 item and ends with *"I built a free spreadsheet that does exactly this table for your item."* That sentence is a promise the two agree, and nothing was checking it. Yesterday's `facts.json` pins the **rates**; it cannot catch a wrong **sum**. Every rate could be right and the profit figure still wrong — and the reader has the file, so they would find it before I did. |
+| **Start** | 2026-09-21 · **Cost** $0 · **Human time** 0 min |
+| **Status** | **Live.** `scripts/verify_article_math.py` parses the article's table and compares it cell by cell against the cached, LibreOffice-recalculated values in the built calculator, plus the headline "$7.07 separates the best from the worst" sentence, which is a subtraction the table never shows. Wired into `build_all.py` and `sync_products.py`. All five rows and the spread currently agree. |
+| **Next decision** | No date — a floor. It gets read when the article or the calculator next changes, which is exactly when it earns its keep. |
+
+*Why compare against the workbook rather than re-deriving the maths here:* because re-deriving it
+is how this project has already been bitten. On 2026-09-14 a build assertion was written from the
+**same wrong Facebook rate** as the code it was meant to guard, so it agreed with the bug. A
+second Python implementation of the fee engine would be a second place for the same mistake to
+live. The article is instead checked against the numbers a buyer actually sees on opening the
+file, with nothing restated in between. The calculator's default item — cost $12, list $45, no
+buyer-paid shipping received, $6.50 label, $0.50 other — **is** the article's item, so the two are
+directly comparable.
+
+*What it found on its first run, and it is subtler than a wrong number.* Depop leaves **$43.065**.
+The article prints $43.07; Python's `round()` returns 43.06, because 43.065 is stored as
+43.064999999999998 and binary rounding goes down. Excel and Google Sheets round half away from
+zero, so **the buyer sees $43.07 and the article is right**. The first version used a half-cent
+float tolerance, which sits exactly on the boundary these values land on — it passed three cells
+at `.xx5` by luck and failed the fourth. Replaced with a decimal `ROUND_HALF_UP` comparison of
+what is *displayed*. **When the thing you are checking is a rendered number, check the rendering,
+not the float.**
+
+*Proven by injection, five ways:* dropping eBay's per-order $0.40 from the fee, a profit figure
+off by 50c, an overstated ROI, an inflated headline spread, and the article naming a marketplace
+the calculator does not have. All five caught; build exits 1 and produces nothing.
 
 ---
 

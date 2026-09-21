@@ -85,10 +85,12 @@ FEES = [
      "Pay). That is per payout, not per sale, so it is not a per-item fee - if you cash out "
      "once a month it is $2 across every sale that month, and if you cash out per sale it is "
      "$2 on each. Nowhere else in this sheet charges you to be paid."),
-    ("Depop", 0.0, 0.45, 0.45, 0.0, 0.033, "Y", 0.0, 0.0, 0.0, "2026-09-11",
-     "No US selling commission since 2024 - it moved to the buyer. What remains on the seller "
-     "is 3.3% + $0.45 payment processing, charged on item + shipping + tax. An optional Boosted "
-     "Listing costs 12% on top if you use one; this row does not include it."),
+    ("Depop", 0.0, 0.45, 0.45, 0.0, 0.033, "Y", 0.0, 0.0, 0.0, "2026-09-21",
+     "No US selling commission since 2024 - it moved to the buyer's side as a marketplace fee, "
+     "so the item has to carry a higher sticker price to look comparable. What remains on the "
+     "seller is 3.3% + $0.45 payment processing via Depop Payments, charged on item + shipping "
+     "+ any applicable tax. NOT in this row: an optional Boosted Listing costs 12% on top, on "
+     "eligible new listings from 23 March 2026 - if you boost, add 12% of the sale yourself."),
     ("Facebook Marketplace", 0.10, 0.0, 0.0, 0.0, 0.0, "Y", 0.0, 0.0, 0.80, "2026-09-11",
      "10% of the buyer's total (item + the shipping you charge + the sales tax Meta collects), "
      "minimum $0.80 per order. Raised from 5% / $0.40 on 15 April 2024. Local pickup sales "

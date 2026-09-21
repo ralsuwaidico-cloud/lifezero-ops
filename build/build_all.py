@@ -226,6 +226,13 @@ if subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_facts.py")]).r
     raise SystemExit("verify_facts: an artefact states a rate or threshold that data/facts.json "
                      "says is superseded")
 
+# The article promises "a free spreadsheet that does exactly this table for your item". Check
+# that the table and the spreadsheet actually agree - facts.json pins the RATES, and a correct
+# rate can still be added up wrong.
+if subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_article_math.py")]).returncode != 0:
+    raise SystemExit("verify_article_math: the live article disagrees with the workbook a buyer "
+                     "downloads")
+
 # Square thumbnails - Gumroad rejects the 16:9 cover for this slot.
 _uae_png = preview(uae, ["Dashboard"])
 _res_png = preview(res, ["Dashboard"])

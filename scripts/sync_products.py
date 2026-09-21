@@ -182,6 +182,14 @@ def main():
             print("verify_live reported drift — the store does not match the manifests", file=sys.stderr)
             failed = True
 
+        # The article's worked example and the calculator it points at must agree; a correct
+        # rate can still be summed wrong, and the reader has the file to check with.
+        print()
+        if subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_article_math.py")]).returncode != 0:
+            print("verify_article_math reported drift — the live article disagrees with the "
+                  "workbook a buyer downloads", file=sys.stderr)
+            failed = True
+
         # Storefront pages are acquisition assets with no CLI update path, so they can be
         # silently overwritten by a stray PUT. growth/pages/ is their source of truth.
         print()

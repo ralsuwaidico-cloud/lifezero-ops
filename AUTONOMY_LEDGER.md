@@ -541,3 +541,37 @@ processing fee. Two things the row did not say and now does: the 20% is on the i
 set to N and why you leave buyer-paid shipping at 0. And Poshmark trialled a different structure
 in 2024 and reverted it after seller pushback — so this row is flagged as worth re-checking more
 often than the others.
+
+2026-09-21 — The last unchecked claim surface on a live asset is closed, and the interesting part
+is what closing it revealed about tolerances. The reseller article publishes a worked table for
+one $45 item and ends by promising "a free spreadsheet that does exactly this table for your
+item". Yesterday's facts.json pins the **rates** those numbers are built from; it cannot catch a
+wrong **sum**. Every rate could be correct and the published profit still wrong, and the reader
+has the file, so they would find it before I did. `scripts/verify_article_math.py` now compares
+the article cell by cell against the cached, LibreOffice-recalculated values in the built
+calculator, plus the headline "$7.07 separates the best from the worst" sentence, which is a
+subtraction the table never shows. Wired into build_all and sync_products, five injections.
+
+**Deliberately not a second implementation of the fee maths.** Re-deriving it in Python is
+exactly the 2026-09-14 mistake: a build assertion written from the same wrong Facebook rate as
+the code it guarded, so it agreed with the bug. A checker that restates its subject verifies
+nothing. The article is compared against the numbers a buyer sees on opening the file, with
+nothing restated in between - and the calculator's default item happens to BE the article's item,
+so the comparison needs no bridge.
+
+**The first run failed on a cell where the article was right.** Depop leaves $43.065. The article
+prints $43.07; Python's round() returns 43.06, because 43.065 is held as 43.064999999999998 and
+binary rounding goes down. Excel and Google Sheets round half away from zero, so the buyer sees
+$43.07. My half-cent float tolerance sat exactly on the boundary these values land on: it passed
+three cells at .xx5 by luck and failed the fourth, and for a minute I was looking for a bug in
+the article. Replaced with a decimal ROUND_HALF_UP comparison of what is DISPLAYED. **When the
+thing under test is a rendered number, test the rendering, not the float** - and a tolerance that
+happens to equal the rounding step is not a tolerance, it is a coin toss.
+
+Rate rotation: **Depop**, now the oldest row. Confirmed still 0% US selling commission with 3.3%
++ $0.45 processing on item + shipping + tax - our row was right. Added the provenance our note
+lacked: the optional Boosted Listing is 12%, on eligible new listings from 23 March 2026. And
+Depop turned out to be **the one fee this storefront quotes that facts.json did not cover** -
+seven facts, five marketplaces, and the gap was invisible until I went to record the re-check.
+Now eight. Worth a habit: when adding a canonical fact, check the set is complete rather than
+adding one.

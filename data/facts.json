@@ -159,6 +159,31 @@
         "growth/pages/*.html",
         "growth/owner_queue/*.md"
       ]
+    },
+    {
+      "id": "depop_fee",
+      "what": "Depop seller fee (US)",
+      "value": "no US selling commission; 3.3% + $0.45 payment processing on item + shipping + tax",
+      "source": "Depop's published seller fees; the 10% US selling commission was dropped in 2024 and moved to the buyer's side. Optional Boosted Listings cost 12% on eligible new listings from 23 March 2026",
+      "checked": "2026-09-21",
+      "contradicts": [
+        "Depop 10% selling fee",
+        "Depop takes 10%",
+        "Depop charges a 10% commission"
+      ],
+      "allowed_context": [
+        "dropped",
+        "used to",
+        "until 2024",
+        "moved to the buyer"
+      ],
+      "scope": [
+        "products/*/product.json",
+        "build/build_free_calc.py",
+        "build/build_reseller.py",
+        "growth/pages/*.html",
+        "growth/owner_queue/*.md"
+      ]
     }
   ]
 }
