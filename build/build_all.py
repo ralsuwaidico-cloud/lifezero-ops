@@ -233,6 +233,13 @@ if subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_article_math.p
     raise SystemExit("verify_article_math: the live article disagrees with the workbook a buyer "
                      "downloads")
 
+# The highest-consequence numbers in the catalogue: a buyer copies the VAT boxes into EmaraTax
+# and files them. Checks the arithmetic AND re-runs the 9% Corporate Tax branch, which the
+# shipped sample data never exercises because relief applies and the answer is zero.
+if subprocess.run([sys.executable, str(ROOT / "scripts" / "verify_uae_returns.py")]).returncode != 0:
+    raise SystemExit("verify_uae_returns: the VAT return or Corporate Tax estimate does not "
+                     "reconcile")
+
 # Square thumbnails - Gumroad rejects the 16:9 cover for this slot.
 _uae_png = preview(uae, ["Dashboard"])
 _res_png = preview(res, ["Dashboard"])

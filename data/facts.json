@@ -70,9 +70,9 @@
     {
       "id": "facebook_marketplace_fee",
       "what": "Facebook Marketplace selling fee",
-      "value": "10% of the buyer's total, minimum $0.80 per order",
+      "value": "10% of the buyer's total on shipped checkout, minimum $0.80 per order; local pickup has no seller fee",
       "source": "Meta's published seller fee schedule; raised from 5% / $0.40 on 15 April 2024",
-      "checked": "2026-09-11",
+      "checked": "2026-09-22",
       "contradicts": [
         "Facebook Marketplace 5%",
         "Facebook 5% / $0.40",

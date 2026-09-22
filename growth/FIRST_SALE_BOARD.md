@@ -8,7 +8,7 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-21 06:58 UTC** — every funnel number
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-22 06:58 UTC** — every funnel number
 below is still zero across all 14 channels, 9 published products and the CT30 code, and no product
 has a rating. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
@@ -482,6 +482,42 @@ not the float.**
 *Proven by injection, five ways:* dropping eBay's per-order $0.40 from the fee, a profit figure
 off by 50c, an overstated ROI, an inflated headline spread, and the article naming a marketplace
 the calculator does not have. All five caught; build exits 1 and produces nothing.
+
+---
+
+## Q · The numbers a buyer files with a tax authority
+
+| | |
+|---|---|
+| **Channel** | None — the 10% product bucket, spent on the highest-consequence output in the catalogue |
+| **Product** | UAE Freelancer & Small Business Bookkeeping Tracker ($24) |
+| **Hypothesis** | The reseller calculator getting a fee wrong costs someone a pricing decision. The **VAT Return sheet is copied into EmaraTax and filed with the FTA**, and the Corporate Tax sheet tells a person what to set aside. `build_all` already cross-checked that every income row lands in *some* VAT box and every expense has a recognised treatment — those are **completeness** checks. Nothing checked the **arithmetic**: that Box 8 is the sum of its parts, that net VAT is output minus input, that taxable turnover excludes exempt and out-of-scope supplies, or that Corporate Tax is 9% of profit above AED 375,000. |
+| **Start** | 2026-09-22 · **Cost** $0 · **Human time** 0 min |
+| **Status** | **Live.** `scripts/verify_uae_returns.py`, wired into `build_all.py`. Fourteen invariants across the VAT return and the CT estimate, written from the **structure of the return** — net = output − input — rather than from the sheet's own formulas, so the check cannot agree with the spreadsheet's mistake the way the 2026-09-14 Facebook assertion agreed with the bug it was meant to guard. |
+| **Next decision** | No date — a floor. It runs on every build. |
+
+**The part that matters: the shipped sample data never exercises the branch that charges tax.**
+With the default invoices, Small Business Relief applies and Corporate Tax is zero. Reading zero
+off clean data proves nothing about the formula that charges 9%. So the script builds a second
+scenario — one invoice raised to AED 4,000,000, pushing revenue past the AED 3,000,000 relief
+threshold — recalculates it through LibreOffice, and checks that relief is correctly **refused**
+and the tax correctly charged: **AED 326,349 on AED 3,626,100 above the band.** That is precisely
+the branch that was silently wrong until 2026-09-14, when the relief window was capped three years
+early and a 2027 filer was told to set aside money they did not owe.
+
+*Proven by injection, three formula faults introduced into `build_uae.py` and rebuilt each time:*
+net VAT adding input instead of subtracting it (caught, and named as "the figure the buyer pays the
+FTA"); the 0% band wrong by AED 25,000 (caught — **only by the over-threshold scenario**, since on
+the shipped data the band never binds); and relief dropping its revenue test entirely (caught,
+three ways at once). The third is the 09-14 bug class exactly, and on clean data the sheet would
+still have said zero and the checker would still have passed. **The scenario is not extra rigour;
+it is the only thing testing that branch at all.**
+
+*One test-harness note, the second time this has bitten:* the third injection first reported NOT
+CAUGHT because my shell quoting mangled the target string and the replacement never applied. The
+injector asserts the target exists before writing, so it said so — but the surrounding script still
+printed "NOT CAUGHT", which reads identically to a real gap. **A test harness that can fail to
+inject must fail loudly, not report the absence of a finding.**
 
 ---
 

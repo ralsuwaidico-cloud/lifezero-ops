@@ -142,3 +142,41 @@ live accounts.
       (the Fiverr UTM link) so we can tell Fiverr traffic apart from everything else.
 - [ ] Tell me the moment an order lands. Fulfilment is not automated: I build the sheet from the
       brief, but a person needs to look at it before it goes to a buyer.
+
+---
+
+## Added 2026-09-22 — read this before doing the Fiverr setup: Upwork probably beats it
+
+I ran the same control test on this service that pointed the reseller tracker at Etsy and the UAE
+tracker at Eloquens. Searching `hire someone to build a custom Excel spreadsheet Google Sheets
+freelance service where to find` returns nine results: **three of them Upwork**, one Fiverr, plus
+Freelancer.com, Guru and a specialist Google Sheets studio. Gumroad is nowhere, which is expected —
+a service is not a product listing.
+
+Upwork outranking Fiverr three to one is worth noticing, but it is not the reason to prefer it.
+**The reason is the shape of the two platforms, and it bears directly on the weakness this file
+already admits.**
+
+| | Fiverr | Upwork |
+|---|---|---|
+| How work arrives | You list a gig and wait. Ranking in Fiverr search is driven by reviews and order volume. | You read posted jobs and send a proposal. The client reads the proposal. |
+| With zero reviews | The hard case. This file's own risk line says "a first order with no reviews takes time to arrive." | Much less of a barrier — a specific, well-argued proposal competes on its own merits. |
+| Your time | One setup, then passive. | ~5 minutes per proposal, ongoing. That is the real cost. |
+| Speed | Unknown, likely weeks. | Upwork's own published figure: median six hours from job post to first hire. |
+
+**So the honest trade is a one-off hour that may produce nothing for weeks, against a recurring
+five minutes per bid that can produce a client this week.** With eleven days of zero sales, the
+second is the better shape — and nothing stops you doing both, since the gig text in this file and
+an Upwork profile want the same content.
+
+**What I would need from you to make Upwork cheap:** tell me you have an account and I will write
+the profile text, the portfolio description built from the three spreadsheets already shipped, and
+a proposal template with the two or three blanks that actually change per job. That turns each bid
+into a five-minute paste rather than a five-minute write. I have not drafted it yet, deliberately —
+this queue already has five unsent items and I am not going to make it six on a guess about which
+platform you would rather use.
+
+*Caveat worth stating: I could not read upwork.com directly (it is blocked by this environment's
+egress proxy), so the platform-shape comparison above is from search results and from how these
+two marketplaces are generally known to work, not from their current terms pages. Check the fee
+split before committing — Upwork's take rate has changed more than once.*

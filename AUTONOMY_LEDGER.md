@@ -575,3 +575,53 @@ Depop turned out to be **the one fee this storefront quotes that facts.json did 
 seven facts, five marketplaces, and the gap was invisible until I went to record the re-check.
 Now eight. Worth a habit: when adding a canonical fact, check the set is complete rather than
 adding one.
+
+2026-09-22 — The highest-consequence numbers in the catalogue finally have a check, and building
+it made the "clean data proves nothing" rule concrete in a way none of the previous checkers did.
+
+The UAE tracker's VAT Return sheet is copied into EmaraTax and filed with a tax authority; the
+Corporate Tax sheet tells a person what to set aside. build_all already verified that every
+income row lands in some VAT box and every expense has a recognised treatment - COMPLETENESS
+checks. Nothing verified the ARITHMETIC. scripts/verify_uae_returns.py now holds fourteen
+invariants taken from the structure of the return itself (net = output - input; taxable turnover
+excludes exempt and out-of-scope; CT is 9% of profit above AED 375,000) rather than from the
+sheet's own formulas, because an invariant derived from the spreadsheet cannot disagree with the
+spreadsheet - which is exactly how the 2026-09-14 Facebook assertion came to agree with the bug
+it was written to guard.
+
+**With the shipped sample data, Small Business Relief applies and Corporate Tax is zero, so the
+branch that charges tax never runs.** Every invariant about the 9% calculation would have passed
+by reading a zero that no formula produced. So the script raises one invoice to AED 4,000,000,
+pushing revenue past the AED 3,000,000 relief threshold, recalculates through LibreOffice, and
+checks that relief is refused and AED 326,349 is charged on AED 3,626,100 above the band. Proven
+by injecting three formula faults and rebuilding each time: net VAT adding input instead of
+subtracting, the 0% band wrong by AED 25,000, and relief dropping its revenue test. **The second
+and third were caught only by the over-threshold scenario** - on the shipped data the band never
+binds and relief always applies, so the sheet would have reported zero and the checker would have
+agreed. The scenario is not extra rigour; it is the only thing testing that branch at all.
+
+Second time in three days the test harness, not the code, produced a false result: the third
+injection first reported NOT CAUGHT because shell quoting mangled the target string and the
+replacement never applied. The injector asserts before writing, so it printed a traceback - but
+the surrounding loop still printed "NOT CAUGHT", which reads identically to a real gap. **A
+harness that can fail to inject must fail loudly rather than report the absence of a finding.**
+On 09-20 I wrote that injections need re-running after every change to the checker; the companion
+rule is that a silent no-op in the harness is worse than a broken checker, because it manufactures
+confidence.
+
+Acquisition, one search, no new queue item: the control test that sent the reseller tracker to
+Etsy and the UAE tracker to Eloquens was never run on the $95 service. It returns **three Upwork
+results to one Fiverr**, plus Freelancer.com and Guru. The ranking is not the point - the shape
+is. Fiverr is list-and-wait, and its ranking is driven by reviews, which is precisely the weakness
+the Fiverr file already admits ("a first order with no reviews takes time to arrive"). Upwork is
+read-a-job-and-propose, where a specific proposal competes on its own merits and reviews matter
+much less at the start. The cost moves from a one-off hour to a recurring five minutes per bid.
+With eleven days of zero sales, the recurring-small shape is the better one. Folded into the
+existing Fiverr file rather than opened as a sixth unsent item - **the queue has five things
+nobody has actioned in twelve days, and adding a sixth on a guess about which platform the owner
+would prefer is noise, not work.** The proposal template is explicitly not written yet, and the
+file says why.
+
+Rate rotation: **Facebook Marketplace**, the oldest row. Still 10% of the buyer's total on shipped
+checkout with a $0.80 minimum, and local pickup still carries no seller fee. Our row was right;
+facts.json now states the local-pickup carve-out explicitly rather than leaving it to the note.

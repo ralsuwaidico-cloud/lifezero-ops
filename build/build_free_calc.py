@@ -91,7 +91,7 @@ FEES = [
      "seller is 3.3% + $0.45 payment processing via Depop Payments, charged on item + shipping "
      "+ any applicable tax. NOT in this row: an optional Boosted Listing costs 12% on top, on "
      "eligible new listings from 23 March 2026 - if you boost, add 12% of the sale yourself."),
-    ("Facebook Marketplace", 0.10, 0.0, 0.0, 0.0, 0.0, "Y", 0.0, 0.0, 0.80, "2026-09-11",
+    ("Facebook Marketplace", 0.10, 0.0, 0.0, 0.0, 0.0, "Y", 0.0, 0.0, 0.80, "2026-09-22",
      "10% of the buyer's total (item + the shipping you charge + the sales tax Meta collects), "
      "minimum $0.80 per order. Raised from 5% / $0.40 on 15 April 2024. Local pickup sales "
      "have no selling fee at all - price those with the 'Other' row set to 0%."),
