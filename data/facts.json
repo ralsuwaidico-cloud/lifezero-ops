@@ -184,6 +184,33 @@
         "growth/pages/*.html",
         "growth/owner_queue/*.md"
       ]
+    },
+    {
+      "id": "irs_mileage_rate",
+      "what": "IRS standard business mileage rate, 2026",
+      "value": "72.5 cents per mile from 1 January, rising to 76 cents from 1 July 2026",
+      "source": "IRS newsroom: 2026 business standard mileage rate set at 72.5 cents, then raised to 76 cents effective 1 July 2026 in a mid-year adjustment attributed to fuel costs",
+      "checked": "2026-09-23",
+      "contradicts": [
+        "70 cents per mile",
+        "default of 70 cents",
+        "mileage rate of 0.70",
+        "67 cents per mile",
+        "65.5 cents per mile"
+      ],
+      "allowed_context": [
+        "was ",
+        "used to",
+        "in 2025",
+        "previously",
+        "before 2026"
+      ],
+      "scope": [
+        "products/*/product.json",
+        "build/build_reseller.py",
+        "growth/pages/*.html",
+        "growth/owner_queue/*.md"
+      ]
     }
   ]
 }

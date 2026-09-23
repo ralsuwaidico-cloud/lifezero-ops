@@ -8,7 +8,7 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-22 06:58 UTC** — every funnel number
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-23 06:59 UTC** — every funnel number
 below is still zero across all 14 channels, 9 published products and the CT30 code, and no product
 has a rating. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
@@ -518,6 +518,54 @@ CAUGHT because my shell quoting mangled the target string and the replacement ne
 injector asserts the target exists before writing, so it said so — but the surrounding script still
 printed "NOT CAUGHT", which reads identically to a real gap. **A test harness that can fail to
 inject must fail loudly, not report the absence of a finding.**
+
+---
+
+## R · Rehearsing the $95 delivery before a customer pays for it
+
+| | |
+|---|---|
+| **Channel** | Operations — the one part of this business with a promise attached, and the one thing never tested |
+| **Product** | Custom Excel / Google Sheets Tool in 48 Hours ($95) |
+| **Hypothesis** | Every routine since 2026-09-10 has said a $95 order "outranks everything else in this prompt" and must ship inside 48 hours. **That pipeline had never once been run.** The first time anyone finds out whether it works should not be with a paying customer and a clock. So: fabricate an order, run the whole path, see what breaks. |
+| **Start** | 2026-09-23 · **Cost** $0 · **Human time** 0 min |
+| **Status** | **Rehearsed end to end. Three faults found and fixed — one of them not code at all.** |
+| **Next decision** | Re-run the rehearsal the first time a real order lands and compare. Until then it is a floor, not an experiment. |
+
+**Fault 1 — the alarm could never be switched off.** `open_fulfilment` was `"custom" in
+product_name`, so a *delivered* order would have stayed in the list for ever and the routine's "say
+so first and loudest" would have fired every six hours until it was ignored. An alarm with no off
+switch is an alarm nobody reads. There is now a delivery ledger (`data/delivered.json`) and
+`scripts/fulfilment.py mark-delivered`. Matching on a word also meant the **other author** could
+ship anything named "custom" on this shared account straight into our delivery queue; it now
+matches our product id.
+
+**Fault 2 — nothing computed the clock.** The routine asks for "hours remaining" every cycle and
+nothing produced it, so that arithmetic would have been done by hand at exactly the moment hands
+are least reliable. `pull_sales.py` now stamps `due_at` and `hours_remaining` on every open order,
+and `fulfilment.py status` shouts when the most urgent is inside 24 hours.
+
+**Fault 3, and it is the real one — the brief arrives by email, and I have no inbox.** The receipt
+tells the buyer to reply with the filled-in pack attached. I have said for two weeks that
+fulfilment "needs a person"; I had never traced *which step*, and it turns out to be **the very
+first one**. So the two questions the brief itself marks compulsory are now **checkout custom
+fields**: *what should the sheet track*, and *what decision do you want to make from it*, with
+Excel/Sheets optional. The moment an order lands, `sales.custom_fields` carries enough to start
+building, through the API, with nobody forwarding anything. The pack still exists for the buyer who
+wants to give more. Read back from the remote: three fields, no duplicates.
+
+*Rehearsed with a synthetic 26-hour-old order:* the banner fired at 22 hours left, the brief
+printed as submitted, the no-brief case said plainly that the owner must forward the pack,
+`mark-delivered` cleared it, and a second `mark-delivered` was a no-op. Synthetic data removed
+afterwards; the ledger is empty.
+
+*New check, proven by injection (rule 7, same day):* `verify_live.py` compares live checkout fields
+to the manifest. Four faults injected — a field missing live, a field live the manifest dropped, a
+compulsory question quietly made optional, and **a real duplicate created on the live product**.
+All caught. The duplicate also exposed a message bug: the set comparison fired first and reported
+*"missing [], unexpected []"*, which reads like a broken checker. Duplicate detection now runs
+first and names the repeated question. **A checker that is right but unreadable is only half a
+checker.**
 
 ---
 

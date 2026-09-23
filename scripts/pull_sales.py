@@ -33,9 +33,37 @@ def main():
             "refunded": s.get("refunded", False), "country": s.get("country"),
             "referrer": s.get("referrer"), "utm": {k: s.get(k) for k in ("utm_source", "utm_medium", "utm_campaign") if s.get(k)},
             "buyer_hash": hashlib.sha256((s.get("email") or "").lower().encode()).hexdigest()[:12],
-            "needs_fulfilment": "custom" in (s.get("product_name") or "").lower(),
+            "needs_fulfilment": False,   # set below, once delivery state is known
             "custom_fields": s.get("custom_fields"),
         })
+
+    # Fulfilment state. This used to be `"custom" in product_name`, which had two faults that a
+    # rehearsal on 2026-09-23 made obvious before any real order arrived. It could never be
+    # CLEARED - a delivered order stayed in open_fulfilment for ever, so the alarm the routine
+    # calls "say so first and loudest" would fire on every pull until it was ignored. And it
+    # matched on a word, so a product named "custom" by the OTHER author on this shared account
+    # would land in our delivery queue. Match the product id, and read a delivery ledger.
+    delivered = {}
+    dl = DATA / "delivered.json"
+    if dl.exists():
+        delivered = {d["sale_id"]: d for d in json.loads(dl.read_text())}
+    service_id = None
+    sf = ROOT / "state" / "custom-sheet-48h.json"
+    if sf.exists():
+        service_id = json.loads(sf.read_text()).get("id")
+    for r in clean:
+        r["delivered_at"] = (delivered.get(r["id"]) or {}).get("delivered_at")
+        r["needs_fulfilment"] = bool(
+            service_id and r["product_id"] == service_id
+            and not r["refunded"] and not r["delivered_at"])
+        if r["needs_fulfilment"] and r.get("created_at"):
+            # The clock the listing promises. Reported every cycle so nobody has to work it out
+            # by hand at the point when hours actually matter.
+            bought = dt.datetime.fromisoformat(r["created_at"].replace("Z", "+00:00"))
+            due = bought + dt.timedelta(hours=48)
+            r["due_at"] = due.isoformat()
+            r["hours_remaining"] = round((due - dt.datetime.now(dt.timezone.utc))
+                                         .total_seconds() / 3600, 1)
     now = dt.datetime.now(dt.timezone.utc)
     def cents(rows): return sum(int(r.get("price_cents") or 0) for r in rows if not r.get("refunded"))
     def since(days):

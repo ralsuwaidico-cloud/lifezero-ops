@@ -46,6 +46,16 @@ def refund_policy(pid):
     return ((out or {}).get("product") or {}).get("refund_policy") or {}
 
 
+def custom_fields(pid):
+    """Checkout custom fields, which `products list` does carry but `products view` reports more
+    reliably. These are the two compulsory brief questions: they are the only route by which the
+    $95 service's brief reaches this repo without going through somebody's email inbox, so a
+    silently deleted field does not just lose a form, it puts the 48-hour clock back on a human.
+    """
+    out = run(["custom-fields", "list", "--product", pid])
+    return (out or {}).get("custom_fields") or []
+
+
 def content_file_count(pid):
     """Number of file embeds in the product's content pages."""
     p = subprocess.run(["gumroad", "products", "content", "get", pid,
@@ -120,6 +130,36 @@ def main():
         # account policy it inherits reports `in_effect: false` - so "inherit" renders as no
         # refund terms shown to the buyer at all, while looking like a configured value. A
         # product that silently reverts to inherit would show a clean listing and a silent page.
+        # Shipped 2026-09-23, checked 2026-09-23. `custom-fields create` has no idempotency
+        # key, so a second sync could append duplicates of the same question - the buyer would
+        # be asked twice at checkout on a $95 purchase.
+        want_cf = m.get("custom_fields")
+        if want_cf:
+            live_cf = custom_fields(pr["id"])
+            want_names = [c["name"] for c in want_cf]
+            got_names = [c.get("name") for c in live_cf]
+            # Duplicates FIRST. Found by injecting a real duplicate on the live product: the
+            # set comparison below fires on it too, but reports "missing [], unexpected []",
+            # which reads like a broken checker rather than a duplicated question. The operator
+            # needs to be told what actually happened, not handed two empty lists.
+            if len(got_names) != len(set(got_names)):
+                dupes = sorted({n for n in got_names if got_names.count(n) > 1})
+                problems.append(f"{slug}: a checkout custom field is DUPLICATED - the buyer is "
+                                f"asked the same question twice at a $95 checkout ({dupes})")
+            elif sorted(got_names) != sorted(want_names):
+                missing = [n for n in want_names if n not in got_names]
+                extra = [n for n in got_names if n not in want_names]
+                problems.append(f"{slug}: checkout custom fields differ (missing {missing}, "
+                                f"unexpected {extra})")
+            else:
+                by_name = {c.get("name"): c for c in live_cf}
+                for c in want_cf:
+                    if bool(by_name[c["name"]].get("required")) != bool(c.get("required")):
+                        problems.append(
+                            f"{slug}: custom field {c['name']!r} is "
+                            f"required={by_name[c['name']].get('required')} live, manifest says "
+                            f"{c.get('required')}")
+
         # A dated claim is the only kind of copy that goes wrong while nobody touches it.
         # "UAE Corporate Tax is due 30 September 2026" is the strongest sentence on that
         # listing until 1 October, when it becomes a page telling buyers about a deadline they

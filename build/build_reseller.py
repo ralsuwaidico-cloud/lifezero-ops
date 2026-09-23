@@ -132,7 +132,7 @@ general = [
     ("Currency Symbol", "$", "Used in Dashboard labels. Number formats use $ - change via Format Cells if needed.", None),
     ("Year Start Date", date(2026, 1, 1), "Dashboard months run 12 months from this date.", DATE),
     ("Sales Tax Rate (optional)", 0.0, "Only if you collect tax yourself (e.g. local cash sales). Marketplaces remit tax for you.", PCT),
-    ("Mileage Rate (per mile)", 0.70, "IRS standard mileage rate - 2026 default of 70 cents entered; verify the current rate at irs.gov.", '$0.000'),
+    ("Mileage Rate (per mile)", 0.76, "IRS standard business mileage rate. 2026 is SPLIT: 72.5 cents for 1 Jan - 30 Jun, then 76 cents from 1 Jul after an unusual mid-year rise the IRS attributed to fuel costs. The 76 cents here is the current-period rate; if your year spans the change, work the two halves separately. Checked 2026-09-23 against irs.gov.", '$0.000'),
     ("Default Shipping Cost", 9.00, "Reference figure for quick estimates when pricing.", CUR),
     ("Stale Item Threshold (days)", 60, "Listed items older than this are flagged on the Death Pile.", '0'),
     ("Poshmark Flat-Fee Threshold", 15.00, "Sales below this price pay the flat fee instead of the % fee.", CUR),

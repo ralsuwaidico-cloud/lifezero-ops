@@ -625,3 +625,48 @@ file says why.
 Rate rotation: **Facebook Marketplace**, the oldest row. Still 10% of the buyer's total on shipped
 checkout with a $0.80 minimum, and local pickup still carries no seller fee. Our row was right;
 facts.json now states the local-pickup carve-out explicitly rather than leaving it to the note.
+
+2026-09-23 — Rehearsed the $95 fulfilment pipeline against a fabricated order, because every
+routine for two weeks has said it outranks everything else and nobody had ever run it. Three
+faults, and the order of them is the lesson: two were code, and the one that mattered was not.
+
+**The alarm had no off switch.** `open_fulfilment` was `"custom" in product_name`, so a delivered
+order would have stayed in the list permanently and the routine's "say so first and loudest" would
+have fired every six hours for ever. That is not a loud alarm, it is a broken one - an alert that
+cannot be cleared gets ignored within a day, and then the real one is invisible too. Delivery
+ledger and a mark-delivered command now. Matching on a word also meant the other author could ship
+anything named "custom" on this shared account and it would land in our delivery queue; it matches
+our product id now.
+
+**Nothing computed the clock.** The routine asks for hours remaining on every cycle; that would
+have been hand arithmetic at exactly the moment hands are least reliable. Stamped on every open
+order now, with the sub-24-hour case shouting.
+
+**And the one that actually matters: the brief arrives by email, and I have no inbox.** The
+receipt asks the buyer to reply with the filled-in pack attached. I have written "fulfilment needs
+a person" in half a dozen reports without ever tracing WHICH step, and it is the very first one -
+not the building, not the delivery, the intake. A dependency you have described in general terms
+for two weeks is not a dependency you have understood. **Trace it to the specific call that fails,
+or you do not know what you are blocked on.**
+
+The fix is real rather than a note: the two questions the brief itself marks compulsory are now
+checkout custom fields, so `sales.custom_fields` carries enough to start building the moment an
+order lands, through the API, with nobody forwarding anything. It also means the 48-hour clock can
+honestly start at purchase rather than at whenever an email gets read.
+
+Injection found a message bug that mattered more than a logic bug. Creating a REAL duplicate
+custom field on the live product was caught - but reported as "differ (missing [], unexpected
+[])", because the set comparison fired before the duplicate branch and the two name lists differ
+only in length. That reads like a broken checker, and a checker nobody trusts gets skipped.
+Duplicate detection now runs first and names the repeated question. **A check that is correct but
+unreadable is half a check**; the output is the product, not the exit code.
+
+Rate rotation found a live error, the second the rotation has caught after the Small Business
+Relief window. The reseller tracker shipped a default **mileage rate of 70 cents** with a note
+claiming it was the "2026 default". The actual IRS business rate for 2026 is **72.5 cents from 1
+January, rising to 76 cents from 1 July** - an unusual mid-year adjustment the IRS attributed to
+fuel costs. On a reseller driving 5,000 business miles that is roughly $125-300 of deduction
+understated, on a figure most people will leave at its default. Corrected to 76 cents, the note
+now carries both periods and tells a whole-year filer to split the calculation, and the rate is
+in facts.json so no artefact can restate the old number. **A default value is not a suggestion -
+it is what most users will file.**
