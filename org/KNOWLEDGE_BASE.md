@@ -79,3 +79,11 @@ agent's attention for three weeks. **That attention was the real expense.**
 - **What happened:** the architecture optimised for never needing the owner. Result: five prepared items, 14 days, zero action, and no revenue in any channel — all of which need one block of owner identity work.
 - **Why it failed:** **OBJECTIVE.** The right target is *minimal recurring* owner labour. A one-time 50-minute verification that unlocks months of autonomous selling is cheap.
 - **Corrected 2026-09-24:** owner gates are ranked by expected value per owner minute and marked one-time vs recurring in `CONTROL_PLANE.md`.
+
+## KB-104 · New agents cannot be given connectors
+
+- **What happened:** the Red Team routine was created on 2026-09-24 and came back with a warning: it stores no MCP connectors, so its sessions run without Google Drive tools. Passing `connectors` explicitly was refused — *"the connectors parameter is not available for this organization."* The four existing fresh-session operators have Drive because they were created before this applied; they cannot be used as evidence that a new agent will.
+- **Why it matters:** **TOOLING.** Any new agent built on the assumption that it can read the Drive control plane will fail silently — it will not see the file, and nothing will tell it the file exists. A prompt that says "read the control plane in Drive" is not a capability.
+- **Routed around:** the Red Team reads the git repo instead — `git checkout claude/life-zero-runbook-b6qj0t`, since `org/` lives only on that branch and a default-branch checkout shows nothing. Its prompt is instructed to stop and report the exact error rather than audit its own prompt if the repo is unreachable.
+- **Before creating any future agent:** decide which of the two shared media it can actually reach — Drive (existing four operators only) or git (anything with Bash). Do not assume Drive.
+- **Unverified:** that a fresh trigger session in this environment can in fact reach the repo. The first Red Team fire on 2026-09-28 tests it. If it reports failure, both shared media are closed to new agents and that is a hard architectural limit worth escalating.

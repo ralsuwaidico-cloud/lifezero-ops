@@ -46,10 +46,22 @@ with a credit card** — every LIFE ZERO experiment to date has targeted individ
 
 | ID | Proposal | Why |
 |---|---|---|
-| **org-1** | **Publish the control plane where every agent can read it.** Five of six agents run from fresh sessions and cannot read this repo. The only shared medium is the Drive folder "LIFE ZERO". Publish `CONTROL_PLANE.md` + `KNOWLEDGE_BASE.md` there and add one line to every operator prompt: *read it before acting, write material discoveries back.* | **The single highest-value architectural change available.** Without it, this directory is shared state only one agent can read. Root cause of KB-101. |
+| **org-1** — **DONE 2026-09-24** | **Publish the control plane where every agent can read it.** Five of six agents run from fresh sessions and cannot read this repo. The only shared medium is the Drive folder "LIFE ZERO". Publish `CONTROL_PLANE.md` + `KNOWLEDGE_BASE.md` there and add one line to every operator prompt: *read it before acting, write material discoveries back.* | **The single highest-value architectural change available.** Without it, this directory is shared state only one agent can read. Root cause of KB-101. **Shipped:** `LIFE_ZERO_CONTROL_PLANE.md` is in the Drive folder (file id `1zFSj2ce777k-lvfw2oBOXh37GwOfDbfv`), and all five operator prompts now open with a READ THIS FIRST block pointing at it plus the write-back instruction — V003, V008, Acquisition Desk, Apify operator, and G-001 maintenance. |
 | org-2 | Each operator writes a 5-line result line per cycle to a shared log — what it tried, what happened, what it learned | Today no agent knows what any other learned. Cheap, and it makes org-1 two-way. |
-| org-3 | Write asset ownership into every operator prompt | Prevents the next collision. V003's page rewrite killed an experiment; a stale trigger of mine nearly destroyed their page. |
-| org-4 | Reduce G-001 polling from 6-hourly to daily | Four pulls a day to read `$0` is the clearest activity-not-progress in the organization. 21 days × 4 = ~84 pulls, every one zero. |
+| org-3 — **PARTIAL** | Write asset ownership into every operator prompt | Prevents the next collision. V003's page rewrite killed an experiment; a stale trigger of mine nearly destroyed their page. The control-plane file carries the ownership map, so every operator can now read it; it is not yet restated inline in each prompt. |
+| org-4 — **DONE 2026-09-24** | Reduce G-001 polling from 6-hourly to daily | Four pulls a day to read `$0` is the clearest activity-not-progress in the organization. 21 days × 4 = ~84 pulls, every one zero. |
+
+## RED TEAM FINDINGS
+
+The Red Team runs weekly from a fresh session (Mon 05:33 UTC, first fire 2026-09-28) and writes to
+`org/red_team/FINDINGS_<date>.md`. Charter: `RED_TEAM.md`.
+
+**The CEO must respond to every finding** — accept, reject with reasoning, or commission evidence.
+A finding ignored twice is escalated to the owner. Log responses here.
+
+| Date | Finding | CEO response |
+|---|---|---|
+| — | None yet; first cycle 2026-09-28 | — |
 
 ## AGENT PERFORMANCE PROBLEMS
 
