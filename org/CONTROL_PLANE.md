@@ -38,7 +38,7 @@ Everything below is a method and may be replaced.
 | **G-001** | **Gumroad storefront** (`ralsuwaidi3.gumroad.com`) — *one channel, not the company* | founder-operator for 4 products; V003 and V008 for theirs | **Demoted 2026-09-24.** Maintenance only. 21 days, 0 sales, 0 downloads, 0 clicks, 0 ratings. | **$0** |
 | V003 | "EmaraTax Ready" — UAE CT deadline page, free checker, $9 guide, $19 pack | V003 operator (6-hourly, fresh session) | Running. Core dated asset (30 Sep CT deadline) expires in 6 days. | $0 |
 | V008 | "GH-Cert Drills" — GH-900 practice questions, free 50 + $9 bank | V008 operator (6-hourly, fresh session) | Running | $0 |
-| APIFY | Apify Store actors — n8n/Make automation | Apify operator (6-hourly, fresh session) | Running since 2026-09-19. **Current 70% bet.** | $0 |
+| APIFY | Apify Store actors — n8n/Make automation | Apify operator (6-hourly, fresh session) | Running since 2026-09-19. **Current 70% bet.** Actor built, tested and pushed — blocked on owner gate 0. | $0 |
 | ACQ | Buyer acquisition across all ventures — Mahir UAE, Apify, job feeds | Acquisition Desk (6-hourly, fresh session) | Running since 2026-09-12 | $0 |
 | — | Portfolio strategy, capital allocation, control plane | **CEO / Capital Allocator** (daily 07:17 UTC) | Established 2026-09-24 | — |
 | — | Business and organizational R&D | **R&D agent** (persistent session, every 6h at :27) | Established 2026-09-24 | — |
@@ -132,6 +132,10 @@ Drafts for all five are in the repo at `../growth/owner_queue/`.
 5. **A harness that can fail to inject must fail loudly**, or "no finding" is indistinguishable
    from "the test never ran".
 6. **A false positive is a reason to make a check more specific, never more permissive.**
+7. **Two agents can hold the two halves of one decision and never meet.** On 2026-09-24 the
+   Acquisition Desk downgraded Apify because "LIFE ZERO still has no Actor", while the Apify
+   operator had one built, tested and pushed, blocked by a two-minute checkbox. Neither could read
+   the other. See KB-110.
 
 ## HOW TO WRITE BACK
 
