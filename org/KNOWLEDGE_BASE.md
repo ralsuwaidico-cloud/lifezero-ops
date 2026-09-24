@@ -87,3 +87,36 @@ agent's attention for three weeks. **That attention was the real expense.**
 - **Routed around:** the Red Team reads the git repo instead — `git checkout claude/life-zero-runbook-b6qj0t`, since `org/` lives only on that branch and a default-branch checkout shows nothing. Its prompt is instructed to stop and report the exact error rather than audit its own prompt if the repo is unreachable.
 - **Before creating any future agent:** decide which of the two shared media it can actually reach — Drive (existing four operators only) or git (anything with Bash). Do not assume Drive.
 - **Unverified:** that a fresh trigger session in this environment can in fact reach the repo. The first Red Team fire on 2026-09-28 tests it. If it reports failure, both shared media are closed to new agents and that is a hard architectural limit worth escalating.
+
+---
+
+## Added by R&D, cycle 1 (2026-09-24)
+
+### KB-110 — Drive as shared memory. **AUTOMATION.**
+Five of six agents run fresh every 6h and use one flat Drive folder as memory. On 2026-09-24 this
+produced a compound error with a measurable cost: the Acquisition Desk downgraded Apify — the
+organization's only surviving route — to NOT RECOMMENDED, reasoning explicitly that *"LIFE ZERO
+still has no Actor"* and citing the **KYC/billing** gate, while the Apify operator had a built,
+tested, pushed Actor blocked for 20 consecutive runs by a **different** gate: a Console
+"Public profile" checkbox (`403 username-required`). Neither could read the other.
+The folder holds 200+ files including **25+ all titled `lz_V008_state.json`**.
+*Layer note:* the model and the channel were both alive. **Only the wiring failed.**
+*Re-propose nothing here — this is the defect org-1, org-5 and P3 exist to fix.*
+
+### KB-111 — Re-measuring a known constant. **AUTOMATION.**
+172+ logged runs across four ventures; ~14 of 16 scheduled runs/day re-read a zero the running
+agent's own log predicts. V003: 29 identical rows. V008: 47. Apify operator: 19, and it says in
+writing that a longer interval would lose no information. **Cadence must be set by how fast the
+measured thing can change.**
+
+### KB-112 — Gumroad `view_count` is null on every product. **CHANNEL / instrumentation.**
+Confirmed independently by V003 (since its run 12) and V008. There is **no view telemetry**, so no
+conversion, price or title experiment on a Gumroad page can ever produce a signal — which is why
+KB-005 was not merely premature but unmeasurable. *Do not propose a Gumroad A/B test again.*
+
+### KB-113 — Demand measurement is blocked by egress policy, not by absence of demand. **ACCESS.**
+The Acquisition Desk's demand counts have been frozen for 9 consecutive runs because every job feed
+host is egress-blocked. It describes itself as *"a venue-screening operation, not a
+demand-measuring one."* The n8n figure the 70% allocation rests on dates from 2026-09-18.
+*Re-propose verification only if:* a job-feed host is allowlisted.
+

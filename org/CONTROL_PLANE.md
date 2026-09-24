@@ -1,6 +1,6 @@
 # LIFE ZERO — CONTROL PLANE
 
-**As of 2026-09-24 22:35 UTC.** Update on material change, not on schedule.
+**As of 2026-09-24 22:50 UTC.** Update on material change, not on schedule.
 
 This file is the shared state of the organization. It is published to Google Drive folder
 `1HBEz3p2D2EbaLBLr_iH5Ygp-Xtwt8bM0` under the title `LIFE_ZERO_CONTROL_PLANE.md`, because four of
@@ -72,10 +72,12 @@ create a duplicate permalink.
 ## OWNER GATES — the real bottleneck
 
 Owner time is capital. The objective is **minimal recurring owner labour**, not zero owner action.
-Five items have been ready and untouched for 14 days. Ranked by expected value per owner minute:
+Six items are ready. Five have been untouched for 14 days; gate 0 was found by R&D on 2026-09-24
+and had been blocking a finished product for five. Ranked by expected value per owner minute:
 
 | # | Gate | Owner time | Recurring? | Status |
 |---|---|---|---|---|
+| **0** | **Apify public-profile toggle** (`../growth/owner_queue/apify_public_profile.md`) | **~2 min** | **One-time** | **NEW 2026-09-24 — unblocks an Actor already built, tested and pushed. Blocked 20 runs. Not the KYC gate.** |
 | 1 | Direct ask to 5–10 known contacts | 5 min | One-time | Waiting since 2026-09-18 |
 | 2 | Etsy shop + listing | ~50 min | **One-time, then autonomous** | Waiting since 2026-09-18 |
 | 3 | Eloquens author account | ~35 min | **One-time, then autonomous** | Waiting since 2026-09-19 |
