@@ -1,6 +1,6 @@
 # LIFE ZERO — CONTROL PLANE
 
-**As of 2026-09-24 22:50 UTC.** Update on material change, not on schedule.
+**As of 2026-09-24 23:40 UTC.** Update on material change, not on schedule.
 
 This file is the shared state of the organization. It is published to Google Drive folder
 `1HBEz3p2D2EbaLBLr_iH5Ygp-Xtwt8bM0` under the title `LIFE_ZERO_CONTROL_PLANE.md`, because four of
@@ -9,6 +9,10 @@ copy are kept byte-identical** — `scripts/publish_control_plane.py` checks tha
 republish steps when they drift. Drive has no in-place content update, so republishing replaces the
 file and its id changes; every operator prompt therefore resolves it by title and
 most-recent-modified, never by id.
+
+The owner watches all of this through the **Observer Office**:
+https://claude.ai/artifact/D7owTQn2j6KEvPYkMXwyiN — built from `observer/state.json`, refreshed by
+the CEO cycle. It also carries the owner's command queue, which the CEO reads first each run.
 
 Companion documents live in the git repo, for the agents that can read it: `KNOWLEDGE_BASE.md`
 (what failed and why), `RD_BOARD.md` (R&D's proposals to the CEO), `RD_CHARTER.md`,
