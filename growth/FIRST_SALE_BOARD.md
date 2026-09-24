@@ -8,7 +8,7 @@ problem. Clicks but no sales → offer or trust problem. Do not cut a price with
 and change one variable at a time.
 
 Metrics are refreshed by the 6-hourly sales pull (UTM clicks via `python3 scripts/utm.py list`,
-sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-23 06:59 UTC** — every funnel number
+sales via `scripts/pull_sales.py`). Last refreshed: **2026-09-24 06:58 UTC** — every funnel number
 below is still zero across all 14 channels, 9 published products and the CT30 code, and no product
 has a rating. Expected:
 nothing links to any of these pages yet, and the two channels that would are the owner-queue
@@ -598,6 +598,21 @@ The two original items, unchanged since 2026-09-10:
 | **Status** | Awaiting owner | Awaiting owner |
 
 ---
+
+## Not mine — and as of 2026-09-24, not a person either
+
+> **See `growth/OPERATORS.md`.** The "other actor" described below is **V003 "EmaraTax Ready"** and
+> **V008 "GH-Cert Drills"** — two autonomous LIFE ZERO operators running every six hours from a
+> fresh session, on this same Gumroad account, since 2026-09-11. There are six live operators in
+> total, including an **Acquisition Desk** that has been running four times a day since 09-12 and
+> whose existence I did not know about while writing "I have no unblocked acquisition lever" in
+> twelve consecutive reports. `list_triggers` would have said so on day one; on 09-19 I called it
+> with `recurring: false` and filtered every one of them out.
+>
+> The analysis below is left as written, because it was reasoned carefully from what I could see
+> and being wrong about the actor does not make the *observations* wrong. Read "the other actor"
+> as "a sibling agent with no memory between runs" and it all still holds — in fact the draft
+> "Internal build archive" products make considerably more sense that way.
 
 ## Not mine: the account now holds nine products, five of them not from this repo
 

@@ -670,3 +670,43 @@ understated, on a figure most people will leave at its default. Corrected to 76 
 now carries both periods and tells a whole-year filer to split the calculation, and the rate is
 in facts.json so no artefact can restate the old number. **A default value is not a suggestion -
 it is what most users will file.**
+
+2026-09-24 — The "other author" is not a person. It is two other Claude operators on this same
+business, and there are six of us.
+
+I went looking for stale scheduled one-shots, on the theory that I had fixed the UAE deadline
+trigger on 09-19 and never checked its sibling. That theory was right and the sibling was worse
+than stale: the CT30 one-shot still carried its 2026-09-10 instruction to edit our copy of the CT
+deadline page and PUT it back to the live URL. That page stopped being ours on 09-14. Left alone,
+on 1 October it would have overwritten 7,949 characters of somebody else's current work with our
+5,423-character retired copy - the exact clobber I refused to perform by hand ten days ago, queued
+up to happen automatically. Seven days out. Rewritten: delete the code, record times_used first,
+do not touch the page, escalate instead.
+
+But the audit turned up something much larger. `list_triggers` returns ten routines, six of them
+live LIFE ZERO operators: this session, **V003 "EmaraTax Ready"** (the UAE CT page, checker, guide
+and pack), **V008 "GH-Cert Drills"** (the GH-900 products), an **Acquisition Desk** that builds
+nothing and only hunts buyers, an **Apify operator** with its own APIFY_TOKEN, and a dormant
+legacy publisher. V003 and V008 are the "other actor" this repo has theorised about since 09-11.
+They run every six hours from a FRESH session, which explains everything that looked strange:
+the build-artefact draft products (a stateless agent parking files where it can find them), the
+question-format rename using the same snippet logic as my own experiment A (same reasoning, same
+training), the custom_html rewrite.
+
+**The method failure is the part worth keeping.** I had `list_triggers` from day one. I used it on
+09-19 - and passed `recurring: false`, which filtered out every one of these, because they are all
+cron routines. I then wrote two weeks of carefully hedged analysis about an unknown actor, and
+escalated "who owns what between two uncoordinated authors" to the owner as something I could not
+resolve from here. It was resolvable from here in one call with one fewer argument. **A filter is
+a claim about what you are not interested in. When the answer is "nothing found", check the filter
+before you check the world** - and when you are about to tell someone a question is unanswerable,
+that is the moment to re-run the query without your assumptions in it.
+
+It also corrects a sentence I have written in twelve consecutive reports. "I have no unblocked
+acquisition lever" was true of me and I will keep saying it in exactly that form - but a dedicated
+Acquisition Desk has been running four times a day since 09-12. What I cannot see is not the same
+as what does not exist, and I was one query away from knowing the difference.
+
+Nothing of theirs has been touched and nothing will be. growth/OPERATORS.md now holds the roster,
+the five places where two agents write to the same object with no lock, and the escalation stated
+properly: six operators, one Gumroad account, one brand, no shared state - is that the intent?
