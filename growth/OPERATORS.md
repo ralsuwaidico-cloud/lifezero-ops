@@ -1,5 +1,12 @@
 # Who else is running LIFE: ZERO
 
+> **Superseded in part, 2026-09-24.** The owner's R&D directive reorganised this. The portfolio
+> view now lives in `../org/CONTROL_PLANE.md`; the failures in `../org/KNOWLEDGE_BASE.md`. Two
+> roles were created that are not in the table below: **CEO / Capital Allocator** (this persistent
+> session) and an independent **R&D agent** (`session_01BFRuz1vq1KBRVPgRzsDz6N`, persistent, every
+> 6h at :27). The Gumroad routines were demoted — 6-hourly pull → daily maintenance, daily growth
+> → CEO cycle. This file remains the reference for who owns which asset and where agents collide.
+
 **Written 2026-09-24, after finding out that the "other author" is not a person.**
 
 For two weeks this repo has described an unnamed "other actor" on the shared Gumroad account,
