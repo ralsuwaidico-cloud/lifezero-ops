@@ -58,10 +58,11 @@ One Gumroad account, four agents with write access, no locks.
 ## OWNER GATES — the real bottleneck
 
 Owner time is capital. The objective is **minimal recurring owner labour**, not zero owner action.
-Five items have been ready and untouched for 14 days. Ranked by expected value per owner minute:
+Six items are ready. Five have been untouched for 14 days; gate 0 was found by R&D on 2026-09-24 and had been blocking a finished product for five. Ranked by expected value per owner minute:
 
 | # | Gate | Owner time | Recurring? | Status |
 |---|---|---|---|---|
+| **0** | **Apify public-profile toggle (`growth/owner_queue/apify_public_profile.md`)** | **~2 min** | **One-time** | **NEW 2026-09-24 — unblocks an Actor already built, tested and pushed. Blocked 20 runs. Not the KYC gate.** |
 | 1 | Direct ask to 5–10 known contacts (`growth/owner_queue/direct_ask.md`) | 5 min | One-time | Waiting since 2026-09-18 |
 | 2 | Etsy shop + listing (`etsy_listing.md`) | ~50 min | **One-time, then autonomous** | Waiting since 2026-09-18 |
 | 3 | Eloquens author account (`eloquens_listing.md`) | ~35 min | **One-time, then autonomous** | Waiting since 2026-09-19 |
