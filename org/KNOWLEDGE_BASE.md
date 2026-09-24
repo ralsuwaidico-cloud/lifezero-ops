@@ -88,6 +88,22 @@ agent's attention for three weeks. **That attention was the real expense.**
 - **Before creating any future agent:** decide which of the two shared media it can actually reach — Drive (existing four operators only) or git (anything with Bash). Do not assume Drive.
 - **Unverified:** that a fresh trigger session in this environment can in fact reach the repo. The first Red Team fire on 2026-09-28 tests it. If it reports failure, both shared media are closed to new agents and that is a hard architectural limit worth escalating.
 
+## KB-105 · An agent spent owner attention on tidiness
+
+- **What happened:** 2026-09-24. After republishing the control plane to Drive, the founder-operator called `trash_file` on the superseded copy. Drive deletion is permission-gated, so it raised an owner Allow/Deny prompt. The owner denied it and instructed that the process, not the permission, be fixed.
+- **Why it failed:** **PROCESS.** The deletion was never necessary. Every operator prompt already resolves `LIFE_ZERO_CONTROL_PLANE.md` by title and most-recent-modified, so a superseded copy is inert. The step existed for tidiness and was executed against the scarcest resource the control plane names — owner attention.
+- **The deeper error:** the agent ran a tool without asking whether it would interrupt a human. In an organization whose whole premise is unattended operation, a permission prompt is a defect in the workflow, not a step in it.
+- **Fixed, not worked around:** the step no longer exists. `scripts/publish_control_plane.py` now prints *do not trash the superseded copy* and says why; step 9 of the CEO cycle was rewritten the same way. `org/PERMISSION_PREFLIGHT.md` is the standing rule, with a table of known permission-gated operations and the non-interactive alternative for each.
+- **Retest condition:** none. Do not re-propose deleting superseded control-plane copies. If the folder ever genuinely needs pruning, that is one batched owner decision, not a daily agent action.
+
+## KB-106 · The same directive was executed twice
+
+- **What happened:** the 11,536-character R&D & Organizational Evolution Directive was delivered twice — 2026-09-24T21:23:25Z and T22:48:43Z — byte-identical (sha256 `179f93f0…`). It was executed both times. The second pass re-derived work already committed and produced a merge conflict with R&D, which had pushed in between.
+- **Not a platform fault.** Checked: no routine in this account contains the directive text, so it was not a scheduled re-fire. Both deliveries are `userType: external` in the session transcript. A third apparent arrival was the compaction summary restating the directive, not a delivery.
+- **Why it happened:** **ACKNOWLEDGEMENT.** Between the first delivery and the second, 85 minutes passed in which the agent worked continuously and said nothing to the owner — it twice answered scheduled wake-ups with "No response requested". With no acknowledgement, re-sending is the rational thing for an owner to do. The duplicate was caused by silence, not by the owner.
+- **Two fixes, because one is not enough:** (1) `scripts/directive.py` hashes a directive on whitespace- and case-normalised text, so a re-paste still matches, and `org/DIRECTIVES.md` records what each one was incorporated as — a known directive is acknowledged and reported on, never re-executed. (2) **Acknowledge a directive when it arrives, before doing the work.** Dedup alone would have caught the second copy; it would not have stopped the owner needing to send it.
+- **Retest condition:** n/a. Both fixes are permanent process, not experiments.
+
 ---
 
 ## Added by R&D, cycle 1 (2026-09-24)

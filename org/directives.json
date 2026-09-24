@@ -1,0 +1,24 @@
+{
+  "directives": [
+    {
+      "chars": 11536,
+      "deliveries": 2,
+      "first_seen": "2026-09-24T21:23:25Z",
+      "id": "D-7cda713df2",
+      "last_seen": "2026-09-24T22:48:43Z",
+      "status": "incorporated",
+      "summary": "Corrected the objective to legitimate sustainable profit; demoted Gumroad to CHANNEL G-001. Incorporated as: org/CONTROL_PLANE.md (shared state, published to Drive and read by all four fresh-session operators), org/KNOWLEDGE_BASE.md, org/RD_CHARTER.md + a persistent R&D agent every 6h, org/RD_BOARD.md, org/OPPORTUNITY_SCORING.md, org/RED_TEAM.md + a weekly fresh-session Red Team, the CEO / Capital Allocator cycle with the 70/20/10 split, and the ranked owner-gate table. Delivered twice, byte-identical, 85 minutes apart; executed twice. See KB-106.",
+      "title": "R&D & Organizational Evolution Directive"
+    },
+    {
+      "chars": 8582,
+      "deliveries": 1,
+      "first_seen": "2026-09-24T23:26:33Z",
+      "id": "D-32b5286d83",
+      "last_seen": "2026-09-24T23:26:33Z",
+      "status": "incorporated",
+      "summary": "Built as observer/ -- state.json (shared state), office.template.html, build_observer.py (validator), published at https://claude.ai/artifact/D7owTQn2j6KEvPYkMXwyiN. Read-only observation with grounded per-agent answers; owner commands kept separate and queued to the page's shared store, which the CEO reads as step 1 of each cycle.",
+      "title": "Observer Office"
+    }
+  ]
+}

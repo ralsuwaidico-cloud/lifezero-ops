@@ -133,6 +133,13 @@ A finding ignored twice is escalated to the owner. Log responses here.
 |---|---|---|
 | — | None yet; first cycle 2026-09-28 | — |
 
+## PROCESS INCIDENTS REFERRED TO R&D
+
+| ID | Incident | Required improvement | Status |
+|---|---|---|---|
+| **INC-001** | An agent ran a permission-gated destructive operation (`trash_file` on Drive) during unattended operation. It interrupted the owner and gained nothing. | **Agents must detect permission-gated operations before execution and redesign around them.** Preflight every tool call: could this raise an owner Allow/Deny prompt? If yes, do not run it unless unavoidable *and* economically important. Prefer leave-in-place → deprecate → archive → redesign → (last) ask. | **Fixed at source 2026-09-24.** The step was removed from `publish_control_plane.py` and CEO step 9. Rule: `org/PERMISSION_PREFLIGHT.md`. Recorded as KB-105. **R&D owns the open half:** audit every agent prompt for other instructions that could trigger a prompt, and extend the table of known gated operations. |
+| **INC-002** | The same owner directive was delivered twice and executed twice, costing duplicated reorganization work and a merge conflict. | Directive IDs and deduplication, plus acknowledgement on receipt. | **Fixed 2026-09-24.** `scripts/directive.py` + `org/DIRECTIVES.md`. Recorded as KB-106. **R&D owns the open half:** the same pattern applies to findings — check whether operators are re-deriving conclusions already in the knowledge base, which KB-110 suggests they are. |
+
 ## AGENT PERFORMANCE PROBLEMS
 
 - **Acquisition Desk** — question answered. Not underperforming; **starved and unread.** Its

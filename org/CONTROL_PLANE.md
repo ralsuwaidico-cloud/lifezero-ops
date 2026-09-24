@@ -1,14 +1,15 @@
 # LIFE ZERO — CONTROL PLANE
 
-**As of 2026-09-24 23:40 UTC.** Update on material change, not on schedule.
+**As of 2026-09-25 00:05 UTC.** Update on material change, not on schedule.
 
 This file is the shared state of the organization. It is published to Google Drive folder
 `1HBEz3p2D2EbaLBLr_iH5Ygp-Xtwt8bM0` under the title `LIFE_ZERO_CONTROL_PLANE.md`, because four of
 the seven agents run from fresh sessions with no memory and cannot read the git repo. **This file and the Drive
 copy are kept byte-identical** — `scripts/publish_control_plane.py` checks that and prints the
-republish steps when they drift. Drive has no in-place content update, so republishing replaces the
-file and its id changes; every operator prompt therefore resolves it by title and
-most-recent-modified, never by id.
+republish steps when they drift. Drive has no in-place content update, so republishing creates a new
+file with a new id; every operator prompt therefore resolves it by title and
+most-recent-modified, never by id. **Superseded copies are left in place on purpose** —
+deleting one is permission-gated and buys nothing (KB-105).
 
 The owner watches all of this through the **Observer Office**:
 https://claude.ai/artifact/D7owTQn2j6KEvPYkMXwyiN — built from `observer/state.json`, refreshed by
@@ -16,9 +17,25 @@ the CEO cycle. It also carries the owner's command queue, which the CEO reads fi
 
 Companion documents live in the git repo, for the agents that can read it: `KNOWLEDGE_BASE.md`
 (what failed and why), `RD_BOARD.md` (R&D's proposals to the CEO), `RD_CHARTER.md`,
-`OPPORTUNITY_SCORING.md`, `RED_TEAM.md`, and `../growth/OPERATORS.md` (the full agent roster).
+`OPPORTUNITY_SCORING.md`, `RED_TEAM.md`, `PERMISSION_PREFLIGHT.md`, `DIRECTIVES.md`
+(what the owner has already asked for, and what it was incorporated as), and
+`../growth/OPERATORS.md` (the full agent roster).
 
 ---
+
+## TWO STANDING RULES THAT OVERRIDE CONVENIENCE
+
+**1. Never run an action that could raise an owner Allow/Deny prompt** unless it is genuinely
+unavoidable *and* economically important. LIFE ZERO runs unattended; a permission prompt is a
+defect in the workflow, not a step in it. Prefer: leave in place → mark deprecated → archive →
+redesign so the action is unnecessary → *(last)* ask. Known gated operations and their
+non-interactive alternatives: `PERMISSION_PREFLIGHT.md`. Cost of learning this: KB-105.
+
+**2. Check `DIRECTIVES.md` before executing an owner directive.** If it is already listed, it has
+been done — acknowledge it and report what was done. Do not re-execute. Run
+`python3 scripts/directive.py check <file>`; a non-zero exit means already incorporated. And
+acknowledge a directive when it arrives, before starting the work: the duplicate recorded in
+KB-106 was caused by 85 minutes of silence, not by the owner.
 
 ## CURRENT OBJECTIVE
 
@@ -116,6 +133,9 @@ Drafts for all five are in the repo at `../growth/owner_queue/`.
 - **Gumroad Discover requires roughly $100 of prior account sales before it lists anything.**
   Verified directly. Gumroad product pages also do not surface in category search — confirmed
   against a *selling* competitor, not just against ourselves.
+- **Superseded Drive copies accumulate, and that is fine.** Readers take the most recently
+  modified `LIFE_ZERO_CONTROL_PLANE.md`. Republishing only happens when the content hash actually
+  changes, so accumulation is roughly one file per material change. Do not delete them (KB-105).
 - **Two shared media, and they do not overlap.** The four fresh-session operators (V003, V008,
   Apify, Acquisition Desk) have Google Drive tools and read this file there. Agents created from
   now on **cannot be given connectors** — the parameter is refused for this organization (KB-104)
@@ -140,6 +160,12 @@ Drafts for all five are in the repo at `../growth/owner_queue/`.
    Acquisition Desk downgraded Apify because "LIFE ZERO still has no Actor", while the Apify
    operator had one built, tested and pushed, blocked by a two-minute checkbox. Neither could read
    the other. See KB-110.
+8. **A permission prompt is a defect in the workflow, not a step in it.** An agent deleted a
+   harmless superseded file for tidiness and spent the owner's attention to do it. If removing a
+   tidy-up step costs nothing measurable, it was never worth an interruption. See KB-105.
+9. **Silence invites duplicate work.** The same directive was sent twice, 85 minutes apart,
+   because nothing acknowledged the first one. Acknowledge on receipt, then do the work. See
+   KB-106.
 
 ## HOW TO WRITE BACK
 

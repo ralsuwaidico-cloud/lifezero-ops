@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Tell the CEO cycle whether the Drive copy of the control plane is stale.
 
-Google Drive has no in-place content update: republishing creates a NEW file and
-the old one must be trashed. That makes the file id unstable, so every operator
-prompt resolves the control plane by TITLE and most-recent-modified instead.
+Google Drive has no in-place content update: republishing creates a NEW file.
+Superseded copies are LEFT IN PLACE, deliberately -- deleting one is a
+permission-gated destructive operation that interrupts the owner, and it buys
+nothing. Every operator prompt resolves the control plane by TITLE and
+most-recent-modified, so older copies are inert. See org/PERMISSION_PREFLIGHT.md.
 
 This script cannot call Drive itself -- Drive is an MCP tool, not an HTTP client
 we hold credentials for. It does the part that can be automated: decide whether a
@@ -63,8 +65,8 @@ def main():
         print("RECORDED: %s now holds the current control plane (sha256 %s)"
               % (args.published, current[:12]))
         if previous and previous != args.published:
-            print("REMINDER: trash the superseded file %s -- two copies in the"
-                  " folder and the operators may read the wrong one." % previous)
+            print("Superseded: %s. Leave it in place -- readers take the most"
+                  " recently modified copy. Do not delete it." % previous)
         return 0
 
     published_hash = state.get("sha256")
@@ -88,11 +90,11 @@ def main():
     print("                  contentMimeType=text/plain")
     print("                  disableConversionToGoogleType=true")
     print("                  textContent=<the full contents of org/CONTROL_PLANE.md>")
-    print("  2. trash_file   fileId=%s" % file_id)
-    print("  3. python3 scripts/publish_control_plane.py --published <new file id>")
+    print("  2. python3 scripts/publish_control_plane.py --published <new file id>")
     print("")
-    print("The id changing is expected -- operator prompts resolve the file by")
-    print("title and most-recent-modified. Two copies in the folder is the failure.")
+    print("Do NOT trash the superseded copy (%s)." % file_id)
+    print("Deletion is permission-gated and would interrupt the owner for no gain:")
+    print("readers take the most recently modified copy, so old ones are inert.")
     return 1
 
 
