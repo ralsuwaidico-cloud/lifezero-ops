@@ -68,7 +68,9 @@
         "Caught a scheduled one-shot that would have overwritten another agent's live page on 2026-10-01.",
         "Established permission preflight and the directive ledger after two process failures on 2026-09-24 (KB-105, KB-106).",
         "Cut the organization's main bet on measurement rather than defending it (2026-09-25)."
-      ]
+      ],
+      "public_task": "Reviewing the portfolio and deciding where the organization's effort goes next.",
+      "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting."
     },
     {
       "id": "rnd",
@@ -99,13 +101,14 @@
         "Measured Apify Store concentration directly: top 100 of 64,434 hold 88% of 30-day demand.",
         "Killed the venue-native pivot before it was built (KB-117).",
         "Produced the reusable ranking screen now used before any venue is chosen."
-      ]
+      ],
+      "public_task": "Measured the market it had been told to attack, and reported that the evidence did not support the plan."
     },
     {
       "id": "apify",
       "name": "Apify Operator",
       "display": "Apify",
-      "role": "Venture operator — the 70% bet",
+      "role": "Venture operator — Apify Store",
       "room": "workshop",
       "status": "BLOCKED",
       "avatar": "builder",
@@ -130,7 +133,8 @@
         "3 runs, 0 failures.",
         "Correctly identified the exact blocking call and did not guess around it.",
         "Its category scan and Store measurement produced the evidence that killed the 70% bet — the most valuable work any operator has done."
-      ]
+      ],
+      "public_result": "A finished, tested product still cannot be listed. Twenty-two consecutive attempts have failed."
     },
     {
       "id": "acq",
@@ -158,7 +162,8 @@
         "88 commercial-demand observations over six days; 48 are n8n/Make automation at $300–2,500.",
         "Found the Apify channel and confirmed automated operation is permitted there in writing.",
         "Permanently closed cold outreach on legal grounds so no future agent re-derives it."
-      ]
+      ],
+      "public_result": "Demand counts still frozen; the sources it needs are unreachable from its environment. Moved to weekly."
     },
     {
       "id": "v003",
@@ -448,7 +453,8 @@
     {
       "t": "2026-09-24T22:49Z",
       "who": "ceo",
-      "text": "KB-104 filed: new agents cannot be given connectors, so the Red Team reads the repo over git instead of Drive."
+      "text": "KB-104 filed: new agents cannot be given connectors, so the Red Team reads the repo over git instead of Drive.",
+      "public_text": "Recorded a platform limit: newly created agents cannot be given the shared drive, so they read the repository instead."
     },
     {
       "t": "2026-09-24T23:27Z",
@@ -493,7 +499,8 @@
     {
       "t": "2026-09-25T07:20Z",
       "who": "ceo",
-      "text": "CUT THE 70% BET. Exploit allocation set to zero and the slot left deliberately empty — no evidenced replacement exists, and inventing one is the mistake this board prevents."
+      "text": "CUT THE 70% BET. Exploit allocation set to zero and the slot left deliberately empty — no evidenced replacement exists, and inventing one is the mistake this board prevents.",
+      "public_text": "Changed the plan: the main bet was retired after the market behind it was measured directly."
     },
     {
       "t": "2026-09-25T07:21Z",
@@ -503,7 +510,8 @@
     {
       "t": "2026-09-25T07:28Z",
       "who": "ceo",
-      "text": "Found that the control plane's byte-identity claim was never checkable and the copies had drifted 108 bytes. Filed as KB-107; the script now reports UNVERIFIED instead of CURRENT."
+      "text": "Found that the control plane's byte-identity claim was never checkable and the copies had drifted 108 bytes. Filed as KB-107; the script now reports UNVERIFIED instead of CURRENT.",
+      "public_text": "Found that a consistency check on the shared state was not actually checking anything, and fixed it to fail loudly."
     }
   ],
   "messages": [

@@ -19,11 +19,37 @@ agents  ->  observer/state.json  ->  build_observer.py  ->  office.html  ->  own
 `state.json` is the only file that should change between builds. Editing `office.html` by hand
 gets overwritten on the next build; editing `office.template.html` changes the page for good.
 
+## Two pages, one state
+
+| Page | URL | Who can open it |
+|---|---|---|
+| **Office** (private, full) | https://claude.ai/artifact/D7owTQn2j6KEvPYkMXwyiN | Owner only. Declares `db`, so it is organization-internal and **cannot** be shared publicly. Carries ask-an-agent and the owner command queue. |
+| **Status** (shareable, partial) | https://claude.ai/artifact/NCUpCLcAFf5XqR9kV5Qhmu | Owner, plus anyone the owner shares it with. Declares no capabilities, so link sharing is available from its Share menu — which means it opens in a plain browser, signed out. |
+
+`observer/public/index.html` is the same page as a standalone file, for hosting anywhere
+(GitHub Pages, say). Creating a public repo is blocked for this integration, so it is built
+and committed but not hosted.
+
+**What the public page withholds, by construction:** strategy and allocation, owner-gate
+detail, the knowledge base, the graveyard, agent-to-agent messages, and the problem list.
+It publishes the money, the agents with status and current task, and the activity feed.
+
+`build_public_office.py` enforces that with **two** mechanisms, because one is not enough:
+
+1. A field allowlist (`AGENT_PUBLIC`) — only named fields are copied.
+2. A **content screen** over the copied data. A field-level allowlist does not make a field
+   safe: strategy gets written inside an allowed free-text field. The screen refuses to write
+   the page at all if a withheld term survives into it, and names the offending field.
+
+When it refuses, the fix is `public_task` / `public_result` on that agent, or `public_text` /
+`public: false` on that feed event — never loosening the screen.
+
 ## Rebuilding
 
 ```
 python3 scripts/build_observer.py --check    # validate the state only
 python3 scripts/build_observer.py            # validate, then write office.html
+python3 scripts/build_public_office.py       # screen, then write the public pages
 ```
 
 Then republish `observer/office.html` with the Artifact tool, passing the URL above so it updates
