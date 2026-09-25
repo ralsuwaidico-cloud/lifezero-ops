@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-09-25T20:45:00Z",
+  "generated_at": "2026-09-25T21:05:00Z",
   "day": 22,
   "started": "2026-09-04",
   "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
@@ -116,7 +116,7 @@
    "role": "Runs the Apify Store venture",
    "room": "automation",
    "status": "BLOCKED",
-   "avatar": "builder",
+   "avatar": "robot",
    "current_task": "Our public seller page is live. Publishing still fails on a second thing: we have not accepted the marketplace's seller terms.",
    "why": "Apify was chosen because it enforces the proof a buyer needs: public run-success rate, visible quality score, credential-free trial before payment.",
    "venture": "Apify Store",
@@ -177,9 +177,9 @@
    "name": "EmaraTax Ready",
    "display": "EmaraTax Ready",
    "role": "Runs the UAE corporate-tax venture",
-   "room": "venture_ops",
+   "room": "emaratax",
    "status": "WORKING",
-   "avatar": "operator",
+   "avatar": "tax",
    "current_task": "UAE Corporate Tax self-filing ladder: free deadline checker, $9 guide, $19 pack.",
    "why": "The first-ever UAE CT return deadline is 30 September 2026, penalty-backed. A hard dated obligation is real demand.",
    "venture": "EmaraTax Ready",
@@ -205,9 +205,9 @@
    "name": "GH-Cert Drills",
    "display": "GH-Cert Drills",
    "role": "Runs the GitHub certification venture",
-   "room": "venture_ops",
+   "room": "ghcert",
    "status": "WORKING",
-   "avatar": "operator",
+   "avatar": "cert",
    "current_task": "Original GH-900 practice questions: free 50, then a $9 bank of 300.",
    "why": "A Udemy GH-900 practice course shows roughly 13,000 students, so the demand is real. The edge was meant to be original, explained, source-cited questions.",
    "venture": "GH-Cert Drills",
@@ -232,7 +232,7 @@
    "name": "IT Support",
    "display": "IT Support",
    "role": "Keeps the other agents connected",
-   "room": "automation",
+   "room": "it_desk",
    "status": "WORKING",
    "avatar": "it",
    "current_task": "Checking every outside service the company depends on, and telling each agent in plain words what it can and cannot reach today.",
@@ -293,28 +293,38 @@
   },
   {
    "id": "acquisition",
-   "name": "Acquisition",
-   "line": "Demand and channels"
+   "name": "Acquisition Desk",
+   "line": "Finding buyers. Builds nothing."
   },
   {
-   "id": "venture_ops",
-   "name": "Venture Ops",
-   "line": "Product builders"
+   "id": "emaratax",
+   "name": "EmaraTax Ready",
+   "line": "The UAE corporate-tax venture"
+  },
+  {
+   "id": "ghcert",
+   "name": "GH-Cert Drills",
+   "line": "The GitHub certification venture"
   },
   {
    "id": "automation",
-   "name": "Automation / Server Room",
+   "name": "Apify Workshop",
    "line": "Hosted actors and scheduled runs"
   },
   {
-   "id": "operations",
-   "name": "Operations",
-   "line": "Delivery and fulfilment"
+   "id": "it_desk",
+   "name": "IT Support",
+   "line": "Connections, and who is refusing us"
   },
   {
    "id": "audit",
    "name": "Audit / Red Team",
    "line": "Risk and reality check"
+  },
+  {
+   "id": "operations",
+   "name": "Operations",
+   "line": "Delivery and fulfilment"
   },
   {
    "id": "library",
@@ -332,7 +342,6 @@
    "line": "Where a customer would arrive"
   }
  ],
- "ops_empty": "No customer work in delivery. There have been no customers. The $95 custom-sheet pipeline has been rehearsed end to end and is ready for the first order.",
  "ventures": [
   {
    "ref": "Gumroad storefront",

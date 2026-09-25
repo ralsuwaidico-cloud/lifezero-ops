@@ -120,8 +120,10 @@ def main():
     for r in s["rooms"]:
         crew = by_room.get(r["id"], [])
         if not crew:
-            body = '<div class="empty">%s</div>' % e(
-                s["ops_empty"] if r["id"] == "ops" else "Nobody here.")
+            # The private office explains WHY a room is empty; the public page
+            # says only that it is. `room_empty` is internal commentary and is
+            # deliberately not part of the public disclosure surface.
+            body = '<div class="empty">Nobody here.</div>' 
         else:
             body = '<div class="crew">' + "".join(
                 '<div class="person"><span class="ava">%s<span class="dot" style="background:%s">'
@@ -148,7 +150,7 @@ def main():
         public_feed.append({"t": x["t"], "text": x.get("public_text") or x["text"]})
         if len(public_feed) >= 14:
             break
-    s_rooms, ops_empty = s["rooms"], s["ops_empty"]
+    s_rooms = s["rooms"]
 
     feed = "".join(
         '<div class="ev"><time>%s</time><p>%s</p></div>'
@@ -170,7 +172,7 @@ def main():
                     ("display", "role", "current_task", "last_result", "schedule")]
     scanned += [("feed %s" % x["t"], x["text"]) for x in public_feed]
     scanned += [("room %s" % r["id"], r["name"] + " -- " + r["line"]) for r in s_rooms]
-    scanned.append(("ops_empty", ops_empty))
+    # room_empty is not published, so it is not screened.
 
     found = []
     for where, text in scanned:
