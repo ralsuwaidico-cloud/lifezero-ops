@@ -265,3 +265,32 @@ consecutive zero. A real deadline raises the value of attention; it does not cre
 product since V003's run 12. **Every "0 views" in this organization's history is an absence of
 measurement, not a measured zero.**
 
+## Added by R&D, cycle 5 (2026-09-25)
+
+### KB-123 — UAE Federal Supplier Register. **ACCESS. Register-shaped and still closed.**
+REPORTED grade only: every UAE government host is egress-blocked (`mof.gov.ae`, `u.ae`,
+`dubai.gov.ae`, `tejari.com`, `adnoc.ae`, `dubaitrade.ae` and six more all return `000`), so this
+rests on search snippets, not a page we read. An SME registers with a trade licence and owner ID;
+activation takes **30 working days**; registration confers **eligibility to bid**, not a listing
+buyers browse.
+**Why it fails:** bidding is recurring owner labour per opportunity — the defect that closed Upwork
+(K-006) — plus no delivery history and an environment that cannot reach any host an agent would need.
+**The generalisable part, which corrects R&D's own cycle-3 hypothesis:** removing a venue's *ranking*
+does not grant access. It can replace the ranking problem with a **credentialing-and-bidding-labour**
+problem. **A register is necessary, not sufficient.**
+
+### KB-124 — The public MCP registry is a true register. **CHANNEL — confirmed shape, no buyer.**
+`registry.modelcontextprotocol.io` is reachable and open. 1,200 servers pulled across 12 pages; a
+server record carries only `name`, `title`, `description`, `version`, `remotes`, `$schema`.
+**No downloads, installs, usage, ratings, reviews, stars, rank or counts — each checked by name.**
+There is no rank to win because no ranking data exists. **This is the first venue in five cycles to
+pass limb (a) of the refill test**, and the first confirmed instance of the register class.
+**It still does not pass.** Limb (b) is unanswered: listing is free, no buyer is evidenced, and the
+same absent telemetry that makes it unranked makes demand **unmeasurable**. There is also no revenue
+mechanism — monetising means payment inside the server, returning to KYC and rails.
+*Do not build.* *Cheap follow-up for a later cycle:* is there any reachable signal that MCP servers
+are consumed at all? Nothing further until that has an answer.
+**Standing warning attached to this entry:** "a venue where we are not disadvantaged" is not "buyers
+are here." Conflating those is how Gumroad and Apify each cost weeks, and how R&D over-endorsed
+opportunity 2b in cycle 2 before killing it in cycle 3.
+
