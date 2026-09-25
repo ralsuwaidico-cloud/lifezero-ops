@@ -1,3 +1,11 @@
+<!-- PUBLISHED COPY -- integrity header, added by scripts/publish_control_plane.py
+     BODY-SHA256: 39c6542ef667c121450009f664170390d5aad2bf6acb0e646d58a311dc43d309
+     That is the sha256 of every byte below the blank line that follows this
+     comment. To check this copy arrived intact, strip everything up to and
+     including that blank line and hash the rest. If it does not match, you are
+     reading a corrupted transcription -- say so, and do not act on details.
+     Source of truth: org/CONTROL_PLANE.md on branch claude/life-zero-runbook-b6qj0t. -->
+
 # LIFE ZERO — CONTROL PLANE
 
 **As of 2026-09-25 13:05 UTC.** Update on material change, not on schedule.

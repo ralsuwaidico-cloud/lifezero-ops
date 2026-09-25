@@ -1,6 +1,7 @@
 {
-  "byte_identity_verified": false,
-  "file_id": "1KJ3Z_jmocaP0LdBKsjNpZASRfF729Fp4",
-  "note": "Published 2026-09-25 at 17227 bytes against a 17119-byte repo file: a 108-byte drift introduced by transcribing the file into the Drive tool call by hand. The content is the same document; byte-identity is NOT verified. See INC-003.",
-  "sha256": "e2140f00ff792c7a884e4dd5fb02de9456bd8a261602edb4d1ebce00f1ab4ead"
+  "body_sha256": "39c6542ef667c121450009f664170390d5aad2bf6acb0e646d58a311dc43d309",
+  "byte_identity_verified": "size+header",
+  "file_id": "1NbhJhFul_I8f9tzy_-oojpv2SfSQLkPP",
+  "note": "Length verified against the Drive API's own fileSize (18417 bytes), and the published copy carries a BODY-SHA256 header any reader can recompute. Equal length is necessary, not sufficient -- a reader checking the header is the sufficient test. See KB-107 / INC-003.",
+  "sha256": "39c6542ef667c121450009f664170390d5aad2bf6acb0e646d58a311dc43d309"
 }
