@@ -1,7 +1,7 @@
 {
-  "body_sha256": "fbbfed1d41dfe0075d366f0400ed39a716712e3c1744273d95630ad633246ddf",
+  "body_sha256": "4e6f0bafad239b77717e6f26c187a2213460a066749f91d9c818373ac6a0c229",
   "byte_identity_verified": "size+header",
-  "file_id": "1nTzcyZU91dTJ1mmYYOZB1_vmDJHCLrB0",
-  "note": "Length verified against the Drive API's own fileSize (23352 bytes), and the published copy carries a BODY-SHA256 header any reader can recompute. Equal length is necessary, not sufficient -- a reader checking the header is the sufficient test. See KB-107 / INC-003.",
-  "sha256": "fbbfed1d41dfe0075d366f0400ed39a716712e3c1744273d95630ad633246ddf"
+  "file_id": "1JPtJV0unSTB-WH34vHzT57ExirSZavDk",
+  "note": "Length verified against the Drive API's own fileSize (27940 bytes), and the published copy carries a BODY-SHA256 header any reader can recompute. Equal length is necessary, not sufficient -- a reader checking the header is the sufficient test. See KB-107 / INC-003.",
+  "sha256": "4e6f0bafad239b77717e6f26c187a2213460a066749f91d9c818373ac6a0c229"
 }

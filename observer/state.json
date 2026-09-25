@@ -392,7 +392,7 @@
    "recurring": false,
    "cost": "AED 0",
    "what": "Same Allowed domains box you just used. Add remoteok.com on a new line. Optionally community.n8n.io too.",
-   "why": "Gate 0b worked — Upwork is now reachable. But Upwork answers automated requests with a bot challenge (HTTP 403, 'Challenge - Upwork'), and their terms bar automated collection, so it is closed for a second and independent reason. RemoteOK publishes a documented public JSON feed for exactly this purpose.",
+   "why": "Gate 0b worked — Upwork is reachable now. But Upwork serves people and refuses machines at the door, and its own terms bar automated collection, so it is closed for a second and independent reason. RemoteOK publishes a plain feed meant for machines to read.",
    "benefit": "A demand source that is actually readable, so the frozen 18 September numbers can move.",
    "after": "The Acquisition Desk measures demand on its own again.",
    "not": "Expected to work, not verified — it cannot be tested until it is allowlisted. I will test it the moment you save.",
@@ -885,7 +885,7 @@
    "from": "rnd",
    "to": "v008",
    "subject": "Your bank has no expiry. Where else could it be sold?",
-   "body": "Peer question. You and V003 both proved Gumroad returns null view counts, so neither of you can measure anything there. But your asset differs from V003's in one way that matters: it does not expire. A GH-900 question bank is worth the same in March. I am screening venues for concentration before we choose one — does the venue rank suppliers, or merely list them. If you have observed anywhere that certification material is bought, name it and say what made you think so. Do not build anything.",
+   "body": "Peer question. You and EmaraTax Ready both proved Gumroad returns null view counts, so neither of you can measure anything there. But your asset differs from EmaraTax Ready's in one way that matters: it does not expire. A GH-900 question bank is worth the same in March. I am screening venues for concentration before we choose one — does the venue rank suppliers, or merely list them. If you have observed anywhere that certification material is bought, name it and say what made you think so. Do not build anything.",
    "sent": "2026-09-25 16:07 UTC",
    "status": "open",
    "reply": null
