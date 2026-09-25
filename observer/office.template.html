@@ -114,6 +114,19 @@ h1,h2,h3{font-family:"Bricolage Grotesque","IBM Plex Sans",sans-serif;
 .status{font-size:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
   padding:1px 6px;border-radius:4px}
 .empty-room{padding:13px;font-size:12.5px;color:var(--muted);font-style:italic}
+.floorwrap{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:7px;box-shadow:var(--shadow);margin-bottom:9px}
+svg.floor{width:100%;height:auto;display:block}
+.floor .rlabel{font-family:"Bricolage Grotesque",sans-serif;font-size:19px;font-weight:700;
+  letter-spacing:.09em;fill:var(--faint)}
+.floor .rempty{font-size:19px;fill:var(--faint);font-style:italic}
+.floor .cname{font-family:"Bricolage Grotesque",sans-serif;font-size:24px;font-weight:700;
+  fill:var(--ink)}
+.floor .cstat{font-size:17px;font-weight:600;letter-spacing:.09em}
+.floor .seat{cursor:pointer}
+.floor .seat:hover circle:first-child{opacity:.26}
+.floor .seat:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.floorhint{margin:0 0 12px;font-size:12px;color:var(--faint);text-align:center}
 
 /* ---- feed ---- */
 .range{display:flex;gap:4px;margin-bottom:10px}
@@ -320,7 +333,7 @@ var STATUS = {
 function st(a){ return STATUS[a.status] || STATUS.IDLE; }
 
 /* --- little people. plain shapes, one prop each. --- */
-function avatar(kind, colour){
+function figure(kind, colour){
   var c = colour, P = {
     ceo:'<rect x="13" y="7" width="16" height="4" rx="1.4" fill="'+c+'"/>'+
         '<path d="M15 7l2-3h8l2 3z" fill="'+c+'" opacity=".55"/>',
@@ -336,13 +349,15 @@ function avatar(kind, colour){
     auditor:'<path d="M21 6l10 4v6c0 5.6-4.2 9.4-10 11-5.8-1.6-10-5.4-10-11v-6z" fill="none" stroke="'+c+'" stroke-width="1.7"/>'+
         '<path d="M17 15l3 3 5-6" stroke="'+c+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'
   };
-  return '<svg viewBox="0 0 42 46" aria-hidden="true">'+
-    '<ellipse cx="21" cy="43.5" rx="11" ry="2.2" fill="'+c+'" opacity=".16"/>'+
+  return '<ellipse cx="21" cy="43.5" rx="11" ry="2.2" fill="'+c+'" opacity=".16"/>'+
     '<path d="M9 42v-9a12 12 0 0 1 24 0v9z" fill="'+c+'" opacity=".22"/>'+
     '<path d="M9 42v-9a12 12 0 0 1 24 0v9" fill="none" stroke="'+c+'" stroke-width="1.7" stroke-linejoin="round"/>'+
     '<circle cx="21" cy="20" r="7.4" fill="var(--surface)" stroke="'+c+'" stroke-width="1.8"/>'+
     '<circle cx="18.4" cy="19.6" r="1.05" fill="'+c+'"/><circle cx="23.6" cy="19.6" r="1.05" fill="'+c+'"/>'+
-    (P[kind]||"")+'</svg>';
+    (P[kind]||"");
+}
+function avatar(kind, colour){
+  return '<svg viewBox="0 0 42 46" aria-hidden="true">'+figure(kind, colour)+'</svg>';
 }
 
 /* ---------- scoreboard ---------- */
@@ -397,28 +412,147 @@ function avatar(kind, colour){
   $("needs").innerHTML = h;
 })();
 
-/* ---------- office ---------- */
-(function(){
+/* ---------- office: a floor you look down on ---------- */
+/* Rooms are fixed furniture. Agents are seated into them from state, so the
+   map cannot show a character the organization does not have. */
+var FLOOR = {
+  control:  {x:30,  y:40,  w:450, h:270, seats:[[255,205]]},
+  lab:      {x:520, y:40,  w:450, h:270, seats:[[745,205]]},
+  workshop: {x:30,  y:350, w:610, h:340, seats:[[150,545],[335,545],[520,545]]},
+  sales:    {x:680, y:350, w:290, h:340, seats:[[825,545]]},
+  ops:      {x:30,  y:730, w:450, h:240, seats:[[255,880]]},
+  audit:    {x:520, y:730, w:450, h:240, seats:[[745,880]]}
+};
+
+function furniture(id, r){
+  var L = 'var(--line)', S = 'var(--surface-2)', A = 'var(--accent)';
+  var cx = r.x + r.w/2, g = '';
+  function rect(x,y,w,h,rx,fill,stroke){
+    return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+(rx||3)+
+           '" fill="'+(fill||S)+'" stroke="'+(stroke||L)+'" stroke-width="2"/>';
+  }
+  function plant(x,y){
+    return '<g><circle cx="'+x+'" cy="'+y+'" r="13" fill="'+S+'" stroke="'+L+'" stroke-width="2"/>'+
+      '<path d="M'+x+' '+y+' l-8 -9 M'+x+' '+y+' l8 -9 M'+x+' '+y+' l0 -12 M'+x+' '+y+' l-10 -2 M'+x+' '+y+' l10 -2" '+
+      'stroke="var(--working)" stroke-width="2.4" stroke-linecap="round" opacity=".75"/></g>';
+  }
+  if(id === 'control'){
+    g += rect(cx-130, r.y+78, 260, 100, 8);                       /* boardroom table */
+    for(var i=0;i<3;i++){
+      g += rect(cx-110+i*80, r.y+48, 54, 24, 6);                  /* chairs, far side */
+      g += rect(cx-110+i*80, r.y+186, 54, 24, 6);                 /* chairs, near side */
+    }
+    g += rect(cx-95, r.y+28, 190, 22, 4, A, A);                   /* wall screen */
+    g += plant(r.x+38, r.y+r.h-40);
+  }
+  if(id === 'lab'){
+    g += rect(r.x+40, r.y+60, 150, 60, 6);                        /* bench */
+    g += rect(r.x+40, r.y+150, 150, 60, 6);                       /* bench */
+    g += rect(r.x+300, r.y+55, 110, 160, 6);                      /* whiteboard wall */
+    for(var j=0;j<4;j++)
+      g += '<line x1="'+(r.x+315)+'" y1="'+(r.y+80+j*34)+'" x2="'+(r.x+395)+'" y2="'+(r.y+80+j*34)+
+           '" stroke="'+L+'" stroke-width="3" stroke-linecap="round"/>';
+    g += plant(r.x+r.w-36, r.y+r.h-40);
+  }
+  if(id === 'workshop'){
+    /* three build desks, one per venture operator */
+    for(var k=0;k<3;k++){
+      var dx = r.x + 60 + k*185;
+      g += rect(dx, r.y+100, 130, 66, 6);
+      g += rect(dx+38, r.y+78, 54, 20, 3, A, A);                 /* monitor */
+    }
+    g += rect(r.x+30, r.y+30, 180, 52, 6);                        /* parts shelf */
+    g += plant(r.x+r.w-40, r.y+46);
+  }
+  if(id === 'sales'){
+    g += rect(r.x+45, r.y+98, 200, 76, 6);                       /* desk */
+    g += '<circle cx="'+(r.x+95)+'" cy="'+(r.y+95)+'" r="16" fill="'+S+'" stroke="'+L+'" stroke-width="2"/>';
+    g += rect(r.x+40, r.y+235, 210, 40, 6);                       /* waiting bench, empty */
+    g += plant(r.x+r.w-40, r.y+48);
+  }
+  if(id === 'ops'){
+    g += rect(r.x+50, r.y+60, 350, 120, 8);                       /* packing bench */
+    g += '<line x1="'+(r.x+50)+'" y1="'+(r.y+120)+'" x2="'+(r.x+400)+'" y2="'+(r.y+120)+
+         '" stroke="'+L+'" stroke-width="2" stroke-dasharray="7 7"/>';
+  }
+  if(id === 'audit'){
+    g += rect(r.x+60, r.y+58, 150, 92, 6);                       /* desk */
+    g += rect(r.x+250, r.y+60, 140, 120, 6);                      /* files */
+    g += plant(r.x+r.w-36, r.y+r.h-36);
+  }
+  return g;
+}
+
+function drawFloor(){
   var byRoom = {};
   S.agents.forEach(function(a){ (byRoom[a.room] = byRoom[a.room] || []).push(a); });
-  $("p-office").innerHTML = S.rooms.map(function(r){
+
+  var svg = '<svg class="floor" viewBox="0 0 1000 1000" role="img" ' +
+    'aria-label="Floor plan of LIFE ZERO with each agent standing in the room it works in.">' +
+    '<defs><pattern id="planks" width="1000" height="46" patternUnits="userSpaceOnUse">' +
+    '<rect width="1000" height="46" fill="var(--paper)"/>' +
+    '<line x1="0" y1="45" x2="1000" y2="45" stroke="var(--line)" stroke-width="1.4" opacity=".55"/>' +
+    '</pattern></defs>' +
+    '<rect width="1000" height="1000" rx="14" fill="url(#planks)"/>';
+
+  S.rooms.forEach(function(r){
+    var g = FLOOR[r.id]; if(!g) return;
     var crew = byRoom[r.id] || [];
-    var inner = crew.length ? '<div class="crew">' + crew.map(function(a){
-      var s = st(a);
-      return '<button class="person" data-a="'+esc(a.id)+'">'+
-        '<span class="ava">'+avatar(a.avatar, s.c)+
-          '<span class="dot" style="background:'+s.c+'"></span></span>'+
-        '<span class="p-main"><span class="p-name"><b>'+esc(a.display)+'</b>'+
-          '<span class="status" style="color:'+s.c+';background:color-mix(in srgb,'+s.c+' 14%,transparent)">'+
-          s.l+'</span></span>'+
-          '<span class="p-role">'+esc(a.role)+'</span>'+
-          '<span class="p-task">'+esc(a.current_task)+'</span></span></button>';
-    }).join("") + '</div>'
-    : '<div class="empty-room">'+esc(r.id === "ops" ? S.ops_empty : "Nobody here.")+'</div>';
-    return '<div class="room"><div class="room-h"><h2>'+esc(r.name)+'</h2>'+
-      '<p>'+esc(r.line)+'</p></div>'+inner+'</div>';
+    var blocked = crew.some(function(a){ return a.status === 'BLOCKED'; });
+
+    svg += '<g><rect x="'+g.x+'" y="'+g.y+'" width="'+g.w+'" height="'+g.h+'" rx="12" ' +
+      'fill="var(--surface)" stroke="'+(blocked ? 'var(--blocked)' : 'var(--line)')+'" ' +
+      'stroke-width="'+(blocked ? 3 : 2)+'" opacity="'+(crew.length ? 1 : .72)+'"/>' +
+      '<text x="'+(g.x+16)+'" y="'+(g.y+26)+'" class="rlabel">'+esc(r.name.toUpperCase())+'</text>' +
+      furniture(r.id, g) + '</g>';
+
+    if(!crew.length){
+      svg += '<text x="'+(g.x+g.w/2)+'" y="'+(g.y+g.h-30)+'" class="rempty" text-anchor="middle">'+
+             esc(r.id === 'ops' ? 'no customer work yet' : 'empty')+'</text>';
+    }
+    crew.forEach(function(a, i){
+      var seat = g.seats[i] || g.seats[g.seats.length-1];
+      var st = STATUS[a.status] || STATUS.IDLE, c = st.c;
+      svg += '<g class="seat" data-a="'+esc(a.id)+'" role="button" tabindex="0" ' +
+        'aria-label="'+esc(a.display+' — '+st.l+'. '+a.current_task)+'">' +
+        '<circle cx="'+seat[0]+'" cy="'+(seat[1]+34)+'" r="30" fill="'+c+'" opacity=".13"/>' +
+        '<circle cx="'+seat[0]+'" cy="'+(seat[1]+34)+'" r="30" fill="none" stroke="'+c+'" stroke-width="2.5"/>' +
+        '<g transform="translate('+(seat[0]-31)+','+(seat[1]-25)+') scale(1.48)">'+figure(a.avatar, c)+'</g>' +
+        '<circle cx="'+(seat[0]+24)+'" cy="'+(seat[1]-18)+'" r="8" fill="'+c+'" stroke="var(--surface)" stroke-width="2.5"/>' +
+        '<text x="'+seat[0]+'" y="'+(seat[1]+82)+'" class="cname" text-anchor="middle">'+esc(a.display)+'</text>' +
+        '<text x="'+seat[0]+'" y="'+(seat[1]+100)+'" class="cstat" text-anchor="middle" fill="'+c+'">'+
+          esc(st.l.toUpperCase())+'</text>' +
+        '<circle cx="'+seat[0]+'" cy="'+(seat[1]+34)+'" r="58" fill="transparent"/></g>';
+    });
+  });
+
+  svg += '</svg>';
+
+  var roster = S.agents.map(function(a){
+    var st = STATUS[a.status] || STATUS.IDLE;
+    return '<button class="person" data-a="'+esc(a.id)+'">'+
+      '<span class="ava">'+avatar(a.avatar, st.c)+
+        '<span class="dot" style="background:'+st.c+'"></span></span>'+
+      '<span class="p-main"><span class="p-name"><b>'+esc(a.display)+'</b>'+
+        '<span class="status" style="color:'+st.c+';background:color-mix(in srgb,'+st.c+' 14%,transparent)">'+
+        st.l+'</span></span>'+
+        '<span class="p-role">'+esc(a.role)+'</span>'+
+        '<span class="p-task">'+esc(a.current_task)+'</span></span></button>';
   }).join("");
-})();
+
+  $("p-office").innerHTML =
+    '<div class="floorwrap">'+svg+'</div>'+
+    '<p class="floorhint">Tap anyone to ask what they are doing.</p>'+
+    '<div class="room"><div class="room-h"><h2>Everyone</h2>'+
+    '<p>The same seven, as a list.</p></div><div class="crew">'+roster+'</div></div>';
+
+  $("p-office").querySelectorAll(".seat").forEach(function(el){
+    el.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openAgent(el.dataset.a); }
+    });
+  });
+}
+drawFloor();
 
 /* ---------- feed ---------- */
 function ts(x){ return new Date(x.replace(" ","T")).getTime(); }
@@ -620,7 +754,12 @@ document.addEventListener("keydown", function(e){
   if(e.key === "Escape" && current) closeSheet();
 });
 document.addEventListener("click", function(e){
-  var p = e.target.closest(".person"); if(p) openAgent(p.dataset.a);
+  var t = e.target, hit = null;
+  while(t && t !== document){
+    if(t.classList && (t.classList.contains("person") || t.classList.contains("seat"))){ hit = t; break; }
+    t = t.parentNode;
+  }
+  if(hit) openAgent(hit.dataset.a);
 });
 
 /* ---------- ask: grounded in this agent's real record ---------- */
