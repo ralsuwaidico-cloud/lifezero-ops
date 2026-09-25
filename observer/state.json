@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-25T18:05:00Z",
+    "generated_at": "2026-09-25T20:20:00Z",
     "day": 22,
     "started": "2026-09-04",
     "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
@@ -358,19 +358,20 @@
       "urgent": true
     },
     {
-      "id": "gate-0b",
+      "id": "gate-0d",
       "rank": 0.5,
-      "title": "Allowlist one demand-feed host",
-      "minutes": 2,
+      "title": "Add one machine-readable demand source",
+      "minutes": 1,
       "recurring": false,
       "cost": "AED 0",
-      "what": "Add one job-feed host to the environment's outbound allowlist.",
-      "why": "Every demand number LIFE ZERO owns is dated 18 September. R&D tested four separate routes to refresh them and all are blocked, so the figure the strategy rests on cannot be checked.",
-      "benefit": "Restores demand measurement. Buys measurement, not a sales venue.",
-      "after": "The Acquisition Desk can measure again on its own.",
-      "found": "2026-09-25 by R&D",
+      "what": "Same Allowed domains box you just used. Add remoteok.com on a new line. Optionally community.n8n.io too.",
+      "why": "Gate 0b worked — Upwork is now reachable. But Upwork answers automated requests with a bot challenge (HTTP 403, 'Challenge - Upwork'), and their terms bar automated collection, so it is closed for a second and independent reason. RemoteOK publishes a documented public JSON feed for exactly this purpose.",
+      "benefit": "A demand source that is actually readable, so the frozen 18 September numbers can move.",
+      "after": "The Acquisition Desk measures demand on its own again.",
+      "not": "Expected to work, not verified — it cannot be tested until it is allowlisted. I will test it the moment you save.",
+      "found": "2026-09-25, after testing what gate 0b actually delivered",
       "waiting_days": 0,
-      "urgent": true
+      "urgent": false
     },
     {
       "id": "gate-1",
@@ -569,6 +570,12 @@
       "who": "ceo",
       "text": "Owner completed gate 0. Apify public profile is live as rashed245-owner. Publishing now returns a different 403: the Store terms have not been accepted. Queued as gate 0c — a legal acceptance no agent may make.",
       "public_text": "An owner action unblocked one step and revealed a second one, which needs a person to accept terms."
+    },
+    {
+      "t": "2026-09-25T20:20Z",
+      "who": "ceo",
+      "text": "Owner completed gate 0b. Upwork is now reachable and nothing else broke — verified. But Upwork answers automated requests with a bot challenge, so it is closed for a second reason. Filed as KB-120: an allowlisted host is not a readable host.",
+      "public_text": "A network change worked as promised, and revealed that the source itself refuses automated access."
     }
   ],
   "messages": [

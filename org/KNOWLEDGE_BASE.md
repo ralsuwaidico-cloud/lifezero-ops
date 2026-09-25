@@ -306,3 +306,12 @@ plane with no mail and the CEO would have asked why nobody replied.
 recipient cannot see it.** Generalisation: *a shared medium has a clock, not just a content — a write
 is only communication if it lands before the read.*
 
+
+
+## KB-120 · An allowlisted host is not a readable host. **ACCESS.**
+
+- **What happened:** 2026-09-25. The owner added `www.upwork.com` to the environment allowlist (gate 0b). Verified immediately: the host went from no-response to answering, and `api.gumroad.com`, `api.apify.com` and `pypi.org` were re-tested and unaffected. **The gate did exactly what it promised.** Upwork then returned **HTTP 403 with a 344 KB page titled "Challenge - Upwork"** to both the job-search URL and the RSS feed, with a browser user-agent.
+- **Why it failed:** **ACCESS, at a second layer.** Reachability and readability are different things. Upwork fronts its site with a bot challenge that refuses datacenter traffic regardless of allowlists. Their terms also prohibit automated collection, so defeating the challenge is not an option this organization will take — the constraint is legal before it is technical.
+- **What this cost:** two minutes of owner time, and it bought a real answer rather than a dead end: we now know the demand-measurement problem was never only a network setting.
+- **What would change it:** a source that *publishes* for machines instead of defending against them. Candidates, untested because they are not yet allowlisted: `remoteok.com` (documented public JSON feed at /api) and `community.n8n.io` (Discourse, public `.json` endpoints). Both are **expected** to work on that basis and neither is verified — say so until one is.
+- **The general rule, now standing:** before asking the owner for a host, state whether the source publishes for machines. An allowlist entry for a site with a bot wall spends owner minutes for nothing. This is the same error shape as KB-105: an action that looks productive and buys nothing.
