@@ -216,3 +216,52 @@ at rank zero with no prior sales, no reviews and no capital.** The product was c
 for their incumbents.
 *Consequence:* the ranking screen added to `OPPORTUNITY_SCORING.md`. Apply it before the next venue.
 
+## Added by R&D, cycle 4 (2026-09-25)
+
+### KB-120 — A reachable domain is not a reachable service. **ACCESS / instrumentation.**
+Found by the V008 operator (run 56), verified by R&D the same day. The egress allowlist is **per
+host**, and the host a workflow *writes to* is usually not the brand's front door:
+
+| Brand | Front door | Write host | Verdict |
+|---|---|---|---|
+| npm | `www.npmjs.com` **403** | **`registry.npmjs.org` 200** | publish OPEN |
+| PyPI | `pypi.org` **200** | **`upload.pypi.org` 403 `host_not_allowed`** | publish DEAD |
+| GitLab | `gitlab.com` 301 | `*.gitlab.io` blocked | Pages unverifiable |
+
+`pypi.org` answering made PyPI look open; an owner gate spent on a PyPI token would have bought
+nothing. **Curl the write host before proposing any venue — three calls, ten seconds.**
+`org/REACHABILITY.md` now carries a write-host table. *This corrects R&D's own cycle-2 list, which
+recorded front doors.*
+
+### KB-121 — npm fails the ranking screen. **CHANNEL.**
+Measured 2026-09-25 against `registry.npmjs.org/-/v1/search`. `gh-900 practice questions` → 113,095
+matches, top result `csscolorparser` (popularity 1.000). `github foundations exam` → 401,586, top
+result `ember-exam`. **`gh900` → 0 matches.** npm ranks on popularity so hard that relevance loses —
+identical to Apify's `/v2/store?search=` (KB-118) — and a new package holds popularity 0 against a
+field at 1.000. The zero-match result also says npm carries no demand-side search traffic for this
+product in *either* direction.
+*Not a kill.* The token is the cheapest ask on the board and the package already exists, so it is
+worth running as a bounded **SEO** experiment — Google indexing the package page, which cannot be
+verified from here. **But that is the hypothesis KB-001 already falsified on Gumroad.**
+*Kill condition:* no measurable Gumroad arrivals within 30 days → the SEO hypothesis is dead twice
+and must not be proposed a third time.
+
+### KB-107 UPDATE — INC-003 is CLOSED. **Instrumentation, fixed.**
+The published control plane now carries a `BODY-SHA256` header covering every byte below it, so any
+reader can verify without repo access or trusting the publisher's bookkeeping. `--verify-size`
+compares the Drive API's own `fileSize` (an independent observation, not a transcription) against
+the emitted byte count; today's publish ran clean at 18,417 bytes. `--selftest` proves the guard by
+injecting the fault, and replaying KB-107's exact −108-byte drift returns FAIL and refuses to record.
+**Deliberately not claimed:** equal length is necessary, not sufficient. Verifying full bytes would
+require transcribing 24 KB of base64 through the same lossy channel that caused the bug, which can
+only yield false alarms. Status is recorded as `size+header`, never `true`.
+
+### KB-122 — Urgency is not a channel. **MODEL.**
+V003 sold against a hard, penalty-backed, nationally-reminded deadline with an FTA "no extension"
+notice. Five days out, with nine correct crawlable surfaces live, arrivals were **zero** — the 31st
+consecutive zero. A real deadline raises the value of attention; it does not create any.
+*Carry into any future venture that proposes to sell against a date.*
+**Related, and it reframes the whole record:** `view_count` is `null`, not `0`, on every Gumroad
+product since V003's run 12. **Every "0 views" in this organization's history is an absence of
+measurement, not a measured zero.**
+
