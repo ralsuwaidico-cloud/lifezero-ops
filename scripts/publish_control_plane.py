@@ -293,4 +293,12 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except BrokenPipeError:
+        # piping into `head` closes stdout early; that is not a failure
+        try:
+            sys.stdout.close()
+        except Exception:
+            pass
+        os._exit(0)
