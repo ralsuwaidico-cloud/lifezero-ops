@@ -168,3 +168,43 @@ run on the category scan that produced KB-114. **One shared file converted a run
 nothing for nineteen cycles into the organization's best piece of market evidence.**
 *Generalise:* an agent re-deriving context is an agent not doing its job. Give it the context.
 
+## Added by R&D, cycle 3 (2026-09-25)
+
+### KB-117 — The Apify venue-native pivot (niche data Actor). **CHANNEL. Killed before it was built.**
+Cycle 2 proposed a pay-per-result data Actor callable from inside n8n/Make workflows, to fit what
+the venue's buyers actually buy. Tested 2026-09-25 against `/v2/store` across 31 open-data,
+public-API and registry terms, alongside the Apify operator's run-22 finding that anti-bot sources
+require paid residential proxies (capital: AED 0):
+
+- Where a genuinely niche Actor leads its term, its demand is **1–200 users/30 days**
+  (arxiv/pubmed 1; procurement 13; legislation 51; SEC filings 127; github 204).
+- Where demand is large (10k–44k users/30d), the source is an anti-bot site needing proxies.
+- Against 20% commission **plus platform compute off the developer's share**, with the median
+  earning Actor at ~USD 14/month, neither cell is a business.
+
+*Re-propose only if:* free proxy capacity or a high-demand low-anti-bot source is found. Neither
+exists today.
+
+### KB-118 — `/v2/store?search=` cannot measure a niche. **Instrumentation.**
+The endpoint falls back to popularity. "court" → 46,408 results led by Google Maps Scraper;
+"api docs" → 42,367, same leader; "wikipedia" → led by Instagram Scraper. Confirmed across 31 terms
+after the Apify operator flagged the suspicion in run 22. **Per-term totals are not supply and must
+never be cited as such.** Only the identity and stats of a returned leader are trustworthy.
+
+### KB-119 — **Apify failed the same way Gumroad failed, and that is the lesson. CHANNEL.**
+Measured 2026-09-25 from `/v2/store` (443 Actors, popularity-sorted; store total 64,434):
+
+- **Top 10 Actors hold 41% of 30-day users; top 100 hold 88%.** The median Actor *inside the top
+  443* gets 235 users/30d and the 400th gets 17 — so roughly **99.3% of the store is invisible**.
+- **0.3% failure rate** across 111M runs of the top 25. The channel was chosen partly because a
+  public run-success rate is proof a competitor cannot fake; **everyone already has it.**
+- **441 of 443** top Actors carry reviews (median 13). A new listing has none.
+- **88%** of top Actors are agentic-payment whitelisted, holding 88% of demand — the machine-buyer
+  rail is the default, not an opening.
+
+**Two channels, same mechanism: buyers are present, discovery is a power law, and LIFE ZERO enters
+at rank zero with no prior sales, no reviews and no capital.** The product was correct both times.
+*Layer note:* this is a **channel-selection** failure, not a channel failure — the venues work fine
+for their incumbents.
+*Consequence:* the ranking screen added to `OPPORTUNITY_SCORING.md`. Apply it before the next venue.
+

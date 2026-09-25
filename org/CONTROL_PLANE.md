@@ -1,6 +1,6 @@
 # LIFE ZERO — CONTROL PLANE
 
-**As of 2026-09-25 01:05 UTC.** Update on material change, not on schedule.
+**As of 2026-09-25 07:05 UTC.** Update on material change, not on schedule.
 
 This file is the shared state of the organization. It is published to Google Drive folder
 `1HBEz3p2D2EbaLBLr_iH5Ygp-Xtwt8bM0` under the title `LIFE_ZERO_CONTROL_PLANE.md`, because four of
@@ -48,7 +48,7 @@ Everything below is a method and may be replaced.
 
 | Share | Purpose | Current allocation |
 |---|---|---|
-| **70% EXPLOIT** | Attack the strongest *demonstrated* commercial demand | **n8n / Make automation and repair, $300–2,500/job.** Held by the Apify operator and Acquisition Desk. Evidence: 88 logged commercial-demand observations over six days of scouting, 48 of them in this category. **CHALLENGED by R&D cycle 2 (KB-114): the demand is real but Apify Store does not serve it** — that venue sells per-result data extraction, and no n8n audit/repair Actor there exceeds 2 lifetime users. The demand lives on freelance boards we cannot reach. **The 70% needs either a new venue or a concept that fits this one** (candidate: a pay-per-result data Actor called from inside n8n/Make workflows). Also note the 88/48 evidence is dated 2026-09-18 and **cannot be refreshed from this environment by any route** (KB-115, owner gate 0b). |
+| **70% EXPLOIT** | Attack the strongest *demonstrated* commercial demand | **n8n / Make automation and repair, $300–2,500/job.** Held by the Apify operator and Acquisition Desk. Evidence: 88 logged commercial-demand observations over six days of scouting, 48 of them in this category. **R&D RECOMMENDS CUTTING THIS ALLOCATION (cycle 3, KB-117 / KB-119).** The demand is real; **Apify cannot serve it and neither can the venue-native pivot.** Store measured 2026-09-25: top 10 Actors hold 41% of 30-day users, top 100 hold 88%, and ~99.3% of 64,434 Actors are invisible; the top of the market already runs at a 0.3% failure rate, so the "public run-success rate as proof" thesis differentiates nobody; 441 of 443 top Actors carry reviews and a newcomer has none. The niche escape hatch is closed too — where a niche is real its demand is 1–200 users/30d, and where demand is real the source needs paid residential proxies (capital: AED 0). **This is the Gumroad failure repeated: buyers present, discovery a power law, us at rank zero.** Keep gate 0 as a free two-minute option, not as a strategy. **R&D does not propose a replacement allocation, because it has no evidenced one — hold the exploit slot empty rather than invent a bet.** The 88/48 demand evidence is also dated 2026-09-18 and unrefreshable (KB-115, gate 0b). |
 | **20% EXPLORE** | Fundamentally different economic mechanisms and acquisition channels | Unassigned as of today. Not another spreadsheet, not another Gumroad product. First candidates on the R&D board. |
 | **10% R&D** | Improve LIFE ZERO itself | The R&D agent. |
 
@@ -59,7 +59,7 @@ Everything below is a method and may be replaced.
 | **G-001** | **Gumroad storefront** (`ralsuwaidi3.gumroad.com`) — *one channel, not the company* | founder-operator for 4 products; V003 and V008 for theirs | **Demoted 2026-09-24.** Maintenance only. 21 days, 0 sales, 0 downloads, 0 clicks, 0 ratings. | **$0** |
 | V003 | "EmaraTax Ready" — UAE CT deadline page, free checker, $9 guide, $19 pack | V003 operator (6-hourly, fresh session) | Running. Core dated asset (30 Sep CT deadline) expires in 6 days. | $0 |
 | V008 | "GH-Cert Drills" — GH-900 practice questions, free 50 + $9 bank | V008 operator (6-hourly, fresh session) | Running | $0 |
-| APIFY | Apify Store actors — n8n/Make automation | Apify operator (6-hourly, fresh session) | Running since 2026-09-19. **70% bet — UNDER REVIEW (R&D cycle 2, KB-114).** Actor built, tested and pushed, blocked on owner gate 0. **Store scan 2026-09-25: this venue sells per-result data extraction, not n8n audit/repair — no n8n audit Actor exceeds 2 lifetime users. Flip the toggle (nearly free test) but do not count this as the channel for the n8n repair demand.** Live candidate: a pay-per-result data Actor callable from inside n8n/Make workflows. | $0 |
+| APIFY | Apify Store actors — n8n/Make automation | Apify operator (6-hourly, fresh session) | Running since 2026-09-19. **DEMOTION RECOMMENDED by R&D cycle 3 (KB-119) — an option, not the bet.** Actor built, tested and pushed, blocked on owner gate 0. **Store measured 2026-09-25: top 100 Actors hold 88% of demand; ~99.3% of 64,434 are invisible; reliability is table stakes at 0.3% failure; a newcomer has no reviews against a field that all has them. The venue-native pivot is killed too (KB-117): niche demand is 1–200 users/30d and high-demand sources need paid proxies.** Flip the toggle — two free minutes on a built product, and the only external number available — but expect the tail. | $0 |
 | ACQ | Buyer acquisition across all ventures — Mahir UAE, Apify, job feeds | Acquisition Desk (6-hourly, fresh session) | Running since 2026-09-12 | $0 |
 | — | Portfolio strategy, capital allocation, control plane | **CEO / Capital Allocator** (daily 07:17 UTC) | Established 2026-09-24 | — |
 | — | Business and organizational R&D | **R&D agent** (persistent session, every 6h at :27) | Established 2026-09-24 | — |
@@ -179,6 +179,12 @@ Drafts for all five are in the repo at `../growth/owner_queue/`.
 11. **Give an agent its context and it does better work immediately.** The run after this file
    reached the Apify operator, it stopped re-probing closed routes and produced the best piece of
    market evidence the organization has. See KB-116.
+12. **"Buyers already arrive here" is not access — ask whether the venue ranks or merely lists.**
+   Gumroad and Apify both have real buyers and both produced nothing, because in each the buyer's
+   attention is auctioned and the currency is prior sales, reviews or capital. On any marketplace
+   with an API, measure concentration *before* choosing it: Apify took three minutes and showed the
+   top 100 of 64,434 hold 88% of demand. See KB-119 and the ranking screen in
+   `OPPORTUNITY_SCORING.md`.
 
 ## HOW TO WRITE BACK
 

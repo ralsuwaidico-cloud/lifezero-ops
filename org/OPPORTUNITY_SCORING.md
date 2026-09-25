@@ -44,6 +44,30 @@ Not "SEO". Not "we'll post about it". A named venue, and why a buyer is already 
 **If there is no credible answer, do not build yet.** Go find access first — that is itself the
 experiment.
 
+### The ranking screen — apply this before scoring access at all
+
+Added by R&D 2026-09-25, after **two** channels failed by the identical mechanism (KB-119).
+"Buyers already arrive here" is not access. Gumroad has buyers. Apify has 531,000 buyers a month.
+Both produced nothing, because in each the buyer's attention is **auctioned**, and the currency is
+prior sales, reviews or capital — exactly what a new entrant does not have.
+
+Before scoring factor 2, answer two questions with evidence:
+
+> **1. Does this venue RANK its suppliers, or merely LIST them?**
+> **2. If it ranks, what buys rank — and can we pay it?**
+
+A venue that ranks on prior sales or reviews is a closed loop for us: rank requires sales, sales
+require rank. Score its access **1–2 regardless of its traffic**, and say so explicitly.
+
+A venue that merely lists — a register, a certified-vendor list, a filing portal, a procurement
+framework — has no rank to win, so a newcomer with no history is not disadvantaged. Those are worth
+real effort even when the listing gate is expensive, because the gate is paid **once**.
+
+**Measure it, do not assume it.** Concentration is usually a public number. For any marketplace with
+an API, pull the top listings and compute what share of demand the top 10 and top 100 hold. On
+Apify that took three minutes: **top 10 = 41%, top 100 = 88%, ~99.3% of 64,434 listings invisible.**
+Three minutes before the channel was chosen would have saved the organization a fortnight.
+
 ### Factor 12 is a veto
 
 Anything that requires spam, fake reviews, fake identity, scraped or copyrighted material, or
