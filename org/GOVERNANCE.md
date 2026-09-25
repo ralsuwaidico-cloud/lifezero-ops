@@ -47,7 +47,7 @@ the control plane. So the control plane carries the mail:
 4. The CEO harvests replies each cycle and closes the memo.
 
 The CEO is the switchboard, not the author. It moves mail it did not write, and it does not
-answer on a function's behalf — if V008 was asked something, V008 answers.
+answer on a function's behalf — if GH-Cert Drills was asked something, GH-Cert Drills answers.
 
 **A memo is a question or an instruction, not a status update.** Status goes in run logs.
 If a memo does not need an answer, it is probably not a memo.

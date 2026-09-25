@@ -1,0 +1,65 @@
+{
+  "checked": [
+    {
+      "verdict": "AUTH",
+      "http": 401,
+      "detail": "reachable; needs credentials or is forbidden to us",
+      "name": "gumroad api",
+      "url": "https://api.gumroad.com/v2/products",
+      "why": "depended on"
+    },
+    {
+      "verdict": "AUTH",
+      "http": 401,
+      "detail": "reachable; needs credentials or is forbidden to us",
+      "name": "apify api",
+      "url": "https://api.apify.com/v2/users/me",
+      "why": "depended on"
+    },
+    {
+      "verdict": "OPEN",
+      "http": 200,
+      "detail": "usable (46387721 bytes)",
+      "name": "pypi",
+      "url": "https://pypi.org/simple/",
+      "why": "depended on"
+    },
+    {
+      "verdict": "OPEN",
+      "http": 200,
+      "detail": "usable (1246 bytes)",
+      "name": "github api",
+      "url": "https://api.github.com/rate_limit",
+      "why": "depended on"
+    },
+    {
+      "verdict": "BOT_WALL",
+      "http": 403,
+      "detail": "the site answered, and refused an automated request",
+      "name": "upwork search",
+      "url": "https://www.upwork.com/nx/search/jobs/?q=n8n",
+      "why": "demand source"
+    },
+    {
+      "verdict": "NET_BLOCKED",
+      "detail": "curl: (56) CONNECT tunnel failed, response 403",
+      "name": "remoteok api",
+      "url": "https://remoteok.com/api",
+      "why": "demand source"
+    },
+    {
+      "verdict": "NET_BLOCKED",
+      "detail": "curl: (56) CONNECT tunnel failed, response 403",
+      "name": "n8n community",
+      "url": "https://community.n8n.io/latest.json",
+      "why": "demand source"
+    },
+    {
+      "verdict": "NET_BLOCKED",
+      "detail": "curl: (56) CONNECT tunnel failed, response 403",
+      "name": "hacker news jobs",
+      "url": "https://hacker-news.firebaseio.com/v0/jobstories.json",
+      "why": "demand source"
+    }
+  ]
+}

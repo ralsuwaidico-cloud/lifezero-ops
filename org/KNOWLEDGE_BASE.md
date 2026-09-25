@@ -315,3 +315,28 @@ is only communication if it lands before the read.*
 - **What this cost:** two minutes of owner time, and it bought a real answer rather than a dead end: we now know the demand-measurement problem was never only a network setting.
 - **What would change it:** a source that *publishes* for machines instead of defending against them. Candidates, untested because they are not yet allowlisted: `remoteok.com` (documented public JSON feed at /api) and `community.n8n.io` (Discourse, public `.json` endpoints). Both are **expected** to work on that basis and neither is verified — say so until one is.
 - **The general rule, now standing:** before asking the owner for a host, state whether the source publishes for machines. An allowlist entry for a site with a bot wall spends owner minutes for nothing. This is the same error shape as KB-105: an action that looks productive and buys nothing.
+
+
+## KB-121 · Nobody owned the connections, so everybody owned them badly. **ORGANIZATION.**
+
+- **What happened:** 2026-09-25, at the chairman's instruction. Four agents had each independently
+  rediscovered the same dead hosts, in four separate runs, and then reported them to the owner in
+  status codes and host names. The Acquisition Desk has been blocked on it since 18 September. An
+  owner minute was spent on gate 0b on a site that was never going to serve a machine (KB-120).
+- **Why it happened:** connectivity was everyone's problem, which is the same as nobody's. Each
+  agent was individually rational — it hit a wall, it investigated — and collectively we paid for
+  the same investigation four times and shipped the result to the owner in a language the owner
+  did not ask for.
+- **The fix:** an **IT Support** desk (`IT_SUPPORT.md`), daily at 06:05 UTC, before every operator.
+  It owns `scripts/probe_reachability.py` and `REACHABILITY.md`, and it classifies each failure by
+  *who is refusing us* — our own network settings (owner can fix, ~2 min), the site's bot wall
+  (nobody can fix; **not** an owner gate), a missing login (the account owner fixes), or our own
+  broken request (the agent fixes). Only one of those four is ever worth an owner minute, and
+  before this desk existed we could not tell them apart.
+- **The second half of the fix is language.** Every agent now answers the chairman in plain
+  business words — no codes, no host names, no file names. Connection trouble is handed to IT
+  Support in one sentence and not explained. The chairman should never read a status code from
+  this company again.
+- **Generalisation:** *when a recurring cost lands on every function, it belongs to one function.*
+  Same shape as KB-110/116/125 — those were messages written where the reader could not see them;
+  this is work done where no one was accountable for it.

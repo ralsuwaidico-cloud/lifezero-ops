@@ -262,7 +262,11 @@ var PROP = {
   scout:'<circle cx="33" cy="13" r="5" fill="none" stroke="#FFF" stroke-width="2" opacity=".85"/>'+
         '<rect x="36" y="17" width="6" height="2.5" transform="rotate(45 36 17)" fill="#FFF" opacity=".85"/>',
   operator:'<rect x="11" y="27" width="20" height="9" fill="var(--panel2)" stroke="currentColor" stroke-width="2"/>',
-  auditor:'<path d="M21 2 L33 7 v9 c0 8-6 13-12 15-6-2-12-7-12-15 V7z" fill="none" stroke="#FFF" stroke-width="2" opacity=".8"/>'
+  auditor:'<path d="M21 2 L33 7 v9 c0 8-6 13-12 15-6-2-12-7-12-15 V7z" fill="none" stroke="#FFF" stroke-width="2" opacity=".8"/>',
+  it:'<rect x="11" y="5" width="20" height="3" rx="1.5" fill="#E8EDF0"/>'+          /* headset band */
+     '<rect x="7" y="8" width="5" height="9" rx="2" fill="#E8EDF0"/>'+
+     '<rect x="30" y="8" width="5" height="9" rx="2" fill="#E8EDF0"/>'+
+     '<rect x="25" y="21" width="7" height="2" rx="1" fill="#E8EDF0"/>'              /* mic boom */
 };
 function person(kind, c){
   return '<g>'+
@@ -450,7 +454,8 @@ function drawMap(){
   svg+='</svg>';
   $("v-office").innerHTML='<div class="mapwrap">'+svg+'</div>'+
     '<p class="maphint"><b>Tap any character to open its panel and ask it something.</b> '+
-    'Seven characters, seven real agents — there are no extras added to make the office look '+
+    S.agents.length+' characters, '+S.agents.length+' real agents \u2014 there are no extras '+
+    'added to make the office look '+
     'busy. A room outlined in red holds a blocked agent. Empty rooms stay visible and say why. '+
     'Characters do not walk yet: movement tied to real events is V2, and faking it would make '+
     'this a cartoon rather than a window.</p>'+ cards();
@@ -695,7 +700,8 @@ function paint(){
       (gate?'<div class="sec"><h4>Blocked by</h4><p style="color:var(--red)"><b>'+esc(gate.title)+
         '</b> — '+gate.minutes+' minutes of chairman time. '+esc(gate.what)+'</p></div>':
        a.blocked_by==="egress"?'<div class="sec"><h4>Blocked by</h4><p style="color:var(--red)">'+
-        'Network policy. Every source it needs is unreachable from its environment.</p></div>':'')+
+        'The office cannot get out to the places it needs. IT Support has the details '+
+        'and knows who can open it.</p></div>':'')+
       (a.unverified?'<div class="sec"><h4>Unverified</h4><p>'+esc(a.unverified)+'</p></div>':'')+
       '<div class="sec"><h4>Current priority</h4><p>'+esc(a.priority)+'</p></div>';
     return;
@@ -784,33 +790,55 @@ function ask(){
   if(!CAP.ready){ holder.className="them err";
     holder.textContent="Still connecting. Try again in a moment."; return; }
   if(!CAP.sample){ holder.className="them err";
-    holder.textContent="This view cannot reach Claude, so I cannot answer. Everything on the "+
-      "Status and Performance tabs is my real record and is still accurate."; return; }
+    holder.textContent="I can't get a line out to answer you right now. Everything on my "+
+      "Status and Performance tabs is my real record and is still correct."; return; }
 
   var mine=(S.memos_open||[]).filter(function(m){return m.to===a.id||m.from===a.id;});
   var exp=(S.experiments||[]).filter(function(x){return x.owner===a.id;});
   $("send").disabled=true;
+  var conn = (a.id==="it")
+    ? "CONNECTION TROUBLE IS YOUR JOB:\n"+
+      "- You are the one who handles it. You still explain it in everyday words: which service, "+
+      "whether the door is locked on our side or theirs, who can open it, and how many minutes "+
+      "that costs. Never a code, a host name or a tool name.\n\n"
+    : "IF SOMETHING WILL NOT CONNECT:\n"+
+      "- Do NOT diagnose it and do NOT explain it. Say in one sentence what you cannot get to and "+
+      "what that costs the business, then say IT Support is on it. IT Support sits in the server "+
+      "room and owns every connection problem in this company.\n\n";
+
   var prompt=
-    "You are "+a.display+", an autonomous agent inside LIFE ZERO, a small company run entirely "+
-    "by AI agents. The company's owner is its CHAIRMAN and is asking you directly. Answer as "+
-    "yourself, first person.\n\n"+
-    "ABSOLUTE RULES:\n"+
+    "You are "+a.display+", working inside LIFE ZERO, a small company run entirely by AI agents. "+
+    "The owner \u2014 the chairman \u2014 is asking you directly. Answer as yourself, first person.\n\n"+
+
+    "HOW TO TALK. This matters as much as the answer:\n"+
+    "- Talk like a colleague, not a computer. The chairman is not technical and should not have to "+
+    "be.\n"+
+    "- One to three short sentences. Answer the question in the first one. No preamble, no lead-in, "+
+    "no sign-off, no enthusiasm, no apologising, no lists, no headings.\n"+
+    "- NEVER use jargon, error codes, status codes, file names, script names, tool names, host "+
+    "names, internal reference codes or abbreviations. Say what it means for the business instead.\n"+
+    "- Money, days, customers and decisions are the language. Say \"nobody has bought it\", not "+
+    "\"zero conversions\". Say \"I can\u2019t get into that site\", not anything about servers.\n"+
+    "- If a record below is written in technical terms, translate it. Do not quote it.\n\n"+
+
+    conn+
+
+    "WHAT IS TRUE:\n"+
     "- Answer ONLY from the records below. They are your entire memory.\n"+
-    "- If the answer is not in them, say plainly that it is not in your record, and say who "+
-    "would know. NEVER invent a run, a number, a customer, a finding, a conversation or an "+
-    "intention.\n"+
-    "- Revenue is $0 and there have never been any customers. Never imply otherwise and never "+
-    "soften it.\n"+
-    "- Be short: 2 to 5 sentences. Plain and direct. No preamble, no enthusiasm, no apologising.\n"+
-    "- You may say your work is not producing value, that you are blocked, or that you should be "+
-    "changed or stood down. Honesty outranks looking useful.\n"+
-    "- You report to the CEO, not to the chairman. If something needs the chairman's time, say "+
-    "what and how long it takes.\n\n"+
+    "- If the answer is not in them, say plainly that you do not know it, and say who would.\n"+
+    "- NEVER invent a run, a number, a customer, a finding, a conversation or an intention.\n"+
+    "- The company has made $0 and has never had a single customer. Never imply otherwise and "+
+    "never soften it.\n"+
+    "- You may say your work is not producing value, that you are stuck, or that you should be "+
+    "changed or shut down. Honesty outranks looking useful.\n"+
+    "- You report to the CEO, not to the chairman. If something genuinely needs the chairman, say "+
+    "what it is and how many minutes it takes.\n\n"+
+
     "YOUR RECORD:\n"+JSON.stringify(a,null,1)+"\n\n"+
-    "EXPERIMENTS YOU OWN:\n"+JSON.stringify(exp,null,1)+"\n\n"+
+    "WORK YOU OWN:\n"+JSON.stringify(exp,null,1)+"\n\n"+
     "YOUR OPEN MAIL:\n"+JSON.stringify(mine,null,1)+"\n\n"+
     "THE COMPANY RIGHT NOW:\n"+brief()+"\n\n"+
-    "CHAIRMAN'S QUESTION: "+q;
+    "CHAIRMAN\u2019S QUESTION: "+q;
 
   CAP.sample(prompt,{modelTier:"default",onText:function(r){
     holder.textContent=r.text; $("pbody").scrollTop=$("pbody").scrollHeight;

@@ -29,7 +29,8 @@ START, END = "<!--MEMOS:START-->", "<!--MEMOS:END-->"
 WHO = {
     "chairman": "Chairman (owner)", "ceo": "CEO", "rnd": "R&D",
     "apify": "Apify operator", "acq": "Acquisition Desk",
-    "v003": "V003", "v008": "V008", "redteam": "Red Team", "all": "everyone",
+    "v003": "EmaraTax Ready", "v008": "GH-Cert Drills",
+    "it": "IT Support", "redteam": "Red Team", "all": "everyone",
 }
 
 
