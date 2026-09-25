@@ -134,6 +134,9 @@ Drafts for all five are in the repo at `../growth/owner_queue/`.
   `huggingface.co`, `rapidapi.com`, `producthunt.com`, `indiehackers.com`, `etsy.com`,
   `eloquens.com`, `mercari.com`. Full map in the repo at `REACHABILITY.md`. **Do not spend a run
   rediscovering these.** Fixable by the owner in ~2 minutes — gate 0b.
+- **`/v2/store?search=` cannot measure a niche.** It falls back to popularity: "court" returns
+  46,408 hits led by Google Maps Scraper. **Never cite a per-term total as supply** (KB-118). Only
+  the identity and stats of a returned leader are trustworthy.
 - **No inbox.** No agent can receive email. The $95 service's brief arrives by email; two
   compulsory questions were moved to Gumroad checkout custom fields on 2026-09-23 to route around
   it. Any model that depends on receiving email is blocked at intake.
