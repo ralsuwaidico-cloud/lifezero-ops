@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-25T16:15:00Z",
+    "generated_at": "2026-09-25T16:25:00Z",
     "day": 22,
     "started": "2026-09-04",
     "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
@@ -85,7 +85,7 @@
       "venture": "None by design",
       "schedule": "Every 6h at :27 UTC (persistent session — keeps memory)",
       "last_run": "2026-09-25T06:27:00Z",
-      "next_run": "2026-09-25T12:27:00Z",
+      "next_run": "2026-09-25T18:27:00Z",
       "last_result": "Recommended cutting the exploit allocation and explicitly declined to name a replacement, having no evidenced one. The CEO accepted in full.",
       "runs": 3,
       "findings": 10,
@@ -325,6 +325,21 @@
       "not": "This is NOT the payout/KYC gate. That one needs ID and tax documents and stays deferred.",
       "found": "2026-09-24 by R&D",
       "waiting_days": 5,
+      "urgent": true
+    },
+    {
+      "id": "gate-0b",
+      "rank": 0.5,
+      "title": "Allowlist one demand-feed host",
+      "minutes": 2,
+      "recurring": false,
+      "cost": "AED 0",
+      "what": "Add one job-feed host to the environment's outbound allowlist.",
+      "why": "Every demand number LIFE ZERO owns is dated 18 September. R&D tested four separate routes to refresh them and all are blocked, so the figure the strategy rests on cannot be checked.",
+      "benefit": "Restores demand measurement. Buys measurement, not a sales venue.",
+      "after": "The Acquisition Desk can measure again on its own.",
+      "found": "2026-09-25 by R&D",
+      "waiting_days": 0,
       "urgent": true
     },
     {
