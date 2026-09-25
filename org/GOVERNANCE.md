@@ -65,3 +65,34 @@ The Observer Office shows every function and what it is doing — a chairman may
 But the **ask** box goes to the CEO. Ask about R&D and the CEO answers about R&D, from R&D's
 record, and says so when it is relaying rather than knowing. Owner commands already queue to the
 CEO. Observation is unrestricted; the conversation has one counterparty.
+
+
+## THE OBSERVER INTERFACE HAS ONE OWNER
+
+**The CEO session owns `observer/`. No other agent edits it.**
+
+Requirement 30 of the Virtual Office directive, and it exists because we already made this mistake
+once: four agents shared one Gumroad account with no locks, and one of them overwrote another's
+live page (KB-101). An interface seven agents can edit independently would repeat it with a
+guaranteed audience — the chairman's own window.
+
+The rule:
+
+| Who | May do |
+|---|---|
+| CEO session | Edit `observer/state.json`, the template, the build scripts. Publish the artifact. |
+| Every other agent | Write their results into their run logs and the control plane, as they already do. Nothing in `observer/`. |
+
+The CEO folds their state in on its daily cycle. If an agent wants something shown that is not
+there, it sends a memo; it does not reach into the UI.
+
+**The interface is an observation layer, never the source of truth.** If it breaks, LIFE ZERO
+keeps running — nothing in the operating loop reads from it. The one exception is the chairman's
+command queue, which is written by the page and read by the CEO, and that is deliberately one-way.
+
+## PERMISSION PREFLIGHT APPLIES TO UI WORK TOO
+
+Requirement 31. Building or maintaining this interface must not generate owner permission prompts.
+In practice that means: no deleting development artifacts to tidy up, no destructive Drive or
+repo operations for cosmetic reasons, and superseded builds are simply overwritten in place by the
+next build rather than removed. See `PERMISSION_PREFLIGHT.md`. No prompt was raised building V1.

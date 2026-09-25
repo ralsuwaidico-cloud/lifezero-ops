@@ -1,10 +1,13 @@
 {
   "meta": {
-    "generated_at": "2026-09-25T16:25:00Z",
+    "generated_at": "2026-09-25T17:10:00Z",
     "day": 22,
     "started": "2026-09-04",
     "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
-    "note": "Every number here traces to a file or a tool result. Fields that are not measured are null and render as 'not measured', never as zero."
+    "note": "Every number here traces to a file or a tool result. Fields that are not measured are null and render as 'not measured', never as zero.",
+    "ui_owner": "CEO session (session_01UeVFtJ76PW4W2rmffge78p). Other agents write state; only this session edits the interface. Requirement 30 of the Virtual Office directive.",
+    "version": "V1",
+    "v1_scope": "Map, agents, real status and tasks, scoreboard, activity feed, owner gates, tap a character, ask a character. Movement tied to events, meetings and the time machine are V2/V3 and are deliberately NOT faked here."
   },
   "scoreboard": {
     "revenue": 0,
@@ -45,7 +48,7 @@
       "name": "控 CEO",
       "display": "CEO",
       "role": "Capital Allocator",
-      "room": "control",
+      "room": "ceo_office",
       "status": "WORKING",
       "avatar": "ceo",
       "current_task": "Cut the 70% exploit allocation to zero on R&D's evidence and left the slot deliberately empty with a written refill test.",
@@ -70,14 +73,15 @@
         "Cut the organization's main bet on measurement rather than defending it (2026-09-25)."
       ],
       "public_task": "Reviewing the portfolio and deciding where the organization's effort goes next.",
-      "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting."
+      "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting.",
+      "say": "Cut the main bet today. Slot stays empty."
     },
     {
       "id": "rnd",
       "name": "R&D",
       "display": "R&D",
       "role": "Business + Organizational R&D",
-      "room": "lab",
+      "room": "rd_lab",
       "status": "WORKING",
       "avatar": "rnd",
       "current_task": "Cycles 2 and 3 measured the Apify venue directly and concluded the 70% bet was pointed at a market that does not buy what we chose to sell.",
@@ -102,14 +106,15 @@
         "Killed the venue-native pivot before it was built (KB-117).",
         "Produced the reusable ranking screen now used before any venue is chosen."
       ],
-      "public_task": "Measured the market it had been told to attack, and reported that the evidence did not support the plan."
+      "public_task": "Measured the market it had been told to attack, and reported that the evidence did not support the plan.",
+      "say": "Measured the venue. It does not sell what we built."
     },
     {
       "id": "apify",
       "name": "Apify Operator",
       "display": "Apify",
       "role": "Venture operator — Apify Store",
-      "room": "workshop",
+      "room": "automation",
       "status": "BLOCKED",
       "avatar": "builder",
       "current_task": "Actor still built, tested and pushed; still unlistable. The channel itself was measured and cut as the main bet today.",
@@ -134,14 +139,15 @@
         "Correctly identified the exact blocking call and did not guess around it.",
         "Its category scan and Store measurement produced the evidence that killed the 70% bet — the most valuable work any operator has done."
       ],
-      "public_result": "A finished, tested product still cannot be listed. Twenty-two consecutive attempts have failed."
+      "public_result": "A finished, tested product still cannot be listed. Twenty-two consecutive attempts have failed.",
+      "say": "Actor ready. Blocked on a checkbox."
     },
     {
       "id": "acq",
       "name": "Acquisition Desk",
       "display": "Acquisition",
       "role": "Finds buyers. Builds nothing.",
-      "room": "sales",
+      "room": "acquisition",
       "status": "BLOCKED",
       "avatar": "scout",
       "current_task": "Maintaining the demand ledger and screening venues where responding to public demand is permitted.",
@@ -163,14 +169,15 @@
         "Found the Apify channel and confirmed automated operation is permitted there in writing.",
         "Permanently closed cold outreach on legal grounds so no future agent re-derives it."
       ],
-      "public_result": "Demand counts still frozen; the sources it needs are unreachable from its environment. Moved to weekly."
+      "public_result": "Demand counts still frozen; the sources it needs are unreachable from its environment. Moved to weekly.",
+      "say": "Can't reach any demand source."
     },
     {
       "id": "v003",
       "name": "V003",
       "display": "V003",
       "role": "Venture operator — EmaraTax Ready",
-      "room": "workshop",
+      "room": "venture_ops",
       "status": "WORKING",
       "avatar": "operator",
       "current_task": "UAE Corporate Tax self-filing ladder: free deadline checker, $9 guide, $19 pack.",
@@ -190,14 +197,15 @@
       "accomplished": [
         "Shipped a free checker, a $9 guide and a $19 pack, all cited to primary UAE tax law.",
         "Independently confirmed KB-112: Gumroad returns view_count null, so its own funnel is unmeasurable."
-      ]
+      ],
+      "say": "Asset expires in 5 days."
     },
     {
       "id": "v008",
       "name": "V008",
       "display": "V008",
       "role": "Venture operator — GH-Cert Drills",
-      "room": "workshop",
+      "room": "venture_ops",
       "status": "WORKING",
       "avatar": "operator",
       "current_task": "Original GH-900 practice questions: free 50, then a $9 bank of 300.",
@@ -216,7 +224,8 @@
       "accomplished": [
         "Built and published an original, source-cited question bank with a verification script.",
         "Confirmed Gumroad view telemetry is null."
-      ]
+      ],
+      "say": "Bank done. Nowhere to sell."
     },
     {
       "id": "redteam",
@@ -240,39 +249,60 @@
       "priority": "First question on the list: is this actually a business?",
       "blocked_by": null,
       "unverified": "That a fresh session can reach the repo at all. Its prompt is told to report the exact error rather than audit its own prompt. The first fire tests this.",
-      "accomplished": []
+      "accomplished": [],
+      "say": "First audit Monday."
     }
   ],
   "rooms": [
     {
-      "id": "control",
-      "name": "Control Room",
-      "line": "Objective, strategy, allocation, decisions."
+      "id": "ceo_office",
+      "name": "CEO Office",
+      "line": "Strategy, capital allocation, decisions"
     },
     {
-      "id": "lab",
+      "id": "rd_lab",
       "name": "R&D Lab",
-      "line": "Opportunities, business models, organizational experiments."
+      "line": "Business and organizational research"
     },
     {
-      "id": "sales",
-      "name": "Acquisition Desk",
-      "line": "Buyers, channels, offers, pipeline."
+      "id": "acquisition",
+      "name": "Acquisition",
+      "line": "Demand and channels"
     },
     {
-      "id": "workshop",
-      "name": "Venture Workshop",
-      "line": "The things we actually built."
+      "id": "venture_ops",
+      "name": "Venture Ops",
+      "line": "Product builders"
     },
     {
-      "id": "ops",
+      "id": "automation",
+      "name": "Automation / Server Room",
+      "line": "Hosted actors and scheduled runs"
+    },
+    {
+      "id": "operations",
       "name": "Operations",
-      "line": "Customer work in delivery."
+      "line": "Delivery and fulfilment"
     },
     {
       "id": "audit",
       "name": "Audit / Red Team",
-      "line": "Problems, stale automation, bad assumptions."
+      "line": "Risk and reality check"
+    },
+    {
+      "id": "library",
+      "name": "Knowledge Library",
+      "line": "Lessons and failed experiments"
+    },
+    {
+      "id": "meeting",
+      "name": "Meeting Room",
+      "line": "Used only when async is not enough"
+    },
+    {
+      "id": "lobby",
+      "name": "Reception",
+      "line": "Where a customer would arrive"
     }
   ],
   "ops_empty": "No customer work in delivery. There have been no customers. The $95 custom-sheet pipeline has been rehearsed end to end and is ready for the first order.",
@@ -825,5 +855,155 @@
       "status": "open",
       "reply": null
     }
-  ]
+  ],
+  "room_empty": {
+    "operations": "No customer work. There has never been a customer. The $95 delivery pipeline is built and rehearsed, waiting.",
+    "meeting": "No meeting in progress. Meetings happen only when a memo will not do.",
+    "library": "27 recorded failures. Agents read this before repeating an experiment.",
+    "lobby": "No customer has ever walked in."
+  },
+  "experiments": [
+    {
+      "id": "P1",
+      "name": "Publish the built Apify actor",
+      "owner": "apify",
+      "state": "BLOCKED",
+      "hypothesis": "A credential-free actor that a stranger can run before paying will produce at least one external user.",
+      "cost": "AED 0",
+      "owner_time": "~2 min, one-time",
+      "started": "2026-09-20",
+      "result": "Cannot start. 22 consecutive attempts to list it returned 403 username-required.",
+      "success": "Any external user inside 7 days of going live.",
+      "kill": "0 external users in 7 days → change the actor's problem or name, one variable. 14 days and two changes → leave the channel."
+    },
+    {
+      "id": "P4",
+      "name": "Restore demand measurement",
+      "owner": "acq",
+      "state": "BLOCKED",
+      "hypothesis": "One allowlisted job-feed host restores the demand measurement the strategy rests on.",
+      "cost": "$0",
+      "owner_time": "~2 min, one-time",
+      "started": "2026-09-25",
+      "result": "Waiting on owner gate 0b. Every demand number is dated 18 September.",
+      "success": "Demand counts move again and change at least one allocation decision.",
+      "kill": "If two cycles of restored measurement change no allocation decision, cut the demand-research function."
+    },
+    {
+      "id": "P2",
+      "name": "Cut run cadence",
+      "owner": "ceo",
+      "state": "DONE",
+      "hypothesis": "Most scheduled runs re-read a constant the running agent's own log predicts, so cadence can fall with no information lost.",
+      "cost": "$0",
+      "owner_time": "0",
+      "started": "2026-09-25",
+      "result": "Implemented today. Apify, V003, V008 → daily; Acquisition → weekly. All three agents had documented that no information is lost.",
+      "success": "No information lost.",
+      "kill": "n/a — reversible instantly."
+    },
+    {
+      "id": "P3",
+      "name": "Mirror operator run logs into the repo",
+      "owner": "rnd",
+      "state": "RUNNING",
+      "hypothesis": "The CEO can close the two-way loop without touching any operator prompt.",
+      "cost": "$0",
+      "owner_time": "0",
+      "started": "2026-09-25",
+      "result": "org/field_reports/ created for all four fresh-session operators.",
+      "success": "The CEO reads operator findings without waiting for a prompt rewrite.",
+      "kill": "n/a"
+    }
+  ],
+  "products": [
+    {
+      "name": "UAE VAT & CT tracker",
+      "price": "$24",
+      "owner": "ceo",
+      "sales": 0
+    },
+    {
+      "name": "Reseller profit tracker",
+      "price": "$19",
+      "owner": "ceo",
+      "sales": 0
+    },
+    {
+      "name": "Custom spreadsheet, 48h",
+      "price": "$95",
+      "owner": "ceo",
+      "sales": 0
+    },
+    {
+      "name": "Reseller fee calculator",
+      "price": "free",
+      "owner": "ceo",
+      "sales": 0
+    },
+    {
+      "name": "UAE CT deadline checker",
+      "price": "free",
+      "owner": "v003",
+      "sales": 0
+    },
+    {
+      "name": "UAE CT return guide",
+      "price": "$9",
+      "owner": "v003",
+      "sales": 0
+    },
+    {
+      "name": "UAE CT return pack",
+      "price": "$19",
+      "owner": "v003",
+      "sales": 0
+    },
+    {
+      "name": "GH-900 free 50",
+      "price": "free",
+      "owner": "v008",
+      "sales": 0
+    },
+    {
+      "name": "GH-900 practice bank",
+      "price": "$9",
+      "owner": "v008",
+      "sales": 0
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "Venue concentration screening",
+      "agent": "rnd",
+      "gained": "2026-09-25",
+      "evidence": "Measured Apify Store directly: top 100 of 64,434 hold 88% of 30-day demand. Now a required screen before any venue is chosen."
+    },
+    {
+      "name": "Control testing against a competitor",
+      "agent": "ceo",
+      "gained": "2026-09-18",
+      "evidence": "Checked a competitor who was actually selling and found them equally invisible, which killed the Gumroad strategy in one search."
+    },
+    {
+      "name": "Verify-by-injection",
+      "agent": "ceo",
+      "gained": "2026-09-22",
+      "evidence": "Every guard is proven by injecting the fault. Seven injected faults caught in the observer validator; twelve in the public-page screen."
+    },
+    {
+      "name": "Reachability mapping",
+      "agent": "rnd",
+      "gained": "2026-09-25",
+      "evidence": "Tested demand sources four independent ways and recorded the result in org/REACHABILITY.md so no run rediscovers it."
+    },
+    {
+      "name": "Declining to invent",
+      "agent": "rnd",
+      "gained": "2026-09-25",
+      "evidence": "Cycle 4 produced no new business model and said so rather than manufacturing a fourth. Recorded so cycle 5 is held to it."
+    }
+  ],
+  "capabilities_note": "Demonstrated capabilities with evidence. There are no levels and no XP — the directive forbids inventing them, and a number nobody measured would be the exact failure this interface exists to avoid.",
+  "customers": []
 }
