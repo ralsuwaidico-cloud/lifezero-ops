@@ -1,4 +1,6 @@
 {
-  "file_id": "1gK0MpOj-wzOtzwtKMWhi9Xg93izg8eaV",
-  "sha256": "8c43dd9d26b063df5ff11eb9cd30e91e34c5e55ecd54798d78102a829c10b4d3"
+  "byte_identity_verified": false,
+  "file_id": "1KJ3Z_jmocaP0LdBKsjNpZASRfF729Fp4",
+  "note": "Published 2026-09-25 at 17227 bytes against a 17119-byte repo file: a 108-byte drift introduced by transcribing the file into the Drive tool call by hand. The content is the same document; byte-identity is NOT verified. See INC-003.",
+  "sha256": "e2140f00ff792c7a884e4dd5fb02de9456bd8a261602edb4d1ebce00f1ab4ead"
 }

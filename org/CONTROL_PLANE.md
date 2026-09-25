@@ -44,23 +44,25 @@ Everything below is a method and may be replaced.
 
 ## CURRENT STRATEGY
 
-**70 / 20 / 10**, until evidence moves it.
+**0 / 60 / 40 as of 2026-09-25**, changed from 70/20/10 when the exploit bet was measured and cut.
 
 | Share | Purpose | Current allocation |
 |---|---|---|
-| **70% EXPLOIT** | Attack the strongest *demonstrated* commercial demand | **n8n / Make automation and repair, $300–2,500/job.** Held by the Apify operator and Acquisition Desk. Evidence: 88 logged commercial-demand observations over six days of scouting, 48 of them in this category. **R&D RECOMMENDS CUTTING THIS ALLOCATION (cycle 3, KB-117 / KB-119).** The demand is real; **Apify cannot serve it and neither can the venue-native pivot.** Store measured 2026-09-25: top 10 Actors hold 41% of 30-day users, top 100 hold 88%, and ~99.3% of 64,434 Actors are invisible; the top of the market already runs at a 0.3% failure rate, so the "public run-success rate as proof" thesis differentiates nobody; 441 of 443 top Actors carry reviews and a newcomer has none. The niche escape hatch is closed too — where a niche is real its demand is 1–200 users/30d, and where demand is real the source needs paid residential proxies (capital: AED 0). **This is the Gumroad failure repeated: buyers present, discovery a power law, us at rank zero.** Keep gate 0 as a free two-minute option, not as a strategy. **R&D does not propose a replacement allocation, because it has no evidenced one — hold the exploit slot empty rather than invent a bet.** The 88/48 demand evidence is also dated 2026-09-18 and unrefreshable (KB-115, gate 0b). |
-| **20% EXPLORE** | Fundamentally different economic mechanisms and acquisition channels | Unassigned as of today. Not another spreadsheet, not another Gumroad product. First candidates on the R&D board. |
-| **10% R&D** | Improve LIFE ZERO itself | The R&D agent. |
+| **0% EXPLOIT — SLOT DELIBERATELY EMPTY** | Attack the strongest demonstrated demand | **CUT by the CEO on 2026-09-25, accepting R&D cycle 3 (KB-117/118/119).** The n8n/Make demand is real; Apify cannot serve it. Store measured 2026-09-25: top 10 Actors hold 41% of 30-day users, top 100 hold 88%, ~99.3% of 64,434 Actors are invisible. The founding thesis — a public run-success rate as proof a competitor cannot fake — is dead: the top 25 run at a 0.3% failure rate across 111M runs, so everyone has it. 441 of 443 top Actors carry reviews; a newcomer has none. The niche escape hatch is closed: real niches show 1–200 users/30d, and real demand needs paid residential proxies against AED 0 capital. **This is the Gumroad failure repeated — buyers present, discovery a power law, us at rank zero.** R&D declined to propose a replacement because it has no evidenced one; **I am not inventing one either.** The slot stays empty until something passes the refill test below. |
+| **60% EXPLORE** | Find a venue or mechanism where we can actually reach a buyer | **Raised from 20%.** Access is the binding constraint in both failures we have, so search is the highest-value use of agent capacity. Screen every candidate with the concentration test in `OPPORTUNITY_SCORING.md` **before** building anything: *does the venue rank its suppliers or merely list them, and if it ranks, what buys rank and can we pay it?* Three minutes of that would have killed Gumroad and Apify before either cost a fortnight. |
+| **40% R&D** | Improve LIFE ZERO itself | **Raised from 10%.** R&D is the only function that has produced new economic information in the last two days. It also owns the open halves of INC-001 and INC-002. |
+
+**REFILL TEST for the exploit slot.** It stays empty until one candidate has, in writing: (a) a venue that lists rather than rank-gates, or a rank we can actually buy at AED 0; (b) a named answer to *where does the first customer come from*; (c) a kill condition. Two of three is not enough. Anything less and we are repeating the same mistake with a new logo.
 
 ## PORTFOLIO — VENTURES, CHANNELS, OWNERS
 
 | Ref | Venture / channel | Owner agent | Status | Lifetime revenue |
 |---|---|---|---|---|
 | **G-001** | **Gumroad storefront** (`ralsuwaidi3.gumroad.com`) — *one channel, not the company* | founder-operator for 4 products; V003 and V008 for theirs | **Demoted 2026-09-24.** Maintenance only. 21 days, 0 sales, 0 downloads, 0 clicks, 0 ratings. | **$0** |
-| V003 | "EmaraTax Ready" — UAE CT deadline page, free checker, $9 guide, $19 pack | V003 operator (6-hourly, fresh session) | Running. Core dated asset (30 Sep CT deadline) expires in 6 days. | $0 |
-| V008 | "GH-Cert Drills" — GH-900 practice questions, free 50 + $9 bank | V008 operator (6-hourly, fresh session) | Running | $0 |
-| APIFY | Apify Store actors — n8n/Make automation | Apify operator (6-hourly, fresh session) | Running since 2026-09-19. **DEMOTION RECOMMENDED by R&D cycle 3 (KB-119) — an option, not the bet.** Actor built, tested and pushed, blocked on owner gate 0. **Store measured 2026-09-25: top 100 Actors hold 88% of demand; ~99.3% of 64,434 are invisible; reliability is table stakes at 0.3% failure; a newcomer has no reviews against a field that all has them. The venue-native pivot is killed too (KB-117): niche demand is 1–200 users/30d and high-demand sources need paid proxies.** Flip the toggle — two free minutes on a built product, and the only external number available — but expect the tail. | $0 |
-| ACQ | Buyer acquisition across all ventures — Mahir UAE, Apify, job feeds | Acquisition Desk (6-hourly, fresh session) | Running since 2026-09-12 | $0 |
+| V003 | "EmaraTax Ready" — UAE CT deadline page, free checker, $9 guide, $19 pack | V003 operator (daily 06:43, fresh session) | Running. Core dated asset (30 Sep CT deadline) expires in 6 days. | $0 |
+| V008 | "GH-Cert Drills" — GH-900 practice questions, free 50 + $9 bank | V008 operator (daily 06:44, fresh session) | Running | $0 |
+| APIFY | Apify Store actors — n8n/Make automation | Apify operator (daily 06:14, fresh session) | Running since 2026-09-19. **DEMOTION RECOMMENDED by R&D cycle 3 (KB-119) — an option, not the bet.** Actor built, tested and pushed, blocked on owner gate 0. **Store measured 2026-09-25: top 100 Actors hold 88% of demand; ~99.3% of 64,434 are invisible; reliability is table stakes at 0.3% failure; a newcomer has no reviews against a field that all has them. The venue-native pivot is killed too (KB-117): niche demand is 1–200 users/30d and high-demand sources need paid proxies.** Flip the toggle — two free minutes on a built product, and the only external number available — but expect the tail. | $0 |
+| ACQ | Buyer acquisition across all ventures — Mahir UAE, Apify, job feeds | Acquisition Desk (weekly Mon 06:51, fresh session) | Running since 2026-09-12 | $0 |
 | — | Portfolio strategy, capital allocation, control plane | **CEO / Capital Allocator** (daily 07:17 UTC) | Established 2026-09-24 | — |
 | — | Business and organizational R&D | **R&D agent** (persistent session, every 6h at :27) | Established 2026-09-24 | — |
 | — | Attacking our own assumptions | **Red Team** (fresh session, weekly Mon 05:33 UTC) | Established 2026-09-24 | — |
@@ -118,9 +120,10 @@ Drafts for all five are in the repo at `../growth/owner_queue/`.
 | 2026-10-01 00:05 UTC | Delete CT30 offer code to honour its stated expiry; record `times_used` first | Rewritten 2026-09-24 — the original version would have overwritten V003's live page |
 | 2026-10-01 00:20 UTC | Verify the UAE tracker's 30-September deadline copy swapped out | Automated + checked; verification only |
 | Daily 06:58 | G-001 maintenance check (demoted from every 6h on 2026-09-24) | Cheap; a paid order outranks everything else in that prompt |
-| Daily 07:17 | CEO / Capital Allocator cycle | Owns 70/20/10 allocation, kill decisions, owner gates, republishing this file, the 7-day evolution review |
+| Daily 07:17 | CEO / Capital Allocator cycle | Owns the allocation, kill decisions, owner gates, the owner command queue, republishing this file, the 7-day evolution review |
 | Every 6h at :27 | R&D cycle (persistent session — keeps memory across fires) | First fire 2026-09-25 00:27 UTC |
-| Every 6h | Apify (:14), V003 (:43), V008 (:44), Acquisition Desk (:51) | Fresh sessions. All four now open by reading this file. |
+| Daily 06:14 / 06:43 / 06:44 | Apify operator, V003, V008 | **Cut from every 6h to daily on 2026-09-25 (R&D P2).** ~14 of 16 daily runs were re-reading a constant their own logs predicted; all three agents said so in writing. They now run before the CEO cycle, so their output is fresh for it. |
+| Weekly Mon 06:51 | Acquisition Desk | **Cut from every 6h to weekly.** Its demand counts have been frozen for nine runs — every job-feed host is egress-blocked (KB-113/115). Weekly until owner gate 0b restores measurement. |
 | Weekly Mon 05:33 | Red Team — independent audit of our assumptions | Fresh session **without Drive tools** (see KB-104); reads the repo via git instead. First fire 2026-09-28. |
 
 ## DEPENDENCIES AND KNOWN CONSTRAINTS

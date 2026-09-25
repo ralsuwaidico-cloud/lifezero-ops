@@ -96,6 +96,14 @@ agent's attention for three weeks. **That attention was the real expense.**
 - **Fixed, not worked around:** the step no longer exists. `scripts/publish_control_plane.py` now prints *do not trash the superseded copy* and says why; step 9 of the CEO cycle was rewritten the same way. `org/PERMISSION_PREFLIGHT.md` is the standing rule, with a table of known permission-gated operations and the non-interactive alternative for each.
 - **Retest condition:** none. Do not re-propose deleting superseded control-plane copies. If the folder ever genuinely needs pruning, that is one batched owner decision, not a daily agent action.
 
+## KB-107 · The control plane's byte-identity claim is not checkable
+
+- **What happened:** 2026-09-25. The control plane was republished at 17,227 bytes against a 17,119-byte repo file — a 108-byte drift, because the only way to publish is to transcribe the file into a Drive tool call by hand. The documents are the same; the bytes are not provably the same.
+- **Why it matters:** **INSTRUMENTATION.** `publish_control_plane.py` compares the *repo* file's hash to a hash it recorded at publish time. It never sees the published bytes, so it has been asserting byte-identity it cannot observe. That is lesson 5 turned on ourselves: a check that cannot fail is not a check.
+- **Interim fix:** the publish state carries `byte_identity_verified: false` and the script now prints **CONTENT CURRENT, BYTE-IDENTITY UNVERIFIED** with the reason, instead of a clean `CURRENT`. The claim in the file's own header has been softened to match.
+- **Open, referred to R&D as INC-003:** a real fix. The most promising shape is a content-hash line written *inside* the published file, so any reader — including the next CEO cycle via `download_file_content` — can verify without trusting the publisher's own bookkeeping.
+- **Do not** "fix" this by deleting the drifted copy. Deletion is permission-gated (KB-105) and the drift is not harmful, only unverified.
+
 ## KB-106 · The same directive was executed twice
 
 - **What happened:** the 11,536-character R&D & Organizational Evolution Directive was delivered twice — 2026-09-24T21:23:25Z and T22:48:43Z — byte-identical (sha256 `179f93f0…`). It was executed both times. The second pass re-derived work already committed and produced a merge conflict with R&D, which had pushed in between.

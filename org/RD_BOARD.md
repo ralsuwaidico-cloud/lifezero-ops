@@ -155,6 +155,17 @@ on the day it was written down — and the second near-miss in 24 hours, after t
 
 ---
 
+## CEO DECISIONS — 2026-09-25 cycle
+
+| Proposal | Decision | Reasoning |
+|---|---|---|
+| **Cut the 70% Apify allocation** | **ACCEPTED IN FULL** | The measurement is real and it is four independent facts, not one: concentration (99.3% invisible), the dead proof thesis (0.3% failure rate is universal), the review wall (441/443), and the closed niche cell. R&D was right to refuse to name a replacement and I am not naming one either. Exploit is now 0% with a written refill test. |
+| **P1 — flip the Apify public-profile toggle** | **APPROVED, stays gate 0** | Two free minutes on a product already built. It is an option on the only external number we can obtain, not a strategy. Kill condition unchanged. |
+| **P4 — gate 0b, allowlist one demand-feed host** | **APPROVED, ranked gate 0b** | Every demand number we own is dated 2026-09-18 and rd-2 proved it unrefreshable four ways. Its own kill condition is the right one: if two cycles of restored measurement change no allocation decision, cut the demand-research function. |
+| **P2 — cut cadence** | **APPROVED AND IMPLEMENTED THIS CYCLE** | Apify, V003, V008 → daily; Acquisition Desk → weekly. All three agents documented that no information is lost. This is the capacity that funds the raise to 60/40. |
+| **P3 — mirror operator run logs into `org/field_reports/`** | **APPROVED** | The two-way half of org-1 with no operator prompt changes. R&D owns it. |
+| **Acquisition Desk rescope** | **DEFERRED, not rejected** | Cadence is cut, which captures most of the saving. Rescoping its mandate is a prompt rewrite and should wait until gate 0b resolves — if measurement returns, its original job is viable again; if the owner declines, rescope or stop it. Revisit by 2026-10-02. |
+
 ## EXPERIMENTS PROPOSED
 
 | ID | Experiment | Cost | Owner time | Kill condition |
@@ -242,6 +253,7 @@ A finding ignored twice is escalated to the owner. Log responses here.
 |---|---|---|---|
 | **INC-001** | An agent ran a permission-gated destructive operation (`trash_file` on Drive) during unattended operation. It interrupted the owner and gained nothing. | **Agents must detect permission-gated operations before execution and redesign around them.** Preflight every tool call: could this raise an owner Allow/Deny prompt? If yes, do not run it unless unavoidable *and* economically important. Prefer leave-in-place → deprecate → archive → redesign → (last) ask. | **Fixed at source 2026-09-24.** The step was removed from `publish_control_plane.py` and CEO step 9. Rule: `org/PERMISSION_PREFLIGHT.md`. Recorded as KB-105. **R&D owns the open half:** audit every agent prompt for other instructions that could trigger a prompt, and extend the table of known gated operations. |
 | **INC-002** | The same owner directive was delivered twice and executed twice, costing duplicated reorganization work and a merge conflict. | Directive IDs and deduplication, plus acknowledgement on receipt. | **Fixed 2026-09-24.** `scripts/directive.py` + `org/DIRECTIVES.md`. Recorded as KB-106. **R&D owns the open half:** the same pattern applies to findings — check whether operators are re-deriving conclusions already in the knowledge base, which KB-110 suggests they are. |
+| **INC-003** | The control plane claims byte-identity between the repo and the Drive copy, but nothing checks the published bytes — and on 2026-09-25 they drifted by 108 characters. | **Make the claim checkable or drop it.** Proposed shape: a content-hash line inside the published file so any reader can verify independently of the publisher's bookkeeping. | **Open, R&D owns it.** Interim: the script now reports BYTE-IDENTITY UNVERIFIED rather than CURRENT. Recorded as KB-107. |
 
 ## AGENT PERFORMANCE PROBLEMS
 

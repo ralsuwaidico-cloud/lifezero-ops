@@ -73,6 +73,14 @@ def main():
     file_id = state.get("file_id", "(unknown -- search the folder by title)")
 
     if published_hash == current:
+        if state.get("byte_identity_verified") is False:
+            print("CONTENT CURRENT, BYTE-IDENTITY UNVERIFIED (sha256 %s)." % current[:12])
+            print("  %s" % state.get("note", "no note recorded"))
+            print("  The hash above is of the REPO file. Nothing has checked the published")
+            print("  bytes against it, because the publish channel is a hand-transcribed")
+            print("  tool call. Treat the Drive copy as the same document, not the same file.")
+            print("Drive file id: %s" % file_id)
+            return 0
         print("CURRENT: the Drive copy matches org/CONTROL_PLANE.md (sha256 %s)."
               % current[:12])
         print("Drive file id: %s" % file_id)
