@@ -1,0 +1,67 @@
+# LIFE ZERO — GOVERNANCE
+
+**The owner is the CHAIRMAN. The chairman speaks to the CEO.**
+
+Not to operators, not to R&D, not to the Red Team. One accountable person answers for the
+company, and that is the CEO. This is not ceremony — it is what stops an eight-agent
+organization turning into eight separate conversations the owner has to hold in their head.
+
+```
+                         CHAIRMAN (owner)
+                               |
+                          questions, capital, gates
+                               |
+                    CEO / Capital Allocator
+                    /      |        |      \
+                   /       |        |       \
+              R&D      Operators   Red Team   Acquisition
+           (advises)   (execute)   (audits)   (finds buyers)
+```
+
+## Who may speak to whom
+
+| From | To | About |
+|---|---|---|
+| Chairman | CEO | Anything. The CEO answers, or says plainly it does not know and who does. |
+| CEO | Chairman | One consolidated ask per cycle, ranked and costed. Never a list of eight. |
+| Anyone | CEO | Results, blockers, proposals, dissent. |
+| CEO | Anyone | Direction, decisions, questions. |
+| Any function | Any other function | **Memos** — see below. Peers may ask each other directly. |
+| Red Team | Chairman | **Only** when the CEO has ignored a finding twice. This is the board escape hatch and it exists so the auditor cannot be silenced. |
+
+**No agent addresses the chairman directly.** An operator that wants owner time writes a
+`CEO REQUEST` in its run log. The CEO decides whether it is worth owner minutes, and if so
+folds it into its own consolidated ask. Three agents each wanting "just two minutes" is
+six minutes and three interruptions; the CEO's job is to make that one decision.
+
+## Memos — how functions talk to each other
+
+Four of the agents run from fresh sessions with no memory and cannot read this repo. They read
+the control plane. So the control plane carries the mail:
+
+1. Any function may send a memo to another: `python3 scripts/memo.py send --from rnd --to apify
+   --subject "..." --body "..."`.
+2. It renders into `CONTROL_PLANE.md` under **MEMOS**, addressed by name. Every operator already
+   reads that file before acting, so the memo reaches it on its next run.
+3. The recipient answers in its run log under `REPLY TO <memo id>`.
+4. The CEO harvests replies each cycle and closes the memo.
+
+The CEO is the switchboard, not the author. It moves mail it did not write, and it does not
+answer on a function's behalf — if V008 was asked something, V008 answers.
+
+**A memo is a question or an instruction, not a status update.** Status goes in run logs.
+If a memo does not need an answer, it is probably not a memo.
+
+## What this fixes
+
+On 2026-09-24 the Acquisition Desk downgraded the Apify channel because "LIFE ZERO still has no
+Actor", while the Apify operator had one built, tested and pushed. They were three metres apart
+on the org chart and could not exchange a sentence (KB-110). The control plane let them both read
+the same facts. Memos let them ask each other a question.
+
+## What the chairman sees
+
+The Observer Office shows every function and what it is doing — a chairman may read anything.
+But the **ask** box goes to the CEO. Ask about R&D and the CEO answers about R&D, from R&D's
+record, and says so when it is relaying rather than knowing. Owner commands already queue to the
+CEO. Observation is unrestricted; the conversation has one counterparty.

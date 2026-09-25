@@ -127,6 +127,14 @@ svg.floor{width:100%;height:auto;display:block}
 .floor .seat:hover circle:first-child{opacity:.26}
 .floor .seat:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .floorhint{margin:0 0 12px;font-size:12px;color:var(--faint);text-align:center}
+.chair{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:12.5px;color:var(--muted)}
+.chair b{color:var(--ink)}
+.chairline{margin-top:6px;font-size:11px;color:var(--faint);letter-spacing:.01em}
+.who-ask{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;
+  padding:8px 10px;margin-bottom:8px;font-size:12px;color:var(--muted)}
+.who-ask b{color:var(--accent)}
+.memoline{pointer-events:none}
 
 /* ---- feed ---- */
 .range{display:flex;gap:4px;margin-bottom:10px}
@@ -277,6 +285,7 @@ footer{padding:22px 0 30px;font-size:11.5px;color:var(--faint);text-align:center
   <div class="tabs" role="tablist" id="tabs">
     <button class="tab" role="tab" data-p="office" aria-selected="true">Office</button>
     <button class="tab" role="tab" data-p="feed" aria-selected="false">Feed</button>
+    <button class="tab" role="tab" data-p="memos" aria-selected="false">Memos</button>
     <button class="tab" role="tab" data-p="flow" aria-selected="false">Flow</button>
     <button class="tab" role="tab" data-p="problems" aria-selected="false">Problems</button>
     <button class="tab" role="tab" data-p="grave" aria-selected="false">Graveyard</button>
@@ -291,6 +300,7 @@ footer{padding:22px 0 30px;font-size:11.5px;color:var(--faint);text-align:center
     </div>
     <div id="feedlist"></div>
   </section>
+  <section id="p-memos" hidden></section>
   <section id="p-flow" hidden></section>
   <section id="p-problems" hidden></section>
   <section id="p-grave" hidden></section>
@@ -526,6 +536,44 @@ function drawFloor(){
     });
   });
 
+  /* reporting lines: every function answers to the Control Room */
+  var ctl = FLOOR.control, hub = [ctl.x + ctl.w/2, ctl.y + ctl.h - 6];
+  var lines = '';
+  S.rooms.forEach(function(r){
+    if(r.id === 'control') return;
+    var g = FLOOR[r.id]; if(!g || !(byRoom[r.id] || []).length) return;
+    var fx = g.x + g.w/2, fy = g.y + 4;
+    lines += '<path d="M'+fx+' '+fy+' C '+fx+' '+(fy-60)+', '+hub[0]+' '+(hub[1]+60)+', '+
+      hub[0]+' '+hub[1]+'" fill="none" stroke="var(--faint)" stroke-width="2" ' +
+      'stroke-dasharray="7 9" opacity=".38"/>';
+  });
+  svg = svg.replace('<rect width="1000" height="1000" rx="14" fill="url(#planks)"/>',
+                    '<rect width="1000" height="1000" rx="14" fill="url(#planks)"/>' + lines);
+
+  /* open memos: a badge on whoever the mail is addressed to. Lines across the
+     floor turn into spaghetti at seven agents; a count on the desk does not. */
+  var mailFor = {};
+  (S.memos_open || []).forEach(function(m){
+    if(m.reply) return;                       /* answered: no longer waiting on them */
+    mailFor[m.to] = (mailFor[m.to] || 0) + 1;
+  });
+  S.agents.forEach(function(a){
+    if(!mailFor[a.id]) return;
+    var g = FLOOR[a.room], crew = byRoom[a.room] || [];
+    var i = crew.map(function(x){ return x.id; }).indexOf(a.id);
+    var seat = g.seats[i] || g.seats[0];
+    var bx = seat[0] - 30, by = seat[1] - 20;
+    svg += '<g class="memoline">' +
+      '<circle cx="'+bx+'" cy="'+by+'" r="15" fill="var(--surface)" stroke="var(--accent)" stroke-width="2.5"/>' +
+      '<rect x="'+(bx-7)+'" y="'+(by-5)+'" width="14" height="10" rx="1.5" fill="none" ' +
+      'stroke="var(--accent)" stroke-width="2"/>' +
+      '<path d="M'+(bx-7)+' '+(by-4)+' l7 5.5 l7 -5.5" fill="none" stroke="var(--accent)" ' +
+      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+      (mailFor[a.id] > 1 ? '<text x="'+(bx)+'" y="'+(by+31)+'" class="cstat" text-anchor="middle" ' +
+        'fill="var(--accent)">'+mailFor[a.id]+'</text>' : '') +
+      '</g>';
+  });
+
   svg += '</svg>';
 
   var roster = S.agents.map(function(a){
@@ -540,9 +588,15 @@ function drawFloor(){
         '<span class="p-task">'+esc(a.current_task)+'</span></span></button>';
   }).join("");
 
+  var gv = S.governance || {};
+  var openm = (S.memos_open || []).length;
   $("p-office").innerHTML =
+    '<div class="chair"><b>You are the chairman.</b> '+esc(gv.note || '')+
+      '<div class="chairline mono">'+esc(gv.line || '')+'</div></div>'+
     '<div class="floorwrap">'+svg+'</div>'+
-    '<p class="floorhint">Tap anyone to ask what they are doing.</p>'+
+    '<p class="floorhint">Dashed grey lines are who reports to whom. '+
+      (openm ? 'An envelope means that function has a memo waiting for an answer. ' : '')+
+      'Tap anyone to read their record &mdash; questions go to the CEO.</p>'+
     '<div class="room"><div class="room-h"><h2>Everyone</h2>'+
     '<p>The same seven, as a list.</p></div><div class="crew">'+roster+'</div></div>';
 
@@ -616,6 +670,32 @@ $("range").addEventListener("click", function(ev){
       '</div>';
   }).join("");
   $("p-flow").innerHTML = h;
+})();
+
+/* ---------- memos: the mail between functions ---------- */
+(function(){
+  var m = S.memos_open || [];
+  var h = '<p style="font-size:12.5px;color:var(--muted);margin:0 0 10px">'+
+    'Functions ask each other direct questions here. The CEO moves the mail; it does not '+
+    'answer on anyone\'s behalf. A recipient replies in its next run, and the CEO closes it.</p>';
+  if(!m.length){
+    h += '<p class="nothing">No open memos.</p>';
+  } else {
+    h += m.map(function(x){
+      var answered = !!x.reply;
+      return '<div class="msg"><div class="msg-h">'+
+        '<span style="color:'+colourOf(x.from)+';font-weight:600">'+esc(nameOf(x.from))+'</span>'+
+        '<span class="arrow">&rarr;</span>'+
+        '<span style="color:'+colourOf(x.to)+';font-weight:600">'+esc(nameOf(x.to))+'</span>'+
+        '<span class="pill'+(answered?'':' hot')+'">'+(answered?'answered':'awaiting reply')+'</span>'+
+        '<span class="mono" style="margin-left:auto">'+esc(x.id)+'</span></div>'+
+        '<b>'+esc(x.subject)+'</b><p>'+esc(x.body)+'</p>'+
+        (answered ? '<div class="resp"><span>'+esc(nameOf(x.to))+' replied:</span> '+
+                    esc(x.reply)+'</div>' : '')+
+        '</div>';
+    }).join("");
+  }
+  $("p-memos").innerHTML = h;
 })();
 
 /* ---------- problems ---------- */
@@ -763,19 +843,33 @@ document.addEventListener("click", function(e){
 });
 
 /* ---------- ask: grounded in this agent's real record ---------- */
-var QS = ["What are you doing?","Why are you doing this?","What have you accomplished?",
-  "What is blocking you?","What have you learned?","What will you do next?",
-  "How are you helping make money?","What should LIFE ZERO do?"];
+var QS = ["What is this one doing?","Why are they doing it?",
+  "What have they actually achieved?","What is blocking them?",
+  "Are they earning their keep?","What will they do next?"];
+var QS_CEO = ["Where is the money?","What changed since yesterday?","What is going wrong?",
+  "Who is not earning their keep?","What do you need from me?",
+  "What would you do with $100?","What are you avoiding telling me?",
+  "If this fails, what kills it?"];
 
 function renderAsk(){
   var el = $("pane-ask");
-  el.innerHTML = '<div class="chips">'+ QS.map(function(q){
+  var isCeo = current.id === "ceo";
+  var qs = isCeo ? QS_CEO : QS;
+  el.innerHTML =
+    '<div class="who-ask">'+
+      (isCeo ? 'You are asking the <b>CEO</b> directly.'
+             : 'You are the chairman, so you ask the <b>CEO</b>. It answers about '+
+               esc(current.display)+' from '+esc(current.display)+'&rsquo;s record, and says when '+
+               'it is relaying rather than knowing.')+
+    '</div>'+
+    '<div class="chips">'+ qs.map(function(q){
       return '<button class="chip" data-q="'+esc(q)+'">'+esc(q)+'</button>'; }).join("") +'</div>'+
-    '<div class="askrow"><input id="q" placeholder="Ask '+esc(current.display)+' anything"'+
-    ' autocomplete="off"><button class="go" id="send">Ask</button></div>'+
+    '<div class="askrow"><input id="q" placeholder="'+
+      (isCeo ? 'Ask the CEO anything' : 'Ask the CEO about '+esc(current.display))+
+      '" autocomplete="off"><button class="go" id="send">Ask</button></div>'+
     '<div id="ans"></div>'+
-    '<p class="obs-note">Read-only. Asking does not pause, redirect or change what this agent '+
-    'is doing. Answers are generated from the record shown above, not from the job title.</p>';
+    '<p class="obs-note">Read-only. Asking does not pause, redirect or change what anyone is '+
+    'doing. The answer is built from the records above, not from a job title.</p>';
   el.querySelectorAll(".chip").forEach(function(c){
     c.onclick = function(){ $("q").value = c.dataset.q; ask(); };
   });
@@ -811,21 +905,37 @@ function ask(){
   out.textContent = "Thinking…";
   var a = current;
   var record = JSON.stringify(a, null, 1);
+  var isCeo = a.id === "ceo";
+  var ceo = S.agents.filter(function(x){ return x.id === "ceo"; })[0];
+  var memos = JSON.stringify(S.memos_open || [], null, 1);
   var prompt =
-    "You are "+a.display+", an autonomous agent inside a small AI-run company called LIFE ZERO. "+
-    "The owner is asking you a question. Answer AS THAT AGENT, in the first person.\n\n"+
+    "You are the CEO of LIFE ZERO, a small company run entirely by AI agents for its owner. "+
+    "The owner is the CHAIRMAN. They are speaking to you now. You are the one person "+
+    "accountable for this company, and you answer in the first person.\n\n"+
+    (isCeo ? "They are asking about you and the company as a whole.\n\n"
+           : "They tapped "+a.display+", who reports to you. Answer about "+a.display+
+             " from the record below. Where you are relaying rather than knowing first-hand, "+
+             "say so plainly -- for example 'that is their account of it, and I have not "+
+             "verified it'. Do NOT roleplay as "+a.display+"; you are the CEO talking about "+
+             "a function that reports to you.\n\n")+
     "ABSOLUTE RULES:\n"+
-    "- Answer ONLY from the record below. It is your entire memory.\n"+
-    "- If the record does not contain the answer, say exactly that you do not have it in your "+
-    "record. Never invent a run, a number, a customer, a finding or an intention.\n"+
-    "- Revenue is $0 and there have never been any customers. Never imply otherwise.\n"+
-    "- Be short: 2 to 5 sentences. Plain, direct, a bit blunt. No preamble, no enthusiasm, "+
-    "no bullet lists unless you are listing things that are literally in the record.\n"+
-    "- You are allowed to say that something is not working, that you are blocked, or that "+
-    "what you are doing may not be worth doing.\n\n"+
-    "YOUR RECORD:\n"+record+"\n\n"+
+    "- Answer ONLY from the records below. If they do not contain the answer, say exactly that "+
+    "it is not in the record, and say who would know. Never invent a run, a number, a "+
+    "customer, a finding or an intention.\n"+
+    "- Revenue is $0 and there have never been any customers. Never imply otherwise, and never "+
+    "soften it.\n"+
+    "- Be short: 2 to 5 sentences. Plain and direct, the way a chief executive answers a "+
+    "chairman who reads the numbers. No preamble, no enthusiasm, no apologising.\n"+
+    "- You are accountable. If something is failing, say it is failing and say what you are "+
+    "doing about it. If you got something wrong, say so. Do not defend a decision the "+
+    "evidence has already beaten -- sunk cost has no vote here.\n"+
+    "- If the honest answer is that the chairman needs to do something, say exactly what, how "+
+    "long it takes, and what it unblocks.\n\n"+
+    (isCeo ? "" : "THE FUNCTION THEY ASKED ABOUT ("+a.display+"):\n"+record+"\n\n")+
+    "YOUR OWN RECORD AS CEO:\n"+JSON.stringify(ceo, null, 1)+"\n\n"+
     "THE COMPANY RIGHT NOW:\n"+orgBrief()+"\n\n"+
-    "OWNER'S QUESTION: "+q;
+    "OPEN MEMOS BETWEEN FUNCTIONS (mail you are moving):\n"+memos+"\n\n"+
+    "CHAIRMAN'S QUESTION: "+q;
   CAP.sample(prompt, {
     modelTier: "default",
     onText: function(r){ out.textContent = r.text; }
