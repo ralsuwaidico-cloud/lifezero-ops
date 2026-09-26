@@ -16,6 +16,9 @@ import json
 import os
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from company_clock import clock  # noqa: E402  -- the 7:1 ratio, one definition
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATE = os.path.join(REPO, "observer", "state.json")
 TEMPLATE = os.path.join(REPO, "observer", "office.template.html")
@@ -92,6 +95,12 @@ def main():
 
     with io.open(STATE, encoding="utf-8") as fh:
         s = json.load(fh)
+
+    # The company runs seven days to the owner's one (chairman, 2026-09-26).
+    # Stamped here so the public page and every reader agree; the office page
+    # recomputes it live from the viewer's clock so it never goes stale.
+    s["meta"]["clock"] = clock()
+    s["meta"]["day"] = s["meta"]["clock"]["company_days"]
 
     if not validate(s):
         sys.exit("\nstate.json describes an organization that cannot exist. "

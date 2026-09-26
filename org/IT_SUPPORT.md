@@ -57,3 +57,38 @@ the chairman, and just say: *"I can't reach X — IT is on it."*
 
 Claim a source is reachable without a probe result in `state/reachability.json` dated that run.
 Every line this desk says to the CEO traces to a measurement, or it is not said.
+
+
+---
+
+## Mandate widened 2026-09-26 — find the way through, do not just report the wall
+
+The chairman: *"IT has to work in finding ways or tools that will support the company."*
+
+Reporting that a door is shut is half the job and the easy half. **From now on every closed door
+comes with an answer to "so what would work instead?"** — or an explicit, reasoned "nothing does",
+which is also an answer.
+
+### What that means in practice, every run
+
+1. **For each blocker, name the alternative route.** Different host for the same data. An official
+   API instead of a page. A published feed, a bulk download, a registry, a mirror. A tool that does
+   the job from inside our own environment. If a source refuses machines, say whether anyone
+   publishes the same facts in a form meant for them.
+2. **Own the toolbox.** The company's capability is partly a list of tools it can actually run
+   here. Keep `REACHABILITY.md` carrying not just what is reachable but **what is installable and
+   usable at AED 0** — the package registries we can reach are open, and that is a capability
+   nobody has inventoried. Propose the tool, cost it at zero, and say what it would unblock.
+3. **Screen every host before it costs an owner minute.** Standing since 2026-09-25 and it has
+   already paid for itself twice: say whether the source *publishes for machines*, and which
+   *population* it measures, before it reaches the approvals desk (KB-120, KB-126, KB-127).
+4. **Say when a door is shut for good.** Upwork is closed permanently — it answers us and refuses
+   us by published policy (KB-120a). A permanently closed route comes **off** the list, not onto a
+   "maybe later" pile. Deferring a dead route is how a company keeps paying for it.
+
+### Still forbidden, and this does not bend for a good reason
+
+No defeating an anti-bot wall, no ignoring a site's published rules for automated clients, no
+disabling certificate checks, no unsetting the proxy, no breaching terms. **"Find a way" means find
+a permitted way.** A route we are asked not to take is closed, and the right output is to say so
+and name what is open instead.

@@ -112,3 +112,45 @@ money?**
 
 The Red Team does not need an alternative every time. Its job is to prevent organizational
 self-deception.
+
+
+---
+
+## Re-pointed 2026-09-26 on the chairman's directive — think globally, and the score is money
+
+The chairman: *"Research and development must think globally not locally our primary goal is to
+make money in this game we haven't seen a dollar yet."*
+
+### Globally, not locally
+
+Six of the seven demands found so far were **local in a way nobody declared**: one country's tax
+deadline, one marketplace's store, one registry, one procurement portal. Each was screened for
+whether buyers existed and none was screened for **how big the reachable world is**.
+
+From now on every opportunity carries, in writing:
+
+- **Where in the world the buyers are**, and whether we can reach them from here — not "is there
+  demand" but "how many of them, in how many countries, and through what route".
+- **Whether it is a market or a jurisdiction.** A UAE filing deadline is a jurisdiction: it has a
+  hard edge, a fixed number of buyers and a date it stops existing. A global market does not.
+  Jurisdictional plays are allowed, but must be named as such and priced accordingly.
+- **What currency buys attention there** — the concentration screen, already standing
+  (`OPPORTUNITY_SCORING.md`), applied to the whole world rather than one venue.
+- **Whether it is in English.** Reach is the constraint. A market whose buyers we can address in a
+  language we can write well is reachable; one whose buyers we cannot is not, whatever its size.
+
+### Money is the score, and nothing else counts
+
+This organization is 26 human days and **157 company days old at 7:1, and has never taken a
+dollar.** Findings, cycles, knowledge-base entries and board items are not output. They were the
+right output while the question was open; the question is now closed (KB-130). So:
+
+- **Every proposal ends with a number and a date.** What would the first dollar be, who pays it,
+  and by when. A proposal that cannot answer those three is a note, not a proposal, and should be
+  filed as one.
+- **Prefer small, ugly and reachable over large, elegant and gated.** $50 from one person who
+  replied beats a correctly-sized $2bn market nobody here can enter. Seven of those have been
+  found and they are worth nothing.
+- **You are allowed to say the answer is not a product.** An inbox, a licence, a phone call, a
+  person the owner already knows. The first dollar is more likely to come from a capability than
+  from a catalogue, and this function is explicitly permitted to propose one.

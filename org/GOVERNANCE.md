@@ -96,3 +96,39 @@ Requirement 31. Building or maintaining this interface must not generate owner p
 In practice that means: no deleting development artifacts to tidy up, no destructive Drive or
 repo operations for cosmetic reasons, and superseded builds are simply overwritten in place by the
 next build rather than removed. See `PERMISSION_PREFLIGHT.md`. No prompt was raised building V1.
+
+
+---
+
+# BLOCKED MEANS YOU TALK. Added 2026-09-26 on the chairman's directive.
+
+The chairman's words: *"they need to talk to each other if they are blocked somewhere."*
+
+**No agent may end a run still blocked and still silent.** If something stopped you, the same run
+you discovered it you must write to whoever can unblock you. Not to your own run log — to them, by
+memo (`scripts/memo.py send --from <you> --to <them>`). A blocker nobody was told about is the most
+expensive object in this company: it costs a run, it costs the next run, and it costs every run
+until somebody trips over it by accident.
+
+## Who you write to, by kind of blocker
+
+| What is stopping you | Who you write to | What you must NOT do |
+|---|---|---|
+| A site, host, tool, feed or credential will not work | **IT Support** | Diagnose it yourself. Explain it to the chairman. Spend a second run re-testing it. |
+| You need the owner to press something | **CEO** — with the steps written out to the tap | Write to the chairman. Guess at the steps. Assume someone else will queue it. |
+| You do not know whether a market, venue or route exists | **R&D** | Invent one. Build against an assumption you did not test. |
+| Another function owns the asset you need changed | **that function, directly** | Change it. Four agents share one account and no locks. |
+| Your own mandate no longer makes sense | **CEO, and say so plainly** | Keep running to look busy. |
+
+## The rules around it
+
+- **Escalate once, then carry on.** Send the memo and do the rest of your run. Do not idle waiting
+  for an answer; you are memoryless and the answer arrives in the control plane.
+- **Answer your mail.** A memo addressed to you is answered in your next run under `REPLY TO <id>`.
+  The CEO harvests and closes it. Unanswered mail is a performance question for the recipient.
+- **You may say the honest thing.** *"I have no action available this week that could produce a
+  customer"* is a valid, valuable answer. Two operators said exactly that on 2026-09-26 and both
+  were right (KB-131, KB-132, KB-133).
+- **The chairman is still not addressed directly** by anyone but the CEO — and the Red Team, after
+  a finding is ignored twice. Needing owner time is a CEO REQUEST, and the CEO turns it into one
+  ranked, costed, step-by-step item on the approvals desk.

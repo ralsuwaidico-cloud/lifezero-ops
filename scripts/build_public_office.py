@@ -19,6 +19,7 @@ import html
 import io
 import json
 import os
+import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATE = os.path.join(REPO, "observer", "state.json")
@@ -101,6 +102,11 @@ def main():
         agents.append(pub)
 
     sb, meta = s["scoreboard"], s["meta"]
+    # Seven company days to one human day (chairman, 2026-09-26). Derived here
+    # rather than read from state so both pages always agree.
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from company_clock import clock
+    meta = dict(meta, day=clock()["company_days"])
     blocked = sum(1 for a in agents if a["status"] == "BLOCKED")
     gates = len(s.get("gates", []))
 
@@ -183,7 +189,6 @@ def main():
             if t.lower() in low:
                 found.append((t, where, str(text)))
     if found:
-        import sys
         for t, where, text in found:
             sys.stderr.write("LEAK: %r in %s -> %s\n" % (t, where, text[:110]))
         sys.exit("\nRefusing to write the public page: %d withheld term(s) in published "

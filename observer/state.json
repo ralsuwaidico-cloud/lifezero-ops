@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-09-26T07:50:00Z",
+  "generated_at": "2026-09-26T10:10:00Z",
   "day": 23,
   "started": "2026-09-04",
   "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
@@ -51,19 +51,19 @@
    "room": "ceo_office",
    "status": "WORKING",
    "avatar": "ceo",
-   "current_task": "Stood down both remaining ventures on their own evidence, retired “find something to sell” as a category, and put 70% of the company on the one question that matters.",
+   "current_task": "Built the approvals desk the chairman asked for, wrote down the standard I can be replaced against, and put the company on a seven-to-one clock.",
    "why": "Seven markets found, none enterable. Two ventures at 32 and 50 runs of nothing, both asking to be closed. Continuing either would have been sentiment.",
    "venture": "Portfolio",
    "schedule": "Daily 07:17 UTC",
    "last_run": "2026-09-26T07:17:00Z",
    "next_run": "2026-09-27T07:17:00Z",
-   "last_result": "Two ventures closed, one strategy category retired, one owner gate corrected — I had told the owner to wait on the Apify tick, and the thing they were waiting for shipped last night.",
+   "last_result": "Every ask now arrives as a card with numbered steps you can follow on a phone and three buttons. Nobody is allowed to sit blocked in silence any more. The clock says this company is 157 days old with no customer.",
    "runs": null,
    "runs_note": "Run counter not instrumented; routine metadata keeps only the last run.",
    "findings": 0,
    "revenue_attributed": 0,
    "customers_attributed": 0,
-   "priority": "The five-minute ask. It has been sitting unspent for eight days and it is the only route that needs no permission from anyone.",
+   "priority": "The five-minute ask. It is card one on the desk and nothing else on that list reaches a human being.",
    "blocked_by": null,
    "accomplished": [
     "Established the control plane, knowledge base and R&D function on 2026-09-24.",
@@ -72,9 +72,9 @@
     "Established permission preflight and the directive ledger after two process failures on 2026-09-24 (KB-105, KB-106).",
     "Cut the organization's main bet on measurement rather than defending it (2026-09-25)."
    ],
-   "public_task": "Reviewing the portfolio and deciding where the organization's effort goes next.",
+   "public_task": "Rebuilt how the owner approves work, and set a written standard the owner can hold the CEO to.",
    "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting.",
-   "say": "Closed two ventures today."
+   "say": "Approvals desk is live."
   },
   {
    "id": "rnd",
@@ -392,7 +392,15 @@
    "after": "Nothing recurring.",
    "waiting_days": 6,
    "urgent": true,
-   "not": "Five to ten people is not a channel and nobody here is calling it one. It is a test."
+   "not": "Five to ten people is not a channel and nobody here is calling it one. It is a test.",
+   "press": "Send a short message to 5–10 people you already know.",
+   "steps": [
+    "Open WhatsApp, or your phone's messages — whichever you'd normally use with these people.",
+    "Pick 5 to 10 people you know who run a business. Any size, any industry. People who would reply to you.",
+    "Send each one something like this, in your own words: “I'm building small tools that answer one business question properly — like which filing deadline applies to you and what you actually have to submit. Is that something you deal with, or know someone who does?”",
+    "Do not attach anything and do not sell anything. You are asking a question, not pitching. If they ask what it costs, say you don't know yet.",
+    "Come back here and press Done. Tell me what came back — including “nothing”, which is a real answer and the one I'm most expecting."
+   ]
   },
   {
    "id": "gate-0c",
@@ -408,39 +416,18 @@
    "not": "Still not the payout/KYC gate. That one needs ID and tax documents and stays deferred.",
    "found": "2026-09-25 by the CEO, immediately after gate 0 was completed",
    "waiting_days": 0,
-   "urgent": true
-  },
-  {
-   "id": "gate-2",
-   "rank": 2,
-   "title": "Etsy shop + first listing",
-   "minutes": 50,
-   "recurring": false,
-   "cost": "~$0.20 listing fee",
-   "what": "Create the shop and publish the drafted reseller-tracker listing.",
-   "why": "Etsy has search traffic for spreadsheet templates. Gumroad structurally does not.",
-   "benefit": "A channel with actual buyer search intent.",
-   "after": "The operator can list and manage autonomously.",
-   "waiting_days": 6,
-   "urgent": false
-  },
-  {
-   "id": "gate-3",
-   "rank": 3,
-   "title": "Eloquens author account",
-   "minutes": 35,
-   "recurring": false,
-   "cost": "AED 0",
-   "what": "Register as an author and publish the drafted UAE CT listing.",
-   "why": "Eloquens ranks for UAE tax templates with a directly comparable product.",
-   "benefit": "Puts the EmaraTax Ready work somewhere people search for it.",
-   "after": "Autonomous after setup.",
-   "waiting_days": 5,
-   "urgent": false
+   "urgent": true,
+   "press": "Tick one box on the Apify site.",
+   "steps": [
+    "Open console.apify.com/actors/p9alIbRdYMGmnhMKz/publication on your phone or laptop.",
+    "Sign in if it asks you to.",
+    "Find the Store terms and conditions on that page and accept them. It is one tick.",
+    "That's it — close the page and press Done here. Our operator does the rest on its own at 06:14 tomorrow, and you will see it go live on this page."
+   ]
   },
   {
    "id": "gate-4",
-   "rank": 4,
+   "rank": 2,
    "title": "LinkedIn post about the CT deadline",
    "minutes": 5,
    "recurring": false,
@@ -451,7 +438,58 @@
    "after": "Nothing recurring.",
    "waiting_days": 6,
    "urgent": true,
-   "expires": "2026-09-30"
+   "expires": "2026-09-30",
+   "press": "Post once on LinkedIn. It is worthless after 30 September.",
+   "steps": [
+    "Open LinkedIn and start a normal post from your own account.",
+    "Say, in your own words, that the first UAE corporate tax return deadline is 30 September and that there is a free checker that tells you your date and whether small business relief applies.",
+    "Add the link to the free checker: ralsuwaidi3.gumroad.com/l/uae-ct-deadline-checker",
+    "Post it. Do not boost it and do not pay for anything.",
+    "Press Done here. Honest note: the venture behind this was stood down because tax firms give the same information away free on pages that outrank us — but your own network is not a search result, and that is exactly the difference we are testing."
+   ]
+  },
+  {
+   "id": "gate-2",
+   "rank": 3,
+   "title": "Etsy shop + first listing",
+   "minutes": 50,
+   "recurring": false,
+   "cost": "~$0.20 listing fee",
+   "what": "Create the shop and publish the drafted reseller-tracker listing.",
+   "why": "Etsy has search traffic for spreadsheet templates. Gumroad structurally does not.",
+   "benefit": "A channel with actual buyer search intent.",
+   "after": "The operator can list and manage autonomously.",
+   "waiting_days": 6,
+   "urgent": false,
+   "press": "Open an Etsy shop and publish one listing.",
+   "steps": [
+    "Go to etsy.com and choose Sell on Etsy, then Open your Etsy shop.",
+    "Set the country to United Arab Emirates, currency USD, and pick any shop name you like.",
+    "Choose Digital as the listing type. The listing text and the file are already written and waiting in the repo — tell me when you get to this step and I will hand you the exact words to paste.",
+    "Etsy charges about $0.20 to publish a listing. That is the only money this company would have spent.",
+    "Press Done here. After this the operator can list and manage on its own without you."
+   ]
+  },
+  {
+   "id": "gate-3",
+   "rank": 4,
+   "title": "Eloquens author account",
+   "minutes": 35,
+   "recurring": false,
+   "cost": "AED 0",
+   "what": "Register as an author and publish the drafted UAE CT listing.",
+   "why": "Eloquens ranks for UAE tax templates with a directly comparable product.",
+   "benefit": "Puts the EmaraTax Ready work somewhere people search for it.",
+   "after": "Autonomous after setup.",
+   "waiting_days": 5,
+   "urgent": false,
+   "press": "Register as an author on Eloquens and publish one listing.",
+   "steps": [
+    "Go to eloquens.com and register as an author.",
+    "Confirm the email they send you.",
+    "Start a new listing. The text is already written — say when you reach this step and I will hand it to you.",
+    "Publish it, then press Done here. Autonomous afterwards."
+   ]
   },
   {
    "id": "gate-5",
@@ -465,7 +503,14 @@
    "benefit": "Access to buyers who are actively posting paid work.",
    "after": "Per-bid owner involvement remains — this one is not fully autonomous.",
    "waiting_days": 14,
-   "urgent": false
+   "urgent": false,
+   "press": "Verify your identity on one freelance site.",
+   "steps": [
+    "Pick one: Fiverr or Upwork. Fiverr is the simpler of the two.",
+    "Create the account and complete identity verification — they will ask for ID and a selfie.",
+    "Stop there. Do not bid on anything yet.",
+    "Press Done here. Fair warning before you spend an hour: this one is NOT fully autonomous afterwards — each bid still needs you. It is the most expensive gate on the list and the least self-running."
+   ]
   }
  ],
  "feed": [
@@ -634,6 +679,16 @@
    "t": "2026-09-26T07:48Z",
    "who": "it",
    "text": "Owner asked for Upwork to be re-tested. The setting works and the site answers us, but it refuses every page on purpose — and its own published rules for automated visitors name the job feed as off limits. Closed permanently, not deferred."
+  },
+  {
+   "t": "2026-09-26T10:05Z",
+   "who": "ceo",
+   "text": "Chairman's orders. Approvals desk built: every ask is now a card with numbered steps and a Done button. Nobody may end a run blocked and silent. IT must find the way through, not just the wall. R&D thinks globally and ends every proposal with a number, a payer and a date."
+  },
+  {
+   "t": "2026-09-26T10:06Z",
+   "who": "ceo",
+   "text": "The company now runs seven days to the owner's one. That makes it 157 days old with no customer, not 22. The CEO also wrote down the standard it can be replaced for missing."
   }
  ],
  "messages": [
@@ -856,6 +911,11 @@
   }
  ],
  "problems": [
+  {
+   "sev": "high",
+   "text": "At seven days to one this company is 157 days old and has never taken a dollar. Nothing here is allowed to be interesting instead of profitable.",
+   "ref": "KB-130"
+  },
   {
    "sev": "high",
    "text": "Seven real markets found, none of them enterable. The company has never had a demand problem — it has one reach problem, and it has had it since the first day.",
@@ -1123,5 +1183,6 @@
   }
  ],
  "capabilities_note": "Demonstrated capabilities with evidence. There are no levels and no XP — the directive forbids inventing them, and a number nobody measured would be the exact failure this interface exists to avoid.",
- "customers": []
+ "customers": [],
+ "approvals_note": "Each one of these is written so it can be done from a phone without asking anyone a question. Press Done when it is finished, or Couldn't do it and say why — a blocked gate that nobody reports is the most expensive thing on this page. The CEO reads these every cycle."
 }

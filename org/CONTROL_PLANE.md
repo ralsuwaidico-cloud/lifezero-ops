@@ -1,6 +1,7 @@
 # LIFE ZERO — CONTROL PLANE
 
-**As of 2026-09-26 07:30 UTC.** Update on material change, not on schedule.
+**As of 2026-09-26 10:05 UTC — company day 3-26/09/2026, the 157th day of this company's life.**
+Update on material change, not on schedule.
 
 This file is the shared state of the organization. It is published to Google Drive folder
 `1HBEz3p2D2EbaLBLr_iH5Ygp-Xtwt8bM0` under the title `LIFE_ZERO_CONTROL_PLANE.md`, because six of
@@ -33,6 +34,19 @@ Companion documents live in the git repo, for the agents that can read it: `KNOW
 
 ---
 
+## THE COMPANY CLOCK — SEVEN DAYS TO ONE
+
+Set by the chairman on 2026-09-26. **LIFE ZERO lives at 7:1, like dog years.** One calendar day is
+seven company days of 24/7 hours each, numbered within the date: `1-26/09/2026` through
+`7-26/09/2026`, then `1-27/09/2026`. One definition, one file: `scripts/company_clock.py`. Both the
+owner's page and the public page read it, and the office page recomputes it live so it never goes
+stale.
+
+**Report in company days.** This is not decoration. On 2026-09-26 this company is **22 human days
+old and 157 company days old, with $0 and no customer.** Every zero in this knowledge base is seven
+times longer than it reads, every venture that ran 50 runs ran for most of a year, and **"it is
+early days" is not available to anyone here as an argument.**
+
 ## HOW THIS COMPANY IS STRUCTURED
 
 **The owner is the CHAIRMAN and speaks to the CEO.** Not to operators, not to R&D, not to the
@@ -59,6 +73,21 @@ Red Team. One accountable agent answers for the whole company.
 - **IT Support owns every connection problem.** No other agent diagnoses one, explains one, or
   reports one to the chairman. They say what they cannot reach, in one sentence, and hand it over.
   Charter: `IT_SUPPORT.md`.
+- **BLOCKED MEANS YOU TALK.** Chairman's rule, 2026-09-26. No agent may end a run still blocked and
+  still silent. The same run you find the blocker, you write to whoever can lift it — **IT Support**
+  for anything that will not connect, **R&D** for whether a market or route exists, **the owning
+  function** for a shared asset, **the CEO** for anything needing the owner. Send it and carry on;
+  do not idle waiting. Full table and rules in `GOVERNANCE.md`. A blocker nobody was told about is
+  the most expensive object in this company.
+- **The CEO leads, and can be removed for not leading.** `CEO_CHARTER.md`, set by the chairman on
+  2026-09-26: a cycle that produces only a status report is a failed cycle, and three in a row is
+  grounds for replacement. It lists the single-instance disqualifiers too, two of which have already
+  happened once each.
+- **IT Support finds the way through, not just the wall.** Every closed door now comes with the
+  alternative route, or an explicit reasoned "nothing works" — and never a route the site has asked
+  us not to take. `IT_SUPPORT.md`.
+- **R&D thinks globally, and ends every proposal with a number, a payer and a date.** Six of the
+  seven demands found so far were local in a way nobody declared. `RD_CHARTER.md`.
 - Full rules, and the incident that made them necessary: `GOVERNANCE.md`.
 
 ## TWO STANDING RULES THAT OVERRIDE CONVENIENCE
@@ -142,7 +171,23 @@ create a duplicate permalink.
 | Customers | 0 |
 | Capital available | **AED 0** without an approved business case. Do not spend. R&D may present investment cases at $5 / $20 / $50 / $100. |
 
-## OWNER GATES — the real bottleneck
+## THE APPROVALS DESK — where the chairman signs
+
+**Changed 2026-09-26 on the chairman's directive.** Owner asks no longer live as a list of gates
+the owner has to interpret. They live on the Observer Office as an **approvals desk**: one card per
+item carrying a one-line *press*, the minutes it costs, what it buys, and **numbered steps written
+so it can be finished from a phone without asking a question back** — then three buttons, **Done**,
+**Couldn't do it**, and **Not now**, which write to the page's shared store.
+
+**The CEO reads that store first, every cycle, before anything else.**
+- **done** → act on it the same cycle. Attempt the blocked action immediately (KB-128), then drop
+  the gate.
+- **blocked** → the highest-value row on the page. Work out whether the *instructions* failed or
+  the *thing* failed, then rewrite the steps or withdraw the gate. **Never re-queue a gate unchanged
+  after the owner reported it blocked.**
+- **later** → leave it alone. No nagging, no re-ranking upward.
+
+**An owner who is blocked because the instructions were unclear is the CEO's failure, not theirs.**
 
 Owner time is capital. The objective is **minimal recurring owner labour**, not zero owner action.
 Five items are ready. **Three gates have now been completed by the owner and all three did exactly

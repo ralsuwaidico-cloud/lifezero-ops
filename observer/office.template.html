@@ -152,6 +152,26 @@ svg.map{width:100%;height:auto;display:block;min-width:620px}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:12.5px;margin:0 0 12px}
 .kv dt{color:var(--faint);font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding-top:2px}
 .kv dd{margin:0}
+/* --- approvals desk: what the chairman signs --- */
+.appr{background:var(--panel);border:2px solid var(--edge);border-radius:10px;margin-bottom:12px}
+.appr.top{border-color:var(--gold)}
+.appr>h3{font-family:"Silkscreen",monospace;font-size:12.5px;padding:10px 12px;margin:0;
+  display:flex;gap:9px;align-items:center;flex-wrap:wrap;background:var(--panel2);
+  border-bottom:2px solid var(--edge);color:var(--ink)}
+.appr .mins{margin-left:auto;color:var(--amber);font-size:11px;white-space:nowrap}
+.appr .press{padding:11px 12px 0;font-size:14px;color:var(--ink);font-weight:600;line-height:1.35}
+.appr .gain{padding:4px 12px 0;font-size:12.5px;color:var(--muted)}
+.steps{margin:10px 12px 0;padding-left:20px;font-size:13px;color:var(--ink);line-height:1.5}
+.steps li{margin-bottom:8px;overflow-wrap:anywhere}
+.acts{display:flex;gap:8px;flex-wrap:wrap;padding:12px}
+.acts button{font:inherit;font-size:12.5px;padding:9px 13px;border-radius:8px;cursor:pointer;
+  border:2px solid var(--edge);background:var(--panel2);color:var(--ink);min-height:42px}
+.acts button.done{border-color:var(--money);color:var(--money)}
+.acts button.stuck{border-color:var(--red);color:var(--red)}
+.acts button:disabled{opacity:.45;cursor:default}
+.stamp{padding:0 12px 12px;font-size:12px;color:var(--muted)}
+.stamp b{color:var(--money)}
+.stamp.bad b{color:var(--red)}
 .sec{margin-top:13px}
 .sec h4{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);
   margin:0 0 5px;font-weight:600}
@@ -302,15 +322,32 @@ function person(kind, c){
     eyes+(PROP[kind]||"")+'</g>';
 }
 
+/* ---------- the company clock: seven company days to one human day ----------
+   Set by the chairman 2026-09-26. A calendar day holds seven numbered company
+   days of 24/7 hours each, written <n>-DD/MM/YYYY. Computed live from the
+   viewer's clock rather than stamped at build time, so it is right whenever the
+   page is opened. Mirrors scripts/company_clock.py exactly. */
+var LZ_START=Date.UTC(2026,8,4), SEGS=7, SEG_MS=86400000/SEGS;
+function clock(now){
+  now=now||new Date();
+  var ms=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
+  var seg=Math.min(SEGS,Math.floor((now.getTime()-ms)/SEG_MS)+1);
+  var human=Math.round((ms-LZ_START)/86400000);
+  var p=function(n){return (n<10?"0":"")+n;};
+  return { label: seg+"-"+p(now.getUTCDate())+"/"+p(now.getUTCMonth()+1)+"/"+now.getUTCFullYear(),
+           segment: seg, human: human, company: human*SEGS+seg };
+}
+
 /* ---------- top stats ---------- */
 (function(){
-  var sb=S.scoreboard, m=S.meta;
+  var sb=S.scoreboard, m=S.meta, ck=clock();
   var cells=[
     ["Revenue","$"+sb.revenue,"rev"+(sb.revenue?"":" z")],
     ["Expenses","$"+sb.expenses,"exp"+(sb.expenses?"":" z")],
     ["Profit","$"+sb.profit,"pro"+(sb.profit?"":" z")],
     ["Customers",String(sb.customers),sb.customers?"":"z"],
-    ["Days",String(m.day),""],
+    ["Company day",ck.label,""],
+    ["Days alive",String(ck.company),""],
     ["Agents",String(S.agents.length),""],
     ["Products",String((S.products||[]).length),""],
     ["Experiments",String((S.experiments||[]).length),""],
@@ -327,7 +364,7 @@ var VIEWS=[
   ["office","Office","▦"], ["agents","Agents","●"], ["memos","Conversations","✉"],
   ["experiments","Experiments","⚗"], ["products","Products","▣"],
   ["customers","Customers","☺"], ["finances","Finances","$"],
-  ["library","Knowledge Base","▤"], ["gates","Owner Gates","⚠"]
+  ["library","Knowledge Base","▤"], ["gates","Approvals","✓"]
 ];
 $("nav").innerHTML = VIEWS.map(function(v,i){
   var badge = v[0]==="gates" ? (S.gates||[]).length
@@ -687,23 +724,93 @@ $("v-library").innerHTML = '<div class="grid">'+ (S.graveyard||[]).map(function(
     '</div></div>';
 }).join("") +'</div>';
 
-/* owner gates */
-$("v-gates").innerHTML = '<div class="grid">'+ (S.gates||[]).slice()
-  .sort(function(a,b){return a.rank-b.rank;}).map(function(g){
-  return '<div class="card" style="border-color:'+(g.urgent?"var(--red)":"var(--edge)")+'">'+
-    '<h3>Gate '+esc(String(g.rank))+' · '+esc(g.title)+
-    '<span class="n" style="color:var(--amber)">'+g.minutes+' min</span></h3>'+
-    '<div class="body" style="max-height:none">'+
-    '<div class="sec"><h4>What to do</h4><p style="color:var(--ink)">'+esc(g.what)+'</p></div>'+
-    '<div class="sec"><h4>Why it is needed</h4><p>'+esc(g.why)+'</p></div>'+
-    '<div class="sec"><h4>Expected benefit</h4><p>'+esc(g.benefit)+'</p></div>'+
-    '<div class="sec"><h4>Autonomous afterwards</h4><p>'+esc(g.after)+'</p></div>'+
-    (g.not?'<div class="sec"><h4>Not to be confused with</h4><p>'+esc(g.not)+'</p></div>':'')+
-    '<dl class="kv" style="margin-top:11px"><dt>Cost</dt><dd>'+esc(g.cost)+'</dd>'+
-    '<dt>Waiting</dt><dd>'+(g.waiting_days||0)+' days</dd>'+
-    '<dt>Raised by</dt><dd>'+esc(g.found||"the organization")+'</dd></dl>'+
-    '</div></div>';
-}).join("") +'</div>';
+/* ---------- approvals desk ----------
+   The chairman signs here. Each card is written so it can be finished from a
+   phone without asking anyone a question, and each one records an answer --
+   including "couldn't". A blocked gate nobody reports is the most expensive
+   thing on this page. */
+var GATES=(S.gates||[]).slice().sort(function(a,b){return a.rank-b.rank;});
+
+function renderApprovals(){
+  $("v-gates").innerHTML =
+    '<div class="warn" style="margin-bottom:12px">'+esc(S.approvals_note||"")+'</div>'+
+    GATES.map(function(g,i){
+      var steps=(g.steps||[]).map(function(s){return '<li>'+esc(s)+'</li>';}).join("");
+      return '<div class="appr'+(i===0?" top":"")+'" id="ap-'+esc(g.id)+'">'+
+        '<h3>'+(i===0?'\u2605 ':'')+esc(g.title)+
+          '<span class="mins">'+g.minutes+' min'+(g.expires?' \u00b7 expires '+esc(g.expires):'')+
+          '</span></h3>'+
+        '<p class="press">'+esc(g.press||g.what)+'</p>'+
+        '<p class="gain">'+esc(g.benefit||"")+'</p>'+
+        (steps?'<ol class="steps">'+steps+'</ol>':'')+
+        '<div class="acts">'+
+          '<button class="done" data-g="'+esc(g.id)+'" data-s="done">Done</button>'+
+          '<button class="stuck" data-g="'+esc(g.id)+'" data-s="blocked">Couldn\u2019t do it</button>'+
+          '<button data-g="'+esc(g.id)+'" data-s="later">Not now</button>'+
+        '</div>'+
+        '<div class="stamp" id="st-'+esc(g.id)+'">Nothing recorded yet.</div>'+
+        '</div>';
+    }).join("");
+
+  $("v-gates").addEventListener("click", function(e){
+    var b=e.target.closest("button[data-g]"); if(b) sign(b.dataset.g, b.dataset.s, b);
+  });
+}
+
+var WORDS={done:["\u2713 Signed off","done"],
+           blocked:["\u2717 Reported blocked","blocked"],
+           later:["Put off for now","later"]};
+
+function sign(id, status, btn){
+  var g=GATES.filter(function(x){return x.id===id;})[0]||{};
+  var st=$("st-"+id);
+  if(!CAP.ready){ st.className="stamp bad";
+    st.innerHTML='<b>Still connecting.</b> Try again in a moment.'; return; }
+  if(!CAP.db){ st.className="stamp bad";
+    st.innerHTML='<b>This view cannot record an answer.</b> Tell the CEO directly instead.'; return; }
+  var note="";
+  if(status!=="done"){
+    note=(window.prompt(status==="blocked"
+      ? "What stopped you? One line is enough \u2014 the CEO reads it."
+      : "Anything you want the CEO to know? You can leave this empty.","")||"").trim();
+    if(note===null) return;
+  }
+  var row=btn.parentNode;
+  Array.prototype.forEach.call(row.children,function(x){x.disabled=true;});
+  st.className="stamp"; st.textContent="Recording\u2026";
+  CAP.db.doc("approvals/"+id).set({
+    gate:id, title:g.title||id, status:status, note:note,
+    at:new Date().toISOString(), minutes:g.minutes||null
+  }).then(function(){
+    show(id,{status:status,at:new Date().toISOString(),note:note});
+  }).catch(function(e){
+    st.className="stamp bad";
+    st.innerHTML='<b>Could not record that'+(e&&e.message?": "+esc(e.message):".")+'</b> '+
+      'Nothing was lost \u2014 tell the CEO and it will be picked up.';
+  }).then(function(){
+    Array.prototype.forEach.call(row.children,function(x){x.disabled=false;});
+  });
+}
+
+function show(id,d){
+  var st=$("st-"+id); if(!st||!d) return;
+  var w=WORDS[d.status]||["Recorded",""];
+  st.className="stamp"+(d.status==="blocked"?" bad":"");
+  st.innerHTML='<b>'+esc(w[0])+'</b> '+esc(fmt(d.at))+
+    (d.note?' \u2014 \u201c'+esc(d.note)+'\u201d':'')+
+    '<br>The CEO reads this on its next run, 07:17 UTC daily.';
+}
+
+function loadApprovals(){
+  if(!CAP.db) return;
+  CAP.db.collection("approvals").get().then(function(snap){
+    (snap && snap.docs ? snap.docs : []).forEach(function(doc){
+      var d=doc.data(); if(d && d.gate) show(d.gate,d);
+    });
+  }).catch(function(){ /* nothing recorded yet, or not readable: leave the default line */ });
+}
+
+renderApprovals();
 
 $("foot").innerHTML = "Generated "+esc(S.meta.generated_at.replace("T"," ").replace("Z"," UTC"))+
   " from "+esc(S.meta.source)+".<br>"+esc(S.meta.v1_scope)+"<br>UI owner: "+esc(S.meta.ui_owner);
@@ -959,6 +1066,7 @@ function queue(){
   Promise.all([c.use("sample").catch(function(){return null;}),
                c.use("db").catch(function(){return null;})]).then(function(r){
     CAP.sample=r[0]; CAP.db=r[1]; CAP.ready=true;
+    loadApprovals();
   });
 })();
 

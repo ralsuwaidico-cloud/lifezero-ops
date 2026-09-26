@@ -32,3 +32,12 @@ Built as observer/ -- state.json (shared state), office.template.html, build_obs
 - **Status:** V1 in progress
 
 Replace the observer interface with a top-down game-style virtual office: rooms, little characters that are real agents, tap-to-ask grounded in real state, money scoreboard, activity feed, owner gates. Staged by the owner: V1 = map, agents, real status and tasks, scoreboard, feed, gates, tap, ask, reusing existing shared state. V2 = movement tied to events, agent interactions, meetings, experiments. V3 = expansion, evolution, time machine. Owner constraint restated in the directive: do not spend a week building a video game while revenue is 0; return to revenue work after V1. Also mandates a single observer-UI owner (requirement 30) and a permission preflight (requirement 31).
+
+## D-5a1fc37468 — Approvals desk, reporting structure, IT/R&D mandates, CEO standard, 7:1 clock
+
+- **First received:** 2026-09-26T09:56:43Z
+- **Deliveries:** 1
+- **Length:** 967 characters
+- **Status:** Incorporated 2026-09-26
+
+
