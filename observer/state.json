@@ -1045,9 +1045,9 @@
   }
  ],
  "room_empty": {
-  "operations": "No customer work. There has never been a customer. The $95 delivery pipeline is built and rehearsed, waiting.",
+  "operations": "No customer work. There has never been a customer. The delivery pipeline is built and waiting.",
   "meeting": "No meeting in progress. Meetings happen only when a memo will not do.",
-  "library": "Every failed experiment is written down here, with what failed and why, before anyone is allowed to repeat it.",
+  "library": "Every failed experiment, written down. Read before repeating one.",
   "lobby": "No customer has ever walked in."
  },
  "experiments": [
