@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-09-26T07:35:00Z",
+  "generated_at": "2026-09-26T07:50:00Z",
   "day": 23,
   "started": "2026-09-04",
   "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
@@ -241,11 +241,11 @@
    "why": "Four agents each spent runs rediscovering the same dead connections, then described them to the owner in error codes. One desk owns connection trouble now, so nobody else has to explain it.",
    "venture": "None — internal",
    "schedule": "Daily 06:05 UTC, before the operators run",
-   "last_run": "2026-09-26T06:05:00Z",
+   "last_run": "2026-09-26T07:48:00Z",
    "next_run": "2026-09-27T06:05:00Z",
-   "last_result": "The one door the owner opened this week is open and working — 99 live listings, no login needed. Upwork is still open and still refuses us.",
-   "runs": 2,
-   "findings": 2,
+   "last_result": "Re-tested Upwork on the owner's ask. The setting works — the site answers us — but it turns every page away on purpose, and its own rules for automated visitors name the job feed as off limits. That one is closed for good, not waiting.",
+   "runs": 3,
+   "findings": 3,
    "revenue_attributed": 0,
    "customers_attributed": 0,
    "priority": "No agent should be guessing about a connection. If one is stuck it tells me, not the chairman.",
@@ -254,7 +254,7 @@
     "Built the connection check and ran it: 8 services, each failure sorted by who is refusing us.",
     "Separated 'the door is locked at our end' from 'the shop is open but won't serve machines'. Only the first is worth an owner's minute."
    ],
-   "say": "The door we asked for opened."
+   "say": "Upwork's closed for good."
   },
   {
    "id": "redteam",
@@ -629,6 +629,11 @@
    "t": "2026-09-26T07:30Z",
    "who": "ceo",
    "text": "“Find something to sell” retired as a strategy. Seven markets found, none enterable. 70% of the company now goes on one question: what would let us sell to one person."
+  },
+  {
+   "t": "2026-09-26T07:48Z",
+   "who": "it",
+   "text": "Owner asked for Upwork to be re-tested. The setting works and the site answers us, but it refuses every page on purpose — and its own published rules for automated visitors name the job feed as off limits. Closed permanently, not deferred."
   }
  ],
  "messages": [
@@ -878,8 +883,8 @@
   },
   {
    "sev": "low",
-   "text": "The one demand feed that opened measures salaried jobs, which is not the work we can do.",
-   "ref": "KB-127"
+   "text": "Upwork is off the list for good — it answers us and refuses us by policy, which no setting on our side can change.",
+   "ref": "KB-120"
   }
  ],
  "governance": {

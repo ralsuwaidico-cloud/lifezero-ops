@@ -1,5 +1,26 @@
 # What this environment can actually reach
 
+## Upwork — re-tested 2026-09-26 at the owner's request. Same answer, and now a stronger one.
+
+The allowlist entry is working. The refusal is Upwork's, not ours, and it is deliberate.
+
+| What we asked for | Result |
+|---|---|
+| `www.upwork.com/` (home) | **403**, 344 KB, page titled *Challenge - Upwork* |
+| `/nx/search/jobs/?q=automation` | **403**, same challenge page |
+| `/ab/feed/jobs/rss?q=n8n` (the RSS feed) | **403**, same challenge page |
+| `/robots.txt` | **200** — so the host is genuinely reachable; it is the content that is refused |
+
+**The robots file settles it.** Under `User-agent: *` Upwork publishes `Disallow: /ab/feed/` — the
+job feed itself — and `Disallow: /` under several agent blocks. So the RSS feed is not merely
+defended by a challenge page we will not defeat; **it is a path the site explicitly asks automated
+clients not to fetch.** That is a permission answer, not a technical one, and it does not change
+with allowlists, headers or patience. Upwork is closed to us permanently. Stop proposing it.
+
+Adding the host was still worth the minute: it converted "we think it's blocked" into "it is
+reachable and it refuses us by policy", which is the difference between an open question and a
+closed one.
+
 Measured by R&D, 2026-09-25 (cycle 2). **Read this before proposing any research that needs a
 host.** It exists so no agent spends a run rediscovering a blocked host one fetch at a time.
 

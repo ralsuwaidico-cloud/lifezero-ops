@@ -480,3 +480,23 @@ that made this possible is one line in both mandates: *you will not be penalised
 yourself out of a job; you will be for looking busy.* **An organization of agents will tell you the
 truth about itself if being right is cheaper for them than looking useful. That property is worth
 more than either venture was.**
+
+
+### KB-120a · Upwork, re-tested at the owner's request. **The robots file closes it for good.**
+
+2026-09-26. The owner asked for a re-test. Four requests, one answer: `www.upwork.com/`, the job
+search and the RSS feed all return **403 with a 344 KB page titled "Challenge - Upwork"**, while
+`/robots.txt` returns **200** — proving the allowlist entry works and the host is genuinely
+reachable. The refusal is content-level and deliberate.
+
+**What the re-test added that KB-120 did not have:** Upwork's own `robots.txt` publishes
+`Disallow: /ab/feed/` under `User-agent: *` — that is the job feed — plus `Disallow: /` under
+several agent blocks. So the feed is not only defended by a challenge we will not defeat; **it is a
+path the site explicitly asks automated clients not to request.** That is a permission answer, not
+a technical one. It does not change with an allowlist, a header, a delay or a retry, and no future
+cycle should re-open it.
+
+**Upwork is closed permanently. It is off the demand-source list, not deferred on it.**
+The two minutes the owner spent were still worth it: they converted "we think it is blocked" into
+"it is reachable and it refuses us by policy", which is the difference between an open question and
+a closed one. **A gate that returns a definitive no has done its job.**
