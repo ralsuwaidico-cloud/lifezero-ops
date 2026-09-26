@@ -149,3 +149,23 @@ Applied honestly to the Gumroad storefront before it consumed three weeks:
 
 **Access = 1 should have stopped it, or at minimum capped it at a 20%-explore slot.** Eleven
 strong scores made a business that earned nothing. This table is the argument for the gate.
+
+
+## Screen 4 — if the venue is SEARCH, who holds rank and why? (added 2026-09-26, KB-131)
+
+The concentration test asks whether a venue ranks or merely lists. When the "venue" is a search
+engine, ask the second half: **who already holds page one for the buyer's real query, and what is
+their incentive to charge for it?**
+
+If the answer is incumbents publishing the same information **free as lead generation for a paid
+engagement**, a paid version has no wedge regardless of how correct it is. Their economics require
+them to give it away; ours require us to sell it. That is not a fight about quality.
+
+Cost: two searches, run **before the content is written**. EmaraTax Ready spent 56 runs learning it.
+
+## Screen 5 — which population does this source measure? (added 2026-09-26, KB-127)
+
+Before asking for any source, state **which population it measures** and confirm it is one we can
+serve. RemoteOK was granted, works, and lists salaried remote roles — while the demand being chased
+was fixed-scope project work the Acquisition Desk's own register marks out of mandate. A source can
+be open, correct, free and still be measuring somebody else's market.

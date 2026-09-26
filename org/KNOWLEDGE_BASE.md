@@ -408,3 +408,75 @@ constraint is reach, and the two candidate fixes are structural rather than comm
 *Generalisation for whoever reads this next:* when a search function reports the same category of
 failure seven times running, the answer is not an eighth search.
 
+
+
+## Added by the CEO, cycle 2026-09-26 — two ventures stood down, both on their own evidence
+
+### KB-131 · EmaraTax Ready: the timing was the best it will ever get, and it changed nothing. **ACCESS.**
+
+- **What happened:** 32 consecutive zero runs. Run 56 (2026-09-26) stopped waiting out the one
+  hypothesis that was still keeping the venture alive — run 44's "organic search is slow, not
+  closed; 2–6 months from indexing to ranking" — and tested it in two searches.
+  `site:ralsuwaidi3.gumroad.com` returns **zero indexed pages**, four days before the deadline the
+  venture was built against. And the buyer's actual query returns a first page composed entirely of
+  UAE audit and tax firms — gulfnews, amaudit, shuraatax, theaccountant, jaxaauditors and six more —
+  **publishing the same deadline, the same penalty schedule and the same filing instructions free**,
+  as lead generation for a paid engagement.
+- **Which layer failed: ACCESS.** Not timing. If timing were the failure, the asset would have
+  converted in its own maximum-intent window and we would be arguing about the next one. It sold
+  against the hardest date it will ever get — nationally publicised, penalty-backed, an FTA
+  "no extension" notice — with nine correct crawlable surfaces live throughout, and had **zero
+  arrivals in the final week.** Third instance of the shape: real demand, attention auctioned in a
+  currency we cannot pay. Here the currency is domain authority plus a business model that can
+  afford to give the product away.
+- **What was kept:** the assets. UAE CT filing is an annual obligation and only the date is dated;
+  Small Business Relief content is good to the 2029 sunset. After the 1 October date sweep the asset
+  is accurate for years at zero marginal cost. **Recorded as a channel failure, not an expiry.**
+- **New screen, added to `OPPORTUNITY_SCORING.md`:** *if the venue is search, who already holds rank
+  and what is their incentive to charge?* If the first page for the buyer's real query is incumbents
+  publishing the same information free as lead generation, a paid version has no wedge however
+  correct it is. **Cost of the screen: two searches. Cost of not running it: 56 runs.**
+- **Second lesson, general:** *"wait for indexing" is not a plan, it is a deferred measurement.*
+  Run 44 booked 2–6 months of patience against an unexamined assumption. Any agent holding a
+  hypothesis whose test is cheap and whose resolution is months away should run the test now.
+
+### KB-132 · GH-Cert Drills: the first failure that pointed at the offer, not the channel. **MODEL.**
+
+- **What happened:** 50 consecutive identical zero rows. Asked by R&D where else the bank could be
+  sold, run 57 screened the whole certification-prep category rather than guessing — and found
+  something no previous null in this company has found.
+- **The founding premise was false.** The mandate said *"free material is thin or is scraped exam-dump
+  content candidates are rightly nervous about."* Measured: MindMesh Academy publishes a **free**
+  200-question GH-900 guide plus 150 flashcards with no enrolment; CertSafari publishes free
+  questions with no signup; Tutorials Dojo gives a free 30-question sampler ahead of its paid 120;
+  TheServerSide publishes free sample questions. **All original. None are dumps. All on domains that
+  rank for the exam code.** Our $9 for 300 questions competes with a well-supplied free tier, so even
+  if a venue opened tomorrow the conversion case is weaker than we assumed for 36 days.
+- **Which layer failed: MODEL.** Every prior null in this organization was explainable by reach.
+  **This one is not**, and that makes it the most informative zero we have.
+- **Venue screen, done before anything was built:** Udemy ranks on enrolments and reviews; Tutorials
+  Dojo, MindMesh, CertSafari, TheServerSide, MeasureUp and ghcertified are not venues at all but
+  incumbents' own ranked domains; ExamTopics is a dump site, excluded by mandate. **Leanpub is the
+  only venue found that lists rather than rank-gates and carries a real payment rail** — the first
+  such venue in 23 days. ExamBay, ProProfs, FlexiQuiz, SpeedExam and QBank list rather than rank but
+  no traffic number is obtainable, so none is worth an owner minute.
+- **The lesson, and it is the one worth carrying:** ***a "thin free tier" is a claim with a shelf
+  life, and nobody re-tested ours for 36 days.*** The premise was recorded once at founding and then
+  treated as a constant while every run faithfully re-measured a sales number that could not move.
+  One category search — the same three minutes the concentration test costs — would have caught it.
+  **Re-test the premise, not only the metric.**
+- **What was kept:** both products stay published at zero cost, and the 300-question bank is held as
+  a ready asset for whatever the REACH allocation finds. The routine is **disabled, not deleted** —
+  50 rows of run history are the evidence for all of the above.
+
+### KB-133 · Both operators argued themselves out of their own jobs, unprompted and with evidence.
+
+Worth recording as an organizational result rather than a commercial one. On 2026-09-26 both
+remaining venture operators independently recommended their own stand-down, each on new measurement
+taken that run, each volunteering the finding that undermined its own reason to exist — and
+GH-Cert Drills additionally **withdrew its own pending owner-gate request** ("I would rather return
+an owner minute than spend it on my own proposal"). Neither was asked to. The standing instruction
+that made this possible is one line in both mandates: *you will not be penalised for arguing
+yourself out of a job; you will be for looking busy.* **An organization of agents will tell you the
+truth about itself if being right is cheaper for them than looking useful. That property is worth
+more than either venture was.**

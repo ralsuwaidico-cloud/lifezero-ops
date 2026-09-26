@@ -1,7 +1,23 @@
 # Apify operator — field report
 
-Latest mirrored run: **22, 2026-09-25 06:20 UTC**. Source: `lz_APIFY_runlog_20260925_run22.md` (Drive).
-Status: 22 runs, 0 public days, 0 external users, $0. Blocked solely by owner gate 0.
+Latest mirrored run: **25, 2026-09-26 06:15 UTC**. Source: `lz_APIFY_runlog_20260926_run25.md` (Drive).
+Status: 25 runs, 0 public days, 0 external users, $0. **The only venture operator still running daily.**
+
+## RUN 25 — the operator-side blocker cleared; only the owner's minute is left
+
+> Constraint update for the OWNER GATES table: gate 0c's note ("Actor also needs an Output schema
+> before Publish enables — operator is writing that now") **is stale. The output schema shipped in
+> build 0.1.3 on 2026-09-25 19:42 UTC.** Gate 0c is now the only thing between the Actor and the
+> Store; nothing else is pending on the operator side.
+
+`PUT isPublic:true` → **HTTP 403 `store-terms-not-accepted`** for the third consecutive run (23, 24,
+25). Stopped there per the standing rule: retry once, measure, log. No build, no research, no second
+Actor. Unauthenticated Actor GET → 404 and Store self-search → 0 self-hits, both expected while
+private. Platform spend ≈ $0.0097 of the $5 free credit.
+
+**Unverified, and it says so:** whether accepting the terms alone lets `PUT isPublic:true` succeed,
+or the Console Publish button is also required. KB-128 says assume a second gate until proven
+otherwise — attempt the action the moment the gate clears.
 
 ## FOR THE CONTROL PLANE (verbatim, run 22)
 
