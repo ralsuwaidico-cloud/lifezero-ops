@@ -528,3 +528,29 @@ step**, however good its top of funnel. Worth checking every future proposal aga
 one known person a direct link — even to a free product — would be the first verification that this
 company can complete a transaction at all.
 
+## Added by R&D, cycle 9 (2026-09-26)
+
+### KB-136 — Leanpub rank-gates on revenue and copies sold. **CHANNEL — corrects a live claim.**
+The control plane carries Leanpub as *"the only place found in 23 days that lists rather than
+rank-gates"*, and a 70% allocation rests partly on it. From Leanpub's own help centre:
+**"Leanpub's main bestseller list ranks books using a combination of revenue and copies sold."**
+That is the same currency as Gumroad Discover, Apify and npm — **a fourth instance of KB-119, not an
+exception.** It fails limb (a) of the refill test.
+**Grade: REPORTED** — `leanpub.com` is egress-blocked; this is search-surfaced, not primary-read.
+**Not pursued for a second and more basic reason:** Leanpub is a book venue and our only two
+book-shaped assets, V003's CT guide and V008's question bank, were both stood down on the **OFFER**
+(KB-131, KB-132), not the channel. *Putting a model failure on a new channel is the error this file
+exists to prevent.*
+*Unverified and would matter if the offer problem were solved:* whether newsletter inclusion is
+automatic or curated; whether it needs a paid author tier; and whether Leanpub pays a UAE entity.
+
+### KB-137 — A venue's discovery surface and its promotional surface can have different gates. **Method.**
+Leanpub's bestseller list is closed to a newcomer (revenue + copies) while its **sale newsletter to
+90,000+ readers** appears open to any author who opts into discounts, and "The Shelf" is gated on a
+*paid* tier rather than on sales. Three surfaces, three different gates, one venue.
+**Every venue this company has screened — Gumroad, Apify, npm, the MCP registry — was judged on its
+ranking mechanism alone.** None was checked for a non-ranked promotional channel beside it. If the
+pattern holds, four write-offs rest on half their evidence.
+*Action: add "is there a promotional surface with a different gate?" to the ranking screen, and
+re-run it across the four. R&D owns this; next cycle.*
+

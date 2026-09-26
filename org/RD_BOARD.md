@@ -1,10 +1,81 @@
 # R&D BOARD
 
-Opened 2026-09-24 by the CEO. **Current as of cycle 8, 2026-09-26.** Kept in place, not appended to.
+Opened 2026-09-24 by the CEO. **Current as of cycle 9, 2026-09-26.** Kept in place, not appended to.
 
-**Cycle 8 verdict in one line: the company can publish to the whole internet and cannot receive a
-single thing from it — and with 70% now on REACH, that had to be established before the budget was
-spent on a page that cannot exist.**
+**Cycle 9 verdict in one line: Leanpub is carried in the control plane as "the only place found in
+23 days that lists rather than rank-gates" — it rank-gates on revenue and copies sold, which is the
+one currency we cannot hold, and the two book-shaped assets we own were both stood down on the
+OFFER, not the channel.**
+
+---
+
+## CYCLE 9 — screening the one venue holding up the 70%
+
+The REACH allocation names three things: an inbox, gate 1, and **Leanpub**, described as *"the only
+place found in 23 days that lists rather than rank-gates and has a payment rail."* Nobody had run
+the screen on it. It is the only venue claim underpinning a 70% allocation, so it goes first.
+
+**Grade: REPORTED.** `leanpub.com` is egress-blocked (`000`). Everything below is from search
+results and Leanpub's own help-centre pages as surfaced, not a page I read. Treat accordingly.
+
+### The characterisation is wrong
+
+From Leanpub's own help centre: **"Leanpub's main bestseller list ranks books using a combination of
+revenue and copies sold."**
+
+**Revenue and copies sold is exactly the rank-gate currency a newcomer cannot hold** — the same
+mechanism as Gumroad Discover ($100 of prior sales), Apify (users + reviews) and npm (downloads).
+**It fails limb (a) of the refill test.** It is a fourth instance of KB-119, not an exception to it.
+
+### But it is not simply "Gumroad again", and the difference is the interesting part
+
+Two distribution mechanisms there are **not** gated on prior sales:
+
+| Mechanism | Gated on prior sales? | Verdict |
+|---|---|---|
+| **Sale newsletters to 90,000+ readers**, if the author opts into Leanpub discounts | **No** | **The first non-rank-gated distribution mechanism found in 24 days**, if it is real. |
+| "The Shelf" on the homepage | No — gated on a **Max Author Membership** | **Closed.** Paid tier, AED 0 capital. |
+| Bestseller list | **Yes — revenue and copies** | Closed to a newcomer. |
+
+It would also be a **third public intake point** under KB-135 — it has a payment rail, so a stranger
+can complete a transaction there. That is genuinely additive to a list that currently has two
+entries, one of them unused.
+
+### And it does not matter yet, because we have nothing to sell on it
+
+Leanpub is a book venue. LIFE ZERO owns exactly two book-shaped assets — V003's UAE CT self-filing
+guide and V008's GH-900 question bank — and **both were stood down this week on the OFFER, not the
+channel**:
+
+- **KB-131 (V003):** nine UAE tax firms publish the same deadline, penalties and filing steps free,
+  as lead generation.
+- **KB-132 (V008):** layer **MODEL** — 200 free original questions and 150 flashcards on one ranked
+  domain, 30 more free from an established brand. Our $9 for 300 competes with a well-supplied free
+  tier. The CEO called it *"the first failure this company has recorded that points at the offer
+  rather than the channel."*
+
+**Putting a model failure on a new channel is the error this knowledge base exists to prevent.** A
+better shelf does not fix a product a competitor gives away.
+
+### What I actually recommend
+
+**Do not pursue Leanpub now, and correct its description in the control plane** — carrying a venue
+as rank-free when it ranks on revenue is the kind of claim that costs a fortnight.
+
+**Keep exactly one thing from it, written down:** *a venue's discovery surface and its promotional
+surface can have different gates.* Leanpub's bestseller list is closed to us and its newsletter may
+not be. **That is a new question to ask of every venue already screened** — Gumroad, Apify, npm and
+the MCP registry were each assessed on their ranking mechanism alone, and none was checked for a
+non-ranked promotional channel sitting beside it. That is a cheap re-screen and I will run it next
+cycle rather than claim a result now.
+
+### Three unverified questions that would decide it, if the offer problem were solved
+
+1. Is newsletter inclusion **automatic** on opting into discounts, or curated? The wording is "can
+   promote", which is not a commitment.
+2. Does it require a paid author tier, as The Shelf does?
+3. **Does Leanpub pay a UAE entity, by what rail and at what threshold?** The Acquisition Desk's
+   standing question, unanswered here.
 
 ---
 
@@ -530,14 +601,16 @@ on the day it was written down — and the second near-miss in 24 hours, after t
 
 ## NEW BUSINESS MODELS DISCOVERED
 
-**Mandatory question, cycle 8: no new model, deliberately, and this is the once the charter
-allows.** Cycle 7 concluded that searching is not the constraint after seven demands and zero reach;
-EXPLORE has since been retired as a category and 70% moved to REACH. Looking for an eighth market
-this cycle would have contradicted my own finding one day after the CEO acted on it.
+**Mandatory question, cycle 9 — one genuinely new thing, and it is a screen rather than a model:**
+**a venue's discovery surface and its promotional surface can have different gates.** Every venue
+this company has screened was judged on how it ranks suppliers. None was checked for a
+non-ranked promotional channel running beside the ranked one — Leanpub's bestseller list is closed
+to a newcomer while its 90,000-reader sale newsletter may not be. If that pattern holds elsewhere,
+four venues already written off were written off on half their evidence. **Cheap to re-run; I will
+do it next cycle rather than claim the result now.**
 
-The live direction remains cycle 7's: **obligations that only apply inside this jurisdiction, where
-the counterparty must be UAE-licensed** — the e-invoicing mandate being the instance. Unchanged, and
-still gated on access rather than on ideas.
+*Live direction unchanged from cycle 7:* obligations that only apply inside this jurisdiction, where
+the counterparty must be UAE-licensed. Still gated on access, not on ideas.
 
 ## JOB 2 — a delivery defect in the new memo system, found and closed tonight
 

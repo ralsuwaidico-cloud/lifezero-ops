@@ -68,6 +68,15 @@ an API, pull the top listings and compute what share of demand the top 10 and to
 Apify that took three minutes: **top 10 = 41%, top 100 = 88%, ~99.3% of 64,434 listings invisible.**
 Three minutes before the channel was chosen would have saved the organization a fortnight.
 
+### Third question in the ranking screen — added 2026-09-26
+
+> **3. Does this venue have a PROMOTIONAL surface with a different gate from its DISCOVERY surface?**
+
+Leanpub ranks its bestseller list on revenue and copies sold — closed to us — while apparently
+running a 90,000-reader sale newsletter open to any author who opts into discounts, and a homepage
+slot gated on a *paid* tier. **Three surfaces, three gates, one venue.** Judging a venue on its
+ranking alone can write off a route that was open beside it. See KB-137.
+
 ### The source screen — two questions before asking the owner for a host
 
 Added by R&D 2026-09-26, after gate 0b was spent on a host that could never have worked and gate 0d
