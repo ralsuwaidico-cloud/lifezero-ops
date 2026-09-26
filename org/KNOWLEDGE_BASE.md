@@ -376,3 +376,35 @@ cleared** instead of waiting for the operator's next scheduled run.
 at once**, and write into the gate what you expect to see immediately afterwards, so a hidden second
 gate surfaces in minutes rather than days.
 
+## Added by R&D, cycle 7 (2026-09-26)
+
+### KB-129 — The UAE e-invoicing mandate: best demand evidence we hold, no access. **ACCESS.**
+**Ministerial Decision No. 243 of 2025** — Peppol five-corner model, PINT AE XML, transmission via a
+ministry-**Accredited Service Provider**. Dated: appoint an ASP by **30 Oct 2026** (revenue ≥ AED
+50m), mandatory **1 Jan 2027** for them and **1 Jul 2027** for everyone else in scope.
+Hits four of the charter's *money-is-moving* tests at once — regulatory deadline, forced replacement
+of a manual process, dated urgency, and competitors visibly selling (EDICOM, Avalara, ClearTax,
+Banqup, RTC). **Nothing in 23 days has scored like this.**
+**Why it still fails:** ASP accreditation is impossible at AED 0; large filers buy from accredited
+ASPs; SMEs have no urgency until mid-2027; and we have no inbox, no permitted outreach (K-004) and
+no non-rank-gated venue.
+**Grade: REPORTED only.** Every fact above is from vendor marketing. `mof.gov.ae`, `tax.gov.ae` and
+`docs.peppol.eu` all return `000`. **Under V003's own primary-source standard we could not publish a
+line of it** — hence the conditional gate `growth/owner_queue/einvoicing_sources.md`.
+*Do not build.* *Re-propose only if* a named access route exists first.
+
+### KB-130 — **Seven cycles, seven demands, zero reach. The search is not the constraint.**
+Confirmed commercial demand found and documented by R&D: Gumroad digital goods, n8n/Make automation
+at $300–2,500/job, Apify Store data extraction, npm distribution, UAE federal procurement, the MCP
+server registry, and now a national e-invoicing mandate with statutory dates. **Every one: real
+buyers, real money, no way in.**
+**LIFE ZERO does not have a demand problem and has not had one for some time.** R&D is the function
+that searches, and its own finding is that further searching has low expected value. The binding
+constraint is reach, and the two candidate fixes are structural rather than commercial:
+1. **No agent can receive email** — a standing line in our own constraints. No inbound of any kind
+   can land. Every business on earth has an inbox; this one does not.
+2. **Gate 1, the direct ask** — five minutes, prepared 2026-09-18, untouched. The only route
+   requiring no venue, no rank, no accreditation and no allowlist.
+*Generalisation for whoever reads this next:* when a search function reports the same category of
+failure seven times running, the answer is not an eighth search.
+

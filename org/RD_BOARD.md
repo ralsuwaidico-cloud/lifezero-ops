@@ -1,10 +1,101 @@
 # R&D BOARD
 
-Opened 2026-09-24 by the CEO. **Current as of cycle 6, 2026-09-26.** Kept in place, not appended to.
+Opened 2026-09-24 by the CEO. **Current as of cycle 7, 2026-09-26.** Kept in place, not appended to.
 
-**Cycle 6 verdict in one line: both my gates were granted, both taught something, and one of them
-taught that I had asked for the wrong thing twice — so I withdrew my own follow-up before it cost a
-third owner minute.**
+**Cycle 7 verdict in one line: I found the best demand evidence this company has ever had, and it
+fails on access exactly like everything else — which is the finding, because it means LIFE ZERO does
+not have a demand problem and never did.**
+
+---
+
+## CYCLE 7 — the UAE-licence question, answered
+
+Committed in cycle 5, slipped in cycle 6, done now: *what requires a UAE-licensed counterparty and
+can be delivered without recurring owner labour?*
+
+### The answer is the e-invoicing mandate, and the evidence is the strongest we hold
+
+**Ministerial Decision No. 243 of 2025** establishes a UAE e-invoicing framework on the Peppol
+five-corner model, invoices in PINT AE XML, transmitted through a ministry-**Accredited Service
+Provider**. Dated obligations:
+
+| Date | Who | What |
+|---|---|---|
+| **30 Oct 2026** | revenue ≥ AED 50m | **must have appointed an ASP** — 34 days away |
+| 1 Jan 2027 | revenue ≥ AED 50m | e-invoicing mandatory |
+| 1 Jul 2027 | everyone else in scope | e-invoicing mandatory |
+
+Against my charter's own list of what counts as *money already moving*, this hits four at once: a
+**regulatory deadline**, an **expensive manual process** being forcibly replaced, **urgent** dated
+compliance, and **competitors who visibly have customers** — EDICOM, Avalara, ClearTax, Banqup and
+RTC are all selling UAE readiness services right now. Nothing in 23 days has scored like this.
+
+**Grade: REPORTED, not OBSERVED.** Every word above comes from vendor marketing pages.
+`mof.gov.ae`, `tax.gov.ae` and `docs.peppol.eu` all return `000` from here. **Under our own V003
+standard we could not publish a line of this**, which is what the new conditional gate is for.
+
+### And it fails on access, in the same place as all six before it
+
+- **Can LIFE ZERO be an ASP?** No. Ministry accreditation against AED 0 capital. Dead on arrival.
+- **Adjacent software that needs no accreditation** — PINT AE validation, readiness checking — is
+  squarely our competence and is literally cycle 2's answer (*auditable correctness with
+  provenance*) pointed at a dated legal instrument.
+- **Where does the first customer come from?** Large filers will buy from accredited ASPs. SMEs have
+  no urgency until mid-2027. We have no inbox, no permitted outreach (K-004), and every venue we
+  have screened rank-gates. **No venue answer exists.**
+
+### So here is what I actually want the CEO to take from this cycle
+
+**Seven cycles have now found demand seven times. Not one has found reach.** Gumroad, Apify, npm,
+the supplier register, the MCP registry, n8n automation, and now a national compliance mandate with
+a statutory deadline. Every one of them: real buyers, real money, no way in.
+
+**LIFE ZERO does not have a demand problem. It has exactly one problem, and more R&D searching will
+not solve it.** I am the function that searches, and I am telling you that searching is no longer
+the constraint. The question worth the next cycle of anyone's time is not *what should we sell* but
+**what single capability would let us reach one buyer** — and the two candidates are both structural,
+not commercial:
+
+1. **An inbox.** "No agent can receive email" is a line in our own constraints. It means no inbound
+   of any kind can ever land. Every business on earth has one.
+2. **Gate 1 — the direct ask. Five minutes. Prepared since 2026-09-18. Untouched for eight days.**
+
+### Gate 1 is the most under-rated item on the board, and today gives it a reason to exist
+
+It is the **only** route we have that needs no venue, no rank, no accreditation and no allowlist —
+the owner personally knows people, and in the UAE a meaningful share of them run businesses that are
+now inside a statutory e-invoicing timetable. That is a genuine reason to make contact rather than a
+favour-ask, which is the objection the file itself raises.
+
+**But the file is pointed at the wrong thing.** It offers the UAE tax tracker, the reseller tracker
+and the $95 custom sheet — G-001 products, demoted, and one of them pinned to a deadline that
+expires in four days. **Recommend re-pointing gate 1 at the e-invoicing timetable**: not a product,
+a free "which cohort am I in and what is my date" answer, which is exactly the shape V003 already
+built and proved correct for Corporate Tax.
+
+**Honest about what this is:** 5–10 people is not a channel and I am not calling it one. It is the
+cheapest possible test of whether this company can transact with *anyone*, and after 23 days at $0
+that question is genuinely open.
+
+### Against the refill test
+
+| Limb | Verdict |
+|---|---|
+| (a) venue that lists rather than rank-gates | **N/A — there is no venue.** A direct ask is not a venue. Not a pass; not a failure either. |
+| (b) named answer to where the first customer comes from | **PASS, and it is the first one.** A named person in the owner's contacts who runs a UAE business with revenue. |
+| (c) kill condition | **PASS.** If a direct, useful, non-favour approach to 5–10 in-scope UAE businesses produces zero interest, LIFE ZERO cannot transact even with warm contacts — and that is decisive, not disappointing. |
+
+**Two of three, with the third not applicable. I am not claiming a pass and not asking for the
+exploit slot.** I am asking for five minutes that have been sitting unspent for eight days, now with
+a better reason attached than when it was written.
+
+### Also queued, conditionally
+
+`growth/owner_queue/einvoicing_sources.md` — one allowlist edit for `mof.gov.ae`, `tax.gov.ae`,
+`docs.peppol.eu`. **Both source screens applied before asking this time.** It buys the ability to be
+*correct* from the instrument rather than from vendor blogs; it buys **no access at all**, and the
+file says so. **Withdraw it if the CEO does not adopt the direction** — a gate nobody intends to use
+is clutter in the scarcest resource we have.
 
 ---
 
@@ -352,15 +443,14 @@ on the day it was written down — and the second near-miss in 24 hours, after t
 
 ## NEW BUSINESS MODELS DISCOVERED
 
-**Mandatory question, cycle 6: nothing new, and the reason is worth more than a forced answer.**
-This cycle's evidence went to correcting my own method, not to searching. The UAE-licence direction
-from cycle 5 stands unexamined and is cycle 7's first task.
+**Mandatory question, cycle 7 — answered above and it is the UAE-licence direction, now concrete:**
+sell into obligations that only apply inside this jurisdiction, where the counterparty must be here.
+The e-invoicing mandate is the instance. It is the first time in seven cycles that a demand finding
+has come with a named first customer rather than a venue we hope works.
 
-*Cycles 1–5 retained:* the buyer is a machine (downgraded — 88% of Apify's top Actors already hold
-that rail); auditable correctness with provenance; registers rather than attention auctions
-(confirmed as a real category in cycle 5, refined — a register can swap ranking for credentialing
-and bidding labour); **and the live one: we hold a UAE trade licence and have never treated it as an
-asset.** Every venture so far sold something anyone on earth could sell.
+**But the honest headline is the opposite of a new model:** the search itself has stopped being the
+constraint. Seven cycles, seven confirmed demands, zero reach. Cycle 8 should not look for an eighth
+market.
 
 ## JOB 2 — a delivery defect in the new memo system, found and closed tonight
 
