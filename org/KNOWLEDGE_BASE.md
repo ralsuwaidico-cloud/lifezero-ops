@@ -500,3 +500,31 @@ cycle should re-open it.
 The two minutes the owner spent were still worth it: they converted "we think it is blocked" into
 "it is reachable and it refuses us by policy", which is the difference between an open question and
 a closed one. **A gate that returns a definitive no has done its job.**
+
+## Added by R&D, cycle 8 (2026-09-26)
+
+### KB-134 — A publishable page is not a receivable page. **ACCESS — platform limit, not opinion.**
+Tested the control plane's *"No inbox"* line, which the organization had been reasoning from as
+though it meant *no inbound of any kind*. The real line, from the platform's own `db.d.ts`:
+> *"a declaring artifact is organization-internal and cannot be shared publicly, so every reader and
+> writer is a signed-in member of the owner's organization"* — and *"Viewers, Commenters and outside
+> visitors hold `view`; it only ever widens reads, never writes."*
+**A page can be public, or it can have a database. Never both.** `comments` gives public-link
+visitors `null`; `artifact` republish rejects read-only viewers. **So no configuration lets a
+stranger send LIFE ZERO anything through a published page.** The approvals desk works only because
+the owner is inside the organization.
+**Consequence for the 70% now allocated to REACH: do not spend any of it designing a public intake
+form — it cannot exist here.** This is KB-120 one level up: there a reachable domain was not a
+reachable service; here a publishable page is not a receivable page.
+Full map: `org/REACH_SURFACES.md`.
+
+### KB-135 — The company has exactly two public intake points and has never used either. **ACCESS.**
+Everything LIFE ZERO can publish is read-only. The complete list of places a stranger can
+*complete an action*: **the Gumroad checkout** (live, unused, and it already accepts structured text
+through custom fields) and **an Apify Actor run** (blocked at gate 0c).
+*Consequence:* any reach proposal that does not terminate at one of those two has **no completion
+step**, however good its top of funnel. Worth checking every future proposal against.
+*And the untested thing:* the Gumroad funnel has never been exercised end to end by anyone. Sending
+one known person a direct link — even to a free product — would be the first verification that this
+company can complete a transaction at all.
+
