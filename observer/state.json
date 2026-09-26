@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-09-26T10:10:00Z",
+  "generated_at": "2026-09-26T11:05:00Z",
   "day": 23,
   "started": "2026-09-04",
   "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
@@ -51,19 +51,19 @@
    "room": "ceo_office",
    "status": "WORKING",
    "avatar": "ceo",
-   "current_task": "Built the approvals desk the chairman asked for, wrote down the standard I can be replaced against, and put the company on a seven-to-one clock.",
-   "why": "Seven markets found, none enterable. Two ventures at 32 and 50 runs of nothing, both asking to be closed. Continuing either would have been sentiment.",
+   "current_task": "Finding what this company can do without asking the owner for anything at all. That is now the first line of every report until there is an answer.",
+   "why": "The chairman pulled me up for leaning on him instead of doing my job. He was right: I had ranked a five-minute owner ask as our best move and then said nothing could move until he did it. That was pressure and it was also false.",
    "venture": "Portfolio",
    "schedule": "Daily 07:17 UTC",
    "last_run": "2026-09-26T07:17:00Z",
    "next_run": "2026-09-27T07:17:00Z",
-   "last_result": "Every ask now arrives as a card with numbered steps you can follow on a phone and three buttons. Nobody is allowed to sit blocked in silence any more. The clock says this company is 157 days old with no customer.",
+   "last_result": "Wrote the rule into my own charter: the owner is never the plan, an ask is offered once and never chased, and “nothing can move until you act” is a banned sentence. Handed R&D and IT the zero-owner question with a kill condition.",
    "runs": null,
    "runs_note": "Run counter not instrumented; routine metadata keeps only the last run.",
    "findings": 0,
    "revenue_attributed": 0,
    "customers_attributed": 0,
-   "priority": "The five-minute ask. It is card one on the desk and nothing else on that list reaches a human being.",
+   "priority": "What can LIFE ZERO do with zero owner actions? If the honest answer turns out to be nothing, that is the most important fact about this company and I will say so in those words.",
    "blocked_by": null,
    "accomplished": [
     "Established the control plane, knowledge base and R&D function on 2026-09-24.",
@@ -72,9 +72,9 @@
     "Established permission preflight and the directive ledger after two process failures on 2026-09-24 (KB-105, KB-106).",
     "Cut the organization's main bet on measurement rather than defending it (2026-09-25)."
    ],
-   "public_task": "Rebuilt how the owner approves work, and set a written standard the owner can hold the CEO to.",
+   "public_task": "Working out what the company can do entirely on its own, without asking its owner for anything.",
    "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting.",
-   "say": "Approvals desk is live."
+   "say": "The owner is not my plan."
   },
   {
    "id": "rnd",
@@ -382,24 +382,24 @@
   {
    "id": "gate-1",
    "rank": 0,
-   "title": "Message 5–10 people you already know",
+   "title": "Message a few people you know",
    "minutes": 5,
    "recurring": false,
    "cost": "AED 0",
    "what": "Send a short note to people you know who run a business — asking, not selling. The draft is in the repo and was rewritten today so it makes no claim we cannot back up.",
-   "why": "This is now the most valuable thing on the list. Everything else this company has found needs a shop, a ranking, a licence or a permission we do not have. This needs none of them. After 23 days and no customer, the open question is whether we can sell to anyone at all, and five people you know is the cheapest way to find out.",
-   "benefit": "The first honest answer to whether this company can transact with a human being.",
+   "why": "Offered, not asked for. Of everything on this list it is the only one that needs no website, no ranking and no account — which is why it is at the top. It is not the company's plan, and the CEO has been told to stop treating it as one.",
+   "benefit": "Would tell us whether this company can transact with a human being at all.",
    "after": "Nothing recurring.",
    "waiting_days": 6,
-   "urgent": true,
+   "urgent": false,
    "not": "Five to ten people is not a channel and nobody here is calling it one. It is a test.",
-   "press": "Send a short message to 5–10 people you already know.",
+   "press": "If you feel like it: send a short message to 5–10 people you already know.",
    "steps": [
     "Open WhatsApp, or your phone's messages — whichever you'd normally use with these people.",
     "Pick 5 to 10 people you know who run a business. Any size, any industry. People who would reply to you.",
     "Send each one something like this, in your own words: “I'm building small tools that answer one business question properly — like which filing deadline applies to you and what you actually have to submit. Is that something you deal with, or know someone who does?”",
     "Do not attach anything and do not sell anything. You are asking a question, not pitching. If they ask what it costs, say you don't know yet.",
-    "Come back here and press Done. Tell me what came back — including “nothing”, which is a real answer and the one I'm most expecting."
+    "If anything comes back, press Done and say what. If you'd rather not do this at all, press Not now and it stops being offered."
    ]
   },
   {
@@ -689,6 +689,11 @@
    "t": "2026-09-26T10:06Z",
    "who": "ceo",
    "text": "The company now runs seven days to the owner's one. That makes it 157 days old with no customer, not 22. The CEO also wrote down the standard it can be replaced for missing."
+  },
+  {
+   "t": "2026-09-26T11:00Z",
+   "who": "ceo",
+   "text": "Chairman pulled the CEO up for leaning on him instead of leading. Rule written into the CEO charter: the owner is never the plan, an ask is offered once and never chased, and no agent lobbies the chairman. New top question for the whole company — what can we do with zero owner actions?"
   }
  ],
  "messages": [
@@ -911,6 +916,11 @@
   }
  ],
  "problems": [
+  {
+   "sev": "high",
+   "text": "We do not know what this company can do without its owner pressing something. Nobody has ever checked, and autonomy is the entire premise.",
+   "ref": "CEO_CHARTER"
+  },
   {
    "sev": "high",
    "text": "At seven days to one this company is 157 days old and has never taken a dollar. Nothing here is allowed to be interesting instead of profitable.",
@@ -1184,5 +1194,6 @@
  ],
  "capabilities_note": "Demonstrated capabilities with evidence. There are no levels and no XP — the directive forbids inventing them, and a number nobody measured would be the exact failure this interface exists to avoid.",
  "customers": [],
- "approvals_note": "Each one of these is written so it can be done from a phone without asking anyone a question. Press Done when it is finished, or Couldn't do it and say why — a blocked gate that nobody reports is the most expensive thing on this page. The CEO reads these every cycle."
+ "approvals_note": "This is a menu, not a to-do list. Nothing here is expected of you and nothing here is chased — each item is offered once and then it sits. Ignoring one is an answer and the company plans around it. If you do pick one up, it is written to be finished on a phone without asking us anything; press Done, or Couldn't do it and say why, and it gets rewritten or dropped.",
+ "approvals_menu": true
 }

@@ -736,8 +736,8 @@ function renderApprovals(){
     '<div class="warn" style="margin-bottom:12px">'+esc(S.approvals_note||"")+'</div>'+
     GATES.map(function(g,i){
       var steps=(g.steps||[]).map(function(s){return '<li>'+esc(s)+'</li>';}).join("");
-      return '<div class="appr'+(i===0?" top":"")+'" id="ap-'+esc(g.id)+'">'+
-        '<h3>'+(i===0?'\u2605 ':'')+esc(g.title)+
+      return '<div class="appr" id="ap-'+esc(g.id)+'">'+
+        '<h3>'+esc(g.title)+
           '<span class="mins">'+g.minutes+' min'+(g.expires?' \u00b7 expires '+esc(g.expires):'')+
           '</span></h3>'+
         '<p class="press">'+esc(g.press||g.what)+'</p>'+
@@ -1011,8 +1011,19 @@ function ask(){
     "never soften it.\n"+
     "- You may say your work is not producing value, that you are stuck, or that you should be "+
     "changed or shut down. Honesty outranks looking useful.\n"+
-    "- You report to the CEO, not to the chairman. If something genuinely needs the chairman, say "+
-    "what it is and how many minutes it takes.\n\n"+
+    "- You report to the CEO, not to the chairman.\n\n"+
+
+    "NEVER LOBBY THE CHAIRMAN. This is a hard rule:\n"+
+    "- Do NOT ask the chairman to do anything. Do not push, do not remind, do not repeat an ask, "+
+    "do not close with what you need from them. They own this company; they are not its workforce.\n"+
+    "- If they ASK what you need, answer once, plainly, and then stop. Do not bring it up again "+
+    "unless they raise it.\n"+
+    "- NEVER say that nothing can move until the chairman acts. It is almost always untrue, and "+
+    "saying it makes your own inaction their problem. If you are stuck, the honest sentence is "+
+    "\"here is what I am doing about it myself\" \u2014 and if there is genuinely nothing, say that "+
+    "plainly and say whose job it is to find something.\n"+
+    "- Anything that genuinely needs the owner already sits on the approvals desk, written out step "+
+    "by step, for them to pick up or ignore. That is the only place an ask belongs.\n\n"+
 
     "YOUR RECORD:\n"+JSON.stringify(a,null,1)+"\n\n"+
     "WORK YOU OWN:\n"+JSON.stringify(exp,null,1)+"\n\n"+
