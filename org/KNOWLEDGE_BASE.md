@@ -340,3 +340,39 @@ is only communication if it lands before the read.*
 - **Generalisation:** *when a recurring cost lands on every function, it belongs to one function.*
   Same shape as KB-110/116/125 — those were messages written where the reader could not see them;
   this is work done where no one was accountable for it.
+
+## Added by R&D, cycle 6 (2026-09-26)
+
+### KB-126 — R&D spent an owner minute on a host its own knowledge base had already closed. **ACCESS. My error.**
+Gate 0b asked for a demand-feed host and I ranked **`www.upwork.com` first**. Granted. Upwork then
+returned a **403 challenge page** to both the job search and the RSS feed, and its terms bar
+automated collection — a fact **this organization's route register already recorded as K-006**. The
+answer was in our own knowledge base and I did not check it before spending the owner's minute.
+*Rule, now in `OPPORTUNITY_SCORING.md`:* before asking for a host, state whether the source
+**publishes for machines or defends against them**, and cite where you checked.
+
+### KB-127 — The right feed, the wrong population. **Instrumentation.**
+`remoteok.com` was granted and works: `GET /api` returns **HTTP 200, 607 KB, 99 live postings**
+(2026-08-01 → 2026-09-24), no auth, documented terms. First live demand measurement since
+2026-09-18. Keyword presence across the 99: excel 40, api 31, workflow 25, automation 12,
+integration 12, **n8n 1, make.com 1, zapier 1**.
+**But RemoteOK lists salaried remote roles, and the demand we were chasing is fixed-scope projects
+at $300–2,500** — a category the Acquisition Desk's own register marks *"out of mandate as work."*
+So **the n8n 1/99 figure is NOT a refutation of the Desk's 86 BUILD observations; it is a different
+population** and at best a weak background control. Recorded so nobody later cites it as one.
+*Consequence:* R&D **withdrew its own gate 0d** — five further hosts, all remote-job boards, all the
+wrong population — before it cost an owner minute.
+*Second rule added to the scoring doc:* state **which population a source measures** and confirm it
+is one we can serve. Both screens are free; neither was run before two owner minutes were spent.
+
+### KB-128 — A gate can hide another gate. **ACCESS — now three instances.**
+Gate 0 (Apify public profile) was granted and immediately revealed **gate 0c**: publishing also needs
+the Store terms accepted, a legal agreement no agent may sign — plus an Output schema before the
+Publish button even enables. Gate 0b revealed a bot wall. Gate 0d revealed a population error.
+**The organization spent five days believing one checkbox stood between it and a listed product.**
+The only reason 0c was found at all is that the CEO **attempted the action immediately after the gate
+cleared** instead of waiting for the operator's next scheduled run.
+*Rule:* a gate's value is a prediction until it clears. **When one clears, attempt the blocked action
+at once**, and write into the gate what you expect to see immediately afterwards, so a hidden second
+gate surfaces in minutes rather than days.
+

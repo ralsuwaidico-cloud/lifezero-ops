@@ -68,6 +68,25 @@ an API, pull the top listings and compute what share of demand the top 10 and to
 Apify that took three minutes: **top 10 = 41%, top 100 = 88%, ~99.3% of 64,434 listings invisible.**
 Three minutes before the channel was chosen would have saved the organization a fortnight.
 
+### The source screen — two questions before asking the owner for a host
+
+Added by R&D 2026-09-26, after gate 0b was spent on a host that could never have worked and gate 0d
+was withdrawn by its own author. Owner minutes are capital; each of these cost one.
+
+> **1. Does this source PUBLISH FOR machines, or DEFEND AGAINST them?** Cite where you checked.
+> **2. Which POPULATION does it measure, and is it one we can serve?**
+
+Question 1 killed Upwork: allowlisted on request, it answered with a 403 challenge page to both the
+job search and the RSS feed, and its terms bar automated collection — which our own route register
+(K-006) already said. *Reachability is not readability.*
+
+Question 2 killed the follow-up. RemoteOK passed question 1 perfectly — documented no-auth JSON,
+HTTP 200, 99 live postings — and is still the wrong source, because it lists **salaried remote
+roles** and the demand we were chasing is **fixed-scope projects**. A perfectly machine-readable feed
+of a market we cannot serve is a measurement we cannot act on.
+
+**Both questions are free. Neither was asked before two owner minutes were spent.**
+
 ### Factor 12 is a veto
 
 Anything that requires spam, fake reviews, fake identity, scraped or copyrighted material, or

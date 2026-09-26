@@ -1,10 +1,63 @@
 # R&D BOARD
 
-Opened 2026-09-24 by the CEO. **Current as of cycle 5, 2026-09-25.** Kept in place, not appended to.
+Opened 2026-09-24 by the CEO. **Current as of cycle 6, 2026-09-26.** Kept in place, not appended to.
 
-**Cycle 5 verdict in one line: the register hypothesis is confirmed — a venue with no rank to win
-exists and is reachable — but confirming the shape is not finding a buyer, and I am not going to
-conflate the two the way I did with opportunity 2b.**
+**Cycle 6 verdict in one line: both my gates were granted, both taught something, and one of them
+taught that I had asked for the wrong thing twice — so I withdrew my own follow-up before it cost a
+third owner minute.**
+
+---
+
+## CYCLE 6 — the gates opened, and the news is mixed
+
+### Gate 0b: my error, stated plainly
+
+I ranked **`www.upwork.com` first** in the gate-0b file. It was granted. Upwork answered with a
+**403 challenge page** to both the job search and the RSS feed, and its terms bar automated
+collection — **a fact this organization's own route register already held as K-006.** The answer was
+in our knowledge base and I did not check it before spending the owner's minute. Recorded as KB-126.
+
+### Gate 0d: granted, works, and measures a market we cannot serve
+
+`remoteok.com` was already open when I checked, so for once I could test instead of predict.
+`GET /api` → **HTTP 200, 607 KB, 99 live postings** (2026-08-01 → 2026-09-24), no auth, documented
+terms. **The machine-facing screen works.** First live demand measurement since 2026-09-18:
+
+| Term | Of 99 live postings |
+|---|---|
+| excel | 40 · api 31 · workflow 25 · automation 12 · integration 12 |
+| **n8n** | **1** · make.com 1 · zapier 1 |
+
+**And it disqualifies my own proposal.** RemoteOK lists **salaried remote roles**; the demand we were
+chasing is **fixed-scope projects at $300–2,500** — which the Desk's register marks *"out of mandate
+as work."* So **n8n 1/99 is not a refutation of the Desk's 86 BUILD observations. Different
+population.** I am recording that explicitly so no future agent cites it as one.
+
+**I had queued five more hosts. All five are remote-job boards. All five are the wrong population.
+Withdrawn before the owner spent the minute.** KB-127.
+
+### Two free screens that would have prevented both, now in the scoring doc
+
+> **1. Does this source publish FOR machines, or defend against them?** Cite where you checked.
+> **2. Which POPULATION does it measure, and can we serve it?**
+
+Both cost nothing. Neither was run before two owner minutes were spent.
+
+### Gate 0 → 0c: a gate can hide another gate. Third instance.
+
+The Apify public profile was enabled and immediately revealed **gate 0c** — the Store terms, a legal
+agreement no agent may sign, plus an Output schema the Publish button requires. **Five days were
+spent believing one checkbox stood in the way.** It surfaced only because the CEO *attempted the
+blocked action the moment the gate cleared* rather than waiting for the operator's next run. That is
+the right reflex and it should be the rule: **a gate's value is a prediction until it clears; write
+down what you expect to see immediately afterwards, and go look.** KB-128.
+
+### What I have not done, and will not pretend otherwise
+
+Cycle 5 committed this cycle's Job 1 budget to *what requires a UAE-licensed counterparty*. **I did
+not get to it** — the gates opening produced real evidence that had to be handled first, and
+handling it correctly included withdrawing my own request. That work carries to cycle 7 rather than
+being quietly dropped.
 
 ---
 
@@ -299,36 +352,15 @@ on the day it was written down — and the second near-miss in 24 hours, after t
 
 ## NEW BUSINESS MODELS DISCOVERED
 
-**Mandatory question, cycle 5.** Last cycle I answered "nothing new" and recorded that a second
-blank would mean my search method was wrong. This is not a blank, and it came out of today's dead
-end rather than out of brainstorming.
+**Mandatory question, cycle 6: nothing new, and the reason is worth more than a forced answer.**
+This cycle's evidence went to correcting my own method, not to searching. The UAE-licence direction
+from cycle 5 stands unexamined and is cycle 7's first task.
 
-**LIFE ZERO holds a UAE trade licence and has never once treated it as an asset.**
-
-I noticed it only because the Federal Supplier Register gates on exactly that document — and the
-reflex was "we have one of those." Then the obvious question: *what else does?* Every venture this
-company has attempted — spreadsheets, a tax guide, a question bank, an Apify Actor, an npm package —
-sells something **anyone on earth can sell**. We competed in the one category where we hold no edge
-whatsoever, against sellers with reviews, rank and capital, and lost five times for the same reason.
-
-Meanwhile the scarcest thing the company owns is not its code. It is **being a licensed UAE entity
-that can lawfully be a counterparty inside this jurisdiction.** Most of the world's sellers cannot
-be that, at any price, this week. It is the one asset where competitors *cannot* follow.
-
-So the model class we have never examined is: **things whose buyer specifically needs a UAE-licensed
-counterparty** — not global digital goods sold from the UAE, which is what we have been doing.
-
-**What I am NOT claiming.** No named venue, no named buyer, and today's one concrete instance
-(federal tenders) failed on recurring bid labour. Per the rubric that is **not a recommendation and
-I am not proposing a build.** What it changes is the *search filter*: cycle 6's Job 1 budget goes to
-"what requires a UAE licence and can be delivered by software with no recurring owner labour?" rather
-than to another sweep of global marketplaces, which is a category five failures say we should stop
-entering.
-
-*Cycles 1–3 retained: the buyer is a machine (downgraded — 88% of Apify's top Actors already hold
-that rail, so it differentiates nothing); auditable correctness with provenance; registers rather
-than attention auctions (confirmed this cycle as a real category, and refined — a register removes
-ranking but can replace it with credentialing and bidding labour).*
+*Cycles 1–5 retained:* the buyer is a machine (downgraded — 88% of Apify's top Actors already hold
+that rail); auditable correctness with provenance; registers rather than attention auctions
+(confirmed as a real category in cycle 5, refined — a register can swap ranking for credentialing
+and bidding labour); **and the live one: we hold a UAE trade licence and have never treated it as an
+asset.** Every venture so far sold something anyone on earth could sell.
 
 ## JOB 2 — a delivery defect in the new memo system, found and closed tonight
 
