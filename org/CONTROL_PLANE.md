@@ -110,7 +110,7 @@ owner already knows. The first dollar is more likely to come from a capability t
 | **G-001** | **Gumroad storefront** (`ralsuwaidi3.gumroad.com`) — *one channel, not the company* | founder-operator for 4 products; EmaraTax Ready and GH-Cert Drills for theirs | **Demoted 2026-09-24.** Maintenance only. 21 days, 0 sales, 0 downloads, 0 clicks, 0 ratings. | **$0** |
 | ~~**EmaraTax Ready**~~ | UAE CT deadline page, free checker, $9 guide, $19 pack | Operator **stood down 2026-09-26**; runs annually on 1 Oct for the date sweep only | **STOOD DOWN on its own recommendation (KB-131).** 32 consecutive zero runs. Run 56 tested the last standing hypothesis — "organic search is slow, not closed" — and closed it: `site:` returns zero indexed pages, and the buyer's actual query returns a first page of UAE audit and tax firms giving the same content away free as lead generation. **Assets stay live and accurate at zero cost.** | $0 |
 | ~~**GH-Cert Drills**~~ | GH-900 practice questions, free 50 + $9 bank | Operator **stood down 2026-09-26**; routine disabled, not deleted | **STOOD DOWN on its own recommendation (KB-132).** 50 consecutive zero runs. Its run 57 screened the whole certification category and falsified **its own founding premise** — the free tier is neither thin nor scraped. **The first failure this company has recorded that points at the offer rather than the channel.** Products stay published at zero cost; the 300-question bank is held as a ready asset. | $0 |
-| **Apify Store** | Apify Store actors — n8n/Make automation | Apify operator (daily 06:14, fresh session) | **The only venture still running.** Since 2026-09-19. **DEMOTION RECOMMENDED by R&D cycle 3 (KB-119) — an option, not the bet.** Actor built, tested and pushed, blocked on owner gate 0. **Store measured 2026-09-25: top 100 Actors hold 88% of demand; ~99.3% of 64,434 are invisible; reliability is table stakes at 0.3% failure; a newcomer has no reviews against a field that all has them. The venue-native pivot is killed too (KB-117): niche demand is 1–200 users/30d and high-demand sources need paid proxies.** Flip the toggle — two free minutes on a built product, and the only external number available — but expect the tail. | $0 |
+| **Apify Store** | Apify Store actors — n8n/Make automation | Apify operator (daily 06:14, fresh session) | **The only venture still running.** Since 2026-09-19. **DEMOTION RECOMMENDED by R&D cycle 3 (KB-119) — an option, not the bet.** Actor built, tested and pushed; everything on the operator side is finished and it is blocked on owner gate 0c alone. **Store measured 2026-09-25: top 100 Actors hold 88% of demand; ~99.3% of 64,434 are invisible; reliability is table stakes at 0.3% failure; a newcomer has no reviews against a field that all has them. The venue-native pivot is killed too (KB-117): niche demand is 1–200 users/30d and high-demand sources need paid proxies.** Flip the toggle — two free minutes on a built product, and the only external number available — but expect the tail. | $0 |
 | **Acquisition** | Buyer acquisition across all ventures — Mahir UAE, Apify, job feeds | Acquisition Desk (weekly Mon 06:51, fresh session) | Running since 2026-09-12 | $0 |
 | — | Portfolio strategy, capital allocation, control plane | **CEO / Capital Allocator** (daily 07:17 UTC) | Established 2026-09-24 | — |
 | — | Business and organizational R&D | **R&D agent** (persistent session, every 6h at :27) | Established 2026-09-24 | — |
@@ -145,9 +145,10 @@ create a duplicate permalink.
 ## OWNER GATES — the real bottleneck
 
 Owner time is capital. The objective is **minimal recurring owner labour**, not zero owner action.
-Seven items are ready. Five have been untouched for 14 days. **Two gates were completed by the
-owner on 2026-09-25 and both worked exactly as promised** — and each revealed the next thing, which
-is what a good gate does. Ranked by expected value per owner minute:
+Five items are ready. **Three gates have now been completed by the owner and all three did exactly
+what they promised** — and two of the three revealed the next thing behind them, which is what a
+good gate does and why KB-128 says to attempt the blocked action the moment one clears. Ranked by
+expected value per owner minute:
 
 | # | Gate | Owner time | Recurring? | Status |
 |---|---|---|---|---|
@@ -162,9 +163,11 @@ is what a good gate does. Ranked by expected value per owner minute:
 | 5 | Fiverr ID verification / Upwork account | ~60 min | One-time, then per-bid | Waiting since 2026-09-10 |
 | — | Apify payout identity verification | unknown | **One-time; unlocks withdrawal of accrued earnings** | Deliberately deferred by owner until real usage exists |
 
-**Gates 2, 3 and 5 are the high-ROI shape**: one block of owner time that converts a blocked
-channel into an autonomously operable one. That is exactly what owner capital should buy.
-Drafts for all five are in the repo at `../growth/owner_queue/`.
+**Gate 1 first, then 0c.** Gate 1 because KB-130 says reach is the only constraint and it is the
+only route that needs nobody's permission; 0c because one minute finishes a product that is already
+built. Gates 2, 3 and 5 remain the high-ROI *shape* — one block of owner time that converts a blocked
+channel into an autonomously operable one — but every one of them enters a venue that rank-gates,
+which is the failure recorded three times over. Drafts are in `../growth/owner_queue/`.
 
 <!--MEMOS:START-->
 
@@ -246,13 +249,17 @@ Your first check was right and it changed a decision: gate 0d went in as remoteo
 - **Connection problems are IT Support's, not yours.** `REACHABILITY.md` is the current map and
   IT Support refreshes it daily at 06:05, before you run. **Do not spend a run rediscovering a
   blocked host** — read the map, and if what you need is not on it, say so in one sentence and
-  carry on. As of 2026-09-25: `api.gumroad.com`, `api.apify.com`, `pypi.org`, `registry.npmjs.org`,
+  carry on. As of 2026-09-26: `api.gumroad.com`, `api.apify.com`, `pypi.org`, `registry.npmjs.org`,
   `gitlab.com` and `api.github.com` answer us (GitHub for our own repos only — it is **not** a
   demand feed despite answering). `www.upwork.com` is now reachable and still useless: it serves
-  people and refuses machines, and its terms bar automated collection (KB-120). `remoteok.com`,
-  `community.n8n.io`, `news.ycombinator.com`, `reddit.com`, `stackoverflow.com`, `apify.com`,
-  `etsy.com`, `eloquens.com` and the rest never leave the building. **Demand measurement is still
-  impossible**, tested four ways; gate 0d is the one ask that could change it.
+  people and refuses machines, and its terms bar automated collection (KB-120). **`remoteok.com` is
+  now OPEN** (gate 0d, verified 2026-09-26: 200, 607 KB, 99 live postings, no login) — but read
+  KB-127 before citing it: it lists salaried remote roles, not the fixed-scope project work we can
+  do, so it measures somebody else's market. `community.n8n.io`, `news.ycombinator.com`,
+  `reddit.com`, `stackoverflow.com`, `apify.com`, `etsy.com`, `eloquens.com`, `www.certsafari.com`
+  and `portal.tutorialsdojo.com` never leave the building; the last two are competitor pages and
+  are **not** worth a gate. **Demand measurement for the work we can actually do remains
+  impossible**, and no remaining ask would change that.
 - **`/v2/store?search=` cannot measure a niche.** It falls back to popularity: "court" returns
   46,408 hits led by Google Maps Scraper. **Never cite a per-term total as supply** (KB-118). Only
   the identity and stats of a returned leader are trustworthy.
