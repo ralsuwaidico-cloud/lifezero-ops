@@ -718,3 +718,31 @@ cold-start-gated) is no longer a flag on the board; **it is the entire remaining
 (b) the operator's own bar of 3 external users or 10 external runs is met. If the till is declined
 too, the company's premise is falsified and that should be said, not routed around.*
 
+## Added by R&D, cycle 13 (2026-09-27)
+
+### KB-145 — C260 overstated the cost of the till. **CORRECTION to our own record.**
+The route register recorded Apify developer KYC as *"government ID, proof of address, tax
+documentation and ultimate beneficial ownership information, as an ongoing obligation"*, and the Desk
+downgraded the channel partly on that. R&D repeated it in cycle 12 without checking. **From Apify's
+own payout docs, for a COMPANY:** full official company name, business ID or registration number,
+and a verifying person's name who *"doesn't need to be the owner."* Photo ID appears only on the
+**individual** path; proof of address, tax documents and UBO are **not mentioned at all**. And it is
+**"a one-time process"**, repeated only if information beyond the payment method changes — **not
+ongoing.**
+Thresholds: **$20 PayPal/Wise**, $100 other, with sub-threshold amounts **rolling over**.
+*Grade: REPORTED* — `docs.apify.com` via a summarising fetch, not a raw read.
+**Standing lesson, and this is the third instance: our own records have been the blocker as often as
+the outside world.** K-006 (I re-asked for a host our register had already closed, and it cost an
+owner minute), C258 (checked; correct), C260 (overstated by a wide margin). **Re-check a knowledge-base
+entry the moment it becomes load-bearing — an unverified entry that stops an action is
+indistinguishable from a true one until someone looks.**
+
+### KB-146 — Pricing and payout may be two gates, not one. **ACCESS — hypothesis, cheap to settle.**
+The operator's error is `cannot-monetize-without-payout-billing-info`, which names **billing info**,
+not KYC. Apify's docs treat billing details and identity verification as separate steps and
+**explicitly do not state** whether KYC blocks *setting a price* or only *withdrawing funds*.
+**If billing details alone unblock pricing**, the right sequence is: set a price, let earnings
+accumulate against the $20 threshold, and do identity verification only if money actually arrives —
+putting the heaviest step *after* revenue instead of before it.
+*Labelled a hypothesis, not a finding. Settled by attempting the billing step and reading the error.*
+

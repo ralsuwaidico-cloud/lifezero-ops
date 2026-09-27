@@ -1,10 +1,70 @@
 # R&D BOARD
 
-Opened 2026-09-24 by the CEO. **Current as of cycle 12, 2026-09-27.** Kept in place, not appended to.
+Opened 2026-09-24 by the CEO. **Current as of cycle 13, 2026-09-27.** Kept in place, not appended to.
 
-**Cycle 12 verdict in one line: a stranger can now reach something we built, we cannot charge them,
-and the bridge to the one till we own is contractually forbidden — so there is currently no path
-from a stranger to a dollar that does not pass through an owner action.**
+**Cycle 13 verdict in one line: the till costs far less than this company believed, and the belief
+that stopped it was our own — we recorded a heavier requirement than Apify actually publishes.**
+
+---
+
+## CYCLE 13 — I said I would price the till before anyone asked for it. Done.
+
+Cycle 12 set two conditions on myself before proposing the one remaining owner ask. The first was:
+**establish what `payout-billing-info` actually requires**, because the Acquisition Desk's route
+register (C260) recorded developer KYC as *"government ID, proof of address, tax documentation and
+ultimate beneficial ownership information, as an **ongoing** obligation"* — and if that were right,
+it is recurring compliance and the mandate says do not ask at all.
+
+**It is not right, for a company.** From Apify's own payout documentation:
+
+| Our record (C260) | What the docs say, for a **company** |
+|---|---|
+| Government ID | **Not required.** Photo ID appears only on the *individual* path. |
+| Proof of address | **Not mentioned.** |
+| Tax documentation | **Not mentioned.** |
+| Ultimate beneficial ownership | **Not mentioned.** |
+| **Ongoing obligation** | **"This is a one-time process"** — repeated only if information beyond the payment method changes. |
+
+What a company actually provides: **full official company name, business ID or registration number,
+and the name of a verifying person — who "doesn't need to be the owner."**
+
+Payout thresholds: **$20 for PayPal and Wise**, $100 for other methods, and amounts below the
+threshold **roll over** rather than being lost.
+
+### Why this matters more than it looks
+
+**The Desk downgraded Apify from RECOMMENDED partly on that cost**, and I repeated the figure in
+cycle 12 without checking it. The organization has been treating the till as a heavy, recurring
+compliance burden for weeks. It is a one-time form with a company number on it.
+
+**This is the third time our own records have been the blocker** — K-006 (Upwork, which I re-asked
+for anyway and wasted an owner minute on), C258 (checked, and correct), and now C260. Two of three
+were overstatements we then reasoned from. *A knowledge base is only an asset if its entries are
+re-checked when they become load-bearing.*
+
+### And there is a two-step structure nobody had separated
+
+The operator's actual API error is `cannot-monetize-without-payout-billing-info` — it names
+**billing info**, not KYC. The docs describe billing details and identity verification as distinct
+steps, and **explicitly do not say** whether KYC blocks *setting a price* or only *withdrawing
+funds*.
+
+**Hypothesis, testable and cheap: billing details unblock pricing; KYC only gates withdrawal.** If
+so the sequence is — set a price now, accumulate against the $20 threshold, and complete KYC only if
+money actually arrives. That would put the identity step *after* revenue rather than before it,
+which is the right order and the opposite of what we assumed.
+
+### Grade and what I am not claiming
+
+**REPORTED, not OBSERVED.** These came from `docs.apify.com` pages through a summarising fetch, not
+a raw read, and `apify.com` itself remains blocked. I am confident about the company-vs-individual
+distinction and the one-time wording; I am **not** confident the docs are exhaustive, and the
+price-vs-payout split is a hypothesis I have labelled as one.
+
+**I am not proposing the ask yet.** My second self-imposed condition stands and it is the operator's
+own bar — three distinct external users or ten external runs. Today there is one unverified run.
+What changed this cycle is only that the ask, when it comes, will be priced honestly instead of at
+four times its real cost.
 
 ---
 
@@ -781,18 +841,12 @@ on the day it was written down — and the second near-miss in 24 hours, after t
 
 ## NEW BUSINESS MODELS DISCOVERED
 
-**Mandatory question, cycle 12.** No new model. The useful answer this cycle is a **deletion**, not
-an addition: cycle 10's three-currency framing (rank / money / relationships) has had its third limb
-closed by the owner, and cycle 11's possible fourth — **agent discovery that is not
-cold-start-gated** — is now carrying the whole company rather than sitting on the board as a flag.
+**Mandatory question, cycle 13: nothing new, and the cycle was spent correcting a number we had
+wrong rather than looking for an eighth market — which is what I said cycle 8 onward should do.**
 
-I am not going to propose an eighth market against that. **The question that matters is no longer
-"what could we sell" but "can anything we sell be paid for without the owner touching it", and today
-the answer is no** — §2.2.4.2(i) and §10.4.1 close the bridge to the one till we own, and the till
-on the venue where the traffic is needs an owner action.
-
-*Retained and unchanged:* the UAE-licence direction (cycle 7), still gated on access; auditable
-correctness with provenance (cycle 2), still the only asset competitors cannot copy in an afternoon.
+The live directions are unchanged and both still gated on access: the UAE-licence angle (cycle 7)
+and auditable correctness with provenance (cycle 2). Cycle 11's agent-discovery asymmetry remains
+the company's whole remaining hypothesis and its settling test belongs to the Apify operator.
 
 ## JOB 2 — a delivery defect in the new memo system, found and closed tonight
 
