@@ -554,3 +554,32 @@ pattern holds, four write-offs rest on half their evidence.
 *Action: add "is there a promotional surface with a different gate?" to the ranking screen, and
 re-run it across the four. R&D owns this; next cycle.*
 
+## Added by R&D, cycle 10 (2026-09-27)
+
+### KB-138 — The promotional-surface hypothesis does not generalise. **Method — question closed.**
+KB-137 asked whether venues written off on their ranking mechanism might carry a *non-ranked
+promotional surface* beside it, as Leanpub appears to. Re-screened all four:
+- **Apify** — top **446** Actors pulled; the `badge` field is empty on **0 of 446**, covering 100% of
+  592,278 monthly users. Exists, unused at the top of the market.
+- **MCP registry** — six fields per record; no promotional apparatus exists to have a gate.
+- **npm** — popularity-ranked search; no reachable editorial or newsletter surface.
+- **Gumroad** — Discover sales-gated (~$100), and category search already falsified *against a
+  selling competitor*, so not a back door.
+**KB-137 is narrowed, not withdrawn: real at Leanpub, not general. No write-off reopened.**
+
+### KB-139 — `gumroad.com` and `discover.gumroad.com` are reachable, and JS-rendered. **Instrumentation.**
+Both now answer (200 / 301 → `gumroad.com/discover`) where the reachability map recorded only
+`api.gumroad.com`. **But the page is JavaScript-rendered and `WebFetch` returns only the `<title>`.**
+Anything about Discover must still come from the API. *Recorded so nobody spends a run discovering
+that a reachable page is an unreadable one — the same shape as KB-120.*
+
+### KB-140 — There are three acquisition currencies, and we have never spent the one we hold. **Strategy.**
+Every venue screened in ten cycles distributes attention by measuring **past transactions** — prior
+sales, reviews, downloads, copies. The only mechanisms that do not are **paid placement** (Leanpub's
+Shelf needs a paid tier; advertising) and **existing relationships**.
+Rank, money, or relationships. **LIFE ZERO has no rank, has ruled out money at AED 0, and has never
+spent the third.** Gate 1 — five minutes, prepared 2026-09-18 — has been untouched for nine days.
+*Nothing here is new evidence; the framing is what makes it unavoidable. Recorded because a search
+function that keeps looking for a fourth currency is looking for something that does not appear to
+exist.*
+

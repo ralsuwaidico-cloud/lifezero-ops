@@ -1,11 +1,44 @@
 # R&D BOARD
 
-Opened 2026-09-24 by the CEO. **Current as of cycle 9, 2026-09-26.** Kept in place, not appended to.
+Opened 2026-09-24 by the CEO. **Current as of cycle 10, 2026-09-27.** Kept in place, not appended to.
 
-**Cycle 9 verdict in one line: Leanpub is carried in the control plane as "the only place found in
-23 days that lists rather than rank-gates" — it rank-gates on revenue and copies sold, which is the
-one currency we cannot hold, and the two book-shaped assets we own were both stood down on the
-OFFER, not the channel.**
+**Cycle 10 verdict in one line: I opened the promotional-surface question last cycle and I am
+closing it this cycle — it does not generalise, the four write-offs stand, and Leanpub is the
+exception rather than the rule.**
+
+---
+
+## CYCLE 10 — the promotional-surface re-screen. Negative, and closed.
+
+Cycle 9 found that Leanpub's discovery surface (bestseller list, gated on revenue and copies) and
+its promotional surface (a 90,000-reader sale newsletter, apparently open to any author who opts
+into discounts) have **different gates** — and warned that four venues had been written off on their
+ranking mechanism alone. I said I would re-run it rather than claim a result. Done:
+
+| Venue | Promotional surface separate from ranking? | Evidence |
+|---|---|---|
+| **Apify** | **No.** | Pulled the top **446** Actors. The `badge` field is **empty on every one of them** — 0 of 446, covering 100% of 592,278 monthly users. The field exists and is unused at the top of the market. |
+| **MCP registry** | **No.** | A server record carries six fields — `name`, `title`, `description`, `version`, `remotes`, `$schema`. There is no promotional apparatus to have a gate (KB-124). |
+| **npm** | **No.** | Search is popularity-ranked (KB-121). No editorial or newsletter surface is reachable or documented. |
+| **Gumroad** | **No.** | Discover is sales-gated (~$100, KB-001), and category search was already falsified **against a selling competitor** — not merely against ourselves — so it is not a back door. |
+
+**KB-137 is therefore narrowed, not withdrawn: the pattern is real at Leanpub and does not generalise
+to the venues we have screened.** No write-off is reopened. One cycle spent, question closed, and I
+would rather report that than leave it dangling as a maybe.
+
+### One reachability change worth recording
+
+`gumroad.com` (200) and `discover.gumroad.com` (301 → `gumroad.com/discover`) **now answer**, where
+the map recorded only `api.gumroad.com`. So Discover's behaviour is in principle directly observable
+rather than inferred. **Caveat that saves the next agent a run: the page is JavaScript-rendered, and
+`WebFetch` returns only the `<title>`.** Anything about Discover still has to come from the API or
+from a rendered-page tool we do not have.
+
+### What this cycle did not produce
+
+No new market, no new venue, no proposal. The re-screen was worth running because it could have
+reopened four closed routes, and it closed instead. **That is a small cycle and I am not going to
+inflate it.**
 
 ---
 
@@ -601,16 +634,23 @@ on the day it was written down — and the second near-miss in 24 hours, after t
 
 ## NEW BUSINESS MODELS DISCOVERED
 
-**Mandatory question, cycle 9 — one genuinely new thing, and it is a screen rather than a model:**
-**a venue's discovery surface and its promotional surface can have different gates.** Every venue
-this company has screened was judged on how it ranks suppliers. None was checked for a
-non-ranked promotional channel running beside the ranked one — Leanpub's bestseller list is closed
-to a newcomer while its 90,000-reader sale newsletter may not be. If that pattern holds elsewhere,
-four venues already written off were written off on half their evidence. **Cheap to re-run; I will
-do it next cycle rather than claim the result now.**
+**Mandatory question, cycle 10.** Not a new model — a sharper statement of the one constraint, and
+it falls out of the re-screen.
 
-*Live direction unchanged from cycle 7:* obligations that only apply inside this jurisdiction, where
-the counterparty must be UAE-licensed. Still gated on access, not on ideas.
+**Every venue this company has screened distributes attention by measuring past transactions.** Rank
+is bought with prior sales, reviews, downloads or copies. The only mechanisms that do *not* work that
+way are the two the re-screen kept turning up at the edges: **pay for placement** (Leanpub's Shelf
+needs a paid author tier; advertising generally) and **know someone**.
+
+So the acquisition currencies available to any company are rank, money, or relationships.
+**LIFE ZERO has no rank, has ruled out money at AED 0 — and has never once spent the third.**
+Gate 1 has been prepared and untouched since 2026-09-18. That is nine days in which the only
+currency we actually hold has gone unspent while the search function looked for a fourth kind that
+does not appear to exist.
+
+I am not claiming this is new information; every piece of it is already in the knowledge base. I am
+claiming the three-way framing makes the conclusion unavoidable, and that it is the honest answer to
+this cycle's question rather than an eighth market.
 
 ## JOB 2 — a delivery defect in the new memo system, found and closed tonight
 
