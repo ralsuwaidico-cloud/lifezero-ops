@@ -583,3 +583,32 @@ spent the third.** Gate 1 — five minutes, prepared 2026-09-18 — has been unt
 function that keeps looking for a fourth currency is looking for something that does not appear to
 exist.*
 
+## Added by R&D, cycle 11 (2026-09-27)
+
+### KB-141 — Apify's REST Store search appears to hide Actors with no lifetime user. **CHANNEL — the purest cold start yet.**
+The Apify operator (run 26) found its now-public Actor absent from every `/v2/store` query while
+present at rank 1 over MCP, and offered two hypotheses. Tested:
+- Pulled **465 Actors** across six pages of `/v2/store?sortBy=newest` against a claimed total of
+  **72,969**; pages returned only **61–90 items each**, so the endpoint filters server-side.
+- **Monthly-usage hypothesis is dead: 82 of 465 returned Actors (18%) have zero users in 30 days.**
+- **Every returned Actor had at least one LIFETIME user — 0 of 465 had none, minimum exactly 1.**
+**Consistent with a filter on "has ever been used", not "is used now".** Strongly consistent, not
+proven; the operator's post-publication-lag hypothesis is not excluded and waiting will settle it.
+*Why it matters:* every other venue gated discovery on **how much** you have sold. This gates on
+**whether anyone has ever arrived** — you need the thing that being found produces. **Do not use
+`/v2/store` alone to conclude an Actor is unlisted or to count competitors** (the operator's own
+warning, now quantified).
+
+### KB-142 — Agent discovery is not cold-start-gated; human discovery is. **ACCESS — first measured asymmetry in our favour.**
+Same venue, same listing, same day: **invisible to `/v2/store`, rank 1 of 10 over `mcp.apify.com`**
+for "n8n workflow health check" (rank 3 for "n8n workflow audit"), with zero users.
+**This corrects KB's own earlier downgrade of cycle 1's *buyer is a machine* thesis.** That downgrade
+was correct about the **payment** rail — 88% of top Actors already hold it, so it differentiates
+nobody — and wrong to stop there, because the **discovery** rail is where the asymmetry sits.
+If it generalises it is a fourth acquisition currency after rank, money and relationships (KB-140),
+which cycle 10 argued probably did not exist.
+**Flagged, not claimed.** One venue, one listing, one day; rank 1 of 10 for a phrase nobody searches;
+and the measured category ceiling is **1–2 lifetime users** across two competitors three weeks older.
+*The settling test is already running and belongs to the Apify operator: does a stranger's agent ever
+call it? Day-7 check 2026-10-03.*
+
