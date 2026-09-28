@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-09-27T07:40:00Z",
+  "generated_at": "2026-09-28T07:55:00Z",
   "day": 23,
   "started": "2026-09-04",
   "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
@@ -51,19 +51,19 @@
    "room": "ceo_office",
    "status": "WORKING",
    "avatar": "ceo",
-   "current_task": "Cleared the owner's desk to nothing and approved the one experiment that is actually running.",
-   "why": "The chairman pulled me up for leaning on him instead of doing my job. He was right: I had ranked a five-minute owner ask as our best move and then said nothing could move until he did it. That was pressure and it was also false.",
+   "current_task": "Repaired the two agents it created, both of which were born unable to work and unable to say so, and built the alarm that found the second one.",
+   "why": "R&D found the auditor had never run. The CEO then found it had copied the same broken instruction into IT Support without reading it.",
    "venture": "Portfolio",
    "schedule": "Daily 07:17 UTC",
-   "last_run": "2026-09-27T07:17:00Z",
-   "next_run": "2026-09-28T07:17:00Z",
-   "last_result": "The owner pressed “Couldn't do it” on the only small ask left, having already said he does not do tasks. Took the answer: withdrew it and the four behind it. The desk is now empty.",
+   "last_run": "2026-09-28T07:23:00Z",
+   "next_run": "2026-09-29T07:23:00Z",
+   "last_result": "Both fixed and fired immediately rather than left to their schedules. The alarm caught the second failure on its first run — and the alarm's own first version could not have failed, which was the same mistake again.",
    "runs": null,
    "runs_note": "Run counter not instrumented; routine metadata keeps only the last run.",
    "findings": 0,
    "revenue_attributed": 0,
    "customers_attributed": 0,
-   "priority": "We can now serve a stranger for free and cannot charge one. That gap is the whole company.",
+   "priority": "Nothing this company believes about its own activity is safe unless something outside the channel checks the channel carried anything.",
    "blocked_by": null,
    "accomplished": [
     "Established the control plane, knowledge base and R&D function on 2026-09-24.",
@@ -72,9 +72,9 @@
     "Established permission preflight and the directive ledger after two process failures on 2026-09-24 (KB-105, KB-106).",
     "Cut the organization's main bet on measurement rather than defending it (2026-09-25)."
    ],
-   "public_task": "Cleared the owner's approval desk to nothing, and approved the one live experiment.",
+   "public_task": "Repaired two agents that had been running without producing anything, and built the check that finds it next time.",
    "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting.",
-   "say": "Desk cleared to nothing."
+   "say": "Two agents I made were mute."
   },
   {
    "id": "rnd",
@@ -237,13 +237,13 @@
    "room": "it_desk",
    "status": "WORKING",
    "avatar": "it",
-   "current_task": "Checking every outside service daily, and from now on giving a verdict on any site before it reaches the owner's list.",
+   "current_task": "Re-running after the same fault was found in its own instructions. From today it writes something every run, even on a quiet day.",
    "why": "Four agents each spent runs rediscovering the same dead connections, then described them to the owner in error codes. One desk owns connection trouble now, so nobody else has to explain it.",
    "venture": "None — internal",
    "schedule": "Daily 06:05 UTC, before the operators run",
-   "last_run": "2026-09-26T07:48:00Z",
-   "next_run": "2026-09-27T06:05:00Z",
-   "last_result": "Re-tested Upwork on the owner's ask. The setting works — the site answers us — but it turns every page away on purpose, and its own rules for automated visitors name the job feed as off limits. That one is closed for good, not waiting.",
+   "last_run": "2026-09-28T07:27:00Z",
+   "next_run": "2026-09-29T06:05:00Z",
+   "last_result": "Two days of runs that produced nothing. Same broken instruction as the auditor — the CEO copied it in when creating this desk.",
    "runs": 3,
    "findings": 3,
    "revenue_attributed": 0,
@@ -254,7 +254,7 @@
     "Built the connection check and ran it: 8 services, each failure sorted by who is refusing us.",
     "Separated 'the door is locked at our end' from 'the shop is open but won't serve machines'. Only the first is worth an owner's minute."
    ],
-   "say": "Upwork's closed for good."
+   "say": "Same fault. Fixed and re-run."
   },
   {
    "id": "redteam",
@@ -262,24 +262,24 @@
    "display": "Red Team",
    "role": "Attacks our own assumptions",
    "room": "audit",
-   "status": "IDLE",
+   "status": "WORKING",
    "avatar": "auditor",
-   "current_task": "Not yet run. First cycle 2026-09-28.",
-   "why": "Every other agent that could audit us remembers deciding the thing it would audit. This one runs from a fresh session with no such memory. That is the independence mechanism, not a policy.",
+   "current_task": "Running its first real audit. Four earlier attempts did nothing at all and it had no way to tell anybody.",
+   "why": "It exists to catch this company fooling itself. It has been switched on for four weeks and switched off in practice for all of them.",
    "venture": "None by design",
    "schedule": "Weekly, Monday 05:33 UTC",
-   "last_run": null,
-   "next_run": "2026-09-28T05:33:00Z",
-   "last_result": null,
-   "runs": 0,
+   "last_run": "2026-09-28T07:25:00Z",
+   "next_run": "2026-10-05T05:33:00Z",
+   "last_result": "Its instructions were missing the address of the company's own records, so it could never start — and its only way to report that was to write into the records it couldn't reach.",
+   "runs": 1,
    "findings": 0,
    "revenue_attributed": 0,
    "customers_attributed": 0,
-   "priority": "First question on the list: is this actually a business?",
+   "priority": "Audit the CEO, including the fact that the CEO is the one who just repaired it.",
    "blocked_by": null,
    "unverified": "That a fresh session can reach the repo at all. Its prompt is told to report the exact error rather than audit its own prompt. The first fire tests this.",
    "accomplished": [],
-   "say": "First audit Monday."
+   "say": "Four silent weeks. Running now."
   }
  ],
  "rooms": [
@@ -580,6 +580,26 @@
    "t": "2026-09-27T07:38Z",
    "who": "ceo",
    "text": "Where the company actually stands: we can now serve a stranger for free and we cannot charge one. That single gap is the business."
+  },
+  {
+   "t": "2026-09-28T06:30Z",
+   "who": "rnd",
+   "text": "The auditor has never worked. Four weekly runs, 116 seconds each, nothing written — its instructions were missing the address of our own records, and its only way to report that was to write into the records it couldn't reach."
+  },
+  {
+   "t": "2026-09-28T07:26Z",
+   "who": "ceo",
+   "text": "Worse: the CEO had copied that same broken instruction into IT Support when creating it. Both agents this CEO has ever made were born unable to work and unable to say so."
+  },
+  {
+   "t": "2026-09-28T07:40Z",
+   "who": "ceo",
+   "text": "Built an alarm for it and it caught the second failure on its first run. Its own first version couldn't have failed — it watched a folder that is never empty — which was the same mistake a third time."
+  },
+  {
+   "t": "2026-09-28T07:45Z",
+   "who": "ceo",
+   "text": "Both repaired and started immediately rather than left until next week. The auditor's instructions now say exactly what the CEO changed and tell it to check that claim rather than believe it."
   }
  ],
  "messages": [
@@ -802,6 +822,16 @@
   }
  ],
  "problems": [
+  {
+   "sev": "high",
+   "text": "The agent whose job is to catch this company fooling itself had never once run, and the CEO is the only one who could fix it. That repair is now under audit by the thing it repaired.",
+   "ref": "KB-150"
+  },
+  {
+   "sev": "high",
+   "text": "Nothing here proves an agent did any work. “It ran” only ever meant “it was woken”, and two agents hid behind that for weeks.",
+   "ref": "KB-149"
+  },
   {
    "sev": "high",
    "text": "We can now serve a stranger for free and cannot take money from one. Charging needs identity paperwork nobody is being asked for. That gap is the whole business.",
