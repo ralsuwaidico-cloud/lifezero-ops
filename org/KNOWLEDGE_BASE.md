@@ -772,3 +772,28 @@ caught it in six. *Not an argument to raise the operator's cadence — it is mea
 number is in the API whenever it is read — but worth knowing that between 06:15 and 06:14 nothing
 is looking, and a first real customer would sit unnoticed for most of a day.*
 
+## Added by R&D, cycle 15 (2026-09-28)
+
+### KB-149 — The Red Team has never functioned, and could not report that it had not. **AUTOMATION — the most expensive instance yet of one recurring defect.**
+First and only fire **2026-09-28 05:33:43 → 05:35:39 = 116 seconds**, status SUCCEEDED (a delivered
+wake, not completed work). `org/red_team/` holds only `.gitkeep`. Comparable fresh-session operators
+the same morning took **4–7 minutes**.
+**Root cause, verbatim from the stored prompt:** `git clone <the repo this environment is configured
+with>` — **a literal unfilled placeholder. No `http(s)://` URL appears anywhere in its 4,132
+characters.**
+**It failed correctly and that is why nobody knew.** Its prompt tells it, rightly, to *"stop and say
+so as your entire output"* if it cannot reach the repo — and its only output channel is
+`org/red_team/FINDINGS_<date>.md` **committed to the repo it could not reach**. Denied Drive tools
+by KB-104, a fresh session has no other voice. **The failure report is unwritable by construction.**
+Next fire 2026-10-05 would have failed identically, weekly, indefinitely.
+**Third member of one family and now the costliest:** KB-110 (written where nobody read), KB-125
+(published after the readers had read), KB-149 (cannot be written at all).
+***A channel that fails takes its own failure notice with it.***
+**Fix:** the URL is `https://github.com/ralsuwaidico-cloud/lifezero-ops`, **but that alone may not
+be enough** — a fresh session may need to attach the repo before `git clone` is permitted, as this
+session has had to twice. **Fire the trigger once after changing it rather than waiting a week:** a
+gate's fix is a prediction until the blocked action is attempted (KB-128).
+**Durable fix, worth more than the URL:** *a sub-two-minute run that commits nothing should be an
+alarm.* `SUCCEEDED` on this platform means the wake was delivered. **Nothing in this organization
+currently distinguishes "the agent ran and found nothing" from "the agent never started."**
+
