@@ -259,6 +259,31 @@ svg.map{width:100%;height:auto;display:block;min-width:620px}
 .warn{background:rgba(242,163,60,.13);border:1px solid var(--amber);border-radius:8px;
   padding:9px 11px;font-size:11.5px;margin-bottom:9px}
 .warn b{color:var(--amber)}
+/* ---------- the shelf: what each office actually built, with its address ---------- */
+.shelf{display:flex;flex-direction:column;gap:6px;margin:6px 0 0}
+.prow{display:flex;gap:9px;align-items:flex-start;text-decoration:none;color:inherit;
+  background:var(--panel2);border:1px solid var(--edge);border-radius:8px;padding:8px 10px}
+.prow:hover{border-color:var(--gold)}
+.prow .pp{flex:0 0 46px;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+  padding-top:1px}
+.prow .pp.paid{color:var(--money)} .prow .pp.free{color:var(--muted)}
+.prow .pn{flex:1 1 auto;min-width:0}
+.prow .pn b{display:block;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--ink)}
+.prow .pn em{display:block;font-style:normal;font-size:11.5px;color:var(--muted);margin-top:3px;
+  line-height:1.45}
+.prow .pn em.use{color:var(--money)}
+.prow .pv{flex:0 0 auto;font-size:10px;color:var(--faint);white-space:nowrap;padding-top:2px}
+.pnone{margin:6px 0 0;font-size:12px;color:var(--faint)}
+.offices{display:grid;grid-template-columns:repeat(auto-fit,minmax(370px,1fr));gap:10px;
+  margin-top:10px;align-items:start}
+.office{background:var(--panel);border:2px solid var(--edge);border-radius:10px;padding:11px 12px}
+.office h4{margin:0;font-family:"Silkscreen",monospace;font-size:12px;display:flex;gap:7px;
+  align-items:center}
+.office h4 .cnt{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  color:var(--faint)}
+.office .rl{font-size:11px;color:var(--faint);margin:4px 0 0}
+.office .ds{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.45}
+@media(max-width:860px){ .prow .pv{display:none} }
 .obs{font-size:10.5px;color:var(--faint);margin-top:9px}
 footer{padding:16px 12px 26px;font-size:10.5px;color:var(--faint);line-height:1.6}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -328,6 +353,23 @@ function agent(id){ return S.agents.filter(function(x){return x.id===id;})[0]; }
 function nameOf(id){ var a=agent(id); return a?a.display:(id==="chairman"?"Chairman":id); }
 function colourOf(id){ var a=agent(id); return a?st(a).c:"var(--muted)"; }
 function fmt(t){ return !t?"never":t.replace("T"," ").replace("Z","").slice(0,16)+" UTC"; }
+
+/* ---- what each agent actually built, and where to buy it ---- */
+function prodsOf(id){ return (S.products||[]).filter(function(p){return p.owner===id;}); }
+function priceClass(p){ return (p.price==="Free"||p.price==="$0")?"free":"paid"; }
+function shelfRow(p){
+  return '<a class="prow" href="'+esc(p.url)+'" target="_blank" rel="noopener">'+
+    '<span class="pp '+priceClass(p)+'">'+esc(p.price)+'</span>'+
+    '<span class="pn"><b>'+esc(p.name)+'</b>'+
+    (p.what?'<em>'+esc(p.what)+'</em>':'')+
+    (p.usage?'<em class="use">'+esc(p.usage)+'</em>':'')+'</span>'+
+    '<span class="pv">'+(p.venue&&p.venue!=="Storefront"?esc(p.venue)+' ':'')+'\u2197</span></a>';
+}
+function shelfFor(id, empty){
+  var mine=prodsOf(id);
+  if(!mine.length) return '<p class="pnone">'+esc(empty||"Nothing on sale. This desk builds no products.")+'</p>';
+  return '<div class="shelf">'+mine.map(shelfRow).join("")+'</div>';
+}
 
 /* ---- a little person, drawn as blocks so it reads at map scale ---- */
 var PROP = {
@@ -700,13 +742,44 @@ function drawMap(){
     'and every office carries the thing that agent actually works on. A room outlined in red '+
     'holds a blocked agent. The four shared rooms stay visible even when empty, and say why. '+
     'Characters do not walk yet: movement tied to real events is V2, and faking it would make '+
-    'this a cartoon rather than a window.</p>'+ cards();
+    'this a cartoon rather than a window.</p>'+ offices() + cards();
 
   $("v-office").querySelectorAll(".seat").forEach(function(el){
     el.addEventListener("keydown",function(e){
       if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(el.dataset.a); }
     });
   });
+}
+
+/* every office, its agent, and what that agent has actually put on sale */
+function offices(){
+  var live=(S.products||[]).length;
+  return '<div class="card" style="margin-top:12px"><h3>\u25a3 WHAT EACH OFFICE HAS BUILT'+
+    '<span class="n">'+live+' for sale</span></h3>'+
+    '<div class="body" style="max-height:none">'+
+    '<p style="margin:0 0 4px;font-size:12px;color:var(--muted);line-height:1.5">'+
+    esc(S.products_note||"")+'</p>'+
+    '<div class="offices">'+ S.agents.map(function(a){
+      var room=(S.rooms||[]).filter(function(r){return r.id===a.room;})[0];
+      var mine=prodsOf(a.id), s2=st(a);
+      return '<div class="office">'+
+        '<h4><span style="color:'+s2.c+'">\u25cf</span> '+esc(room?room.name:a.display)+
+        '<span class="cnt">'+(mine.length?mine.length+(mine.length===1?" product":" products"):"none")+
+        '</span></h4>'+
+        '<p class="rl">'+esc(a.display)+' \u2014 '+esc(a.role)+'</p>'+
+        '<p class="ds">'+esc(a.current_task)+'</p>'+
+        shelfFor(a.id, a.id==="rnd"?"Builds nothing by design. It tells the builders what to build.":
+                       a.id==="acq"?"Builds nothing by design. Its job is finding the buyer.":
+                       a.id==="it"?"Builds nothing for sale. It keeps the other offices connected.":
+                       a.id==="redteam"?"Builds nothing for sale. It attacks what the others believe.":
+                       "Nothing on sale from this desk.")+
+        '</div>';
+    }).join("")+'</div>'+
+    '<p style="margin:11px 0 0;font-size:12px;color:var(--muted);line-height:1.5">'+
+    'Every link above opens the real page a stranger would land on. The whole shop is at '+
+    '<a href="'+esc(S.storefront||"")+'" target="_blank" rel="noopener" '+
+    'style="color:var(--blue)">'+esc(S.storefront||"")+'</a>.</p>'+
+    '</div>';
 }
 
 function cards(){
@@ -761,7 +834,8 @@ $("v-agents").innerHTML = '<div class="grid">'+ S.agents.map(function(a){
     '<span class="n">'+esc(s.l)+'</span></h3><div class="body" style="max-height:none">'+
     '<p style="margin:0 0 7px;font-size:11.5px;color:var(--faint)">'+esc(a.role)+'</p>'+
     '<p style="margin:0 0 8px;font-size:12.5px;color:var(--muted)">'+esc(a.current_task)+'</p>'+
-    '<div class="mono" style="font-size:10.5px;color:var(--faint)">next run '+esc(fmt(a.next_run))+'</div>'+
+    shelfFor(a.id,"No products from this desk.")+
+    '<div class="mono" style="font-size:10.5px;color:var(--faint);margin-top:9px">next run '+esc(fmt(a.next_run))+'</div>'+
     '<button class="chip" style="margin-top:9px" data-a="'+esc(a.id)+'">Open panel</button>'+
     '</div></div>';
 }).join("") +'</div>';
@@ -810,17 +884,21 @@ $("v-experiments").innerHTML = '<div class="grid">'+ (S.experiments||[]).map(fun
 
 /* products */
 $("v-products").innerHTML = card("Products", (S.products||[]).length+" live",
-  '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12.5px">'+
-  '<tr style="color:var(--faint);font-size:10px;letter-spacing:.07em;text-transform:uppercase">'+
-  '<th style="text-align:left;padding:5px 0">Product</th><th style="text-align:left">Price</th>'+
-  '<th style="text-align:left">Owner</th><th style="text-align:right">Sales</th></tr>'+
-  (S.products||[]).map(function(p){
-    return '<tr style="border-top:1px solid var(--edge)"><td style="padding:7px 0">'+esc(p.name)+
-      '</td><td class="mono">'+esc(p.price)+'</td><td style="color:var(--muted)">'+
-      esc(nameOf(p.owner))+'</td><td class="mono" style="text-align:right;color:var(--muted)">'+
-      p.sales+'</td></tr>';
-  }).join("")+'</table></div>',
-  "Nine products are live and every one has sold zero. Build capacity has never been the constraint.");
+  '<p style="margin:0 0 10px;font-size:12px;color:var(--muted);line-height:1.5">'+
+  esc(S.products_note||"")+'</p>'+
+  S.agents.filter(function(a){return prodsOf(a.id).length;}).map(function(a){
+    var room=(S.rooms||[]).filter(function(r){return r.id===a.room;})[0];
+    return '<div style="margin-bottom:14px">'+
+      '<h4 style="margin:0 0 2px;font-size:10px;letter-spacing:.09em;text-transform:uppercase;'+
+      'color:var(--faint)">Built by '+esc(a.display)+
+      (room&&room.name!==a.display?' \u2014 '+esc(room.name):'')+'</h4>'+
+      shelfFor(a.id)+'</div>';
+  }).join("")+
+  '<p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Whole shop: '+
+  '<a href="'+esc(S.storefront||"")+'" target="_blank" rel="noopener" style="color:var(--blue)">'+
+  esc(S.storefront||"")+'</a></p>',
+  "Ten products live, priced from free to $95, and every one has sold zero. "+
+  "Build capacity has never been the constraint.");
 
 /* customers */
 $("v-customers").innerHTML = card("Customers","0",
@@ -1008,6 +1086,9 @@ function paint(){
       '<dt>Next run</dt><dd class="mono">'+esc(fmt(a.next_run))+'</dd></dl>'+
       '<div class="sec"><h4>Current task</h4><p>'+esc(a.current_task)+'</p></div>'+
       '<div class="sec"><h4>Why</h4><p>'+esc(a.why)+'</p></div>'+
+      '<div class="sec"><h4>What it has put on sale</h4>'+
+        shelfFor(a.id,"Nothing. This desk does not build products \u2014 tap Performance to see what it does produce.")+
+      '</div>'+
       (a.last_result?'<div class="sec"><h4>Result of last run</h4><p>'+esc(a.last_result)+'</p></div>':'')+
       (gate?'<div class="sec"><h4>Blocked by</h4><p style="color:var(--red)"><b>'+esc(gate.title)+
         '</b> — '+gate.minutes+' minutes of chairman time. '+esc(gate.what)+'</p></div>':
@@ -1160,6 +1241,10 @@ function ask(){
     "EVERYTHING THIS COMPANY HAS LIVE, WITH ITS ADDRESS. If the chairman asks for a link, "+
     "GIVE IT \u2014 it is right here, and \"I don\u2019t have it\" would be false:\n"+
     JSON.stringify(S.products,null,1)+"\nStorefront: "+String(S.storefront||"")+"\n\n"+
+    "THE ONES YOU BUILT YOURSELF \u2014 these are yours, name them and give the link when asked "+
+    "what you have made:\n"+
+    (prodsOf(a.id).length?JSON.stringify(prodsOf(a.id),null,1)
+      :"None. You do not build products. Do not claim any of the above as yours.")+"\n\n"+
     "YOUR RECORD:\n"+JSON.stringify(a,null,1)+"\n\n"+
     "WORK YOU OWN:\n"+JSON.stringify(exp,null,1)+"\n\n"+
     "YOUR OPEN MAIL:\n"+JSON.stringify(mine,null,1)+"\n\n"+

@@ -122,6 +122,21 @@ def main():
     for a in agents:
         by_room.setdefault(a["room"], []).append(a)
 
+    prods = {}
+    for pr in s.get("products", []):
+        prods.setdefault(pr["owner"], []).append(pr)
+
+    def shelf(aid):
+        mine = prods.get(aid, [])
+        if not mine:
+            return ""
+        return ('<div class="shelf">' + "".join(
+            '<a class="prow" href="%s" target="_blank" rel="noopener">'
+            '<span class="pp">%s</span><span class="pn"><b>%s</b><em>%s</em></span>'
+            '<span class="pv">&#8599;</span></a>'
+            % (e(pr["url"]), e(pr["price"]), e(pr["name"]), e(pr.get("what", "")))
+            for pr in mine) + "</div>")
+
     office = ""
     for r in s["rooms"]:
         crew = by_room.get(r["id"], [])
@@ -135,7 +150,7 @@ def main():
                 '<div class="person"><span class="ava">%s<span class="dot" style="background:%s">'
                 '</span></span><div class="pm"><div class="pn"><b>%s</b>'
                 '<span class="status" style="color:%s;background:color-mix(in srgb,%s 14%%,transparent)">%s</span></div>'
-                '<div class="prole">%s</div><p class="ptask">%s</p>'
+                '<div class="prole">%s</div><p class="ptask">%s</p>%s'
                 '<div class="pruns">Last run %s &middot; next %s</div></div></div>'
                 % (avatar(a["avatar"], STATUS.get(a["status"], STATUS["IDLE"])[0]),
                    STATUS.get(a["status"], STATUS["IDLE"])[0],
@@ -143,7 +158,7 @@ def main():
                    STATUS.get(a["status"], STATUS["IDLE"])[0],
                    STATUS.get(a["status"], STATUS["IDLE"])[0],
                    STATUS.get(a["status"], STATUS["IDLE"])[1],
-                   e(a["role"]), e(a["current_task"]),
+                   e(a["role"]), e(a["current_task"]), shelf(a["id"]),
                    e(fmt(a["last_run"])), e(fmt(a["next_run"])))
                 for a in crew) + "</div>"
         office += ('<section class="room"><header><h2>%s</h2><p>%s</p></header>%s</section>'
@@ -177,6 +192,10 @@ def main():
         scanned += [("agent %s.%s" % (a["id"], k), a.get(k)) for k in
                     ("display", "role", "current_task", "last_result", "schedule")]
     scanned += [("feed %s" % x["t"], x["text"]) for x in public_feed]
+    for pr in s.get("products", []):
+        scanned += [("product %s.name" % pr["url"], pr["name"]),
+                    ("product %s.what" % pr["url"], pr.get("what")),
+                    ("product %s.usage" % pr["url"], pr.get("usage"))]
     scanned += [("room %s" % r["id"], r["name"] + " -- " + r["line"]) for r in s_rooms]
     # room_empty is not published, so it is not screened.
 
@@ -292,6 +311,17 @@ margin:20px 0 6px}}
 .ev{{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}}
 .ev time{{flex:0 0 78px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--faint);
 padding-top:2px}}
+.shelf{{display:flex;flex-direction:column;gap:6px;margin:8px 0 2px}}
+.prow{{display:flex;gap:9px;align-items:flex-start;text-decoration:none;color:inherit;
+  background:var(--card2);border:1px solid var(--edge);border-radius:8px;padding:8px 10px}}
+.prow:hover{{border-color:var(--money)}}
+.prow .pp{{flex:0 0 42px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+  font-weight:600;color:var(--money);padding-top:1px}}
+.prow .pn{{flex:1 1 auto;min-width:0}}
+.prow .pn b{{display:block;font-size:12.5px;line-height:1.35}}
+.prow .pn em{{display:block;font-style:normal;font-size:11.5px;color:var(--muted);margin-top:3px;
+  line-height:1.45}}
+.prow .pv{{flex:0 0 auto;font-size:11px;color:var(--faint);padding-top:2px}}
 .ev p{{margin:0;font-size:12.5px;color:var(--muted)}}
 footer{{padding:20px 0 34px;font-size:11.5px;color:var(--faint);line-height:1.6}}
 </style></head><body>
@@ -311,7 +341,8 @@ footer{{padding:20px 0 34px;font-size:11.5px;color:var(--faint);line-height:1.6}
 Generated {generated}. This is a snapshot, not a live feed &mdash; it refreshes when the
 daily cycle runs.<br>
 <b>Partial view.</b> Strategy, allocation, owner-gate detail, the knowledge base and the
-graveyard are deliberately not published here; they live in the private office.
+graveyard are deliberately not published here; they live in the private office.<br>
+Every product link above goes to the real page. Nothing here has ever been bought.
 </footer>
 </div></body></html>
 """

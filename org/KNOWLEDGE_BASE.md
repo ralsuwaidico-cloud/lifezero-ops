@@ -1258,3 +1258,45 @@ what is one-time versus recurring owner labour for each; whether any can be set 
 all; and — said plainly if it is the answer — whether **no readable inbox exists for us**, in which
 case the inbox stops being a candidate for the reach budget and the chairman is told so in those
 words.
+
+
+## KB-155 · The company could not name its own products, and three of them were invisible for a month. **MEASUREMENT.**
+
+The chairman, 2026-09-29: *"Can you present all the products that they produced."* Answering it
+honestly required reading the storefront rather than our own records, and the two did not agree.
+
+**The company believed it had six live products and one marketplace listing. It has nine live
+products and one marketplace listing.** The three that were missing are the three oldest — a $24
+UAE bookkeeping tracker, a $19 reseller tracker, and a **$95 done-for-you spreadsheet build**. All
+three are published, all three load for a stranger (HTTP 200, checked from outside), all three have
+sold nothing, and none of them appeared anywhere in this organization's own view of itself.
+
+**Cause.** The storefront's product-list endpoint returns at most ten records and does not say so.
+It has no cursor, no total, and asking for page 2 returns page 1 again, so pagination looks complete
+when it is truncated. Four unpublished internal file archives sit in the same list and consumed four
+of the ten slots, pushing three real products off the end. Fetching each of the three by its own id
+returns it immediately, `published: true`, `deleted: false` — so nothing was wrong with the products,
+only with the list we were reading.
+
+**Why this is worse than a display bug.** The $95 listing is the only thing this company sells that
+is *work* rather than a file, and it is the highest-priced thing we have. For weeks the board has
+been arguing about what to build and how to reach a buyer while the most commercially interesting
+offer we own was not in any document an agent reads. Every agent that answered "what do we sell"
+answered from the truncated list. **We were not measuring our own inventory; we were measuring the
+first page of it.**
+
+**The general form, and it has bitten this company before.** KB-112: `view_count` is null on every
+product, so a funnel test could never produce a signal. KB-149: "it ran" only ever meant "it was
+woken". Now this. *An API that answers is not the same as an API that answers completely.* A list
+endpoint with no total and no cursor must be treated as truncated until proved otherwise, and the
+proof is a per-id fetch of something you already know exists.
+
+**Fixed now:** the office lists all ten products, grouped under the office that built them, each one
+a working link, on the private page and the public one. The counter in the top bar reads 10.
+
+**Not fixed:** nothing reads the storefront by id on a schedule, so a fourth product could go missing
+the same way tomorrow. That belongs to whoever next touches `pull_sales.py`.
+
+**Also recorded, separately:** the marketplace listing now shows 8 total runs, of which 4 are not
+ours, and the most recent started 2026-09-29 18:56 UTC and was not us. That is the fourth time a
+stranger has run something this company built.
