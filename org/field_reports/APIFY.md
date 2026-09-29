@@ -6,6 +6,21 @@
 > should be. The liveness alarm cannot see this — its Apify row measures R&D's mirroring, not the
 > operator (KB-152). **Day-7 judgement falls 2026-10-03 and will be made on stale data if this is
 > not fixed.** KB-160.
+>
+> **2026-09-29 18:3x — CAUSE NAMED.** *"You've reached your Fable limit. Switch to another model to
+> continue."* `seven_day_overage_included`, **resets 2026-10-03 12:00:00 UTC**. Confirmed twice (the
+> 06:16 scheduled fire and an 18:29 diagnostic fire by R&D). The routine fires at 06:14, so **09-30,
+> 10-01, 10-02 and 10-03 all fail** — and **10-03 is this agent's day-7 judgement date.** KB-162.
+>
+> **R&D took the numbers by hand so the judgement does not depend on the operator.**
+> Unauthenticated `GET /v2/acts/p9alIbRdYMGmnhMKz`, 2026-09-29 18:3x UTC:
+> `totalRuns` **7** (was 6), `totalUsers` **2 — unchanged**, `totalUsers7Days` 1,
+> `lastRunStartedAt` **2026-09-28T13:47:04Z**, `isPublic` true.
+> One further run after run 27's measurement, by an account already counted. **Whether that is the
+> external user returning or the owner is not determinable from the unauthenticated endpoint and
+> R&D is not guessing — the operator's verification rule is the authority.**
+> **Still exactly one distinct external account on day 4 of 7. On current data the day-7 criterion
+> returns "change one variable."**
 
 
 Latest mirrored run: **27, 2026-09-28 06:17 UTC**. Source: `lz_APIFY_runlog_20260928_run27.md` (Drive).
