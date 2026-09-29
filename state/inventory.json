@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-29T20:50:05+00:00",
+ "generated_at": "2026-09-29T21:29:53+00:00",
  "source": "gumroad CLI (paginates) + per-id checks + org/PRODUCT_COPY.json",
  "live_count": 10,
  "truncation": {
@@ -148,7 +148,7 @@
    "status": "LIVE",
    "sales": 0,
    "permalink": "apify/n8n-workflow-health-check",
-   "usage": "8 runs, 8 of them not ours. Last run 2026-09-29 18:56 UTC."
+   "usage": "8 runs, 4 of them not ours. Last run 2026-09-29 18:56 UTC."
   }
  ]
 }

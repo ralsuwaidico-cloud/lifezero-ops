@@ -1364,3 +1364,48 @@ correctness in the lab is not the deliverable.**
 The standing rule this produces: **before shipping anything interactive to this page, ask what it
 does in a standalone home-screen app**, because that is where it will be used. New tabs, downloads,
 print, pop-ups and external schemes all behave differently there, and every one of them fails quietly.
+
+
+## KB-157 · The chairman lost the right-hand edge, and the checker I had just written could not see it. **MEASUREMENT.**
+
+2026-09-29, a screenshot with no words: the agent panel open on a phone, and every line in it
+cut off at the right. The tab row, the chat bubble, the suggested questions, the send button, the
+small print — all clipped at the same boundary, with the panel's left edge sitting slightly inside
+the screen.
+
+**I could not reproduce it.** Four phone widths, 320 to 430, every view, the panel open on two
+different agents, all three panel tabs — and with the real webfonts loaded over http, which matters
+because the fallback fonts are narrower and make a too-wide layout pass. Nothing overflowed anywhere.
+That is recorded as a failure to reproduce, not as evidence the chairman is wrong: he is looking at
+the thing and I am looking at a model of it.
+
+### What was done anyway, because it is correct regardless of cause
+
+The symptom — a fixed overlay drawn wider than the screen — is what happens when a page overflows
+sideways, because that widens the layout viewport and every fixed element is then sized to the wider
+one. So the page is now built so it cannot overflow sideways even if a future edit tries: `overflow-x:
+clip` on the document as a backstop, the panel capped at `100vw` and centred rather than stretched,
+every grid track written `minmax(min(370px, 100%), 1fr)` instead of `minmax(370px, 1fr)` — a 370px
+minimum track in a 350px column is an overflow with no warning, and I had introduced exactly that
+two turns earlier — and the tab row, the ask row and the suggested questions given `min-width: 0` so
+they shrink instead of pushing.
+
+### The part worth keeping
+
+`scripts/check_office.js` now runs the states the chairman actually uses: four widths, every view the
+bottom bar reaches, the panel open on two agents across all three of its tabs, the real fonts when
+the network allows. It fails the build rather than warning. It also refuses any link that asks for a
+new tab (KB-156) and any product card whose printed address is not its link.
+
+**Its first version was wrong in a way worth writing down.** It skipped any element inside a box whose
+computed `overflow-x` was `auto` or `scroll`, meaning to excuse the floor plan and the stat strips.
+But a box with `overflow-y: auto` gets `overflow-x: auto` computed for free, and nearly all of this
+page sits inside `.card .body`, which scrolls vertically. So the checker silently excused most of the
+page: a planted 520px-wide block on a 320px screen passed. It now uses an explicit list of the three
+things allowed to scroll sideways. *A rule inferred from computed style drifted; a named list cannot.*
+
+Four faults were planted to test it. It caught three — an over-wide control in the panel, an over-wide
+block in the page, an over-wide product card. **It did not catch the fourth**, a product name forced
+onto one line: the box stays the right size and the text is clipped inside it, which box geometry
+cannot see. That is a different defect class and it is still uncovered. Said here rather than left
+implied, because the value of a check is exactly the set of things it can fail on.

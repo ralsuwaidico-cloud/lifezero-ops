@@ -74,7 +74,7 @@
    ],
    "public_task": "Ordered more products into the one channel where strangers have actually arrived.",
    "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting.",
-   "say": "Links were dead. Never tested it his way."
+   "say": "Couldn't reproduce it. Fixed it anyway."
   },
   {
    "id": "rnd",
@@ -696,6 +696,21 @@
    "t": "2026-09-29T20:57Z",
    "who": "ceo",
    "text": "The real lesson is worse than the bug. We had never once opened this page the way the only person who reads it opens it. Every check we run — screenshots, the validator, the injection tests — runs it as an ordinary web page. Correct in the lab is not the same as working."
+  },
+  {
+   "t": "2026-09-29T21:10Z",
+   "who": "ceo",
+   "text": "Chairman sent a picture of the page with the whole right-hand edge cut off. I could not reproduce it at any phone size, with the real fonts, in any view, with the panel open — recorded as failed to reproduce, not as him being wrong."
+  },
+  {
+   "t": "2026-09-29T21:14Z",
+   "who": "ceo",
+   "text": "Made the page unable to overflow sideways anyway, which is the only thing that can push a panel off a phone screen. One cause was mine from two hours earlier: I set a minimum column width wider than a phone column, which overflows silently."
+  },
+  {
+   "t": "2026-09-29T21:18Z",
+   "who": "ceo",
+   "text": "The page is now machine-checked in the states he actually uses — four phone sizes, every screen, the panel open, the real fonts — and it fails rather than warns. The first version of that check was itself broken and excused most of the page; a planted fault got through. Fixed, then re-planted four faults: it catches three and I have written down the one it still cannot."
   }
  ],
  "messages": [
@@ -1260,7 +1275,7 @@
    "status": "LIVE",
    "sales": 0,
    "permalink": "apify/n8n-workflow-health-check",
-   "usage": "8 runs, 8 of them not ours. Last run 2026-09-29 18:56 UTC."
+   "usage": "8 runs, 4 of them not ours. Last run 2026-09-29 18:56 UTC."
   }
  ],
  "capabilities": [

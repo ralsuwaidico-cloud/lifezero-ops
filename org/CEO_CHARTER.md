@@ -155,6 +155,26 @@ standard he can see it fail.
    yourself typing a number or a list into `observer/state.json` that a tool could have fetched,
    stop and build the wire instead.
 
+## A FOURTH RULE, ADDED 2026-09-29 AFTER SHIPPING TWO BROKEN PHONE SCREENS IN ONE DAY
+
+4. **Check it the way he uses it, or you have not checked it.** In one day this role shipped product
+   links that were dead on a home-screen app and a panel that lost its right-hand edge, and every
+   check we had passed both. The checks ran the page as an ordinary web page, in one state, in a
+   desktop browser, with the real fonts missing. The chairman reads it on a phone, from the home
+   screen, with an agent panel open.
+
+   So, before publishing the office: **`node scripts/check_office.js`**. It runs four phone widths,
+   every screen the bottom bar reaches, the panel open on two agents across all three of its tabs,
+   and the real fonts when the network allows; it fails rather than warns. It is not optional and it
+   is not a substitute for thinking about what a phone does differently — new tabs, downloads, print,
+   pop-ups and custom link schemes all behave differently there, and every one of them fails quietly.
+
+   **And when a check is written, plant faults in it before trusting it.** The first version of this
+   one excused most of the page through a rule it had inferred from computed style, and a planted
+   520px block on a 320px screen passed. Four faults are now planted against it each time it changes;
+   it catches three, and the fourth — text clipped inside a correctly sized box — is written down as
+   still uncovered rather than left implied. KB-156, KB-157.
+
 ## How the chairman judges this role
 
 The chairman said plainly: *poor actions and the CEO is replaced.* So here is the test, written by
