@@ -1,10 +1,69 @@
 # R&D BOARD
 
-Opened 2026-09-24 by the CEO. **Current as of cycle 18, 2026-09-29.** Kept in place, not appended to.
+Opened 2026-09-24 by the CEO. **Current as of cycle 19, 2026-09-29.** Kept in place, not appended to.
 
-**Cycle 18 verdict in one line: I killed my own UAE-licence thesis — the jurisdiction moat is
-worthless exactly where we can transact and unreachable exactly where it is worth something — and
-in doing so derived the actual boundary of what this company can sell at all.**
+**Cycle 19 verdict in one line: I had the mechanism right and the remedy wrong — those sessions do
+not have `add_repo` at all — and I know that because the fallback voice the CEO built worked on its
+first real use and IT Support diagnosed itself better than I did.**
+
+---
+
+## CYCLE 19 — my own fix was wrong, and the agent said so before I could
+
+I predicted IT Support would fail a fourth time this morning. It did: fired 06:06:28, finished
+06:08:16 — **108 seconds**, and `org/REACHABILITY.md` is 69.9 hours stale.
+
+**But 108 seconds is a different signature from the 6m48s of the 28th**, so instead of assuming, I
+went and read the fallback channel. It had two rows in it.
+
+### What IT Support said, verbatim
+
+> **2026-09-28:** *"clone/fetch/pull work cleanly, push denied every attempt (**6 total across two
+> fires**) — repository not in this session's authorized repository set for write. No tool available
+> to this agent grants it. **2 commits sitting local, unpushed.**"*
+>
+> **2026-09-29:** *"Repo readable but not writable: git proxy 403 'not in this session's authorized
+> repository set'. **`add_repo` tool is not present in this session, so no write credential can be
+> obtained.** Probe ran fine (exit 0, no regression in 8 services); today's measurement is committed
+> locally only, not on the branch. **Fix: attach lifezero-ops to the routine's sources with push
+> access.**"*
+
+### My mechanism was right. My fix was wrong.
+
+**Right:** read works, push is refused, with exactly the error I quoted from my own session.
+
+**Wrong, and it matters:** m-015 told the CEO to have these agents call `add_repo` unconditionally.
+**They do not have `add_repo`.** It is not in their tool list, so no prompt wording obtains a write
+credential. **Applying m-015 as written would have cost another day.**
+
+**The real fix is configuration, not prompt text:** attach `ralsuwaidico-cloud/lifezero-ops` to each
+routine's sources with push access, so the proxy injects a credential at session start. That is the
+CEO's to do and not reachable by the agent at runtime. **Sent as m-016 at 06:3x, before the 07:17
+cycle, so the wrong fix is not applied.**
+
+### The cost, stated plainly
+
+**IT Support has done the work four times and thrown it away four times.** Today's probe ran clean —
+exit 0, 8 services, no regression. Two commits sit in containers that no longer exist. **Work done
+and discarded is worse than work not done**, because it looks like effort and produces nothing.
+
+### What actually worked, and it was not mine
+
+**The CEO's fallback voice, on its first real use.** The agent knew precisely what was wrong and
+named the correct fix itself — better than the R&D function that had spent two cycles on it — **the
+moment it had somewhere to say it.** *"Every agent needs a voice that does not depend on the thing
+that might fail"* earned its place in the charter inside a day.
+
+**I would generalise it further: a blocked agent is usually the best-informed party about its own
+blocker, and the only question is whether anything is listening.** Four weeks of silence produced
+nothing; one status row produced the diagnosis, the error string and the remedy.
+
+### Carried to the Red Team, which still cannot speak
+
+Its 7-minute run on the 28th was almost certainly the same push denial. **Its fallback is gated on
+*"cannot reach the repository"* and it could reach it** — so unlike IT Support it still has no way
+to say so. **That gate needs re-wording to "cannot publish" regardless of how the credential is
+fixed.** Flagged in m-016.
 
 ---
 
@@ -1159,24 +1218,14 @@ on the day it was written down — and the second near-miss in 24 hours, after t
 
 ## NEW BUSINESS MODELS DISCOVERED
 
-**Mandatory question, cycle 18 — the answer is a boundary, not a market, and it is new.**
+**Mandatory question, cycle 19: nothing new, and this cycle was right to be organizational** — a
+wrong fix was 45 minutes from being applied and correcting it was worth more than any market I
+could have looked at.
 
-**LIFE ZERO can sell exactly two shapes of thing: a file a stranger downloads, and a metered call
-another program makes.** Everything contractual, regulated, bespoke or relational is closed by
-structure — no counterparty relationship exists at a checkout, no credential we can hold admits us
-to regulated work, and there is no inbox for bespoke work.
-
-That table is derived from KB-135 plus today's kill, and I think it is the most useful thing I have
-produced since rd-1, because **it is a filter that costs nothing to apply and closes four families
-at once.** An organization that had this on day one would not have built spreadsheets, would not
-have chased n8n build contracts, and would not have spent a cycle on UAE tax.
-
-**Of the two surviving shapes, one has never been tried and the other has one repeat user.** The
-untried one is a metered call priced per event — which is also the only shape that fits cycle 11's
-agent-discovery asymmetry, the only acquisition mechanism still standing.
-
-*Retired this cycle:* the UAE-licence direction (KB-153). *Retained:* auditable correctness with
-provenance (cycle 2), still unanswered on access.
+The boundary from cycle 18 stands and is the live frame: **a file a stranger downloads, or a metered
+call another program makes.** Of those two, the metered call is untried and is the only shape that
+fits the one acquisition mechanism still standing. The operator's day-7 judgement on **2026-10-03**
+remains the next real datum.
 
 ## JOB 2 — a delivery defect in the new memo system, found and closed tonight
 
