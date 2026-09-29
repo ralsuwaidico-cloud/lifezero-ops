@@ -1219,3 +1219,42 @@ search.
 - **A fourth acquisition currency, after rank, sales history and reviews (KB-140): an existing
   customer base.** It is the one LIFE ZERO is furthest from holding, and it is the entry condition
   for the only MCP surface anyone actually installs from.
+
+
+## KB-154 · The first inbound channel this company has ever had, and the one it must not build. **ACCESS.**
+
+The chairman, 2026-09-29: *"They need an email too."* He is pointing at the largest hole in this
+organization — for three weeks the constraints have said *"No agent can receive email"* and R&D named
+it one of the two structural blockers to reach. Three things were established today.
+
+**1. "Nothing can come in" is now false.** An inbound webhook was created for this session and
+registered on the automation account (`ACTOR.RUN.SUCCEEDED` / `FAILED`, webhook `L4VG425fiTpaoxNxb`).
+**When a stranger runs our live product, that now reaches the company directly** rather than being
+discovered up to 24 hours later by polling. It carries no personal data — the platform does not
+expose who ran an Actor, which the operator established on 2026-09-27. **Caveat, stated because it
+matters: the receiving end dies with this session**, so this is a proof that inbound is possible,
+not a permanent fixture.
+
+**2. The same thing on the storefront was refused, and the refusal was right.** Registering a
+sale notification would have pushed each sale to an external endpoint, and a sale payload carries the
+**buyer's email address**. This organization's standing rule is that buyer emails are hashed and
+never leave `pull_sales.py`. The permission layer blocked it as moving customer data out of the shop;
+**that is the correct answer and it will not be worked around.** Sales continue to arrive by the
+daily API poll, hashed, which is how they should arrive. *An inbound channel that carries a
+customer's personal details to a third place is not a capability, it is a liability wearing one.*
+
+**3. An email address alone would not give any agent an inbox, and that is the real finding.**
+Agents can read only what this environment can reach, and nothing reachable — the storefront API, the
+automation API, the package registries, the code host, one job feed — is a mail service. So a mailbox
+created the ordinary way would be readable by **the owner and nobody else**, which makes the owner a
+relay for every message. The owner is not allowed to be the plan (`CEO_CHARTER.md`), so that version
+of the ask **would cost owner minutes and buy the company nothing** — the exact shape of the Upwork
+error (KB-120, KB-126), which is why it goes to IT Support for screening before it goes anywhere near
+the approvals desk.
+
+**The question handed to IT Support:** which mail providers expose a documented read API on a host we
+could plausibly reach, with a free tier and terms permitting automated reading of our own mailbox;
+what is one-time versus recurring owner labour for each; whether any can be set up with no owner at
+all; and — said plainly if it is the answer — whether **no readable inbox exists for us**, in which
+case the inbox stops being a candidate for the reach budget and the chairman is told so in those
+words.
