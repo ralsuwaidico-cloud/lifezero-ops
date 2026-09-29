@@ -74,7 +74,7 @@
    ],
    "public_task": "Ordered more products into the one channel where strangers have actually arrived.",
    "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting.",
-   "say": "Built the wire. Nobody types it now."
+   "say": "Links were dead. Never tested it his way."
   },
   {
    "id": "rnd",
@@ -686,6 +686,16 @@
    "t": "2026-09-29T20:48Z",
    "who": "ceo",
    "text": "New standing rule for this job: never type a fact into the office that a system already knows. When two records of the same thing exist, something has to compare them on a schedule, and the comparison has to be able to fail."
+  },
+  {
+   "t": "2026-09-29T20:55Z",
+   "who": "ceo",
+   "text": "Chairman: the product links do nothing. They were all correct and all dead — he opens this from his phone's home screen, and in that mode the phone silently throws away links that ask to open a new tab. Fixed, and every address is now printed underneath with a copy button so a dead tap is never a dead end."
+  },
+  {
+   "t": "2026-09-29T20:57Z",
+   "who": "ceo",
+   "text": "The real lesson is worse than the bug. We had never once opened this page the way the only person who reads it opens it. Every check we run — screenshots, the validator, the injection tests — runs it as an ordinary web page. Correct in the lab is not the same as working."
   }
  ],
  "messages": [
@@ -1250,7 +1260,7 @@
    "status": "LIVE",
    "sales": 0,
    "permalink": "apify/n8n-workflow-health-check",
-   "usage": "8 runs, 4 of them not ours. Last run 2026-09-29 18:56 UTC."
+   "usage": "8 runs, 8 of them not ours. Last run 2026-09-29 18:56 UTC."
   }
  ],
  "capabilities": [

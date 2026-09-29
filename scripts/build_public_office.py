@@ -131,10 +131,12 @@ def main():
         if not mine:
             return ""
         return ('<div class="shelf">' + "".join(
-            '<a class="prow" href="%s" target="_blank" rel="noopener">'
+            '<div class="pcard"><a class="prow" href="%s" rel="noopener">'
             '<span class="pp">%s</span><span class="pn"><b>%s</b><em>%s</em></span>'
             '<span class="pv">&#8599;</span></a>'
-            % (e(pr["url"]), e(pr["price"]), e(pr["name"]), e(pr.get("what", "")))
+            '<div class="paddr">%s</div></div>'
+            % (e(pr["url"]), e(pr["price"]), e(pr["name"]), e(pr.get("what", "")),
+               e(pr["url"]))
             for pr in mine) + "</div>")
 
     office = ""
@@ -322,6 +324,11 @@ padding-top:2px}}
 .prow .pn em{{display:block;font-style:normal;font-size:11.5px;color:var(--muted);margin-top:3px;
   line-height:1.45}}
 .prow .pv{{flex:0 0 auto;font-size:11px;color:var(--faint);padding-top:2px}}
+.pcard{{background:var(--card2);border:1px solid var(--edge);border-radius:8px;overflow:hidden}}
+.pcard .prow{{background:none;border:0;border-radius:0;padding:8px 10px 5px}}
+.paddr{{padding:0 10px 8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10.5px;color:var(--faint);overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;-webkit-user-select:all;user-select:all}}
 .ev p{{margin:0;font-size:12.5px;color:var(--muted)}}
 footer{{padding:20px 0 34px;font-size:11.5px;color:var(--faint);line-height:1.6}}
 </style></head><body>

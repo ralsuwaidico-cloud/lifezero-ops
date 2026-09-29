@@ -273,6 +273,20 @@ svg.map{width:100%;height:auto;display:block;min-width:620px}
   line-height:1.45}
 .prow .pn em.use{color:var(--money)}
 .prow .pv{flex:0 0 auto;font-size:10px;color:var(--faint);white-space:nowrap;padding-top:2px}
+.pcard{background:var(--panel2);border:1px solid var(--edge);border-radius:8px;overflow:hidden}
+.pcard .prow{background:none;border:0;border-radius:0;padding:8px 10px 6px}
+.pcard:hover{border-color:var(--gold)}
+/* The address, in plain sight. If a tap does nothing -- which is what a home-screen
+   app used to do to every one of these -- the chairman can still read it or copy it. */
+.paddr{display:flex;gap:8px;align-items:center;padding:0 10px 8px}
+.paddr .u{flex:1 1 auto;min-width:0;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  -webkit-user-select:all;user-select:all}
+.paddr .cp{flex:0 0 auto;background:var(--panel);border:1px solid var(--edge);color:var(--muted);
+  border-radius:6px;font-size:10.5px;padding:4px 9px;min-height:28px;cursor:pointer;
+  font-family:inherit}
+.paddr .cp:hover{border-color:var(--blue);color:var(--blue)}
+.paddr .cp.ok{border-color:var(--money);color:var(--money)}
 .pnone{margin:6px 0 0;font-size:12px;color:var(--faint)}
 .offices{display:grid;grid-template-columns:repeat(auto-fit,minmax(370px,1fr));gap:10px;
   margin-top:10px;align-items:start}
@@ -358,12 +372,20 @@ function fmt(t){ return !t?"never":t.replace("T"," ").replace("Z","").slice(0,16
 function prodsOf(id){ return (S.products||[]).filter(function(p){return p.owner===id;}); }
 function priceClass(p){ return (p.price==="Free"||p.price==="$0")?"free":"paid"; }
 function shelfRow(p){
-  return '<a class="prow" href="'+esc(p.url)+'" target="_blank" rel="noopener">'+
+  /* Deliberately no new-tab target. Added to the home screen this page runs as a
+     standalone app, and iOS drops new-tab links on the floor -- the chairman taps a
+     product and nothing happens at all. A same-view link works everywhere, and the
+     address is printed underneath so a tap that still does nothing is not a dead end. */
+  return '<div class="pcard">'+
+    '<a class="prow" href="'+esc(p.url)+'" rel="noopener">'+
     '<span class="pp '+priceClass(p)+'">'+esc(p.price)+'</span>'+
     '<span class="pn"><b>'+esc(p.name)+'</b>'+
     (p.what?'<em>'+esc(p.what)+'</em>':'')+
     (p.usage?'<em class="use">'+esc(p.usage)+'</em>':'')+'</span>'+
-    '<span class="pv">'+(p.venue&&p.venue!=="Storefront"?esc(p.venue)+' ':'')+'\u2197</span></a>';
+    '<span class="pv">'+(p.venue&&p.venue!=="Storefront"?esc(p.venue)+' ':'')+'\u2197</span></a>'+
+    '<div class="paddr"><span class="u">'+esc(p.url)+'</span>'+
+    '<button class="cp" type="button" data-u="'+esc(p.url)+'">Copy</button></div>'+
+    '</div>';
 }
 function shelfFor(id, empty){
   var mine=prodsOf(id);
@@ -777,7 +799,7 @@ function offices(){
     }).join("")+'</div>'+
     '<p style="margin:11px 0 0;font-size:12px;color:var(--muted);line-height:1.5">'+
     'Every link above opens the real page a stranger would land on. The whole shop is at '+
-    '<a href="'+esc(S.storefront||"")+'" target="_blank" rel="noopener" '+
+    '<a href="'+esc(S.storefront||"")+'" rel="noopener" '+
     'style="color:var(--blue)">'+esc(S.storefront||"")+'</a>.</p>'+
     '</div>';
 }
@@ -895,7 +917,7 @@ $("v-products").innerHTML = card("Products", (S.products||[]).length+" live",
       shelfFor(a.id)+'</div>';
   }).join("")+
   '<p style="margin:0;font-size:12px;color:var(--muted);line-height:1.5">Whole shop: '+
-  '<a href="'+esc(S.storefront||"")+'" target="_blank" rel="noopener" style="color:var(--blue)">'+
+  '<a href="'+esc(S.storefront||"")+'" rel="noopener" style="color:var(--blue)">'+
   esc(S.storefront||"")+'</a></p>',
   "Ten products live, priced from free to $95, and every one has sold zero. "+
   "Build capacity has never been the constraint.");
@@ -1051,6 +1073,30 @@ function close(){
 }
 $("pclose").onclick=close; $("scrim").onclick=close;
 document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&cur) close(); });
+/* Copy an address. Runs inside the click, which is the only time the clipboard is
+   granted, and falls back to selecting the text when it is refused -- an older app
+   view will reject it and the chairman should still end up with the address. */
+document.addEventListener("click",function(e){
+  var b=e.target.closest&&e.target.closest(".cp"); if(!b) return;
+  e.preventDefault();
+  var url=b.dataset.u, done=function(){ b.textContent="Copied"; b.classList.add("ok");
+    setTimeout(function(){ b.textContent="Copy"; b.classList.remove("ok"); },1600); };
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done,function(){ select(b); });
+    } else { select(b); }
+  }catch(err){ select(b); }
+  function select(btn){
+    var span=btn.parentNode.querySelector(".u");
+    try{
+      var r=document.createRange(); r.selectNodeContents(span);
+      var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      btn.textContent="Selected \u2014 hold to copy";
+      setTimeout(function(){ btn.textContent="Copy"; },2600);
+    }catch(e2){}
+  }
+});
+
 document.addEventListener("click",function(e){
   var t=e.target, hit=null;
   while(t&&t!==document){

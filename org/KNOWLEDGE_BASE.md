@@ -1330,3 +1330,37 @@ able to fail.
 started 2026-09-29 18:56 UTC and was not us — the fourth time a stranger has run something this
 company built. And `data/scoreboard.json` had not been refreshed since 2026-09-14; it has been, and
 still reads zero sales, zero revenue.
+
+
+## KB-156 · The links did nothing, because the chairman does not open this in a browser. **ACCESS.**
+
+Reported 2026-09-29, one turn after the product links shipped: *"The links is not reflection."* They
+were tapping and nothing was happening.
+
+Nothing was wrong with the addresses. Every one of them was correct, live, and returned 200 when
+loaded from outside. **The chairman opens this page from his phone's home screen**, which he told us
+on 2026-09-26 and which this page's own manifest and `apple-mobile-web-app-capable` tag are there to
+support. A page launched that way runs as a standalone app, and **in standalone mode iOS silently
+discards links that ask for a new tab.** No error, no navigation, nothing. Every product link on the
+page carried `target="_blank"`, so every one of them was dead for the only person who uses the page.
+
+Two things follow, and the second is the general one.
+
+**1. Fixed:** no link on this page asks for a new tab any more; the artifact host already opens
+external addresses outside the page, so the attribute bought nothing and cost everything. The address
+is now also printed under each product in plain, selectable text with a Copy button, so a tap that
+still does nothing leaves the chairman holding the address rather than holding nothing. The copy path
+was proved twice — once with the clipboard granted, and once with it forced to refuse, where it falls
+back to selecting the text.
+
+**2. The general form:** *we had never once opened this page the way its only reader opens it.* Every
+check ever run against this interface — screenshots at two widths, the validator, the injection
+tests — ran it as a normal web page in a normal browser. The one environment that matters was never
+tested, so a defect that made the page's newest feature completely inert survived every check we
+have. This is the same shape as KB-149 ("it ran" meant "it was woken") and KB-155 (a complete record
+nothing compared to the page): **a check that does not run in the real conditions is not a check, and
+correctness in the lab is not the deliverable.**
+
+The standing rule this produces: **before shipping anything interactive to this page, ask what it
+does in a standalone home-screen app**, because that is where it will be used. New tabs, downloads,
+print, pop-ups and external schemes all behave differently there, and every one of them fails quietly.
