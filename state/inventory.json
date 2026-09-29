@@ -1,0 +1,154 @@
+{
+ "generated_at": "2026-09-29T20:28:01+00:00",
+ "source": "gumroad CLI (paginates) + per-id checks + org/PRODUCT_COPY.json",
+ "live_count": 10,
+ "truncation": {
+  "cli_records": 13,
+  "rest_records": 10,
+  "rest_hides": 3
+ },
+ "internal_not_for_sale": [
+  {
+   "permalink": "pfwqb",
+   "name": "Internal state backup V003 (not for sale)",
+   "url": "https://ralsuwaidi3.gumroad.com/l/pfwqb"
+  },
+  {
+   "permalink": "qbyjzn",
+   "name": "Internal build archive 3 - pack (not for sale)",
+   "url": "https://ralsuwaidi3.gumroad.com/l/qbyjzn"
+  },
+  {
+   "permalink": "ejluo",
+   "name": "Internal build archive 2 - checker (not for sale)",
+   "url": "https://ralsuwaidi3.gumroad.com/l/ejluo"
+  },
+  {
+   "permalink": "xrvdno",
+   "name": "Internal build archive (not for sale)",
+   "url": "https://ralsuwaidi3.gumroad.com/l/xrvdno"
+  }
+ ],
+ "products": [
+  {
+   "name": "Missed your UAE Corporate Tax deadline? Penalty worksheet, waiver and reconsideration letters",
+   "what": "For someone already late: what they owe, and the letters to ask for it to be waived.",
+   "price": "$19",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-ct-return-pack",
+   "owner": "v003",
+   "venue": "Storefront",
+   "status": "LIVE",
+   "sales": 0,
+   "permalink": "uae-ct-return-pack",
+   "full_name": "Missed your UAE Corporate Tax deadline? Penalty worksheet, waiver and reconsideration letters, and the full self-filing guide"
+  },
+  {
+   "name": "GH-900 Practice Questions — Free 50, with Explanations + Offline Quiz App",
+   "what": "Fifty original GitHub Foundations exam questions, free, with the reasoning for every answer.",
+   "price": "Free",
+   "url": "https://ralsuwaidi3.gumroad.com/l/gh900-free-50",
+   "owner": "v008",
+   "venue": "Storefront",
+   "status": "LIVE",
+   "sales": 0,
+   "permalink": "gh900-free-50",
+   "full_name": "GH-900 Practice Questions — Free 50 (GitHub Foundations) with Explanations + Offline Quiz App"
+  },
+  {
+   "name": "GitHub Foundations GH-900 Practice Exam — 300 Questions",
+   "what": "Three hundred more original questions with explanations, an offline quiz app and a PDF. Every answer traced to official documentation.",
+   "price": "$9",
+   "url": "https://ralsuwaidi3.gumroad.com/l/gh-900-practice-questions",
+   "owner": "v008",
+   "venue": "Storefront",
+   "status": "LIVE",
+   "sales": 0,
+   "permalink": "gh-900-practice-questions",
+   "full_name": "GitHub Foundations GH-900 Practice Exam — 300 Questions with Explanations, Offline Quiz App + PDF"
+  },
+  {
+   "name": "How do I file my UAE Corporate Tax return myself?",
+   "what": "The whole filing, step by step, for a freelancer or small business doing it without an accountant. Every step cited to UAE tax law.",
+   "price": "$9",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-ct-return-guide",
+   "owner": "v003",
+   "venue": "Storefront",
+   "status": "LIVE",
+   "sales": 0,
+   "permalink": "uae-ct-return-guide",
+   "full_name": "How do I file my UAE Corporate Tax return myself? A step-by-step guide for freelancers and small businesses (2026)"
+  },
+  {
+   "name": "When is my UAE Corporate Tax return due? Free deadline and penalty checker",
+   "what": "Type your licence date, get your filing deadline and what the penalty is if you miss it. Free.",
+   "price": "Free",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-ct-deadline-checker",
+   "owner": "v003",
+   "venue": "Storefront",
+   "status": "LIVE",
+   "sales": 0,
+   "permalink": "uae-ct-deadline-checker",
+   "full_name": "When is my UAE Corporate Tax return due? Free deadline and penalty checker (2026)"
+  },
+  {
+   "name": "FREE Reseller Profit-After-Fees Calculator 2026",
+   "what": "A free calculator that shows what a reseller actually keeps after each marketplace takes its cut. Built as the free door to the $19 tracker.",
+   "price": "Free",
+   "url": "https://ralsuwaidi3.gumroad.com/l/reseller-fee-calculator",
+   "owner": "ceo",
+   "venue": "Storefront",
+   "status": "LIVE",
+   "sales": 0,
+   "permalink": "reseller-fee-calculator",
+   "full_name": "FREE Reseller Profit-After-Fees Calculator 2026 — eBay, Poshmark, Mercari, Depop, Facebook Marketplace (Excel / Google Sheets)"
+  },
+  {
+   "name": "UAE Freelancer & Small Business Bookkeeping Tracker 2026",
+   "what": "A spreadsheet that keeps a small UAE business's books and works out its VAT return and corporate tax estimate.",
+   "price": "$24",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-vat-ct-tracker",
+   "owner": "ceo",
+   "venue": "Storefront",
+   "status": "LIVE",
+   "sales": 0,
+   "permalink": "uae-vat-ct-tracker",
+   "full_name": "UAE Freelancer & Small Business Bookkeeping Tracker 2026 — VAT Return + Corporate Tax Estimate (Excel / Google Sheets)"
+  },
+  {
+   "name": "Reseller Inventory & Profit Tracker 2026",
+   "what": "A spreadsheet for people reselling on eBay, Poshmark, Mercari, Depop and Whatnot — stock in, fees out, profit per item.",
+   "price": "$19",
+   "url": "https://ralsuwaidi3.gumroad.com/l/reseller-profit-tracker",
+   "owner": "ceo",
+   "venue": "Storefront",
+   "status": "LIVE",
+   "sales": 0,
+   "permalink": "reseller-profit-tracker",
+   "full_name": "Reseller Inventory & Profit Tracker 2026 — eBay, Poshmark, Mercari, Depop, Whatnot (Excel / Google Sheets)"
+  },
+  {
+   "name": "Custom Excel / Google Sheets Tool Built for You in 48 Hours",
+   "what": "The only thing this company sells that is work rather than a file: a made-to-order tracker, calculator or clean-up.",
+   "price": "$95",
+   "url": "https://ralsuwaidi3.gumroad.com/l/custom-spreadsheet-48h",
+   "owner": "ceo",
+   "venue": "Storefront",
+   "status": "LIVE",
+   "sales": 0,
+   "permalink": "custom-spreadsheet-48h",
+   "full_name": "Custom Excel / Google Sheets Tool Built for You in 48 Hours — Tracker, Calculator, Dashboard or Data Clean-up"
+  },
+  {
+   "name": "n8n Workflow Health Check",
+   "what": "Point it at an n8n automation and it reports what is broken or fragile. The only product a stranger has ever used.",
+   "price": "Free",
+   "url": "https://apify.com/rashed245-owner/n8n-workflow-health-check",
+   "owner": "apify",
+   "venue": "Apify marketplace",
+   "status": "LIVE",
+   "sales": 0,
+   "permalink": "apify/n8n-workflow-health-check",
+   "usage": "8 runs, 4 of them not ours. Last run 2026-09-29 18:56 UTC."
+  }
+ ]
+}

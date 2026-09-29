@@ -1,0 +1,62 @@
+{
+ "_": "Plain-English copy for anything this company sells, keyed by the stable half of its URL. scripts/inventory.py joins this to the live shop and REFUSES to run if a live product has no entry here, or an entry here names nothing live. That refusal is the point of the file: it is how a product can never again exist without the office knowing about it.",
+ "storefront": {
+  "uae-vat-ct-tracker": {
+   "owner": "ceo",
+   "short": "UAE Freelancer & Small Business Bookkeeping Tracker 2026",
+   "what": "A spreadsheet that keeps a small UAE business's books and works out its VAT return and corporate tax estimate."
+  },
+  "reseller-profit-tracker": {
+   "owner": "ceo",
+   "short": "Reseller Inventory & Profit Tracker 2026",
+   "what": "A spreadsheet for people reselling on eBay, Poshmark, Mercari, Depop and Whatnot — stock in, fees out, profit per item."
+  },
+  "custom-spreadsheet-48h": {
+   "owner": "ceo",
+   "short": "Custom Excel / Google Sheets Tool Built for You in 48 Hours",
+   "what": "The only thing this company sells that is work rather than a file: a made-to-order tracker, calculator or clean-up."
+  },
+  "reseller-fee-calculator": {
+   "owner": "ceo",
+   "short": "FREE Reseller Profit-After-Fees Calculator 2026",
+   "what": "A free calculator that shows what a reseller actually keeps after each marketplace takes its cut. Built as the free door to the $19 tracker."
+  },
+  "uae-ct-deadline-checker": {
+   "owner": "v003",
+   "short": "When is my UAE Corporate Tax return due? Free deadline and penalty checker",
+   "what": "Type your licence date, get your filing deadline and what the penalty is if you miss it. Free."
+  },
+  "uae-ct-return-guide": {
+   "owner": "v003",
+   "short": "How do I file my UAE Corporate Tax return myself?",
+   "what": "The whole filing, step by step, for a freelancer or small business doing it without an accountant. Every step cited to UAE tax law."
+  },
+  "uae-ct-return-pack": {
+   "owner": "v003",
+   "short": "Missed your UAE Corporate Tax deadline? Penalty worksheet, waiver and reconsideration letters",
+   "what": "For someone already late: what they owe, and the letters to ask for it to be waived."
+  },
+  "gh900-free-50": {
+   "owner": "v008",
+   "short": "GH-900 Practice Questions — Free 50, with Explanations + Offline Quiz App",
+   "what": "Fifty original GitHub Foundations exam questions, free, with the reasoning for every answer."
+  },
+  "gh-900-practice-questions": {
+   "owner": "v008",
+   "short": "GitHub Foundations GH-900 Practice Exam — 300 Questions",
+   "what": "Three hundred more original questions with explanations, an offline quiz app and a PDF. Every answer traced to official documentation."
+  }
+ },
+ "elsewhere": [
+  {
+   "key": "apify/n8n-workflow-health-check",
+   "owner": "apify",
+   "venue": "Apify marketplace",
+   "short": "n8n Workflow Health Check",
+   "price": "Free",
+   "url": "https://apify.com/rashed245-owner/n8n-workflow-health-check",
+   "what": "Point it at an n8n automation and it reports what is broken or fragile. The only product a stranger has ever used.",
+   "note": "Not on the storefront, so it is declared here and checked against the Apify API by scripts/inventory.py."
+  }
+ ]
+}

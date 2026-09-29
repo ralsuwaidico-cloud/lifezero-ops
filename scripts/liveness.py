@@ -43,6 +43,14 @@ WATCH = [
      "weekly Mon 06:51 into Drive; mirrored here by R&D."),
     ("CEO",          ["org/CONTROL_PLANE.md"],                          30,
      "daily 07:17. If this is stale, the thing reading this is what failed."),
+    # Not an agent -- the wire between the shop and the office. The office once
+    # listed six products while nine were live, for fifteen days, because nothing
+    # read the shop into the office and nothing noticed (KB-155). This is what
+    # notices. The office also refuses to build on an inventory older than 7 days,
+    # so this fires first and the build fires second.
+    ("Inventory",    ["state/inventory.json"],                          30,
+     "daily with the CEO cycle. Stale means the office is describing a shop "
+     "nobody has looked at."),
 ]
 
 

@@ -1,0 +1,18 @@
+{
+ "seen": {
+  "08k9mgY0RQgxQapcIkhagA==": "2026-09-29",
+  "1Iz9yA44ZynrnpP_rxjmwQ==": "2026-09-29",
+  "2Mkk9cTw3zWO97gz0wEMFw==": "2026-09-29",
+  "5oIJGZZsRfK4NM9CBEMivA==": "2026-09-29",
+  "D6MX_bKuzAIZ_eq4NadPnA==": "2026-09-29",
+  "ESBJs2TcypiToQdJsEotyw==": "2026-09-29",
+  "Gab_zhXC0ZcJvbRGqIaxyw==": "2026-09-29",
+  "cS8IHT1ymtBSwuD23HV1Fg==": "2026-09-29",
+  "fgqEi7lWwosZ_grxtnsYyg==": "2026-09-29",
+  "h8QfkOv1AvSsQViccOuXQQ==": "2026-09-29",
+  "mo8L0NIxTciQhgJqPpQDBg==": "2026-09-29",
+  "ne4lbVNHP9oZMZiESRZFXw==": "2026-09-29",
+  "sflPqwBl8ArGdZgP4OX0hw==": "2026-09-29"
+ },
+ "note": "Every storefront product id this company has ever seen, with the date it was first seen. Append-only on purpose: an id that stops appearing in the list is fetched by id, and if it still exists the run stops. This is how a live product can never go missing from our own records again. KB-155."
+}

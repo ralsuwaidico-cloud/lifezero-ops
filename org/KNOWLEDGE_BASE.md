@@ -1260,43 +1260,73 @@ case the inbox stops being a candidate for the reach budget and the chairman is 
 words.
 
 
-## KB-155 · The company could not name its own products, and three of them were invisible for a month. **MEASUREMENT.**
+## KB-155 · The company could not name its own products. The truth was in the building. **MEASUREMENT.**
 
 The chairman, 2026-09-29: *"Can you present all the products that they produced."* Answering it
-honestly required reading the storefront rather than our own records, and the two did not agree.
+honestly required reading the shop rather than our own office page, and the two did not agree.
 
-**The company believed it had six live products and one marketplace listing. It has nine live
-products and one marketplace listing.** The three that were missing are the three oldest — a $24
-UAE bookkeeping tracker, a $19 reseller tracker, and a **$95 done-for-you spreadsheet build**. All
-three are published, all three load for a stranger (HTTP 200, checked from outside), all three have
-sold nothing, and none of them appeared anywhere in this organization's own view of itself.
+**The office listed six live storefront products. Nine were live.** The three it missed were the
+three oldest — a $24 UAE bookkeeping tracker, a $19 reseller tracker, and a **$95 done-for-you
+spreadsheet build**. All three are published, all three load for a stranger (HTTP 200, checked from
+outside), all three have sold nothing.
 
-**Cause.** The storefront's product-list endpoint returns at most ten records and does not say so.
-It has no cursor, no total, and asking for page 2 returns page 1 again, so pagination looks complete
-when it is truncated. Four unpublished internal file archives sit in the same list and consumed four
-of the ten slots, pushing three real products off the end. Fetching each of the three by its own id
-returns it immediately, `published: true`, `deleted: false` — so nothing was wrong with the products,
-only with the list we were reading.
+### The first explanation was true and was not the cause
 
-**Why this is worse than a display bug.** The $95 listing is the only thing this company sells that
-is *work* rather than a file, and it is the highest-priced thing we have. For weeks the board has
-been arguing about what to build and how to reach a buyer while the most commercially interesting
-offer we own was not in any document an agent reads. Every agent that answered "what do we sell"
-answered from the truncated list. **We were not measuring our own inventory; we were measuring the
-first page of it.**
+The raw REST list endpoint returns at most **ten** records and says so nowhere: no total, no cursor,
+and asking for page 2 hands back page 1. Four unpublished internal file archives sat in that list and
+ate four of the ten slots, pushing three real products off the end. That is real, it is measured on
+every run now (13 from the CLI, 10 from REST), and it is why an ad-hoc check of the shop looked
+complete when it was not.
 
-**The general form, and it has bitten this company before.** KB-112: `view_count` is null on every
-product, so a funnel test could never produce a signal. KB-149: "it ran" only ever meant "it was
-woken". Now this. *An API that answers is not the same as an API that answers completely.* A list
-endpoint with no total and no cursor must be treated as truncated until proved otherwise, and the
-proof is a per-id fetch of something you already know exists.
+### The actual cause, found on the second look, and it is worse
 
-**Fixed now:** the office lists all ten products, grouped under the office that built them, each one
-a working link, on the private page and the public one. The counter in the top bar reads 10.
+**`data/scoreboard.json` has held all thirteen products since 2026-09-14**, because the storefront
+CLI paginates properly and `pull_sales.py` has always used it. The complete list was sitting in this
+repository for fifteen days. **Nothing ever compared it to the office's product list, which was typed
+by hand.** The truth was in the building and no wire ran to it.
 
-**Not fixed:** nothing reads the storefront by id on a schedule, so a fourth product could go missing
-the same way tomorrow. That belongs to whoever next touches `pull_sales.py`.
+*This company did not have a data problem. It had a wiring problem, and told itself a data-problem
+story that fit.* The first diagnosis was corrected here rather than quietly replaced, because the
+difference changes the fix: an API caveat is something you remember, and a missing wire is something
+you build.
 
-**Also recorded, separately:** the marketplace listing now shows 8 total runs, of which 4 are not
-ours, and the most recent started 2026-09-29 18:56 UTC and was not us. That is the fourth time a
-stranger has run something this company built.
+### Why it mattered commercially
+
+The $95 listing is the only thing this company sells that is **work** rather than a file, and it is
+the highest-priced thing we own. For weeks the board argued about what to build and how to reach a
+buyer while the most commercially interesting offer in the portfolio was absent from every document
+an agent reads. Every agent that answered "what do we sell" answered from the short list.
+
+### The fix, built the same day
+
+`scripts/inventory.py` is the wire, and it is built to stop rather than quietly agree:
+
+- The **CLI is the authority** because it paginates. The REST endpoint is read too, only so the
+  truncation is measured every run instead of remembered.
+- `state/product_ids.json` is an **append-only ledger** of every product id ever seen. An id that
+  drops out of the list is fetched by id; if it still exists, the run stops.
+- Plain-English copy lives in `org/PRODUCT_COPY.json`. A live product with **no** entry stops the
+  run; an entry naming **nothing live** stops the run. A product cannot exist without the office
+  knowing what it is and who built it.
+- Anything not on the storefront is declared in the same file and verified against its own API —
+  the marketplace listing is refused if it reports `isPublic: false`.
+- `build_observer.py` **refuses to build** if `observer/state.json` products differ from
+  `state/inventory.json`, or if the inventory is more than 7 days old. A hand-edit to the office can
+  no longer reintroduce this.
+- `scripts/liveness.py` watches `state/inventory.json`, so the wire going quiet is itself an alarm.
+
+**Every one of those guards was proved by injection, not by reading:** deleting a live product's copy
+entry, adding copy for a product that does not exist, dropping a product from the office by hand,
+hiding a still-existing product from the list, and ageing the inventory nine days. Five injected
+faults, five refusals, then a clean run. A check that cannot fail is not a check (lesson 5).
+
+**The general rule:** *an API that answers is not the same as an API that answers completely, and a
+file that holds the truth is worth nothing until something reads it.* KB-112 (view_count null on
+every product) and KB-149 ("it ran" only ever meant "it was woken") are the same shape. When two
+records of the same fact exist, something must compare them on a schedule, and the comparison must be
+able to fail.
+
+**Also recorded:** the marketplace listing now shows 8 total runs, 4 of them not ours, the most recent
+started 2026-09-29 18:56 UTC and was not us — the fourth time a stranger has run something this
+company built. And `data/scoreboard.json` had not been refreshed since 2026-09-14; it has been, and
+still reads zero sales, zero revenue.

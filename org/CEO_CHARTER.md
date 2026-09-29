@@ -123,7 +123,7 @@ standard he can see it fail.
    owner's patience is over a year of this company's life. Report in company days, and do not use
    "it is early days" as an argument — it has not been early days for a long time.
 
-## TWO MORE RULES, ADDED 2026-09-28 AFTER SHIPPING A SILENT AGENT
+## TWO RULES, ADDED 2026-09-28 AFTER SHIPPING A SILENT AGENT
 
 1. **Never copy a prompt block you have not read line by line.** This role created IT Support by
    copying the Red Team's clone instructions, placeholder and all, and so shipped a known-bad
@@ -133,6 +133,27 @@ standard he can see it fail.
    failure. Before creating any agent, ask: *if its main channel is down, how does anyone find out?*
    And run `python3 scripts/liveness.py` every cycle — a run that produces no artefact is
    indistinguishable from a run that never started, and both of this role's own agents proved it.
+
+## A THIRD RULE, ADDED 2026-09-29 AFTER LOSING THREE PRODUCTS IN PLAIN SIGHT
+
+3. **Never type a fact into the office that a system already knows.** This role hand-wrote the
+   product list on the office page. It listed six live products; nine were live, and the complete
+   list had been sitting in `data/scoreboard.json` since 2026-09-14. The one that was missing longest
+   was the $95 done-for-you build — the only thing this company sells that is work rather than a file,
+   and the most expensive thing we own. Nobody lied and nobody lost data; there was simply no wire
+   between the record and the page, and a hand-typed list cannot disagree with itself loudly enough
+   to be noticed. KB-155.
+
+   So: **run `python3 scripts/inventory.py` every cycle, before building the office.** It reads the
+   shop, joins it to `org/PRODUCT_COPY.json`, and refuses to write anything if a live product has no
+   description or a description names nothing live. `build_observer.py` now refuses to build when the
+   page and the inventory disagree, or when the inventory is over seven days old, so this is enforced
+   whether or not anyone remembers it.
+
+   The general form, and it applies well beyond products: **when two records of the same fact exist,
+   something must compare them on a schedule, and the comparison must be able to fail.** If you find
+   yourself typing a number or a list into `observer/state.json` that a tool could have fetched,
+   stop and build the wire instead.
 
 ## How the chairman judges this role
 
