@@ -19,7 +19,7 @@
     {
       "verdict": "OPEN",
       "http": 200,
-      "detail": "usable (46427642 bytes)",
+      "detail": "usable (46542483 bytes)",
       "name": "pypi",
       "url": "https://pypi.org/simple/",
       "why": "depended on"
@@ -43,7 +43,7 @@
     {
       "verdict": "OPEN",
       "http": 200,
-      "detail": "usable (607508 bytes)",
+      "detail": "usable (558665 bytes)",
       "name": "remoteok api",
       "url": "https://remoteok.com/api",
       "why": "demand source"
