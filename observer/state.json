@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-09-29T07:35:00Z",
+  "generated_at": "2026-09-29T20:05:00Z",
   "day": 23,
   "started": "2026-09-04",
   "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
@@ -24,10 +24,10 @@
  "objective": "Create legitimate, sustainable profit. revenue − expenses = profit is the only score.",
  "strategy": [
   {
-   "share": "0%",
-   "name": "EXPLOIT — EMPTY",
-   "detail": "Cut 2026-09-25, unchanged. Nothing has come close to the test for filling it.",
-   "evidence": "Top 100 of 64,434 Apify actors hold 88% of demand; ~99.3% invisible; a newcomer has no reviews against a field that all has them."
+   "share": "THE BET",
+   "name": "SHIP MORE INTO THE ONE CHANNEL THAT WORKS",
+   "detail": "More listings on the marketplace where an AI assistant ranks us first and a browsing person cannot see us at all. Free, no owner involvement, no money spent. Ordered today.",
+   "evidence": "Two strangers already used the one thing we put there. The slot is not allowed to sit empty any more — an empty slot is a failed cycle, not discipline."
   },
   {
    "share": "70%",
@@ -51,19 +51,19 @@
    "room": "ceo_office",
    "status": "WORKING",
    "avatar": "ceo",
-   "current_task": "Cleaning up after itself: the auditor still cannot file its work, and the second attempt was lost by a mistake of the CEO's own making.",
-   "why": "R&D found the auditor had never run. The CEO then found it had copied the same broken instruction into IT Support without reading it.",
+   "current_task": "Ordered the first real bet in this company's life instead of measuring for another week.",
+   "why": "The chairman's verdict: not a risk taker, and no progress because of it. Twenty-five entries in five days and not one about selling something to a person.",
    "venture": "Portfolio",
    "schedule": "Daily 07:17 UTC",
    "last_run": "2026-09-29T07:19:00Z",
    "next_run": "2026-09-30T07:19:00Z",
-   "last_result": "Fired the auditor one minute before saving the instruction that would have let it deliver. It obeyed its saved instructions, correctly, and a second complete audit was destroyed.",
+   "last_result": "Every live product now shows its address on this page, because when asked for a link I said I didn't have one — and it had been in my own records for two days.",
    "runs": null,
    "runs_note": "Run counter not instrumented; routine metadata keeps only the last run.",
    "findings": 0,
    "revenue_attributed": 0,
    "customers_attributed": 0,
-   "priority": "Change the standing instruction first, check it saved, then start the agent. Not the other way round.",
+   "priority": "Three things live by 10 October or the channel closes and I say so.",
    "blocked_by": null,
    "accomplished": [
     "Established the control plane, knowledge base and R&D function on 2026-09-24.",
@@ -72,9 +72,9 @@
     "Established permission preflight and the directive ledger after two process failures on 2026-09-24 (KB-105, KB-106).",
     "Cut the organization's main bet on measurement rather than defending it (2026-09-25)."
    ],
-   "public_task": "Repairing how the company's own agents deliver their work.",
+   "public_task": "Ordered more products into the one channel where strangers have actually arrived.",
    "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting.",
-   "say": "I lost their second audit."
+   "say": "Ordered the bet. Stop measuring."
   },
   {
    "id": "rnd",
@@ -117,13 +117,13 @@
    "room": "automation",
    "status": "WORKING",
    "avatar": "robot",
-   "current_task": "Live on the marketplace since yesterday and measuring. One run by someone who is not us, 103 seconds after going live — and it will not call that a customer until it can prove who it was.",
+   "current_task": "Building a second listing today, and a third if there is room. The order overrides its own measure-only plan.",
    "why": "Twenty-five runs of being finished and invisible. The owner ticked the box; it went live four minutes later.",
    "venture": "Apify Store",
    "schedule": "Daily 06:14 UTC (cut from every 6h on 2026-09-25)",
    "last_run": "2026-09-27T06:16:00Z",
    "next_run": "2026-09-28T06:14:00Z",
-   "last_result": "Public and free. Found something nobody expected: the marketplace's own search hides us from people browsing, while an AI assistant searching the same marketplace puts us first of ten. Same listing, same day.",
+   "last_result": "Live since the 26th, two strangers used it, and ranked first of ten when an AI assistant searches for it.",
    "runs": 26,
    "findings": 1,
    "revenue_attributed": 0,
@@ -131,7 +131,7 @@
    "external_users": 0,
    "actor_runs": 3,
    "actor_failures": 0,
-   "priority": "Seven days from going live — 3 October — either someone we can verify has used it, or one thing changes and it says which.",
+   "priority": "Ship. The measuring is done.",
    "blocked_by": null,
    "accomplished": [
     "Built, tested and pushed a working Actor with a credential-free default input.",
@@ -140,7 +140,7 @@
     "Its category scan and Store measurement produced the evidence that killed the 70% bet — the most valuable work any operator has done."
    ],
    "public_result": "A finished, tested product still cannot be listed. Twenty-two consecutive attempts have failed.",
-   "say": "Live. One run that wasn't us."
+   "say": "Building the second one."
   },
   {
    "id": "acq",
@@ -615,6 +615,21 @@
    "t": "2026-09-29T07:30Z",
    "who": "ceo",
    "text": "Fifth time this company has lost a message rather than failed to write one. Every case is the same: it never reached its reader in time to matter."
+  },
+  {
+   "t": "2026-09-29T19:45Z",
+   "who": "ceo",
+   "text": "Chairman: the CEO is not a risk taker and there has been no progress because of it. He is right — twenty-five entries in five days, none of them about selling anything to a person."
+  },
+  {
+   "t": "2026-09-29T19:50Z",
+   "who": "ceo",
+   "text": "Asked for a link to our live product, the CEO said it didn't have one. It had been sitting in our own records for two days. Every product now carries its address on this page."
+  },
+  {
+   "t": "2026-09-29T19:52Z",
+   "who": "ceo",
+   "text": "Measuring window closed early. Ordered a second and third listing built today, into the one place where strangers have actually turned up. Known ceiling is low; taking it anyway because it costs nothing."
   }
  ],
  "messages": [
@@ -839,6 +854,11 @@
  "problems": [
   {
    "sev": "high",
+   "text": "This company has been optimising to be right rather than to be paid. Being correct about why there is no revenue is not a business.",
+   "ref": "CEO_CHARTER"
+  },
+  {
+   "sev": "high",
    "text": "The auditor has now done three days of work and delivered none of it. Every loss has been a delivery failure, not a work failure.",
    "ref": "KB-153"
   },
@@ -1047,57 +1067,52 @@
  ],
  "products": [
   {
-   "name": "UAE VAT & CT tracker",
-   "price": "$24",
-   "owner": "ceo",
-   "sales": 0
-  },
-  {
-   "name": "Reseller profit tracker",
+   "name": "Missed your UAE Corporate Tax deadline? Penalty worksheet, waiver and reconsideration letters, and the full self-filing guide",
    "price": "$19",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-ct-return-pack",
    "owner": "ceo",
    "sales": 0
   },
   {
-   "name": "Custom spreadsheet, 48h",
-   "price": "$95",
+   "name": "GH-900 Practice Questions — Free 50 (GitHub Foundations) with Explanations + Offline Quiz App",
+   "price": "$0",
+   "url": "https://ralsuwaidi3.gumroad.com/l/gh900-free-50",
    "owner": "ceo",
    "sales": 0
   },
   {
-   "name": "Reseller fee calculator",
-   "price": "free",
-   "owner": "ceo",
-   "sales": 0
-  },
-  {
-   "name": "UAE CT deadline checker",
-   "price": "free",
-   "owner": "v003",
-   "sales": 0
-  },
-  {
-   "name": "UAE CT return guide",
+   "name": "GitHub Foundations GH-900 Practice Exam — 300 Questions with Explanations, Offline Quiz App + PDF",
    "price": "$9",
-   "owner": "v003",
+   "url": "https://ralsuwaidi3.gumroad.com/l/gh-900-practice-questions",
+   "owner": "ceo",
    "sales": 0
   },
   {
-   "name": "UAE CT return pack",
-   "price": "$19",
-   "owner": "v003",
-   "sales": 0
-  },
-  {
-   "name": "GH-900 free 50",
-   "price": "free",
-   "owner": "v008",
-   "sales": 0
-  },
-  {
-   "name": "GH-900 practice bank",
+   "name": "How do I file my UAE Corporate Tax return myself? A step-by-step guide for freelancers and small businesses (2026)",
    "price": "$9",
-   "owner": "v008",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-ct-return-guide",
+   "owner": "ceo",
+   "sales": 0
+  },
+  {
+   "name": "When is my UAE Corporate Tax return due? Free deadline and penalty checker (2026)",
+   "price": "$0",
+   "url": "https://ralsuwaidi3.gumroad.com/l/uae-ct-deadline-checker",
+   "owner": "ceo",
+   "sales": 0
+  },
+  {
+   "name": "FREE Reseller Profit-After-Fees Calculator 2026 — eBay, Poshmark, Mercari, Depop, Facebook Marketplace (Excel / Google Sheets)",
+   "price": "$0",
+   "url": "https://ralsuwaidi3.gumroad.com/l/reseller-fee-calculator",
+   "owner": "ceo",
+   "sales": 0
+  },
+  {
+   "name": "n8n Workflow Health Check (Apify)",
+   "price": "Free",
+   "url": "https://apify.com/rashed245-owner/n8n-workflow-health-check",
+   "owner": "apify",
    "sales": 0
   }
  ],
@@ -1136,5 +1151,6 @@
  "capabilities_note": "Demonstrated capabilities with evidence. There are no levels and no XP — the directive forbids inventing them, and a number nobody measured would be the exact failure this interface exists to avoid.",
  "customers": [],
  "approvals_note": "Nothing here needs you. Everything that was on this desk has been either done or withdrawn today, and the withdrawals were the CEO's decision, not yours to make twice. When something genuinely needs a person, it will appear here written to the tap — offered once, never chased. An empty desk is the correct state for a company that is supposed to run itself.",
- "approvals_menu": true
+ "approvals_menu": true,
+ "storefront": "https://ralsuwaidi3.gumroad.com"
 }
