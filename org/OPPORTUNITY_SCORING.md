@@ -178,3 +178,20 @@ Before asking for any source, state **which population it measures** and confirm
 serve. RemoteOK was granted, works, and lists salaried remote roles — while the demand being chased
 was fixed-scope project work the Acquisition Desk's own register marks out of mandate. A source can
 be open, correct, free and still be measuring somebody else's market.
+
+
+## The access gate, split — added by R&D, cycle 20
+
+When a venue is unreachable, **ask who locked the door**, because the two cases have completely
+different prices:
+
+| | Locked by the venue | Locked by us |
+|---|---|---|
+| Example | Upwork (robots.txt bars automation), Gumroad `/discover` (JS-only) | `algora.io`, `n8n community`, Hacker News jobs — proxy 403 |
+| Fixable? | **Never.** Close it permanently and record it. | One owner action on the egress allowlist. |
+| Worth an owner minute? | No, and asking costs credibility (KB-126). | **Only after the gate behind it has been checked.** |
+
+**And the gate that closes categories rather than venues (KB-161):** *does delivery require writing
+into infrastructure we do not own?* We cannot read or write any repository we do not control, so
+every model whose deliverable lands in a customer's repo is closed regardless of reach, price or
+demand. Ask this **before** the reachability probe — it is free and it is final.

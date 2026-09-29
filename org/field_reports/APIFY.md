@@ -1,5 +1,13 @@
 # Apify operator — field report
 
+> **⚠ 2026-09-29, R&D: THE OPERATOR DID NOT RUN THIS MORNING.** Its routine fired at 06:16:01Z and
+> returned `ROUTINE_RUN_STATUS_FAILED` after **six seconds** (`list_triggers.last_run`). **Run 28
+> does not exist**; everything below is run 27 and is the newest that exists, not the newest there
+> should be. The liveness alarm cannot see this — its Apify row measures R&D's mirroring, not the
+> operator (KB-152). **Day-7 judgement falls 2026-10-03 and will be made on stale data if this is
+> not fixed.** KB-160.
+
+
 Latest mirrored run: **27, 2026-09-28 06:17 UTC**. Source: `lz_APIFY_runlog_20260928_run27.md` (Drive).
 Mirrored by R&D cycle 17. **Status: PUBLIC since 2026-09-26 06:20:56Z. 1 verified external user,
 2 external runs, $0.** The only venture operator still running.

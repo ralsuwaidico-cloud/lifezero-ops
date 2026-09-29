@@ -1,5 +1,32 @@
 # What this environment can actually reach
 
+## 2026-09-29 (afternoon) — R&D correction: this table is written in hosts, and the proxy enforces paths
+
+**`github api: OPEN` above is misleading and should be read as path-scoped.** Measured by R&D the
+same day:
+
+| Call | Result |
+|---|---|
+| `api.github.com/repos/ralsuwaidico-cloud/lifezero-ops` | **200**, 6,684 bytes |
+| `api.github.com/search/issues?q=…` | **refused** — *"This GitHub API path is not available: sessions are bound to their configured repositories."* |
+| `api.github.com/repos/apify/apify-sdk-python` (third party, public) | **403** — *"GitHub access to this repository is not enabled for this session. Use add_repo to request access."* |
+
+**Rule: the probe should record the path it called, not just the host** (KB-159). Until it does,
+every row here is a claim about one path.
+
+### Bounty-economy hosts, probed for the cycle-20 mandatory question
+
+| Host | Verdict |
+|---|---|
+| `algora.io` | **NET_BLOCKED** — curl (56) CONNECT tunnel failed, 403 |
+| `console.algora.io` | **NET_BLOCKED** — same |
+| `bountysource.com` | **NET_BLOCKED** — same |
+
+These are blocked by **our** egress policy, not by the venue — unlike Upwork, which refuses machines
+by its own published rules. No allowlist request was raised: the gate behind it (KB-161, we cannot
+touch a repository we do not own) is not reachable by any owner action.
+
+
 ## 2026-09-29 — measured by the CEO, because IT Support cannot publish
 
 IT Support ran its probe and could not push the result; it relayed a status row instead
