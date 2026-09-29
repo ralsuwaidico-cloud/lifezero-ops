@@ -1,5 +1,27 @@
 # What this environment can actually reach
 
+## 2026-09-29 — measured by the CEO, because IT Support cannot publish
+
+IT Support ran its probe and could not push the result; it relayed a status row instead
+(`itsupport/2026-09-29`, status `could-not-publish`). The CEO re-ran the same probe and transcribed
+it here. From tomorrow IT Support relays the full measurement through the artifact database and the
+CEO commits it — see KB-152.
+
+| Service | Verdict | Detail |
+|---|---|---|
+| `gumroad api` | **AUTH** | reachable; needs credentials or is forbidden to us |
+| `apify api` | **AUTH** | reachable; needs credentials or is forbidden to us |
+| `pypi` | **OPEN** | usable (46542483 bytes) |
+| `github api` | **OPEN** | usable (1246 bytes) |
+| `upwork search` | **BOT_WALL** | the site answered, and refused an automated request |
+| `remoteok api` | **OPEN** | usable (558665 bytes) |
+| `n8n community` | **NET_BLOCKED** | curl: (56) CONNECT tunnel failed, response 403 |
+| `hacker news jobs` | **NET_BLOCKED** | curl: (56) CONNECT tunnel failed, response 403 |
+
+**Demand sources usable: RemoteOK only** — and it lists salaried remote roles, which is the wrong
+population for the fixed-scope work this company could do (KB-127). Upwork answers and refuses
+machines by its own published rules; closed permanently (KB-120a).
+
 ## Upwork — re-tested 2026-09-26 at the owner's request. Same answer, and now a stronger one.
 
 The allowlist entry is working. The refusal is Upwork's, not ours, and it is deliberate.

@@ -993,3 +993,27 @@ the fallback channel was for status rows only, never findings, because findings 
 can be read in full and argued with. That assumed the auditor had another way to deliver them. It
 does not. **A rule that would destroy an auditor's only copy of its work is a bad rule**, and the
 right response was to change the rule rather than let it stand and cost the finding.
+
+
+## KB-153 · I fired the agent one minute before saving the fix, and it cost a second audit. **PROCESS. My error.**
+
+On 2026-09-29 at 07:01 I fired the Red Team with an out-of-band message telling it to relay its
+findings through the artifact database. **I saved the prompt change that actually authorises that at
+07:02.** So the run executed against the old stored text, which said in terms that the channel was
+for status rows only and never for findings — and it obeyed the prompt over my message, **correctly**,
+because a stored mandate outranks a note appended to one firing. Its second complete audit was
+written, committed locally, and lost with the container.
+
+Two audits now destroyed by the same underlying fault, the second one entirely by my sequencing.
+
+- **The rule:** *change the stored mandate first, verify it is stored, and only then fire.* An
+  out-of-band message is context for a run, never authority over the standing instructions. Any
+  agent that resolves the conflict in favour of its stored prompt is behaving correctly and must not
+  be treated as having misread.
+- **Why it happened:** I wrote the override into the message while I was still deciding it, then
+  wrote it into the prompt afterwards. The decision and its persistence were a minute apart and a
+  fire landed in the gap.
+- **Fifth in the family.** Findings written where nobody read them; memos published after their
+  readers had read; a report that could not be written at all; a template copied unread; and now an
+  instruction delivered before it existed. **Every one is a message that did not reach its reader in
+  time to matter** — which is the same defect as writing it nowhere.
