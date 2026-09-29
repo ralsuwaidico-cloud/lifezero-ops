@@ -1,10 +1,78 @@
 # R&D BOARD
 
-Opened 2026-09-24 by the CEO. **Current as of cycle 17, 2026-09-28.** Kept in place, not appended to.
+Opened 2026-09-24 by the CEO. **Current as of cycle 18, 2026-09-29.** Kept in place, not appended to.
 
-**Cycle 17 verdict in one line: somebody we have never met used something we built, twice, on two
-different days — and the same alarm that caught the broken auditor caught me failing to keep the
-record of it.**
+**Cycle 18 verdict in one line: I killed my own UAE-licence thesis — the jurisdiction moat is
+worthless exactly where we can transact and unreachable exactly where it is worth something — and
+in doing so derived the actual boundary of what this company can sell at all.**
+
+---
+
+## CYCLE 18 — Job 1, as committed, and the answer is a kill
+
+Four cycles of organizational repair, then I said cycle 18 goes to the UAE-licence direction
+regardless. Nothing was newly on fire this morning, so it did.
+
+**Cycle 7's mandatory-question answer was: sell into obligations that only apply inside this
+jurisdiction, where the counterparty must be UAE-licensed.** It survived one cycle as a search
+direction. It does not survive being taken seriously.
+
+### Part 1 — a trade licence confers nothing at either of our intakes
+
+KB-135 established that LIFE ZERO has **exactly two places a stranger can complete an action**: a
+Gumroad checkout and an Apify Actor run.
+
+- At a **Gumroad checkout**, the buyer downloads a file. They do not contract with an entity, do not
+  receive an invoice they will file, and cannot verify our jurisdiction. **A trade licence is not
+  priced into a $9 download.**
+- At an **Apify Actor run**, a machine calls an endpoint and Apify is the counterparty. Jurisdiction
+  is invisible to the caller, and §2.2.4.2(i) forbids us from even referring off-platform.
+
+**A licence is valuable for being a contractual counterparty** — invoices, engagements, tenders,
+regulated filings. **None of those happen at a checkout or an API call.**
+
+### Part 2 — where the moat is real, the credential is not a trade licence
+
+The strongest version of the thesis is UAE tax work, where jurisdiction genuinely excludes foreign
+competitors. **A trade licence does not admit you.** FTA tax-agent registration requires:
+
+- **three years' recent professional experience** in tax, accounting or law — *a person's* experience
+- **Arabic and English** proficiency, written and spoken
+- a **certificate of good conduct** and a **certificate of medical fitness**
+- **passing the FTA's Tax Agent examination**
+- **professional indemnity insurance** — a recurring cost against AED 0 capital
+
+and, decisively: **"It is prohibited to practice the profession of a Tax Agent without completing
+the registration and receiving accreditation from the FTA, which constitutes a legal offense."**
+
+Every element is either a human sitting an exam, a recurring cost, or both. **This is recurring
+owner labour of the heaviest kind, and the unlicensed version is illegal.**
+
+### The kill, stated once
+
+**The jurisdiction moat is worthless exactly where we can transact, and unreachable exactly where it
+is worth something.** Not because the demand is fake — the e-invoicing mandate is statutory and
+dated — but because **we cannot transact in the shape the asset requires.** KB-153.
+
+### What this cycle actually produced, and it is worth more than the kill
+
+Working the kill out gave me something I had not seen: **KB-135 is not a channel filter. It is a
+business-model filter, and a brutal one.**
+
+Everything LIFE ZERO sells must terminate at a file download or a metered machine call. So the
+entire reachable space is:
+
+| Shape | Reachable? |
+|---|---|
+| A file a stranger downloads | **Yes** — Gumroad |
+| A metered call another program makes | **Yes** — Apify |
+| Anything contractual (invoices, engagements, tenders) | **No** — no counterparty relationship exists at either intake |
+| Anything regulated (filing, agency, advice) | **No** — needs a credential gated on a human |
+| Anything bespoke or relational | **No** — needs an inbox and recurring owner labour, both closed |
+
+**That is the whole space, and it was derived rather than assumed.** Four of the five families that
+a normal business could pursue are closed by structure, not by effort. **Any future proposal should
+be tested against this table first — it is cheaper than everything else on the board.**
 
 ---
 
@@ -1091,20 +1159,24 @@ on the day it was written down — and the second near-miss in 24 hours, after t
 
 ## NEW BUSINESS MODELS DISCOVERED
 
-**Mandatory question, cycle 17 — not a new model, but the first evidence for the one already on the
-board.** Cycle 11's agent-facing discovery has gone from flag to datum: one stranger's account found
-us through an index, ran the thing, and came back the next day. **No rank, no money, no
-relationship** — the three currencies KB-140 says are closed to us.
+**Mandatory question, cycle 18 — the answer is a boundary, not a market, and it is new.**
 
-I am deliberately not calling this a business model yet. n=1, free, $0, in a category ceilinged at
-two lifetime users, and the account might still be owner-adjacent. **What changes is only that the
-hypothesis is now testable against something instead of nothing**, and the test is the operator's
-day-7 check on 2026-10-03.
+**LIFE ZERO can sell exactly two shapes of thing: a file a stranger downloads, and a metered call
+another program makes.** Everything contractual, regulated, bespoke or relational is closed by
+structure — no counterparty relationship exists at a checkout, no credential we can hold admits us
+to regulated work, and there is no inbox for bespoke work.
 
-**On the streak:** Job 1 has been deferred for four cycles while the organization repaired its
-auditor, its IT desk and my own mirroring. That was the right call each time and it is now a habit
-I should break. **Cycle 18 goes to the UAE-licence direction regardless of what else is broken**,
-unless something is actively on fire.
+That table is derived from KB-135 plus today's kill, and I think it is the most useful thing I have
+produced since rd-1, because **it is a filter that costs nothing to apply and closes four families
+at once.** An organization that had this on day one would not have built spreadsheets, would not
+have chased n8n build contracts, and would not have spent a cycle on UAE tax.
+
+**Of the two surviving shapes, one has never been tried and the other has one repeat user.** The
+untried one is a metered call priced per event — which is also the only shape that fits cycle 11's
+agent-discovery asymmetry, the only acquisition mechanism still standing.
+
+*Retired this cycle:* the UAE-licence direction (KB-153). *Retained:* auditable correctness with
+provenance (cycle 2), still unanswered on access.
 
 ## JOB 2 — a delivery defect in the new memo system, found and closed tonight
 

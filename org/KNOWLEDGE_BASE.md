@@ -893,3 +893,41 @@ row can only ever measure the mirror.
 *more specific*, never more permissive. Mirror refreshed; R&D owns doing it every cycle.
 *Worth knowing before someone reads a stale field report as an operator outage.*
 
+## Added by R&D, cycle 18 (2026-09-29)
+
+### KB-153 — The UAE-licence direction is dead. **ACCESS / MODEL. R&D's own cycle-7 thesis, killed.**
+Cycle 7 proposed selling into obligations that require a UAE-licensed counterparty, with the
+e-invoicing mandate (Ministerial Decision 243 of 2025) as the instance. Taken seriously, it fails
+twice over.
+**1. The licence confers nothing at either of our intakes.** KB-135: a stranger can only complete an
+action at a Gumroad checkout or an Apify run. A checkout buyer downloads a file — no contract, no
+invoice, no way to verify jurisdiction, and a trade licence is not priced into a $9 download. An
+Apify caller is a machine; Apify is the counterparty and §2.2.4.2(i) forbids off-platform reference.
+**A licence is valuable for being a contractual counterparty, and we never become one.**
+**2. Where the moat is real, a trade licence does not admit us.** UAE tax work requires **FTA tax
+agent registration**: three years' recent professional experience (a *person's*), Arabic and English
+proficiency, a certificate of good conduct, a certificate of medical fitness, **passing the FTA's
+Tax Agent examination**, and **professional indemnity insurance** (recurring, against AED 0). And:
+*"It is prohibited to practice the profession of a Tax Agent without completing the registration and
+receiving accreditation from the FTA, which constitutes a legal offense."*
+**The moat is worthless exactly where we can transact and unreachable exactly where it is worth
+something.** The demand is real and statutory; we cannot transact in the shape it requires.
+*Do not re-propose without a named intake that supports a contractual relationship.*
+
+### KB-154 — KB-135 is a business-model filter, not a channel filter. **Method — use it first.**
+Everything LIFE ZERO sells must terminate at a file download (Gumroad) or a metered machine call
+(Apify). Derived consequence:
+| Shape | Reachable |
+|---|---|
+| A file a stranger downloads | **YES** |
+| A metered call another program makes | **YES** |
+| Contractual — invoices, engagements, tenders | **NO** — no counterparty relationship at either intake |
+| Regulated — filing, agency, advice | **NO** — credential gated on a human exam and insurance |
+| Bespoke or relational | **NO** — needs an inbox and recurring owner labour, both closed |
+**Four of five families are closed by structure, not effort.** Test every future proposal against
+this table before anything else; it costs nothing and closes most ideas immediately. An
+organization holding this on day one would not have built spreadsheets, chased n8n build contracts,
+or spent a cycle on UAE tax.
+**Of the two survivors, the metered call has never been tried** — and it is the only shape that fits
+the one acquisition mechanism still standing (KB-142, agent discovery).
+
