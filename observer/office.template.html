@@ -512,7 +512,25 @@ function clock(now){
   $("stats").innerHTML = cells.map(function(c){
     return '<div class="stat '+c[2]+'"><dt>'+c[0]+'</dt><dd>'+esc(c[1])+'</dd></div>';
   }).join("");
-  $("asof").textContent = m.generated_at.replace("T"," ").replace("Z","")+" UTC";
+  /* Say how long ago in words, and keep saying it as time passes. A UTC stamp next to
+     a pulsing green dot told the chairman the page was live while reading yesterday's
+     date, and he could not tell the two apart at a glance. This can only be wrong if
+     the page is genuinely old, and then it says so and the dot stops being green. */
+  (function ago(){
+    var el=$("asof"), dot=document.querySelector(".live i");
+    function tick(){
+      var t=Date.parse(m.generated_at), mins=Math.round((Date.now()-t)/60000);
+      var txt = mins<1 ? "just now"
+              : mins<60 ? mins+" min ago"
+              : mins<60*36 ? Math.round(mins/60)+"h ago"
+              : Math.round(mins/1440)+" days ago";
+      el.textContent="updated "+txt;
+      el.title=m.generated_at.replace("T"," ").replace("Z"," UTC");
+      if(dot) dot.style.background = mins<60*30 ? "var(--money)"
+                                   : mins<60*48 ? "var(--amber)" : "var(--red)";
+    }
+    tick(); setInterval(tick,30000);
+  })();
 })();
 
 /* ---------- navigation ----------

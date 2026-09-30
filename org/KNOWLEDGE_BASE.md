@@ -1667,3 +1667,43 @@ collision impossible or make it loud — and a counter is neither.*
 **Still open, and stated rather than implied:** `state/memos.json` and `observer/state.json` are both
 appended by more than one session and merged by hand. Nothing yet checks either for a collision on
 the way in. The memo file is fixed at the point of writing; the rest is not.
+
+
+## KB-180 · The feed stayed fresh and the summary rotted, so the page looked maintained while lying at the top. **MEASUREMENT.**
+
+The chairman, 2026-09-30: **"The game is not reflecting the adjustments we made."** He was right
+twice over, and neither fault was in the content he could not see.
+
+**1. The page was stamped yesterday.** `meta.generated_at` was typed by hand into `state.json` and
+had been left at `2026-09-29T20:05:00Z`. Every word underneath it was current — that morning's
+cycle, the operator's failure, the promise system — but the one number at the top said yesterday
+evening, beside a pulsing green LIVE dot. There *was* a staleness warning in the build, set at 36
+hours; the stamp was 14 hours old, so it never fired, and it printed to a log nobody reads.
+**The build knows exactly when it ran.** It now stamps it and writes it back, and the top bar says
+*"updated 3 min ago"* in words, recomputed every thirty seconds, with the dot turning amber and then
+red as it ages. This is charter rule 3 — never type a fact the system already knows — caught one day
+after the rule was written, in the file the rule was written about.
+
+**2. The worse half: the summary panels were four days stale.** The venture panel still read
+*"Apify Store actor — built and blocked on gate 0"* **six days after it went live and four days
+after the chairman made it the company's one bet.** The strategy panel still offered two reach
+candidates that were both closed — the inbox had gone to IT Support, and the direct ask had been
+withdrawn when the owner pressed *Couldn't do it*. The Gumroad panel still said *"22 days, 0 sales,
+0 downloads, 0 clicks"* after we had established that every priced product takes payment today.
+
+**The mechanism is worth more than the fix.** *Panels that are appended to stay fresh; panels that
+must be rewritten rot.* Every cycle adds feed events, memos and knowledge-base entries, because
+adding is what a cycle naturally does. Nothing adds to a summary — a summary has to be re-read
+against reality and rewritten, which no routine forces. And the busy feed underneath made the whole
+page look maintained, which is why this survived a week of daily cycles and several rounds of the
+chairman reading it.
+
+**Fixed so it cannot recur:** every venture and strategy entry carries `as_of`, and
+`build_observer.py` **refuses to build** when one is missing or older than three human days —
+twenty-one company days. Proved by injection: a panel aged four days fails, a panel with no stamp
+fails, and a hand-typed stale timestamp is simply overwritten by the build. The page cannot now be
+published with a summary the feed beneath it contradicts.
+
+**Same family as KB-173 and KB-178,** and the count is now five this week: *somewhere two things
+describe the same reality, and nothing makes them agree.* Here the two things were the top of the
+page and the bottom of the same page.

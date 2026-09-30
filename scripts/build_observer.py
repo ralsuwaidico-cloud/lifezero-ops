@@ -100,6 +100,38 @@ def validate(s):
                       "scripts/inventory.py; a stale product list is how this went wrong "
                       "before." % age_days)
 
+    # THE PANELS THAT MUST BE REWRITTEN ROT; THE ONES THAT ARE APPENDED TO DO NOT.
+    #
+    # The chairman, 2026-09-30: "the game is not reflecting the adjustments we made."
+    # The activity feed was current to the minute, because every cycle appends to it.
+    # The summary panels above it -- the ones he reads first -- were four days stale:
+    # the marketplace listing still read "built and blocked" six days after it went
+    # live and four days after it became the company's one bet. Nothing was lying;
+    # nobody had rewritten them, and the busy feed underneath made the page look
+    # maintained. So each of them now carries the date it was last rewritten, and this
+    # refuses to build when one has gone stale. At 7:1, three human days is
+    # twenty-one company days -- long enough to be deliberate, short enough to hurt.
+    MAX_PANEL_AGE_DAYS = 3
+    today = datetime.date.today()
+    for field in ("ventures", "strategy"):
+        for i, row in enumerate(s.get(field, [])):
+            label = row.get("name") or row.get("ref") or ("%s[%d]" % (field, i))
+            stamp = row.get("as_of")
+            if not stamp:
+                ok = fail("%s \u2014 %r carries no as_of date, so nobody can tell whether it is "
+                          "current. Rewrite it and stamp it." % (field, label))
+                continue
+            try:
+                age = (today - datetime.date.fromisoformat(stamp)).days
+            except ValueError:
+                ok = fail("%s \u2014 %r has an as_of of %r, which is not a date." % (field, label, stamp))
+                continue
+            if age > MAX_PANEL_AGE_DAYS:
+                ok = fail("%s \u2014 %r was last rewritten %d days ago (%d company days). "
+                          "Re-read it against what is true now and stamp it, or the chairman "
+                          "reads a summary the feed underneath already contradicts."
+                          % (field, label, age, age * 7))
+
     sb = s.get("scoreboard", {})
     if sb.get("revenue", 0) != sb.get("profit", 0) + sb.get("expenses", 0):
         ok = fail("scoreboard does not balance: revenue != profit + expenses")
@@ -138,11 +170,23 @@ def main():
           % (len(s.get("agents", [])), len(s.get("gates", [])),
              len(s.get("feed", [])), len(s.get("graveyard", []))))
 
-    stale = datetime.datetime.now(datetime.timezone.utc) - datetime.datetime.fromisoformat(
-        s["meta"]["generated_at"].replace("Z", "+00:00"))
-    if stale.total_seconds() > 36 * 3600:
-        print("WARNING: meta.generated_at is %.0f hours old. The office will show a stale "
-              "organization." % (stale.total_seconds() / 3600))
+    # WHEN THIS PAGE WAS BUILT IS NOT SOMETHING ANYONE TYPES.
+    #
+    # It used to live in state.json by hand, and on 2026-09-30 the chairman said the
+    # page was "not reflecting the adjustments we made" -- because it was stamped
+    # 2026-09-29 20:05 while carrying that morning's work. Every word on it was
+    # current; the one number he actually looks at said yesterday. There was a stale
+    # warning here, set at 36 hours, and the stamp was 12 hours old, so it never fired
+    # and would not have been read if it had. The build knows this value exactly.
+    # Charter rule 3: never type a fact into the office that a system already knows.
+    was = s["meta"].get("generated_at")
+    s["meta"]["generated_at"] = datetime.datetime.now(
+        datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    if was != s["meta"]["generated_at"]:
+        with io.open(STATE, "w", encoding="utf-8") as fh:
+            json.dump(s, fh, indent=1, ensure_ascii=False)
+            fh.write("\n")
+    print("stamped %s (was %s)" % (s["meta"]["generated_at"], was))
 
     if args.check:
         return

@@ -1,13 +1,25 @@
 {
  "meta": {
-  "generated_at": "2026-09-29T20:05:00Z",
-  "day": 23,
+  "generated_at": "2026-09-30T10:11:39Z",
+  "day": 185,
   "started": "2026-09-04",
   "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
   "note": "Every number here traces to a file or a tool result. Fields that are not measured are null and render as 'not measured', never as zero.",
   "ui_owner": "CEO session (session_01UeVFtJ76PW4W2rmffge78p). Other agents write state; only this session edits the interface. Requirement 30 of the Virtual Office directive.",
   "version": "V1",
-  "v1_scope": "Map, agents, real status and tasks, scoreboard, activity feed, owner gates, tap a character, ask a character. Movement tied to events, meetings and the time machine are V2/V3 and are deliberately NOT faked here."
+  "v1_scope": "Map, agents, real status and tasks, scoreboard, activity feed, owner gates, tap a character, ask a character. Movement tied to events, meetings and the time machine are V2/V3 and are deliberately NOT faked here.",
+  "clock": {
+   "label": "3-30/09/2026",
+   "segment": 3,
+   "of": 7,
+   "human_days": 26,
+   "company_days": 185,
+   "ratio": "7:1",
+   "started": "2026-09-04",
+   "segment_started": "06:51 UTC",
+   "segment_ends": "10:17 UTC",
+   "note": "Seven company days to one human day, set by the chairman on 2026-09-26. Every zero this company has recorded is seven times longer than it looks."
+  }
  },
  "scoreboard": {
   "revenue": 0,
@@ -25,21 +37,24 @@
  "strategy": [
   {
    "share": "THE BET",
-   "name": "SHIP MORE INTO THE ONE CHANNEL THAT WORKS",
-   "detail": "More listings on the marketplace where an AI assistant ranks us first and a browsing person cannot see us at all. Free, no owner involvement, no money spent. Ordered today.",
-   "evidence": "Two strangers already used the one thing we put there. The slot is not allowed to sit empty any more — an empty slot is a failed cycle, not discipline."
+   "name": "REACH OUR OWN PRICING GATE, NOT MORE SHELF SPACE",
+   "as_of": "2026-09-30",
+   "detail": "A second and third listing on the marketplace, aimed at the phrasings we are invisible for rather than the one we already win. Late: the operator cannot run until 3 October because its allowance is spent. Decision date 10 October.",
+   "evidence": "R&D measured the niche: six rival products, each with one or two users in their whole life, none charging. So more shelf space is not the argument. The operator opens pricing at three outside users or ten outside runs, one listing tops out near two, and a portfolio is the only arithmetic that ever reaches that gate."
   },
   {
    "share": "70%",
-   "name": "REACH — new today",
-   "detail": "One question: what single thing would let us sell to one person? Two candidates, and neither is a product — an inbox we can actually receive on, and the five-minute direct ask that has been waiting eight days.",
-   "evidence": "Seven searches found seven real markets with real buyers and real money. None of them could be entered. The problem was never what to sell."
+   "name": "REACH — one buyer, one product, one place",
+   "as_of": "2026-09-30",
+   "detail": "Both earlier candidates are closed. The inbox is with IT Support to say plainly whether any mail service exists that a machine can read; the five-minute direct ask was withdrawn when the chairman pressed Couldn’t do it. What is left is the question the buyer desk now runs daily: which of the 48 logged automation jobs at $300–2,500 names a buyer we can reach without writing into systems we do not own and without a cost per customer.",
+   "evidence": "We can charge and have been able to all along — that was checked from outside on 30 September and it corrected a claim this company had repeated for days. Nothing is blocking a sale except that nobody has ever been shown one of these products."
   },
   {
    "share": "30%",
    "name": "R&D",
-   "detail": "Cut from 40% and pointed at the reach question instead of at finding more things to sell.",
-   "evidence": "R&D is the function that searches, and it told us this week that more searching is not worth the money. Taking it at its word."
+   "as_of": "2026-09-30",
+   "detail": "Pointed at reach rather than at finding more things to sell, and now searching the demand ledger we already paid for instead of another catalogue of software.",
+   "evidence": "It told the CEO that more searching was not worth the money, then measured the bet the CEO had placed and found the right reason for it and three errors in how it was set. That is the function working."
   }
  ],
  "agents": [
@@ -74,7 +89,7 @@
    ],
    "public_task": "Ordered more products into the one channel where strangers have actually arrived.",
    "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting.",
-   "say": "R&D caught three of mine. All fixed."
+   "say": "The summary rotted. The feed hid it."
   },
   {
    "id": "rnd",
@@ -350,17 +365,19 @@
    "ref": "Gumroad storefront",
    "name": "Gumroad storefront",
    "owner": "CEO + EmaraTax Ready + GH-Cert Drills",
-   "status": "Maintenance only",
+   "status": "Live and able to take money",
    "revenue": 0,
-   "detail": "22 days, 0 sales, 0 downloads, 0 clicks."
+   "as_of": "2026-09-30",
+   "detail": "Nine products live, six of them priced, every one showing Add to cart to a stranger today — checked from outside. 26 human days, 185 company days, still nobody has bought anything. The gap is reach, not payment."
   },
   {
    "ref": "Apify Store",
    "name": "Apify Store actor",
    "owner": "Apify operator",
-   "status": "Cut as the main bet; kept as a free option",
+   "status": "THE BET — live, and the operator is out of allowance until 3 October",
    "revenue": 0,
-   "detail": "Built and blocked on gate 0. Venue measured and found to be a power law we cannot enter."
+   "as_of": "2026-09-30",
+   "detail": "Live since 26 September, not blocked as this page said for four days. 8 runs, 4 of them not ours, one outside account. The bet is a second and third listing, aimed at the words we are invisible for; it is late because the operator cannot run, not because it was refused."
   },
   {
    "ref": "EmaraTax Ready",
@@ -368,7 +385,8 @@
    "owner": "EmaraTax Ready",
    "status": "Stood down 2026-09-26",
    "revenue": 0,
-   "detail": "Pages stay live and accurate at no cost. One run a year to update the dates."
+   "as_of": "2026-09-30",
+   "detail": "Its three pages stay live, correct and free to keep. One run a year on 1 October to move the dates."
   },
   {
    "ref": "GH-Cert Drills",
@@ -376,7 +394,8 @@
    "owner": "GH-Cert Drills",
    "status": "Stood down 2026-09-26",
    "revenue": 0,
-   "detail": "350 questions finished and shelved. Products stay published at no cost."
+   "as_of": "2026-09-30",
+   "detail": "Both listings stay up and priced — the free 50 and the 300-question pack. What stopped was the work, not the products."
   }
  ],
  "gates": [],
@@ -781,6 +800,26 @@
    "t": "2026-09-30T07:44Z",
    "who": "ceo",
    "text": "Fixed at the cause: messages are numbered past the highest ever used, never by counting, and the system now refuses to send rather than write over someone's mail. The lost order has been resent."
+  },
+  {
+   "t": "2026-09-30T10:05Z",
+   "who": "ceo",
+   "text": "Chairman: the page is not reflecting what we changed. He was right twice. The time at the top was typed by hand and still said yesterday evening, next to a green light saying live — while everything under it was current."
+  },
+  {
+   "t": "2026-09-30T10:12Z",
+   "who": "ceo",
+   "text": "The worse half: the summary boxes he reads first were four days out of date. The marketplace listing still said built and blocked, six days after it went live and four days after he made it our one bet."
+  },
+  {
+   "t": "2026-09-30T10:16Z",
+   "who": "ceo",
+   "text": "Why it survived a week of daily cycles: the parts we add to stay fresh by themselves, and the parts that must be rewritten quietly rot. The busy activity list underneath made the whole page look looked-after."
+  },
+  {
+   "t": "2026-09-30T10:20Z",
+   "who": "ceo",
+   "text": "Now the page refuses to be published at all if any summary box has gone more than three days without being rewritten, and the time at the top is stamped by the machine and reads updated a few minutes ago rather than a date to work out."
   }
  ],
  "messages": [
