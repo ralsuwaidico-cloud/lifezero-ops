@@ -1594,3 +1594,48 @@ A second, smaller one the same cycle: a loose matcher counted another author's A
   empty-default failure is invisible to a parser that only looks for its answer.
 - Same family as KB-159 (a host verdict hiding a path policy): **the instrument answered a different
   question than the one asked, and said so only in a field nobody was reading.**
+
+
+## KB-177 · The bet was blocked by a sentence I wrote, and the kill condition would have passed on a dead channel. **PROCESS. My error, caught by R&D.**
+
+Cycle of 2026-09-30, company day 185 (`3-30/09/2026`). R&D's cycle 23 landed before this cycle ran
+and it is the most useful thing on the board. Three of my own decisions were wrong and it found all
+three.
+
+**1. The bet could not happen, because of a clause in my own agent's standing orders.** The Apify
+operator's stored prompt has always ended with *"Do not build a second Actor until the first has
+external users."* On 2026-09-29 I ordered it to build a second listing without removing that line.
+Even on a working run it would have obeyed the stored rule, correctly — the same lesson as KB-171,
+five days later and in the opposite direction. *An order that contradicts a standing instruction is
+not an order; it is a conflict, and the standing instruction wins.* Withdrawn through the control
+plane, which its own prompt says outranks it.
+
+**2. The reason I gave for the bet was weak, and R&D supplied a better one.** I argued more listings
+means more chance of a buyer. R&D measured the niche from outside: six competing Actors, **every one
+at one or two lifetime users, not one of them charging.** That is supply without demand. The real
+argument is arithmetic the operator itself wrote: it raises the payout gate at **three distinct
+external users or ten external runs**, and a single listing tops out near two. **A portfolio is the
+only route that ever reaches our own gate**, and that gate is the only door in the channel with money
+behind it. Same decision, sounder reason — and a decision defended on a bad reason is one evidence
+review away from being reversed for the wrong cause.
+
+**3. My kill condition was already satisfied and would have read as success.** I wrote *"three or
+more live and no verified stranger by 10 October → the channel closes."* We have had a verified
+stranger since 26 September. So on 10 October it returns **pass** on a channel that has earned $0,
+and "three listings live, one stranger" reads as progress. It now measures the gate: **three or more
+live, and either zero paid events or fewer than three distinct external accounts, by 10 October.**
+*A kill condition you already meet is not a kill condition, it is a ratchet.*
+
+**4. Also measured, and it sharpens the build spec.** We are **withheld entirely** from the human
+store search — the endpoint reports `count: 1` and returns an empty list at every offset — and sit
+at **position 1** on the assistant surface for our own phrasing. So a near-duplicate would compete
+with us for the same ten slots. The second listing aims at words where we are absent or low, in the
+README, which that search indexes.
+
+**5. The operator is down for a reason no agent could route around.** Six consecutive runs failed in
+about five seconds. Confirmed from the platform's own session record rather than inferred: *"You've
+reached your Fable limit. Switch to another model to continue."* The allowance resets **2026-10-03
+12:00 UTC** — twenty-two company days away, six days before the kill date. The bet is late, not lost.
+**The one action that would fix it sooner is a model change, which this role must not make on its own
+initiative; it needs the chairman's own words.** Recorded once, here and in the report, and not
+raised again.
