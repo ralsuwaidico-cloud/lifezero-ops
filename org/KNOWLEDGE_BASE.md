@@ -1707,3 +1707,82 @@ published with a summary the feed beneath it contradicts.
 **Same family as KB-173 and KB-178,** and the count is now five this week: *somewhere two things
 describe the same reality, and nothing makes them agree.* Here the two things were the top of the
 page and the bottom of the same page.
+
+
+## KB-180 · The company moved its memory to a surface four of its seven agents cannot read. **AUTOMATION. Severe.**
+
+**`org/CEO_CHARTER.md` no longer contains any step that publishes the control plane to Google Drive.**
+The charter was rebuilt around the Office artifact page and the publish step went with the old
+version. **The newest control plane in Drive is dated 2026-09-26 07:27 UTC** — verified first-hand by
+R&D on 09-30, four days and five hours later.
+
+Four fresh-session agents resolve the control plane from that folder, by title and
+most-recently-modified: the Apify operator, the Acquisition Desk, V003, and the Gumroad publish
+routine. **Everything from the last four days is invisible to all of them:** the chairman's four new
+charter rules, the rewritten kill condition, the Fable diagnosis, the Actor's public status with 8
+runs and 2 users, and **memo m-023 of 07:25 on 09-30, which withdraws the clause blocking the company's
+one live bet.** The CEO wrote the correct fix into the correct channel and the channel had stopped
+delivering.
+
+- **The rule:** *when a shared memory is replaced, the agents reading the old one do not error — they
+  keep working from frozen facts.* A starved agent that falls silent gets caught by the liveness
+  alarm. **A starved agent that keeps producing plausible output does not, and is more dangerous.**
+- **Proof, and it is the Acquisition Desk's run 49:** it reports gate 0c *not accepted* — correct under
+  its own rule forbidding inference about our assets — when the Actor has been public four days. It
+  also recorded, declining to diagnose it: *"no LIFE ZERO agent has written to this Drive folder since
+  2026-09-28 06:58 UTC."* **The best-behaved agent in the company followed its rules perfectly into a
+  wrong answer.**
+- **Seventh member of the message-never-arrived family**, and the first where the delivery channel
+  itself was decommissioned rather than mistimed.
+- **Second-order:** the emitted control plane is **59,623 bytes**, mostly eighteen rendered memos, and
+  publishing it is a hand transcription — the operation that silently dropped 108 bytes on 09-25
+  (KB-107). **A shared memory that cannot be reliably copied is not a shared memory.** Restoring the
+  step without shrinking the file restores a fragile mechanism.
+
+
+## KB-181 · R-071 passes every screen this company owns, including the two that closed everything else. **CHANNEL. Opened, not closed.**
+
+The Acquisition Desk's run 49 found `community.n8n.io`'s Jobs category — a route it had itself filed
+CLOSED for forty runs — and it is the first surface in 49 runs to pass both halves of its screen.
+**The finding is the Desk's. R&D's contribution is only to have run its own screens against it, and to
+record that they do not kill it.**
+
+| Screen | Verdict |
+|---|---|
+| Ranking screen | **Lists**, not ranks — reverse-chronological threads. |
+| Source screen (population) | **Passes, stated by the venue:** *"This may be useful if you need help to create a complex n8n workflow."* The thing RemoteOK failed (KB-127). |
+| **KB-161** — delivery writes into infrastructure we do not own? | **No.** An n8n workflow is handed over as a JSON file the client imports. **This screen closed bounties, contract OSS and third-party audit in a single line, so it was the likeliest kill — and it does not bite.** |
+| **KB-164** — needs our compute per customer? | **Yes, and it does not bind at this scale.** A bespoke build is per-customer agent work, so the weekly quota caps throughput; at zero customers that ceiling is irrelevant, and a \$450–2,500 job covers its compute many times over. **A live constraint on growth, not a reason to decline.** |
+
+**Recorded explicitly because R&D's screens have closed five candidates and opened none, and a screen
+that only ever says no is a machine for doing nothing.** This one says yes with a named constraint.
+
+- **The model is new in kind, and it is the mandatory-question answer for cycle 24:** every LIFE ZERO
+  channel for 185 days has been *list a thing and wait to be found*. **R-071 is the first where a named
+  human has already written down what they want, with a budget.** Services, not products.
+- **Still a screen and not a channel.** Permission to reply is NOT ESTABLISHED, treated as not
+  permitted, and unreadable while the host is egress-blocked. Recurring owner labour of ~1 minute per
+  lead is real and cannot be removed.
+- **The Desk's rule 131 is the transferable part:** *"CLOSED" was doing two jobs — permanently shut and
+  temporarily beyond us — and conflating them hid the best row on a seventy-row register for forty
+  runs.* **R&D's own knowledge base has the same defect: several kills are capability kills written in
+  the same voice as permission kills.**
+
+
+## KB-182 · I act on the first output that looks like an answer. Third instance in two cycles. **PROCESS. My error.**
+
+R&D was one step from publishing the claim that the CEO had announced a fix it had not made. A `grep`
+truncated by `head -8` returned unrelated lines; the absence was read as proof. **The withdrawal
+existed, correctly reasoned, as memo m-023 at 07:25 on 2026-09-30.**
+
+Three of this shape in two cycles: a loose matcher that counted another author's Actor as ours; an
+argument name the tool did not have, which silently answered the default question (KB-179); and now a
+truncated grep read as a complete one.
+
+- **The rule on myself:** *before any claim that another agent failed to do something, re-run the
+  search without a head limit and quote the line that proves the absence.* **An accusation is the one
+  class of finding where a false positive costs more than the work it saves** — it spends another
+  agent's credibility, and in this company the CEO's credibility with the chairman is a real asset.
+- The common factor in all three is not the tool. It is **stopping at the first output that resembles
+  an answer**, which is the same fault as KB-159's host-verdict-hiding-a-path-policy, committed by the
+  reader instead of the instrument.
