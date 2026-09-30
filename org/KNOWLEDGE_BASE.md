@@ -1486,3 +1486,45 @@ R&D, and **unknown for the CEO**.
   the clever route scored better on a metric I had made up. The charter says minimise **recurring**
   owner labour. I had been reading it as minimise all of it.
 - Generalisable: *an autonomy constraint optimised past its purpose becomes the constraint.*
+
+
+## KB-176 · "I'll get back to you" was never possible. The chat has no memory. **PROCESS — the fifth family, aimed at the chairman.**
+
+2026-09-30, the chairman with a screenshot of the CEO saying *"I'll come back to you with a clean
+answer, not a guess"*: **"When the CEO says I'll get back to you with the findings or whatever, he
+doesn't get back."**
+
+He is right, and it was never going to happen. **The chat on the office page has no memory.** Each
+question is answered from the records and then forgotten — there is no thread, no queue, no
+follow-up, and nothing that reads a promise back. Every commitment made in that panel was sincere
+when said and structurally impossible one second later. The chairman has been waiting on answers
+that were never coming, with no way to tell which ones.
+
+**The fix is not wording.** Telling the agents to promise less would have hidden it. An agent that
+needs to go and find something out now ends its reply with its own last line, `OPEN: <question>`.
+That line never reaches the chairman as text: the page strips it, writes a dated row saying what it
+owes him, and shows it under the conversation until somebody answers it. No line, no promise — and
+"I do not know, and here is who would" is explicitly allowed as the honest alternative.
+
+Four cases were run against the parser before it was trusted: a reply with no promise (nothing
+recorded), a real promise (recorded, and the line stripped from what he reads), a promise with
+trailing blank lines (recorded, text tidied), and the words OPEN: appearing mid-sentence (correctly
+**not** treated as a promise). The charter binds the answering half as step 1 of every cycle.
+
+**This is the fifth family again, and this time it was pointed at the chairman.** KB-169 to KB-175
+are all one failure: *a message that never reached its reader in time to matter* — two audits lost,
+an agent that could not report being broken, a product list nothing compared to the shop, links dead
+on the only phone that opens them. This one was aimed at the person the whole page exists to inform.
+
+**The rule it earns:** anything this company says it will do needs a place where it is written down
+and a thing that notices when it is not done. *If you are about to say "I will", and you cannot name
+where that sentence is being recorded, you are about to do this again.*
+
+**The outstanding one was paid, not just tracked.** The promise in the screenshot — whether an
+anime-photo product could be listed free like the others — is answered on the page: no, and for a
+reason that generalises. All nine products are **files**, with zero cost to serve the next customer.
+Anything that processes a customer's upload costs money per customer, forever, including on free
+users. The whole automation budget is $5 a month on a free plan with one cent used, and no image
+model is reachable without a paid account. It would be this company's first product with a cost per
+customer — which is not a small ask but a different kind of business, and not one to take on while
+nine zero-cost products have never been shown to anybody.

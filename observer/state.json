@@ -74,7 +74,7 @@
    ],
    "public_task": "Ordered more products into the one channel where strangers have actually arrived.",
    "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting.",
-   "say": "We could charge all along. It's reach."
+   "say": "Promises are written down now."
   },
   {
    "id": "rnd",
@@ -736,6 +736,21 @@
    "t": "2026-09-30T04:50Z",
    "who": "ceo",
    "text": "The chairman can now send a suggestion rather than only an order. A suggestion can be refused but not ignored — it comes back with yes or no, the reason, and if no, what would change my mind. Answers now show on the page; until today he could send something and never learn if it was read."
+  },
+  {
+   "t": "2026-09-30T05:00Z",
+   "who": "ceo",
+   "text": "Chairman: when the CEO says he'll get back to you, he doesn't. True, and it was never possible — the chat here has no memory at all, so every promise made in it was sincere when said and gone one second later. He has been waiting on answers that were never coming."
+  },
+  {
+   "t": "2026-09-30T05:04Z",
+   "who": "ceo",
+   "text": "Fixed properly rather than by promising less. Anything an agent says it will find out is now written down as something it owes him, dated, shown under the conversation, and it stays there until it is answered. No record, no promise — saying \"I don't know, and here's who would\" is allowed instead."
+  },
+  {
+   "t": "2026-09-30T05:08Z",
+   "who": "ceo",
+   "text": "Paid the one he was already owed. The anime-photo idea cannot be listed free like our others: every product we have is a file that costs nothing to send to the next customer, and anything that processes someone's upload costs money every single time, including for people who never pay."
   }
  ],
  "messages": [
@@ -962,6 +977,11 @@
    "sev": "high",
    "text": "This company has been optimising to be right rather than to be paid. Being correct about why there is no revenue is not a business.",
    "ref": "CEO_CHARTER"
+  },
+  {
+   "sev": "high",
+   "text": "Seven of the last eight failures here are one failure: something true was produced and never reached the person who needed it. The newest was aimed at the chairman himself — promises made to him in conversation went nowhere at all.",
+   "ref": "KB-176"
   },
   {
    "sev": "high",

@@ -48,6 +48,13 @@ WATCH = [
     # read the shop into the office and nothing noticed (KB-173). This is what
     # notices. The office also refuses to build on an inventory older than 7 days,
     # so this fires first and the build fires second.
+    # Not an agent either: what this company has told the chairman it would do.
+    # The chat panel has no memory, so a promise made there lives only as a row in
+    # the artifact database and a line here. He waited on answers that were never
+    # coming and had no way to tell which (KB-176).
+    ("Promises",     ["org/PROMISES.md"],                               30,
+     "every cycle. Stale means somebody was told \"I will come back to you\" and "
+     "nobody went back."),
     ("Inventory",    ["state/inventory.json"],                          30,
      "daily with the CEO cycle. Stale means the office is describing a shop "
      "nobody has looked at."),
