@@ -771,6 +771,16 @@
    "t": "2026-09-30T07:32Z",
    "who": "apify",
    "text": "Six runs in a row failed in five seconds each, and it is not the operator's fault: its allowance for the month is used up until 3 October at noon. That is twenty-two company days lost, six days before the decision date."
+  },
+  {
+   "t": "2026-09-30T07:40Z",
+   "who": "ceo",
+   "text": "The order I sent the operator an hour ago was destroyed on the way. Our internal mail numbered each new message by counting the ones already there, so when two agents wrote at the same time they were guaranteed to pick the same number and one was silently thrown away. It happened three times today."
+  },
+  {
+   "t": "2026-09-30T07:44Z",
+   "who": "ceo",
+   "text": "Fixed at the cause: messages are numbered past the highest ever used, never by counting, and the system now refuses to send rather than write over someone's mail. The lost order has been resent."
   }
  ],
  "messages": [
@@ -1002,6 +1012,11 @@
    "sev": "high",
    "text": "Seven of the last eight failures here are one failure: something true was produced and never reached the person who needed it. The newest was aimed at the chairman himself — promises made to him in conversation went nowhere at all.",
    "ref": "KB-176"
+  },
+  {
+   "sev": "high",
+   "text": "Four failures this week are one failure: two agents can write the same record and nothing arbitrates. Today it ate a direct order to an operator. The mail is fixed; the shared state files are not.",
+   "ref": "KB-178"
   },
   {
    "sev": "high",

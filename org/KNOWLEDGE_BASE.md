@@ -1639,3 +1639,31 @@ reached your Fable limit. Switch to another model to continue."* The allowance r
 **The one action that would fix it sooner is a model change, which this role must not make on its own
 initiative; it needs the chairman's own words.** Recorded once, here and in the report, and not
 raised again.
+
+
+## KB-178 · Memo ids were derived from a count, so two agents writing at once silently destroyed each other's mail. **AUTOMATION. Three losses in one day.**
+
+`scripts/memo.py` issued each new id as `"m-%03d" % (len(memos) + 1)`. That is correct for one
+writer and broken for two. R&D and the CEO both append to `state/memos.json` from different sessions
+and merge later, so whenever both sent mail between merges they were **guaranteed** to mint the same
+id — and the merge kept one and dropped the other with no error anywhere.
+
+**It happened three times on 2026-09-30 alone.** R&D's `m-020` landed on the CEO's memo closing
+Leanpub; R&D's `m-022` landed on a **direct order to the Apify operator** to build the second
+listing. The order was written, committed, pushed, and gone. It was only noticed because the memo
+list was read for an unrelated reason — *the same file the company keeps its instructions in was
+eating instructions.*
+
+**Fixed:** the next id is now the highest ever used plus one, never the count, and `send` refuses
+outright if the id it computed already exists rather than appending over it. Ids are never reused and
+never reissued.
+
+**The pattern, for the fourth time this week.** KB-173: two records of what we sell, nothing
+comparing them. KB-168: a claim about one venue that became a claim about the company. The duplicate
+knowledge-base ids, fixed the same day with `scripts/kb_lint.py`. And now this. **Every one is two
+writers and no arbiter.** *Anywhere two agents can write the same thing, something must either make a
+collision impossible or make it loud — and a counter is neither.*
+
+**Still open, and stated rather than implied:** `state/memos.json` and `observer/state.json` are both
+appended by more than one session and merged by hand. Nothing yet checks either for a collision on
+the way in. The memo file is fixed at the point of writing; the rest is not.

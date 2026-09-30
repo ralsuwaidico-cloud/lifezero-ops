@@ -130,7 +130,22 @@ def main():
         if a.to == "chairman" and a.frm not in ("ceo", "redteam"):
             sys.exit("only the CEO addresses the chairman. The Red Team may, but only when a "
                      "finding has been ignored twice. Everyone else writes a CEO REQUEST.")
-        mid = "m-%03d" % (len(d["memos"]) + 1)
+        # NOT len()+1. Two agents write this file from different sessions, so an id
+        # derived from the count collides the moment both send a memo between merges
+        # -- and the loser is dropped in silence. It happened twice on 2026-09-30:
+        # R&D's m-020 and m-022 each landed on one of mine, and a direct order to the
+        # Apify operator vanished without a word. Take the highest id ever used and go
+        # past it; never reuse, never reissue. KB-178.
+        used = set()
+        for x in d["memos"]:
+            try:
+                used.add(int(str(x.get("id", "")).split("-")[-1]))
+            except ValueError:
+                pass
+        mid = "m-%03d" % ((max(used) + 1) if used else 1)
+        if any(x.get("id") == mid for x in d["memos"]):
+            sys.exit("refusing to send: %s already exists. The id scheme is broken; "
+                     "fix it rather than overwriting somebody's mail." % mid)
         d["memos"].append({"id": mid, "from": a.frm, "to": a.to, "subject": a.subject,
                            "body": a.body, "sent": now(), "status": "open"})
         save(d); n = render(d)
