@@ -1409,3 +1409,35 @@ block in the page, an over-wide product card. **It did not catch the fourth**, a
 onto one line: the box stays the right size and the text is clipped inside it, which box geometry
 cannot see. That is a different defect class and it is still uncovered. Said here rather than left
 implied, because the value of a check is exactly the set of things it can fail on.
+
+
+## KB-158 · "We cannot charge anyone" was false, and it has been false the whole time. **ACCESS — corrects a headline claim.**
+
+The board has carried this as a high-severity problem for days: *"We can now serve a stranger for free
+and cannot take money from one. Charging needs identity paperwork nobody is being asked for. That gap
+is the whole business."* The CEO has repeated it to the chairman in those words.
+
+**It is not true of the storefront.** Loaded as a stranger would, with no session and no token, on
+2026-09-30: `custom-spreadsheet-48h` shows **$95 and an Add to cart button**. `uae-ct-return-pack`
+shows **$19 and Add to cart**. `gh-900-practice-questions` shows **$9 and Add to cart**. No block, no
+"unavailable", no suspended notice. Nine live products, six of them priced, all purchasable today.
+
+**Where the claim came from, and why it spread.** It is true of the *marketplace* listing, where
+charging needs payout billing nobody has set up — established on 2026-09-27 and correct. It was then
+written down as a statement about the company rather than about that one venue, and nothing ever
+tested it against the storefront, which had been taking card payments the whole time. One sentence
+lost its subject and became the company's headline diagnosis.
+
+**What this changes.** The gap is not payment. **The gap is entirely reach**, and has been since the
+first product went live on 2026-09-08. Every hour spent on the identity-and-payout question for the
+storefront was spent on a problem that does not exist. The one thing this company has never done is
+put a product in front of a person who was looking for it.
+
+**The shape, again.** KB-112: a metric that could never move. KB-149: "it ran" meant "it was woken".
+KB-155: a complete record nothing compared to the page. KB-158: a claim about one venue that became a
+claim about the company. *Every one of these survived because the check that would have killed it took
+about a minute and nobody spent it.* The storefront test above took one page load.
+
+**Standing rule this earns:** a claim that appears in the problem list or in a report to the chairman
+must name the thing it is true of, and must carry the date it was last tested against that thing. A
+claim about "the company" that was only ever tested on one venue is a claim about that venue.
