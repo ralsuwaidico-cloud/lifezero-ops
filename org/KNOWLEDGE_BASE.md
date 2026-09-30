@@ -1786,3 +1786,53 @@ truncated grep read as a complete one.
 - The common factor in all three is not the tool. It is **stopping at the first output that resembles
   an answer**, which is the same fault as KB-159's host-verdict-hiding-a-path-policy, committed by the
   reader instead of the instrument.
+
+
+## KB-183 · R-071 passes KB-161 by design, and the Desk got there eight days before the screen existed. **CHANNEL. Assumption verified.**
+
+R&D put gate 2 on the owner's desk asserting that R-071's delivery never touches a client's system,
+**without having read the asset that determines it.** Verified this cycle from
+`lz_OFFER_n8n_repair_fault_catalogue_run33.md` (Drive, 2026-09-21), verbatim:
+
+> *"We do not need access to your server, and we do not want it."*
+
+Plus: no host or instance administration; *"No credential handling: we work from an export with
+secrets removed"*; runbook step 7 *"Apply the fix to the export only. **Never to a live instance**"*;
+and a decline test that fires on any request for server, credential or production access.
+
+**The assumption holds by design.** The Desk reached the constraint from liability and from having no
+human on call — eight days before R&D wrote KB-161 from a different direction.
+
+- **The rule on myself:** *do not put an assumption on the owner's desk that an asset in our own Drive
+  already settles.* The check cost one file read. Gate 2 now quotes the source instead of summarising it.
+- **Worth more than the agreement:** two agents reasoning independently to the same constraint is
+  stronger evidence than one screen confirming itself.
+
+
+## KB-184 · Our best product content is a security claim we cannot verify from this environment. **ACCESS. Hard limit on what may be shipped.**
+
+The fault catalogue's differentiating content is dated and version-ranged: deprecations A1–A5, and
+D1/D2 — *"CVE-2026-21858 'Ni8mare', CVSS 10.0, unauthenticated RCE, affects 1.65.0 – 1.120.x, fixed in
+1.121.0."* **All of it is graded REPORTED in our own ledger — no primary page was ever read.**
+
+Measured 2026-09-30, every source that could verify it:
+
+| Source | Result |
+|---|---|
+| `services.nvd.nist.gov` | **NET_BLOCKED**, proxy 403 |
+| `cve.circl.lu` | **NET_BLOCKED**, proxy 403 |
+| `api.osv.dev` | **NET_BLOCKED**, proxy 403 |
+| `docs.n8n.io` | blocked (already established; not re-probed) |
+
+- **The rule, and it is absolute:** *we may not tell a stranger their production system carries a
+  critical vulnerability on evidence we cannot read.* Nothing fake, ever, covers unverifiable as well
+  as invented. **This forbids the most saleable content in the company's best asset.**
+- **Second-order, and the reason this is written as a warning rather than a note:** the catalogue reads
+  as authoritative — dated CVEs, CVSS scores, version ranges — so an operator building from it will
+  reproduce those claims in good faith. The prohibition has to live where the builder looks.
+- **What survives is what the export alone decides:** C3 (an expression referencing a node not present)
+  and C6 (no error handling at all) are decidable; C4 structurally; C1 as a flagged heuristic. Runtime,
+  credential and semantic faults are not.
+- **And the honest gap:** the catalogue evidences **repair** demand (15 observations, \$20–349 — a
+  workflow already broken). A static lint is **prevention**, of which we have zero observations. The
+  mechanism would be real and the demand unevidenced.

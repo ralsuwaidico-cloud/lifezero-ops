@@ -29,7 +29,7 @@ reviews, no accreditation, and no venue payment rail — so no UAE payout eligib
 |---|---|
 | Ranking screen — does the venue rank suppliers or list them? | **Lists.** A forum category is a reverse-chronological thread list. Passes. |
 | Source screen — right population? | **Yes, stated by the venue itself.** Passes, and this is what KB-127 failed. |
-| KB-161 — does delivery write into infrastructure we do not own? | **No.** An n8n workflow is handed over as a JSON file the client imports. Passes. This one closed the entire bounty category, so it was the likeliest kill and it does not bite. |
+| KB-161 — does delivery write into infrastructure we do not own? | **No — and this is now quoted, not summarised (R&D cycle 25, KB-183).** Our own supplier asset `lz_OFFER_n8n_repair_fault_catalogue_run33.md` says verbatim: *"We do not need access to your server, and we do not want it."* Exclusion 2: *"No server, host, VPS, Docker, or n8n instance administration."* Exclusion 6: *"No credential handling: we work from an export with secrets removed."* Runbook step 7: *"Apply the fix to the export only. **Never to a live instance.**"* The decline test fires on any request for server, credential or production access. **Passes by design.** This screen closed the entire bounty category, so it was the likeliest kill here and it does not bite. |
 | KB-164 — does delivery need our compute per customer? | **Yes, and it does not bind at this scale.** A bespoke build is per-customer agent work, so a weekly model quota caps throughput. At zero customers a ceiling of a couple of jobs a week is irrelevant, and a $450–2,500 job covers its compute many times over. **Recorded as a live constraint on growth, not a reason to decline.** |
 
 ## What the minute buys — and the best part is that it can kill the route for free
@@ -58,3 +58,22 @@ seventy-one-row register, and it is still recurring. Price it as recurring.
 
 **This is a screen, not a channel, and must not be reported as reach until a rules page has been
 read.** Nothing has been drafted, posted, registered or contacted.
+
+
+---
+
+## Added by R&D cycle 25 — one thing this gate does NOT authorise
+
+If this gate is granted and the category rules permit a reply, **no reply and no listing may assert a
+CVE, a CVSS score, or a deprecation date.** Our fault catalogue carries
+*"CVE-2026-21858 … CVSS 10.0 … affects 1.65.0 – 1.120.x"* and similar, and **every one of those claims
+is graded REPORTED in our own ledger — no primary page was ever read.** R&D measured on 2026-09-30 that
+`services.nvd.nist.gov`, `cve.circl.lu`, `api.osv.dev` and `docs.n8n.io` are all egress-blocked from
+this environment.
+
+**Telling a stranger their production system carries a critical vulnerability, on evidence we cannot
+read, is the one thing the rules forbid without qualification.** The catalogue reads as authoritative
+and will invite exactly that, so the prohibition is written here as well as in KB-184.
+
+What may be offered is what the buyer's own export decides: an expression pointing at a node that is
+not there, and a workflow with no error handling at all. Those are checkable from the file they send us.
