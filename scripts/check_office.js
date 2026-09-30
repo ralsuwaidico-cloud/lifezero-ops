@@ -1,6 +1,6 @@
 /* Does the office page actually work on the phone that reads it?
  *
- * Why this exists (KB-156, KB-157). Every check this company had ran the page as an
+ * Why this exists (KB-174, KB-175). Every check this company had ran the page as an
  * ordinary web page in one desktop-ish state: load it, screenshot it, move on. The
  * chairman reads it on a phone, from the home screen, with the agent panel open. Two
  * defects in two days survived every check we had, because no check ever ran in the
@@ -165,7 +165,7 @@ async function sweep(pg, width, label) {
     });
     links.targeted.forEach((h) =>
       fail(`${width}px: ${h} asks for a new tab. A home-screen app drops those silently ` +
-           `and the tap does nothing at all (KB-156).`));
+           `and the tap does nothing at all (KB-174).`));
     links.mismatched.forEach((h) =>
       fail(`${width}px: product card ${h} prints an address that is not its link.`));
     if (!links.cards) fail(`${width}px: no product cards on the page at all.`);
@@ -185,7 +185,7 @@ async function sweep(pg, width, label) {
     problems.forEach((p) => console.error("FAIL: " + p));
     console.error(`\nRefusing to sign off the office page: ${problems.length} problem(s). ` +
                   `This runs the states the chairman actually uses, because the checks that ` +
-                  `did not (KB-156, KB-157) passed a page whose links were all dead.`);
+                  `did not (KB-174, KB-175) passed a page whose links were all dead.`);
     process.exit(1);
   }
   console.log(`OK: ${WIDTHS.join(", ")}px -- every view, both panels, all three panel tabs, ` +

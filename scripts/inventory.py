@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Read what this company actually has for sale, and refuse to be wrong about it.
 
-Why this file exists (KB-155, 2026-09-29). The office page listed six storefront
+Why this file exists (KB-173, 2026-09-29). The office page listed six storefront
 products. There were nine. The three it missed were the three oldest, including the
 $95 done-for-you build -- the only thing here that sells work rather than a file, and
 the highest-priced thing we own. They were live the whole time.
@@ -202,7 +202,7 @@ def main():
         "Every storefront product id this company has ever seen, with the date it was "
         "first seen. Append-only on purpose: an id that stops appearing in the list is "
         "fetched by id, and if it still exists the run stops. This is how a live product "
-        "can never go missing from our own records again. KB-155.")})
+        "can never go missing from our own records again. KB-173.")})
     seen = ledger.get("seen", {})
     today = dt.date.today().isoformat()
     ids_now = {p["id"] for p in live if p.get("id")}
@@ -330,7 +330,7 @@ def report_and_exit():
         sys.stderr.write("FAIL: %s\n" % m)
     sys.exit("\nRefusing to write the inventory: %d problem(s). This script exists "
              "because the office once listed six products while nine were live "
-             "(KB-155). It stops rather than write a list it cannot stand behind."
+             "(KB-173). It stops rather than write a list it cannot stand behind."
              % len(PROBLEMS))
 
 

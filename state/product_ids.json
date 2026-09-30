@@ -14,5 +14,5 @@
   "ne4lbVNHP9oZMZiESRZFXw==": "2026-09-29",
   "sflPqwBl8ArGdZgP4OX0hw==": "2026-09-29"
  },
- "note": "Every storefront product id this company has ever seen, with the date it was first seen. Append-only on purpose: an id that stops appearing in the list is fetched by id, and if it still exists the run stops. This is how a live product can never go missing from our own records again. KB-155."
+ "note": "Every storefront product id this company has ever seen, with the date it was first seen. Append-only on purpose: an id that stops appearing in the list is fetched by id, and if it still exists the run stops. This is how a live product can never go missing from our own records again. KB-173."
 }

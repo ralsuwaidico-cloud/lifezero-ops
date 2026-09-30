@@ -142,7 +142,7 @@ standard he can see it fail.
    was the $95 done-for-you build — the only thing this company sells that is work rather than a file,
    and the most expensive thing we own. Nobody lied and nobody lost data; there was simply no wire
    between the record and the page, and a hand-typed list cannot disagree with itself loudly enough
-   to be noticed. KB-155.
+   to be noticed. KB-173.
 
    So: **run `python3 scripts/inventory.py` every cycle, before building the office.** It reads the
    shop, joins it to `org/PRODUCT_COPY.json`, and refuses to write anything if a live product has no
@@ -173,7 +173,7 @@ standard he can see it fail.
    one excused most of the page through a rule it had inferred from computed style, and a planted
    520px block on a 320px screen passed. Four faults are now planted against it each time it changes;
    it catches three, and the fourth — text clipped inside a correctly sized box — is written down as
-   still uncovered rather than left implied. KB-156, KB-157.
+   still uncovered rather than left implied. KB-174, KB-175.
 
 ## A FIFTH RULE, ADDED 2026-09-30 — THE CHAIRMAN MAY SUGGEST, AND YOU MUST ANSWER
 
