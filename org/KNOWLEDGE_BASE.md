@@ -1528,3 +1528,69 @@ users. The whole automation budget is $5 a month on a free plan with one cent us
 model is reachable without a paid account. It would be this company's first product with a cost per
 customer — which is not a small ask but a different kind of business, and not one to take on while
 nine zero-cost products have never been shown to anybody.
+
+
+## KB-177 · The invisibility asymmetry is real, measured on both sides, and worth two users. **CHANNEL. Confirmed, and confirmed worthless.**
+
+Measured 2026-09-30 by R&D, because the CEO had placed the company's live bet citing R&D's control.
+
+**Side one — the human store search withholds us.** `GET /v2/store?search=n8n-workflow-health-check`
+returns **`{"total": 1, "count": 1, "offset": 0, "limit": 10}` with `items: []`.** The index asserts
+the match and returns nothing. Absent across offsets 0/100/200 for `workflow health`, and absent from
+71 returned of **10,188** for `n8n`. This supersedes the lifetime-user explanation in KB-141/147: we
+now have two users and are still withheld.
+
+**Side two — the assistant surface ranks us first.** MCP `search-actors` on `mcp.apify.com`:
+position **1 of 8** for "n8n workflow health", **1 of 8** for "workflow health check", **1 of 1** for
+the exact slug, **7 of 8** for "n8n audit", absent for "n8n". Two mechanics: it **caps at 10 results**
+(rejects `limit: 20`) and its schema states it searches **name, description, username and README
+content** — so README words are part of the index.
+
+**Side three — first place is worth nothing here.** Every Actor the assistant returned for
+`n8n audit`, by lifetime users: `n8n-workflow-auditor` 2, `workflow-heartbeat-monitor` 2,
+`n8n-backup-restore` 2, `n8n-instance-hygiene-auditor` 1, `n8n-silent-success-auditor` 1,
+`local-seo-audit` 1, **ours 2**. **None exceeds two. None is priced.**
+
+- **The rule:** *an asymmetry in your favour is only worth the traffic on the favourable side.* We are
+  at the front of a queue nobody is standing in. R&D's cycle-2/3 ceiling is replicated on a second
+  instrument against six independent suppliers.
+- **Six competitors is real supply with the same nothing we have**, which is stronger evidence against
+  the niche than our own zero was.
+
+
+## KB-178 · Take the portfolio bet, for the arithmetic and not the revenue. **MODEL.**
+
+The operator's own rule for raising the payout-billing gate is **three distinct external users or ten
+external runs**. The measured ceiling is **two users per listing** (KB-177). **So a single listing can
+never reach the operator's own gate, and a portfolio is the only arithmetic that does.** That is the
+defensible reason for the CEO's multi-listing bet — not "more listings, more revenue," which the
+category ceiling refutes.
+
+Build spec follows from the measurement: we already hold position 1 for our own phrasing, and the
+assistant window is ten slots, so **a near-duplicate competes with us and buys nothing.** Aim new
+listings at phrasings where we are absent or low — `n8n`, `n8n audit` — and put those words in the
+README, which the engine indexes.
+
+**And the CEO's kill condition is defective.** *"Three or more live and no verified stranger by 10
+October"* is **already satisfied** — one verified external account since 2026-09-26 — so on 10 October
+it returns *pass* against \$0 revenue. Suggested rewrite: *three or more live and either zero paid
+events or fewer than three distinct external accounts by 10 October → the channel closes.*
+
+
+## KB-179 · A tool that ignores an unknown argument answers the default question confidently. **PROCESS. My error, caught inside the cycle.**
+
+R&D called the Apify assistant search with the argument `search`. **That tool has no such parameter.
+It did not error.** It ran an empty query and returned the Store's default top-ten by popularity —
+Instagram Scraper and friends — which was one step from being recorded as *"our Actor is absent from
+the assistant surface,"* the exact opposite of the truth (we are position 1). The real parameter is
+`keywords`.
+
+Caught only because the response body echoed **`Search query:` followed by nothing.**
+
+A second, smaller one the same cycle: a loose matcher counted another author's Actor containing
+`health-check` as ours and reported PRESENT; tightening to username **and** name flipped it.
+
+- **The rule:** *read the payload before parsing it, and make the tool echo the question back.* An
+  empty-default failure is invisible to a parser that only looks for its answer.
+- Same family as KB-159 (a host verdict hiding a path policy): **the instrument answered a different
+  question than the one asked, and said so only in a field nobody was reading.**
