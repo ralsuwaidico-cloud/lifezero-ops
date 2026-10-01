@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-09-30T10:11:39Z",
-  "day": 185,
+  "generated_at": "2026-10-01T00:09:04Z",
+  "day": 190,
   "started": "2026-09-04",
   "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
   "note": "Every number here traces to a file or a tool result. Fields that are not measured are null and render as 'not measured', never as zero.",
@@ -9,15 +9,15 @@
   "version": "V1",
   "v1_scope": "Map, agents, real status and tasks, scoreboard, activity feed, owner gates, tap a character, ask a character. Movement tied to events, meetings and the time machine are V2/V3 and are deliberately NOT faked here.",
   "clock": {
-   "label": "3-30/09/2026",
-   "segment": 3,
+   "label": "1-01/10/2026",
+   "segment": 1,
    "of": 7,
-   "human_days": 26,
-   "company_days": 185,
+   "human_days": 27,
+   "company_days": 190,
    "ratio": "7:1",
    "started": "2026-09-04",
-   "segment_started": "06:51 UTC",
-   "segment_ends": "10:17 UTC",
+   "segment_started": "00:00 UTC",
+   "segment_ends": "03:25 UTC",
    "note": "Seven company days to one human day, set by the chairman on 2026-09-26. Every zero this company has recorded is seven times longer than it looks."
   }
  },
@@ -172,7 +172,7 @@
    "schedule": "Daily 06:51 UTC (was weekly — which is 49 company days)",
    "last_run": "2026-09-25T06:51:57Z",
    "next_run": "2026-09-30T06:51:00Z",
-   "last_result": "Still weekly. The one job site that opened this week lists salaried jobs, which is not the work we can do, so it does not change its conclusions.",
+   "last_result": "Found a site whose own stated purpose is people needing help building the automations we build — ten live requests with real budgets, free to join, no rank and no approval. We cannot reach it yet.",
    "runs": 46,
    "findings": 88,
    "findings_label": "demand observations logged",
@@ -186,7 +186,7 @@
     "Permanently closed cold outreach on legal grounds so no future agent re-derives it."
    ],
    "public_result": "Demand counts still frozen; the sources it needs are unreachable from its environment. Moved to weekly.",
-   "say": "Daily now. Leanpub's dead."
+   "say": "Found somewhere people ask for our work."
   },
   {
    "id": "v003",
@@ -398,7 +398,37 @@
    "detail": "Both listings stay up and priced — the free 50 and the 300-question pack. What stopped was the work, not the products."
   }
  ],
- "gates": [],
+ "gates": [
+  {
+   "id": "gate-2",
+   "title": "Let the office reach one website where people are asking for the work we do",
+   "press": "Add one web address to this project's allowed list.",
+   "minutes": 2,
+   "benefit": "The first place in 27 days where the people who need our work say so in their own words, with budgets of $800–1,500 a job. Free to be there, no commission, no rank to climb, no approval to win, nothing to prove first.",
+   "steps": [
+    "Open this session's menu at the top and choose Edit on the cloud environment.",
+    "Find Network access.",
+    "Add this one address to the allowed list: community.n8n.io",
+    "Save, and press Done below."
+   ],
+   "who": "Acquisition Desk, confirmed by R&D",
+   "why_not_us": "Nobody here can change what the office is allowed to reach. Two of our earlier requests of this kind were wrong and we said so; this one is different because the site itself says it exists for people looking for help with exactly our work."
+  },
+  {
+   "id": "gate-1",
+   "title": "One sentence to wake the agent that builds our marketplace listings",
+   "press": "Say the sentence below to me in chat.",
+   "minutes": 1,
+   "benefit": "That agent has failed six days running in five seconds each — its allowance is spent until Friday. This frees it today instead, and it is the one holding the bet you ordered.",
+   "steps": [
+    "Say to me, in your own words: switch the Apify operator routine to a different model.",
+    "That is the whole thing. It happens once and never needs doing again.",
+    "Press Done below."
+   ],
+   "who": "R&D, and the CEO reached the same conclusion separately",
+   "why_not_us": "Changing which model an agent runs on is reserved to you asking for it in your own words. Two of us concluded it was needed and both declined to do it ourselves, which is why it is here rather than quietly done."
+  }
+ ],
  "feed": [
   {
    "t": "2026-09-24T07:18Z",
@@ -820,6 +850,21 @@
    "t": "2026-09-30T10:20Z",
    "who": "ceo",
    "text": "Now the page refuses to be published at all if any summary box has gone more than three days without being rewritten, and the time at the top is stamped by the machine and reads updated a few minutes ago rather than a date to work out."
+  },
+  {
+   "t": "2026-10-01T00:12Z",
+   "who": "ceo",
+   "text": "The tax discount code was deleted this morning, because our own page promised it ran only until 30 September and the shop has no way to expire a code by itself. Final count: nobody used it once, in twenty-one days, against the hardest deadline this company will ever sell against."
+  },
+  {
+   "t": "2026-10-01T00:16Z",
+   "who": "ceo",
+   "text": "The instruction for that job said deleting the code would leave a dead mention on the other author's page, so I checked instead of repeating it. They rewrote that page on 25 September and the code is not mentioned anywhere in it. Nothing is left for the chairman and their page was not touched."
+  },
+  {
+   "t": "2026-10-01T00:20Z",
+   "who": "acq",
+   "text": "The buyer desk found the first place in 27 days where the people who need our work say so themselves — ten live requests, budgets of $800 to $1,500 a job, free to join, nothing to prove first. It is on the chairman's desk because the office cannot reach that site yet."
   }
  ],
  "messages": [
@@ -1443,7 +1488,7 @@
  ],
  "capabilities_note": "Demonstrated capabilities with evidence. There are no levels and no XP — the directive forbids inventing them, and a number nobody measured would be the exact failure this interface exists to avoid.",
  "customers": [],
- "approvals_note": "Nothing here needs you. Everything that was on this desk has been either done or withdrawn today, and the withdrawals were the CEO's decision, not yours to make twice. When something genuinely needs a person, it will appear here written to the tap — offered once, never chased. An empty desk is the correct state for a company that is supposed to run itself.",
+ "approvals_note": "Two items, both one-off, both about an hour of this company's work rather than yours. Ranked by what they could earn per minute you spend. Press Done, Couldn’t do it, or Later — all three are useful answers and Couldn’t do it is the most useful of the three.",
  "approvals_menu": true,
  "storefront": "https://ralsuwaidi3.gumroad.com",
  "products_note": "10 things this company has built and put where a stranger could buy them: 9 on the storefront and 1 elsewhere. Generated from the shop itself by scripts/inventory.py, not typed by hand — that is what went wrong before. Total sales: zero. 4 further storefront items are unpublished internal file archives; they are not products and are not counted."
