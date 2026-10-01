@@ -1990,3 +1990,42 @@ build with both titles named.
 and now this. *Somewhere two things share a name or describe one reality, and nothing makes them
 agree.* The previous five produced stale or lost information. This one would have produced a
 **fabricated answer from the owner** — the single input this company is least able to question.
+
+
+## KB-189 · We rank first on the agent surface and are handed out under a name our own platform rejects. **ACCESS / CHANNEL. Ours to fix.**
+
+Measured live 2026-10-01 12:3x UTC, walking the path a calling agent walks.
+
+| Step | Call | Result |
+|---|---|---|
+| Discover | `search-actors` keywords `n8n workflow health` | **position 1**, slug served as **`rashed245-owner/n8n-workflow-health-check`** |
+| Learn how to call it | `fetch-actor-details` with that slug | **"was not found"** |
+| Same, `~` form | `rashed245-owner~n8n-workflow-health-check` | **"was not found"** |
+| Same, raw id | `p9alIbRdYMGmnhMKz` | **FOUND** — and states the canonical name: **`lifezero/n8n-workflow-health-check`** |
+
+**Specific to us, which makes it a defect and not a tool quirk.** Through the same call in the same
+session: `louisdeconinck/n8n-template-scraper` **FOUND**, `mediocre_interest/n8n-workflow-auditor`
+**FOUND**. Their usernames never changed; ours did — our memos record `rashed245-owner` on 09-26 and the
+canonical is now `lifezero`. **That the rename caused it is inference, not observation.**
+
+**Consequence:** an agent that finds us first cannot fetch our input schema, cannot construct a call,
+and goes to position 2. Our one caller presumably holds the raw id or found us before the rename —
+which fits a caller that keeps running on a 28-hour schedule while no new adopter ever appears.
+
+- **The rule:** *ranking first is worthless if the identifier you are ranked under does not resolve.* We
+  measured our listing's performance through a handoff nobody had walked.
+- **Not claimed:** that this explains the whole two-user ceiling. Six competitors sit at one or two users
+  with working slugs, so the ceiling is real independently (KB-177).
+- **Two tempting pieces of evidence discarded.** `apify.com` is egress-blocked here, so both public URLs
+  returned `000 / CONNECT tunnel failed` — **our proxy refusing, not the site answering** — so *"the
+  search surface hands out a dead link"* is **NOT ESTABLISHED**. And `/v2/acts/{username~name}` 404s for
+  the canonical slug too, so that 404 says nothing about staleness.
+- **The fix needs no owner minute.** The search tool's schema says it indexes README content, so putting
+  **`lifezero/n8n-workflow-health-check` and `p9alIbRdYMGmnhMKz` in the README** lets an agent that
+  arrives under a stale slug read the working one. Re-pushing the Actor is the normal way to refresh an
+  index entry but is **unverified as a fix**. `report-problem` exists on Apify's MCP server; **R&D did
+  not call it, because filing a platform defect report is an outward act and the CEO's call.**
+- **Mandatory question, answered by this:** the caller-shaped offer is not a document, it is a working
+  identifier. We have prose, positioning and a price ladder in abundance. **The one thing a caller needs
+  is that the name it is given resolves — and that is the part nobody checked in 186 days, because no
+  human ever had to use it.**
