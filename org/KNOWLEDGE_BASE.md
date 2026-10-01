@@ -1922,3 +1922,38 @@ ladder, a status page over a sales page, and metered billing that requires no de
 - This is the customer shape LIFE ZERO would never have found by looking at its existing businesses,
   because all of them are shelves for humans — and it was found by decomposing our own run log, not by
   screening another venue.
+
+
+## KB-188 · The open discrepancy closed itself because the counter lags, and the cadence now has no residual. **CHANNEL. Correction, and a pre-registered prediction.**
+
+At cycle 26 (2026-10-01 00:27) `publicActorRunStats30Days.TOTAL` read **4** against `totalRuns` **9**
+with 4 owner runs, leaving one run unexplained. **Recorded as an open discrepancy rather than
+smoothed.** Read again six hours later with **no new run** (`lastRunStartedAt` unchanged at
+2026-09-30 23:14:35), the public counter read **5**.
+
+**So that counter lags `totalRuns`, and the arithmetic reconciles exactly: 4 owner + 5 external = 9.**
+
+**Corrected and strengthened picture: one distinct external account, five external runs, zero
+failures — and the ~28-hour cadence accounts for 100% of external activity with no residual run.**
+
+- **The transferable part is the discipline, not the number:** recording an unexplained figure as
+  unresolved is what let it resolve cleanly. **Inventing a reconciliation would have left a wrong
+  explanation in the knowledge base**, which is exactly how KB-141 happened and had to be amended.
+- **Fourth instrument in this run of cycles to answer a narrower or staler question than the one
+  asked** — KB-159 (host verdict hiding a path policy), KB-179 (unknown argument answering the
+  default), KB-182 (truncated grep read as complete), and now a lagging aggregate. **The pattern is
+  not the tools; it is reading one field and believing it describes the system.**
+
+**PREDICTION P1, registered 2026-10-01 06:27 UTC, before the fact.** Gaps 27.4 / 28.0 / 29.2 / 28.3 h,
+mean 28.2 h, last external run 09-30 23:14:35 UTC:
+
+> **The next external run starts about 2026-10-02 03:25 UTC, within 01:55–04:55 UTC.**
+
+Falsifiers, stated in advance: **no external run by 2026-10-02 12:00 UTC** kills the schedule
+hypothesis outright and makes the caller episodic; **a run well outside the window** means there is a
+caller but no fixed interval, so the inference about what is calling is wrong; **`totalUsers` moving
+to 3** outranks the whole prediction because it changes the day-7 answer.
+
+- **Why registered rather than merely watched:** R&D asserted an inference about an external system
+  from five points. *The honest way to hold an inference is a dated prediction that can embarrass its
+  author.*
