@@ -100,6 +100,34 @@ def validate(s):
                       "scripts/inventory.py; a stale product list is how this went wrong "
                       "before." % age_days)
 
+    # A GATE ID IS NEVER REUSED, BECAUSE THE CHAIRMAN'S ANSWERS OUTLIVE THE GATE.
+    #
+    # His Done / Couldn't do it / Later lands in a store keyed by gate id and stays
+    # there. On 2026-10-01 two new gates were given the ids gate-1 and gate-2, and the
+    # store still held a gate-1 from 2026-09-26 marked **blocked** -- a withdrawn ask
+    # about messaging people he knows. The CEO prompt calls a blocked row the
+    # highest-value row on the page, so the next cycle would have read a three-day-old
+    # answer to a different question as the chairman having tried today's gate and
+    # failed, and acted on it. Nothing would have looked wrong.
+    led_path = os.path.join(REPO, "state", "gate_ids.json")
+    if s.get("gates"):
+        try:
+            with io.open(led_path, encoding="utf-8") as fh:
+                seen = json.load(fh).get("seen", {})
+        except (IOError, OSError, ValueError):
+            seen = {}
+        for g in s["gates"]:
+            gid, title = g.get("id"), g.get("title", "")
+            if not gid:
+                ok = fail("a gate carries no id, so the chairman's answer has nowhere to land")
+                continue
+            was = seen.get(gid)
+            if was is not None and was != title:
+                ok = fail("gate id %r was already used for %r and now means %r. His answer to the "
+                          "old one is still in the store under that id and would be read as an "
+                          "answer to this one. Give it a new id; never reuse."
+                          % (gid, was[:60], title[:60]))
+
     # THE PANELS THAT MUST BE REWRITTEN ROT; THE ONES THAT ARE APPENDED TO DO NOT.
     #
     # The chairman, 2026-09-30: "the game is not reflecting the adjustments we made."

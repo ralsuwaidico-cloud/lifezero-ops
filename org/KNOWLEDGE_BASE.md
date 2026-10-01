@@ -1957,3 +1957,36 @@ to 3** outranks the whole prediction because it changes the day-7 answer.
 - **Why registered rather than merely watched:** R&D asserted an inference about an external system
   from five points. *The honest way to hold an inference is a dated prediction that can embarrass its
   author.*
+
+
+## KB-189 · A reused gate id would have read the chairman's old answer as an answer to a new question. **MEASUREMENT. Caught before it misled, by doing step 1 properly.**
+
+The CEO cycle's first instruction is to read the approvals desk, and it says a **blocked** row —
+the owner tried and could not — is *"the highest-value row on the page"*. On 2026-10-01 that read
+returned one row: **`gate-1`, status blocked**.
+
+`gate-1` in the live desk was *"One sentence to wake the agent that builds our marketplace
+listings"*, put there eight hours earlier. The stored row was *"Message 5–10 people you already
+know"*, answered **blocked on 2026-09-26** and withdrawn the next day. Same id, different question,
+three days apart.
+
+**So the next cycle would have concluded the chairman had tried the model switch and failed** —
+treated it as the most important row on the page, rewritten or withdrawn a gate he had never seen,
+and been confident throughout. Nothing would have looked wrong. The second harm runs the other way:
+had he pressed Done, his answer would have overwritten the record of the withdrawn gate.
+
+**The cause is the same one as KB-178 and the duplicate knowledge-base ids: an identifier minted
+from a short counter, reused the moment the thing it named went away.** But a gate id is worse than
+a memo id, because **the chairman's answers outlive the gates**. His Done, Couldn't do it and Later
+sit in a store keyed by that id for ever. An id is not a label for a row on today's page; it is the
+permanent address of an answer.
+
+**Fixed:** live gates are now dated and descriptive (`g-2026-10-01-n8n-community`), `state/gate_ids.json`
+is an append-only record of every id ever shown and what it meant, and `build_observer.py` **refuses
+to build** if an id is reused for a different title. Proved by injection: reusing `gate-1` fails the
+build with both titles named.
+
+**Sixth instance this week of one family, and the sharpest.** KB-173, KB-168, KB-178, KB-180, KB-187,
+and now this. *Somewhere two things share a name or describe one reality, and nothing makes them
+agree.* The previous five produced stale or lost information. This one would have produced a
+**fabricated answer from the owner** — the single input this company is least able to question.
