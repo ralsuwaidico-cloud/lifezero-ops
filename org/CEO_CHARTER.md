@@ -227,6 +227,33 @@ standard he can see it fail.
    it is not done.** If you catch yourself about to say "I will", stop and ask where that sentence is
    being recorded. If the answer is nowhere, you are about to do this again.
 
+## A SEVENTH RULE, ADDED 2026-10-01 — FOUR AGENTS WERE STARVED AND KEPT WORKING
+
+7. **Publish the control plane to the shared drive every cycle in which it materially changed, and
+   name that step here so it cannot be lost again.** Run `python3 scripts/publish_control_plane.py`,
+   follow its printed steps, and verify with `--verify-size`.
+
+   **Why this is a rule rather than a step in a prompt.** This charter was rebuilt around the Office
+   page and the Drive-publish step went with the old version. Nobody noticed for three days, because
+   **the four agents that read the shared drive kept running and kept producing confident output from
+   frozen facts.** R&D found it: the Acquisition Desk reported our marketplace listing as not
+   accepted — correct by its own rules, which forbid it inferring facts about our assets — four days
+   after that listing went public. *The best-behaved agent in the company was following its rules
+   perfectly into a wrong answer.*
+
+   **The general form, and it is the sharpest version of this family yet.** A starved agent that falls
+   silent is caught by `scripts/liveness.py`. **A starved agent that keeps working is caught by
+   nothing.** Silence is instrumented here; confident wrongness is not. Whenever you give an agent a
+   source of truth, ask what happens if that source stops moving while the agent does not — and if
+   the answer is "it keeps answering", that is a defect, not resilience.
+
+   **And keep the thing publishable.** The file reached 60KB, 57% of it rendered mail, and publishing
+   it is a hand transcription — the operation that silently dropped 108 bytes on 2026-09-25
+   (KB-107/INC-003). A shared memory too large to copy reliably stops being copied, which is exactly
+   what happened. `scripts/memo.py` now renders recent mail in full against a byte budget and indexes
+   the rest, with every word kept in `org/MEMO_ARCHIVE.md`. If the control plane grows past what can
+   be copied in one go again, trim it rather than skipping the publish.
+
 ## How the chairman judges this role
 
 The chairman said plainly: *poor actions and the CEO is replaced.* So here is the test, written by

@@ -58,11 +58,69 @@ def check(who, field):
         sys.exit("unknown %s %r. known: %s" % (field, who, ", ".join(sorted(WHO))))
 
 
+def archive(d):
+    """Every memo ever sent, in full, beside the control plane. The control plane
+    carries what is current; this carries everything, so trimming the first never
+    loses anything."""
+    out = ["# Memo archive",
+           "",
+           "Every memo LIFE ZERO has sent, oldest first, in full. The control plane renders only",
+           "recent open mail, because it is hand-copied to the shared drive on every publish and a",
+           "file too large to copy reliably stops being copied at all. This file is the complete",
+           "record; nothing here was ever deleted from it.",
+           ""]
+    for m in sorted(d["memos"], key=lambda x: x["id"]):
+        out.append("## %s · %s &rarr; %s · %s · *%s*"
+                   % (m["id"], WHO.get(m["from"], m["from"]),
+                      WHO.get(m["to"], m["to"]), m.get("sent", "?"),
+                      m.get("status", "?")))
+        out.append("")
+        out.append("**%s**" % m.get("subject", ""))
+        out.append("")
+        out.append(m.get("body", ""))
+        out.append("")
+        if m.get("reply"):
+            out.append("> **Replied %s:** %s" % (m.get("replied", "?"), m["reply"]))
+            out.append("")
+    with io.open(os.path.join(REPO, "org", "MEMO_ARCHIVE.md"), "w", encoding="utf-8") as fh:
+        fh.write("\n".join(out))
+
+
 def render(d):
     """Rewrite the MEMOS block in the control plane. Open memos only -- the
     control plane is a working document, not an archive; closed mail lives in
     state/memos.json."""
     openm = [m for m in d["memos"] if m["status"] != "closed"]
+
+    # A SHARED MEMORY THAT CANNOT BE COPIED IS NOT A SHARED MEMORY.
+    #
+    # Publishing the control plane to Drive is a hand transcription into a tool
+    # call, and on 2026-09-25 that operation silently dropped 108 bytes
+    # (KB-107/INC-003). By 2026-09-30 the file had reached 60KB, 57% of it rendered
+    # mail, most of it long settled -- so the one artefact four memoryless agents
+    # read every run had grown too large to republish safely, and stopped being
+    # republished at all. R&D named it and left the content call here, correctly.
+    #
+    # So: recent mail renders in full, older open mail renders as one line each,
+    # and every memo is written to the archive beside it. Nothing is lost; the
+    # thing that must be copied is small enough to copy.
+    # The budget is in BYTES, not days, because bytes are the actual constraint: a
+    # date cutoff looked tidy and made the file BIGGER, since the newest mail is
+    # also the longest. Newest first, render in full until the budget is spent,
+    # then one line each. Nothing is dropped -- archive() holds every word.
+    FULL_BYTES = 14000
+    byid = sorted(openm, key=lambda x: x["id"], reverse=True)
+    recent, older, spent = [], [], 0
+    for m in byid:
+        cost = len(m.get("body", "")) + len(m.get("subject", "")) + 120
+        if spent + cost <= FULL_BYTES:
+            recent.append(m); spent += cost
+        else:
+            older.append(m)
+    cutoff = "%d of %d shown in full (%d of %d bytes)" % (
+        len(recent), len(openm), spent, FULL_BYTES)
+    archive(d)
+
     lines = [START, "", "## MEMOS — open mail", ""]
     if not openm:
         lines += ["No open memos. (Governance: `GOVERNANCE.md`. Mail is sent with",
@@ -72,7 +130,17 @@ def render(d):
                   "your run log under a heading `REPLY TO <id>`. The CEO harvests replies and",
                   "closes the memo. A memo is a question or an instruction — status goes in run",
                   "logs, not here.", ""]
-        for m in sorted(openm, key=lambda x: x["id"]):
+        if older:
+            lines.append("**Older open mail, one line each** (%s). The full text of every memo "
+                         "ever sent is in `org/MEMO_ARCHIVE.md` in this repository. If one of these "
+                         "is addressed to you and you need the detail, it is there." % cutoff)
+            lines.append("")
+            for m in sorted(older, key=lambda x: x["id"]):
+                lines.append("- **%s** %s &rarr; **%s**, %s — %s"
+                             % (m["id"], WHO[m["from"]], WHO[m["to"]].upper(),
+                                (m.get("sent") or "")[:10], m["subject"]))
+            lines.append("")
+        for m in sorted(recent, key=lambda x: x["id"]):
             lines.append("### %s &nbsp;&nbsp; %s &rarr; **%s** &nbsp;&nbsp; *%s*"
                          % (m["id"], WHO[m["from"]], WHO[m["to"]].upper(), m["sent"]))
             lines.append("")
