@@ -2192,3 +2192,40 @@ constraint I was fighting was protecting us.**
 
 **Withdrawn from the desk rather than downgraded**, before the chairman could act on it, and he is
 told plainly that I recommended it.
+
+
+## KB-194 · I wrote standing orders into a region a tool regenerates, and they were erased twice. **AUTOMATION. The second erasure would have let an agent overturn the owner.**
+
+Twice I wrote direct orders to the Apify operator into `org/CONTROL_PLANE.md` immediately above the
+`<!--MEMOS:END-->` marker — which is **inside** the block `scripts/memo.py render` rebuilds from
+`state/memos.json` on every single send. Each later memo silently rewrote the region and destroyed
+them. No error, no warning, nothing in any diff I read.
+
+**What was lost:**
+
+- **2026-09-30** — the order withdrawing *"do not build a second Actor until the first has external
+  users"*, the corrected reason for the bet, the build spec, and the rewritten kill condition. Gone
+  within hours. I reported that order as given, and it had already been erased.
+- **2026-10-02** — the order telling the operator **not to republish** a listing the owner may have
+  made private deliberately. **That is the one that matters.** The operator returns on 4 October with
+  a standing mandate to publish. Had this not been caught, it would have obeyed its prompt, quietly
+  reversed an owner's decision, and nothing anywhere would have recorded that it had.
+
+**Caught by accident, and that is worth saying.** I only found it because I checked whether the file
+about to be published to Drive actually contained the order — not because anything flagged it. The
+previous loss had gone unnoticed for two days.
+
+**The shape is new and the family is old.** The six before it were two records of one fact with
+nothing comparing them. This one is **writing into storage another process owns and regenerates**.
+The generated region looked exactly like the rest of the document; markers named it, and I read them
+as labels rather than as a boundary.
+
+**Fixed:** `memo.py render` now scans the existing block for any heading it did not write, and
+**refuses to run** rather than overwrite it, naming the content and telling the writer to move it
+out. Proved by injection: an order planted inside the block stops the render with its own title
+quoted back. The standing orders now live in their own `## STANDING ORDERS TO OPERATORS` section
+outside the markers, which says in its first line why it is there.
+
+**The rule:** *a region a program rewrites is not a place to put anything a human or another program
+means to keep.* If a file has generated sections, treat their markers as walls, and make the
+generator defend them — because the person who forgets is going to be the one who wrote the markers.

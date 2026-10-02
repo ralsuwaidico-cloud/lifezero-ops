@@ -19,6 +19,7 @@ import datetime
 import io
 import json
 import os
+import re
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -158,6 +159,25 @@ def render(d):
     with io.open(PLANE, encoding="utf-8") as fh:
         s = fh.read()
     if START in s and END in s:
+        # THIS BLOCK IS GENERATED. ANYTHING ELSE INSIDE IT WILL BE DESTROYED.
+        #
+        # On 2026-09-30 and again on 2026-10-02 the CEO wrote standing orders to the
+        # Apify operator directly above END -- which is inside this region -- and the
+        # next memo sent silently rebuilt the block over them. Both sets of orders
+        # vanished: the one withdrawing "do not build a second Actor", and the one
+        # telling the operator NOT to republish a listing the owner may have made
+        # private on purpose. Nothing warned anybody, and the second loss would have
+        # let an agent quietly reverse an owner decision. KB-194.
+        existing = s[s.index(START) + len(START):s.index(END)]
+        stray = [h for h in re.findall(r"(?m)^#{2,4} (?!m-\d)(.+)$", existing)
+                 if h.strip() != "MEMOS \u2014 open mail"]
+        if stray:
+            sys.exit("refusing to rewrite the memo block: it contains %d heading(s) this "
+                     "script did not write, and rewriting would destroy them:\n  %s\n"
+                     "Move that content OUTSIDE the <!--MEMOS:START--> / <!--MEMOS:END--> "
+                     "markers and run again. Everything between those markers is generated "
+                     "from state/memos.json on every send." %
+                     (len(stray), "\n  ".join(stray[:6])))
         s = s[:s.index(START)] + block + s[s.index(END) + len(END):]
     else:  # first time: put it directly above SCHEDULED ACTIONS
         anchor = "## SCHEDULED ACTIONS"
