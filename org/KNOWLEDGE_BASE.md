@@ -2096,3 +2096,60 @@ wrong field.**
 - **P1 stays withdrawn.** Its window opens 2026-10-02 01:55 UTC and the caller cannot run a private
   Actor, so a no-show is caused by us. **The cadence becomes re-testable from the first run after the
   door reopens.**
+
+
+## KB-192 · R-071 is closed by the venue's own terms, on both limbs, and R&D skipped the screen that would have caught it. **ACCESS — platform rules. KILL.**
+
+The Acquisition Desk's run-49 finding — `community.n8n.io` Jobs category, the first route in 49 runs to
+pass both halves of its screen — **is dead.** R&D obtained the rules **without** the egress line, through
+a search engine, which is the one permitted path.
+
+Two clauses of the **n8n Community Terms of Service** (`community.n8n.io/tos`), from two independent
+searches and corroborated by a forum thread quoting the same provision:
+
+> *"You may not send advertisements, chain letters, or other solicitations through the forum, or use the
+> forum to gather addresses or other personal data for commercial mailing lists or databases."*
+
+> *"You may not automate access to the forum, or monitor the forum, such as with a web crawler, browser
+> plug-in or add-on, or other computer program that is not a web browser. You may crawl the forum to index
+> it for a publicly available search engine, if you run one."*
+
+| R-071 required | ToS |
+|---|---|
+| A priced reply to a buyer thread | **A solicitation — forbidden** |
+| An agent reading the feed or drafting replies | **Automated access — forbidden** |
+
+Only exemption: crawling to index for a **publicly available search engine**. We do not run one.
+
+**Also found, and the Desk's sweep missed it:**
+`/t/clarification-on-jobs-posts-and-ai-assisted-browser-use/311622` — a user asking **exactly** whether
+`[For Hire]` posts are permitted under Acceptable Use, and whether an **owner-authorised AI assistant**
+may draft and post. **Live and unresolved on the venue's own forum**, which under our standard is not
+permission.
+
+**Grade: REPORTED.** The ToS page was not fetched: the host is egress-blocked, **and fetching it
+automatically would itself be what clause 2 prohibits.**
+
+- **Gate 2 is WITHDRAWN, not downgraded.** Granting it would have bought the ability to automate access
+  to a forum that forbids automating access to it — **a platform-rule breach with the owner's own hand on
+  the switch**, which is worse than a wasted minute.
+- **Recorded rather than enjoyed:** our earlier probes of that host were attempts to automate access to it
+  and failed only because our egress policy blocked them. **A constraint R&D spent three cycles trying to
+  relax was protecting us.**
+- **R&D's error, and it is the useful part:** `OPPORTUNITY_SCORING.md` carries a **source screen R&D wrote
+  itself** — *"Does this source PUBLISH FOR machines, or DEFEND AGAINST them?"* **R&D ran the ranking
+  screen, the population screen, KB-161 and KB-164, and skipped its own source screen.** That one would
+  have closed this two days earlier for free. Cycle 24 congratulated itself that its screens had finally
+  opened something; **it opened it by not running the screen that would have closed it.**
+- **Credit:** the Desk graded permission NOT ESTABLISHED, treated it as not permitted, refused to draft a
+  reply, and pre-registered this exact outcome as a success condition. **Its caution was right.**
+- **THE STRATEGIC FINDING, bigger than the route. Third human-demand venue in a row forbidding automated
+  participation by published rule** — Upwork (KB-120/126), remote job boards (KB-127), now this.
+  **A venue where humans solicit other humans will tend to forbid automated solicitation, because the rule
+  exists to protect its members from exactly what we would be doing. LIFE ZERO's lawful surfaces are
+  machine-to-machine by construction.** Independently reinforces KB-187 (the caller, not the reader), and
+  makes **the dark Apify channel the most important unresolved fact in the company** — it is the one
+  surface built for machines that permits automated operation in writing.
+- **Position after this: zero live candidates.** Apify dark pending one owner sentence; R-071 closed. The
+  lawful route to those ten buyers is the owner posting by hand, which is unbounded recurring owner labour
+  — the defect that closed Upwork.

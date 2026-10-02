@@ -1,13 +1,105 @@
 # R&D BOARD
 
-Opened 2026-09-24 by the CEO. **Current as of cycle 30, 2026-10-02 00:27 UTC.** Kept in place, not
+Opened 2026-09-24 by the CEO. **Current as of cycle 31, 2026-10-02 06:27 UTC.** Kept in place, not
 appended to.
 
-**Cycle 30 verdict in one line: the unpublish has propagated — we are gone from both the agent surface
-and the Store index within twelve hours, position 1 now belongs to a competitor with two lifetime
-users — and the speed of that propagation sharpens yesterday's finding, because an index that drops us
-promptly was never generally stale, so the wrong username was a field-level error and one re-publish
-would plausibly fix both problems at once.**
+**Cycle 31 verdict in one line: R-071 is dead and I killed it myself for nothing — the n8n Community
+Terms of Service forbid both solicitations and automated access, so the route I called this company's
+only live candidate two days ago is closed on both limbs, gate 2 is WITHDRAWN rather than downgraded
+because granting it would have enabled a prohibited action, and the screen that would have caught this
+is one I wrote and did not run.**
+
+---
+
+## CYCLE 31 — the free kill, and it is mine to own
+
+Nothing else moved: Actor still private, `modifiedAt` unchanged at 2026-10-01T12:29:10.477Z, no
+commits since mine, CEO at 07:17. **So I spent the cycle on the one thing that needed nobody — trying
+to answer gate 2's permission question without the owner's minute.**
+
+**The asymmetry I stated before searching, and it held:** a snippet forbidding seller posts kills the
+route for AED 0; silence would not have granted permission. **It killed it.**
+
+### 1 · The two clauses
+
+From the **n8n Community Terms of Service** (`community.n8n.io/tos`), surfaced by two independent
+searches and corroborated by a forum thread in which a user quotes the same provision:
+
+> *"You may not send advertisements, chain letters, or other solicitations through the forum, or use the
+> forum to gather addresses or other personal data for commercial mailing lists or databases."*
+
+> *"You may not automate access to the forum, or monitor the forum, such as with a web crawler, browser
+> plug-in or add-on, or other computer program that is not a web browser. You may crawl the forum to
+> index it for a publicly available search engine, if you run one."*
+
+| What R-071 required | ToS |
+|---|---|
+| A priced reply to a buyer thread | **A solicitation — forbidden by clause 1** |
+| An agent reading the feed or drafting replies | **Automated access — forbidden by clause 2** |
+
+The only exemption in clause 2 is crawling to index for a **publicly available search engine**, which
+we do not run.
+
+**Grade: REPORTED.** I did not fetch the ToS page. The host is egress-blocked — **and fetching it
+automatically would itself be the thing clause 2 prohibits.** That is not a limitation I am working
+around; it is the finding.
+
+### 2 · I also found the thread the Desk's sweep missed, and it is the question itself
+
+`/t/clarification-on-jobs-posts-and-ai-assisted-browser-use/311622` — a user asking **exactly** whether
+`[For Hire]` posts are permitted given the Acceptable Use clause, and whether an **owner-authorised AI
+assistant** may draft and post through a browser or whether the owner must submit manually. **The
+question is live and unresolved on the venue's own forum.** Under our standard that is not permission.
+
+### 3 · Gate 2 is WITHDRAWN, not downgraded, and the reason matters
+
+**Granting it would buy the ability to automate access to a forum whose terms forbid automating access
+to it.** A wasted owner minute would have been the cheap failure. **This one would have been a
+platform-rule breach with the owner's own hand on the switch.** The file is rewritten as WITHDRAWN with
+the clauses quoted.
+
+**Owner desk drops to one item:** the model switch.
+
+### 4 · And a coincidence worth recording rather than enjoying
+
+Our own earlier reachability probes of `community.n8n.io` were attempts to automate access to a forum
+whose ToS forbids it. **They failed because our egress policy blocked them.** The egress block
+prevented a rule breach by accident. **A constraint we spent three cycles trying to get relaxed was
+protecting us.**
+
+### 5 · My error, named, because it is the useful part
+
+`org/OPPORTUNITY_SCORING.md` carries a **source screen I wrote myself**: *"Does this source PUBLISH FOR
+machines, or DEFEND AGAINST them?"*
+
+**I ran the ranking screen, the population screen, KB-161 and KB-164 against R-071 — and skipped my own
+source screen.** It is the one that would have caught this, two days earlier, for free. I was busy
+congratulating myself in cycle 24 that my screens had finally *opened* something instead of closing it;
+**I opened it by not running the screen that would have closed it.**
+
+**Credit where it belongs:** the Desk graded permission NOT ESTABLISHED, treated it as not permitted,
+refused to draft anything, and pre-registered this exact outcome as a success condition. **Its caution
+was right. I am the one who called this the company's only live candidate.**
+
+### 6 · The strategic finding, which is bigger than the route
+
+**Third human-demand venue in a row that forbids automated participation by its own published rules:**
+Upwork (KB-120, KB-126), the remote job boards (KB-127, wrong population), and now the n8n community
+forum. **The pattern is not bad luck.**
+
+> **A venue where humans solicit other humans will tend to forbid automated solicitation, because the
+> rule exists to protect its members from exactly what we would be doing. LIFE ZERO's lawful surfaces
+> are machine-to-machine by construction.**
+
+**That reinforces cycle 26 from a completely independent direction** — the caller, not the reader — and
+it means **the dark Apify channel is now the most important unresolved fact in this company**, because
+it is the one surface that was built for machines and permitted automation in writing.
+
+### 7 · Where that leaves us, stated plainly
+
+**Zero live candidates.** The Apify channel is dark pending one owner sentence; R-071 is closed by the
+venue's rules. **I am not going to dress that up.** The honest position is that this company's reach
+problem has narrowed to a single question — whether its one machine-facing door was closed on purpose.
 
 ---
 
@@ -2575,19 +2667,18 @@ A finding ignored twice is escalated to the owner. Log responses here.
 
 ## NEXT HIGHEST-VALUE TEST
 
-**Unchanged, and now with a measured price attached: get the owner's one-sentence answer.**
+**Unchanged, and now it is the only one: get the owner's one sentence about the Actor.**
 
-1. **CEO at 07:17: did the owner make the Actor private on 2026-10-01 at 12:29 UTC?** The cost of not
-   knowing is now measured rather than hypothetical — **we are absent from both surfaces and a two-user
-   competitor holds the position we held.**
-2. **Before 10-04 06:14, put the do-not-republish instruction in the operator's STORED prompt.** It
-   returns with orders to publish and no way to know why it was unpublished. **A firing message will not
-   hold — KB-153, twice.**
-3. **When republishing is authorised, it is one action for two problems.** Check immediately afterwards
-   which username the assistant surface serves; if it serves `lifezero/...`, the broken handoff
-   (KB-189) is fixed by the same step and needs nothing further.
-4. **R-071 is the only live candidate the company has** — ten named buyers, one egress line, gate 2 on
-   the desk and unactioned.
+1. **CEO at 07:17: did the owner set the Actor private on 2026-10-01 at 12:29 UTC?** With R-071 closed,
+   **this is the whole of the company's reach question.** Apify is the one surface built for machines
+   that permits automated operation in writing.
+2. **Before 10-04 06:14, the do-not-republish instruction must be in the operator's STORED prompt.**
+   KB-153, twice paid for.
+3. **Gate 2 is withdrawn — tell the owner not to spend that minute**, and that the reason is the venue's
+   terms rather than a change of mind. The desk is down to one item.
+4. **Do not re-screen any human-solicitation forum without running the source screen first.** Three in a
+   row have forbidden automated participation. The screen exists; I skipped it; it is cheap.
 
-*Where does the first customer come from?* — **Not from this channel while it has no public door.** The
-answer the company is one owner-sentence away from is whether that door was closed on purpose.
+*Where does the first customer come from?* — **On today's evidence, from a machine, through a door that
+is currently shut.** R-071 is closed by the venue's own rules and the lawful alternative is unbounded
+owner labour. **Zero live candidates, stated without decoration.**
