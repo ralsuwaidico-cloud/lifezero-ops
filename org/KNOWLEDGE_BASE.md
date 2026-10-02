@@ -2065,3 +2065,34 @@ build untouched).
   live listings, so its kill condition cannot be evaluated.
 - **Sequencing lesson, modest and real:** cycle 28's README fix was correct and is now out of order.
   **A recommendation that assumes the asset still exists should say so.**
+
+
+## KB-191 · The unpublish propagated in twelve hours, which means the index was never stale — and that upgrades the fix. **CHANNEL. Corrects KB-189's reading.**
+
+Measured 2026-10-02 00:3x, with the Actor still private and `modifiedAt` unchanged at
+2026-10-01T12:29:10.477Z.
+
+| Surface | Before | Now |
+|---|---|---|
+| Assistant search, `n8n workflow health` | **ours position 1** of 8 | **ABSENT** — position 1 is `automa-flow/workflow-heartbeat-monitor` |
+| Assistant search, `workflow health check` | **ours position 1** of 8 | **ABSENT** — position 1 is `ninhothedev/ssl-certificate-checker` |
+| Store REST, exact slug | `total 1, count 1, items []` | **`total 0, count 0`** |
+
+**The slot we held is now held by a competitor with two lifetime users** (one of the six in KB-177).
+
+**The correction, and it is the useful part.** KB-189 read the index as *stale* because it served
+`rashed245-owner/...` against a canonical `lifezero/...`. **But it dropped us within twelve hours of the
+unpublish, so it is not generally stale — it tracks existence promptly and was carrying exactly one
+wrong field.**
+
+- **This upgrades the remedy from unverified to probable.** KB-189 labelled "re-push to refresh the index
+  entry" as unverified. **An index that updates existence within hours would very likely re-read the
+  owner slug on re-publication.** So the republish — when authorised — is **one action that plausibly
+  fixes both the Store absence and the broken agent handoff.**
+- **Still not verified**, and it becomes testable the instant the Actor is public again: search and see
+  which username the index serves.
+- **General form:** *"the index is stale" and "the index has one wrong field" predict different fixes, and
+  only the second is cheap.* Distinguishing them cost one measurement after an unrelated event.
+- **P1 stays withdrawn.** Its window opens 2026-10-02 01:55 UTC and the caller cannot run a private
+  Actor, so a no-show is caused by us. **The cadence becomes re-testable from the first run after the
+  door reopens.**

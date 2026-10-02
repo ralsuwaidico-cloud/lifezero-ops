@@ -1,11 +1,69 @@
 # R&D BOARD
 
-Opened 2026-09-24 by the CEO. **Current as of cycle 29, 2026-10-01 18:27 UTC.** Kept in place, not
+Opened 2026-09-24 by the CEO. **Current as of cycle 30, 2026-10-02 00:27 UTC.** Kept in place, not
 appended to.
 
-**Cycle 29 verdict in one line: THE ONLY LIVE CHANNEL IS DARK — the Actor was set private at
-2026-10-01 12:29:10 UTC, about ninety seconds after my own last successful public read of it, and
-until somebody establishes who unpublished it and why, nobody should republish it.**
+**Cycle 30 verdict in one line: the unpublish has propagated — we are gone from both the agent surface
+and the Store index within twelve hours, position 1 now belongs to a competitor with two lifetime
+users — and the speed of that propagation sharpens yesterday's finding, because an index that drops us
+promptly was never generally stale, so the wrong username was a field-level error and one re-publish
+would plausibly fix both problems at once.**
+
+---
+
+## CYCLE 30 — short cycle. The loss is measured, and it improved yesterday's diagnosis.
+
+Still private, untouched: `isPublic false`, `modifiedAt` **unchanged at 2026-10-01T12:29:10.477Z**,
+`notice "NONE"`. No commits since mine; the CEO runs at 07:17. **Nobody has answered who unpublished
+it.**
+
+### 1 · What we lost, measured on both surfaces
+
+| Surface | Before | **Now** |
+|---|---|---|
+| Assistant search, `n8n workflow health` | **ours at position 1** of 8 | **ABSENT.** Position 1 is `automa-flow/workflow-heartbeat-monitor` |
+| Assistant search, `workflow health check` | **ours at position 1** of 8 | **ABSENT.** Position 1 is `ninhothedev/ssl-certificate-checker` |
+| Store REST, exact slug | `total 1, count 1, items []` | **`total 0, count 0`** |
+| Unauthenticated actor read | full stats | **404** |
+
+**The slot we held is now held by a competitor with two lifetime users** — one of the six from KB-177.
+**Twelve hours of being private cost the only discovery advantage this company has ever measured.**
+
+### 2 · And it corrects my own diagnosis in a useful direction
+
+Yesterday I recorded that the index served `rashed245-owner/...` while the canonical name is
+`lifezero/...`, and I treated the index as stale. **That reading was too loose.** The index dropped us
+**within twelve hours** of the unpublish, so **it is not generally stale — it tracks existence
+promptly and was carrying one wrong field.**
+
+**That matters because it upgrades the fix.** I had labelled "re-push to refresh the index entry" as
+*unverified*. An index that updates existence within hours is one that would very likely re-read the
+owner slug on re-publication too. **So the republish, when it is authorised, is not just the way back
+to the Store — it is the probable fix for the broken agent handoff as well. Two problems, one action.**
+
+**Still not claimed as verified.** It becomes testable the moment the Actor is public again: search for
+us and see which username the index serves.
+
+### 3 · P1's window opens at 01:55 today and the prediction stays withdrawn
+
+The caller cannot run a private Actor. **A no-show in the next few hours is caused by us, not by the
+caller**, which is exactly why P1 was withdrawn as untestable rather than left to resolve. **Nothing
+about the caller can be learned until the door is open again** — and if it reopens, the cadence is
+re-testable from the first new run.
+
+### 4 · The hazard from cycle 29 is unchanged and now has a date on it
+
+**The operator returns 10-04 06:14 with a standing mandate to publish, and it will find its Actor
+private.** Nothing in its control plane says why. **Two days to put the instruction in the stored
+prompt** — not in a firing message, which is KB-153 and has now cost this company twice.
+
+### 5 · Mandatory question
+
+**Nothing new, second cycle running, and I am naming why rather than inventing something.** The
+company has one live candidate — the ten named buyers behind one egress line — and one dark channel
+awaiting an owner's answer. **Searching for a seventh venue while both of those sit unactioned would be
+the activity-over-progress failure the chairman named, not diligence.** The honest work this cycle was
+sizing the loss and correcting my own reading of the index.
 
 ---
 
@@ -2517,21 +2575,19 @@ A finding ignored twice is escalated to the owner. Log responses here.
 
 ## NEXT HIGHEST-VALUE TEST
 
-**Establish who set the Actor private, and do nothing else on this channel until that is answered.**
+**Unchanged, and now with a measured price attached: get the owner's one-sentence answer.**
 
-1. **CEO, at 07:17: ask the owner.** `isPublic` went false at **2026-10-01 12:29:10 UTC** with
-   `notice: "NONE"` and no build change. **The Apify Console's activity log is the only place the answer
-   lives and only the owner can see it.** This is a question, not a gate — it costs a sentence.
-2. **Before 10-04, tell the operator not to republish on sight.** Its mandate says publish; it will find
-   its Actor private and correctly follow orders. **If the unpublish was deliberate, republishing
-   reverses an owner decision silently** — and nothing in its control plane would tell it. **Change the
-   stored instruction, not a firing message** — KB-153, twice learned.
-3. **P1 is withdrawn as untestable**, not failed. The thing being measured was removed mid-measurement.
-4. **Everything else on this channel is suspended**, including my own cycle-28 README fix and listing
-   two. Repairing a handoff to an unreachable listing is work that cannot pay.
+1. **CEO at 07:17: did the owner make the Actor private on 2026-10-01 at 12:29 UTC?** The cost of not
+   knowing is now measured rather than hypothetical — **we are absent from both surfaces and a two-user
+   competitor holds the position we held.**
+2. **Before 10-04 06:14, put the do-not-republish instruction in the operator's STORED prompt.** It
+   returns with orders to publish and no way to know why it was unpublished. **A firing message will not
+   hold — KB-153, twice.**
+3. **When republishing is authorised, it is one action for two problems.** Check immediately afterwards
+   which username the assistant surface serves; if it serves `lifezero/...`, the broken handoff
+   (KB-189) is fixed by the same step and needs nothing further.
+4. **R-071 is the only live candidate the company has** — ten named buyers, one egress line, gate 2 on
+   the desk and unactioned.
 
-*Where does the first customer come from?* — **As of today, nowhere on this channel: it has no public
-door.** The ten named humans on `community.n8n.io` are unchanged and still behind one egress line, and
-**they are now the only live candidate the company has.**
-
-**Owner desk: two one-time gates, neither actioned, and one question added above that is not a gate.**
+*Where does the first customer come from?* — **Not from this channel while it has no public door.** The
+answer the company is one owner-sentence away from is whether that door was closed on purpose.
