@@ -2,7 +2,8 @@
  "note": "Every approvals-desk gate id ever shown to the chairman, with what it meant. Append-only. Ids are NEVER reused: on 2026-10-01 a new gate inherited the id 'gate-1', which the store still held from a withdrawn gate marked 'blocked' on 2026-09-26 - so the CEO reading the desk would have concluded the chairman had tried the new one and failed, and the prompt calls a blocked row the highest-value row on the page. KB-189.",
  "seen": {
   "gate-1": "Message 5-10 people you already know (withdrawn 2026-09-27)",
-  "g-2026-10-01-n8n-community": "Let the office reach one website where people are asking for the work we do",
-  "g-2026-10-01-operator-model": "One sentence to wake the agent that builds our marketplace listings"
+  "g-2026-10-01-n8n-community": "Let the office reach one website where people are asking for the work we do (WITHDRAWN 2026-10-02: the site's own rules forbid both a priced reply and automated reading)",
+  "g-2026-10-01-operator-model": "One sentence to wake the agent that builds our marketplace listings (HELD 2026-10-02: waking it sooner raises the risk it republishes a listing the owner may have made private on purpose)",
+  "g-2026-10-02-who-unpublished": "Did you make our marketplace listing private yesterday?"
  }
 }

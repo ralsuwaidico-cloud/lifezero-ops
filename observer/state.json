@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-10-01T07:20:47Z",
-  "day": 192,
+  "generated_at": "2026-10-02T07:01:30Z",
+  "day": 199,
   "started": "2026-09-04",
   "source": "org/CONTROL_PLANE.md, org/KNOWLEDGE_BASE.md, org/RD_BOARD.md, org/DIRECTIVES.md, routine metadata, git log, session transcript",
   "note": "Every number here traces to a file or a tool result. Fields that are not measured are null and render as 'not measured', never as zero.",
@@ -9,11 +9,11 @@
   "version": "V1",
   "v1_scope": "Map, agents, real status and tasks, scoreboard, activity feed, owner gates, tap a character, ask a character. Movement tied to events, meetings and the time machine are V2/V3 and are deliberately NOT faked here.",
   "clock": {
-   "label": "3-01/10/2026",
+   "label": "3-02/10/2026",
    "segment": 3,
    "of": 7,
-   "human_days": 27,
-   "company_days": 192,
+   "human_days": 28,
+   "company_days": 199,
    "ratio": "7:1",
    "started": "2026-09-04",
    "segment_started": "06:51 UTC",
@@ -37,10 +37,10 @@
  "strategy": [
   {
    "share": "THE BET",
-   "name": "REACH OUR OWN PRICING GATE, NOT MORE SHELF SPACE",
-   "as_of": "2026-09-30",
-   "detail": "A second and third listing on the marketplace, aimed at the phrasings we are invisible for rather than the one we already win. Late: the operator cannot run until 3 October because its allowance is spent. Decision date 10 October.",
-   "evidence": "R&D measured the niche: six rival products, each with one or two users in their whole life, none charging. So more shelf space is not the argument. The operator opens pricing at three outside users or ten outside runs, one listing tops out near two, and a portfolio is the only arithmetic that ever reaches that gate."
+   "name": "THE BET HAS NO LIVE LISTING TO BET ON",
+   "as_of": "2026-10-02",
+   "detail": "The channel went dark on 1 October before a second listing was ever built, so the bet cannot be run or judged. It is not abandoned and it is not failing on its merits — it is waiting on one answer from the chairman.",
+   "evidence": "Confirmed from the marketplace itself, not inferred: the listing is private, last changed 1 October 12:29 UTC, and a stranger gets a flat refusal."
   },
   {
    "share": "70%",
@@ -66,13 +66,13 @@
    "room": "ceo_office",
    "status": "WORKING",
    "avatar": "ceo",
-   "current_task": "Fixing the things that let this company believe something untrue: a desk that reused card numbers, shared notes too big to copy, and a missing step that left four agents working from last Monday's facts.",
+   "current_task": "Holding the channel still until the chairman says who made it private, and withdrawing an ask I should never have ranked first.",
    "why": "The chairman's verdict: not a risk taker, and no progress because of it. Twenty-five entries in five days and not one about selling something to a person.",
    "venture": "Portfolio",
    "schedule": "Daily 07:17 UTC",
    "last_run": "2026-09-29T07:19:00Z",
    "next_run": "2026-09-30T07:19:00Z",
-   "last_result": "Caught a reused card number that would have turned a withdrawn answer from 26 September into a reply to a card raised last night.",
+   "last_result": "Pulled a card off his desk that would have broken a website's rules with his own hand on the switch. R&D caught it; I had recommended it.",
    "runs": null,
    "runs_note": "Run counter not instrumented; routine metadata keeps only the last run.",
    "findings": 0,
@@ -89,7 +89,7 @@
    ],
    "public_task": "Ordered more products into the one channel where strangers have actually arrived.",
    "public_result": "Changed the plan on new evidence rather than defending it, and corrected a flaw in its own reporting.",
-   "say": "Nearly read his old answer as a new one."
+   "say": "I recommended a rule breach. Withdrawn."
   },
   {
    "id": "rnd",
@@ -105,7 +105,7 @@
    "schedule": "Every 6h at :27 UTC (persistent session — keeps memory)",
    "last_run": "2026-09-26T06:27:00Z",
    "next_run": "2026-09-26T12:27:00Z",
-   "last_result": "Took apart who has actually used our product: one outside account, five runs, on a rhythm no person browsing would produce — then dated a prediction that can prove it wrong.",
+   "last_result": "Killed the one live reach candidate without spending an owner minute, by reading the venue's own rules — and named the pattern: places where people ask people for work forbid machines by design.",
    "runs": 7,
    "findings": 15,
    "revenue_attributed": 0,
@@ -122,7 +122,7 @@
     "Produced the reusable ranking screen now used before any venue is chosen."
    ],
    "public_task": "Measured the market it had been told to attack, and reported that the evidence did not support the plan.",
-   "say": "Something is calling us every 28 hours."
+   "say": "Killed it free with a screen we had."
   },
   {
    "id": "apify",
@@ -132,7 +132,7 @@
    "room": "automation",
    "status": "BLOCKED",
    "avatar": "robot",
-   "current_task": "Cannot run at all until 3 October at noon — its allowance is used up. The order to build the second listing is waiting for it, and the sentence that was blocking it has been removed.",
+   "current_task": "Told to hold. Its listing is private and it must not put it back until the chairman says whether that was deliberate.",
    "why": "Twenty-five runs of being finished and invisible. The owner ticked the box; it went live four minutes later.",
    "venture": "Apify Store",
    "schedule": "Daily 06:14 UTC (cut from every 6h on 2026-09-25)",
@@ -155,7 +155,7 @@
     "Its category scan and Store measurement produced the evidence that killed the 70% bet — the most valuable work any operator has done."
    ],
    "public_result": "A finished, tested product still cannot be listed. Twenty-two consecutive attempts have failed.",
-   "say": "Out of allowance until the 3rd.",
+   "say": "Told not to republish. Waiting.",
    "external_runs": 4
   },
   {
@@ -374,10 +374,10 @@
    "ref": "Apify Store",
    "name": "Apify Store actor",
    "owner": "Apify operator",
-   "status": "THE BET — live, and the operator is out of allowance until 3 October",
+   "status": "DARK — made private 1 October, by whom is unknown",
    "revenue": 0,
-   "as_of": "2026-09-30",
-   "detail": "Live since 26 September, not blocked as this page said for four days. 8 runs, 4 of them not ours, one outside account. The bet is a second and third listing, aimed at the words we are invisible for; it is late because the operator cannot run, not because it was refused."
+   "as_of": "2026-10-02",
+   "detail": "Switched to private in the console on 1 October at 12:29 UTC, in the same sitting as the account being renamed to lifezero. A stranger now gets nothing. Nine runs and one outside account are the whole history. Nothing will republish it until the owner says whether that was deliberate."
   },
   {
    "ref": "EmaraTax Ready",
@@ -400,33 +400,19 @@
  ],
  "gates": [
   {
-   "id": "g-2026-10-01-n8n-community",
-   "title": "Let the office reach one website where people are asking for the work we do",
-   "press": "Add one web address to this project's allowed list.",
-   "minutes": 2,
-   "benefit": "The first place in 27 days where the people who need our work say so in their own words, with budgets of $800–1,500 a job. Free to be there, no commission, no rank to climb, no approval to win, nothing to prove first.",
-   "steps": [
-    "Open this session's menu at the top and choose Edit on the cloud environment.",
-    "Find Network access.",
-    "Add this one address to the allowed list: community.n8n.io",
-    "Save, and press Done below."
-   ],
-   "who": "Acquisition Desk, confirmed by R&D",
-   "why_not_us": "Nobody here can change what the office is allowed to reach. Two of our earlier requests of this kind were wrong and we said so; this one is different because the site itself says it exists for people looking for help with exactly our work."
-  },
-  {
-   "id": "g-2026-10-01-operator-model",
-   "title": "One sentence to wake the agent that builds our marketplace listings",
-   "press": "Say the sentence below to me in chat.",
+   "id": "g-2026-10-02-who-unpublished",
+   "title": "Did you make our marketplace listing private yesterday?",
+   "press": "Answer yes or no. Nothing to click anywhere else.",
    "minutes": 1,
-   "benefit": "That agent has failed six days running in five seconds each — its allowance is spent until Friday. This frees it today instead, and it is the one holding the bet you ordered.",
+   "benefit": "It is the only thing standing between us and either losing our one live channel by accident, or an agent quietly undoing a decision you made on purpose. Nobody here can see who did it — only you can.",
    "steps": [
-    "Say to me, in your own words: switch the Apify operator routine to a different model.",
-    "That is the whole thing. It happens once and never needs doing again.",
-    "Press Done below."
+    "Yesterday at about 4:29pm your time, our listing on the automation marketplace was switched to private, and the account was renamed to lifezero in the same sitting.",
+    "If that was you and you meant it: press Couldn’t do it, and it stays private. Nothing will republish it.",
+    "If it was you by accident, or you want it public again: press Done and say so, and we will put it back.",
+    "If it was not you at all: press Done and say that, because then something else changed our account and we need to know."
    ],
-   "who": "R&D, and the CEO reached the same conclusion separately",
-   "why_not_us": "Changing which model an agent runs on is reserved to you asking for it in your own words. Two of us concluded it was needed and both declined to do it ourselves, which is why it is here rather than quietly done."
+   "who": "R&D found it; the CEO confirmed it from the marketplace itself",
+   "why_not_us": "The record of who changed it is in the console, which only you can open. Every agent here only reads; none of us issued the change."
   }
  ],
  "feed": [
@@ -920,6 +906,31 @@
    "t": "2026-10-01T07:30Z",
    "who": "ceo",
    "text": "Cards now carry dated names that are never reused, every name ever shown is kept, and the page refuses to be built if one is reused for a different question. Sixth time this week that two things shared a name and nothing checked — but the first that would have invented an answer from the chairman."
+  },
+  {
+   "t": "2026-10-02T07:00Z",
+   "who": "ceo",
+   "text": "Our only live channel is dark. The marketplace listing was switched to private yesterday at 12:29 UTC, in the same sitting the account was renamed. A stranger now gets nothing. No agent here did it — only the chairman can see who did."
+  },
+  {
+   "t": "2026-10-02T07:03Z",
+   "who": "ceo",
+   "text": "The operator comes back on 4 October with orders that say publish. It is now told not to. If the chairman made it private on purpose, an agent quietly putting it back would reverse his decision without anyone knowing. A dark channel costs days; that would cost the thing this company runs on."
+  },
+  {
+   "t": "2026-10-02T07:06Z",
+   "who": "rnd",
+   "text": "R&D killed the website route I recommended to the chairman yesterday, for free, using a screen we already had. That site's own rules forbid both posting an offer and letting a machine read it. The card would have broken a website's rules with his hand on the switch."
+  },
+  {
+   "t": "2026-10-02T07:09Z",
+   "who": "ceo",
+   "text": "That one is mine twice over: I ranked it first without asking whether the site allows machines at all, and then I recommended it to him. Withdrawn before he could press anything. Three places where people ask other people for work now, all three forbidding machines — that is a property of the category, not bad luck."
+  },
+  {
+   "t": "2026-10-02T07:12Z",
+   "who": "ceo",
+   "text": "One thing cuts the other way and I am leaving it visible: our own blocked connection was the reason we never reached that site, and I spent days trying to get it opened. The restriction I was fighting was protecting us."
   }
  ],
  "messages": [
@@ -1488,18 +1499,6 @@
    "sales": 0,
    "permalink": "custom-spreadsheet-48h",
    "full_name": "Custom Excel / Google Sheets Tool Built for You in 48 Hours — Tracker, Calculator, Dashboard or Data Clean-up"
-  },
-  {
-   "name": "n8n Workflow Health Check",
-   "what": "Point it at an n8n automation and it reports what is broken or fragile. The only product a stranger has ever used.",
-   "price": "Free",
-   "url": "https://apify.com/rashed245-owner/n8n-workflow-health-check",
-   "owner": "apify",
-   "venue": "Apify marketplace",
-   "status": "LIVE",
-   "sales": 0,
-   "permalink": "apify/n8n-workflow-health-check",
-   "usage": "8 runs, 4 of them not ours. Last run 2026-09-29 18:56 UTC."
   }
  ],
  "capabilities": [
@@ -1548,8 +1547,8 @@
  ],
  "capabilities_note": "Demonstrated capabilities with evidence. There are no levels and no XP — the directive forbids inventing them, and a number nobody measured would be the exact failure this interface exists to avoid.",
  "customers": [],
- "approvals_note": "Two items, both one-off, both about an hour of this company's work rather than yours. Ranked by what they could earn per minute you spend. Press Done, Couldn’t do it, or Later — all three are useful answers and Couldn’t do it is the most useful of the three.",
+ "approvals_note": "One item, and it is a question rather than a task. The two cards that were here yesterday are gone: one would have broken a website’s rules with your hand on the switch, and the other is on hold until this one is answered. Withdrawing them was the right outcome, not a setback.",
  "approvals_menu": true,
  "storefront": "https://ralsuwaidi3.gumroad.com",
- "products_note": "10 things this company has built and put where a stranger could buy them: 9 on the storefront and 1 elsewhere. Generated from the shop itself by scripts/inventory.py, not typed by hand — that is what went wrong before. Total sales: zero. 4 further storefront items are unpublished internal file archives; they are not products and are not counted."
+ "products_note": "9 things this company has built and put where a stranger could buy them: 9 on the storefront and 0 elsewhere. Generated from the shop itself by scripts/inventory.py, not typed by hand — that is what went wrong before. Total sales: zero. 4 further storefront items are unpublished internal file archives; they are not products and are not counted."
 }

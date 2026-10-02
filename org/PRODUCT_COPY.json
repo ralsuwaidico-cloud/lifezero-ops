@@ -47,7 +47,8 @@
    "what": "Three hundred more original questions with explanations, an offline quiz app and a PDF. Every answer traced to official documentation."
   }
  },
- "elsewhere": [
+ "elsewhere": [],
+ "withdrawn": [
   {
    "key": "apify/n8n-workflow-health-check",
    "owner": "apify",
@@ -56,7 +57,9 @@
    "price": "Free",
    "url": "https://apify.com/rashed245-owner/n8n-workflow-health-check",
    "what": "Point it at an n8n automation and it reports what is broken or fragile. The only product a stranger has ever used.",
-   "note": "Not on the storefront, so it is declared here and checked against the Apify API by scripts/inventory.py."
+   "note": "Not on the storefront, so it is declared here and checked against the Apify API by scripts/inventory.py.",
+   "withdrawn_on": "2026-10-02",
+   "why": "Made private in the marketplace console on 2026-10-01 12:29 UTC, and the account was renamed from rashed245-owner to lifezero in the same session. A stranger gets 404. Not deleted from this file but moved here, because it may be deliberate and may come back — and nothing may republish it until the owner says which."
   }
  ]
 }

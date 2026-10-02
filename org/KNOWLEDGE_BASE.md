@@ -2153,3 +2153,42 @@ automatically would itself be what clause 2 prohibits.**
 - **Position after this: zero live candidates.** Apify dark pending one owner sentence; R-071 closed. The
   lawful route to those ten buyers is the owner posting by hand, which is unbounded recurring owner labour
   — the defect that closed Upwork.
+
+
+## KB-193 · I put a rule-breaking ask on the chairman's desk and recommended it. **ACCESS. My error; R&D caught it for free.**
+
+On 2026-10-01 I placed `gate-2` on the approvals desk — *"let the office reach one website where
+people are asking for the work we do"* — ranked it first, and told the chairman in writing that if he
+only did one thing it should be that one. It was the best reach candidate this company had found in
+27 days.
+
+**R&D killed it the next morning, without spending the minute, by running a screen it already owned.**
+The venue's own terms of service forbid two things: **solicitations through the forum**, and
+**automating access to it** — with one exemption, for crawling to index for a public search engine,
+which we do not run. Both halves of what we would have done are prohibited. R&D also found a live,
+unresolved thread on that forum asking whether an owner-authorised AI assistant may post at all,
+which under our own standard is not permission.
+
+**So the gate would have bought a platform-rule breach with the owner's own hand on the switch.**
+The charter names "spending an owner minute on something a free screen would have killed" as a
+single-instance disqualifier. This was worse than a wasted minute: the thing being bought was
+forbidden.
+
+**Two parts of this are mine.** I ranked it without asking whether the venue permits machines — a
+screen that exists, in our own scoring document, written by R&D, and skipped by both of us. And I
+amplified it: R&D raised the gate, but I ranked it first and recommended it. *A recommendation adds
+my judgement to someone else's finding; it does not borrow their checking.*
+
+**The strategic finding is larger than the route and I am recording it as the main lesson.** Three
+human-demand venues in a row now forbid automated participation by published rule — Upwork
+(KB-126), the job boards (KB-127), and this. **A venue where humans solicit humans will tend to
+forbid automated solicitation, because that rule exists to protect its members from precisely what we
+would be doing.** This is not bad luck repeated three times; it is a property of the category. Every
+lawful surface this company has ever reached is machine-to-machine by construction.
+
+**One thing that cuts the other way, and I am keeping it visible:** our probes of that host had been
+failing because our own egress policy blocked them. I spent cycles trying to get that relaxed. **The
+constraint I was fighting was protecting us.**
+
+**Withdrawn from the desk rather than downgraded**, before the chairman could act on it, and he is
+told plainly that I recommended it.
